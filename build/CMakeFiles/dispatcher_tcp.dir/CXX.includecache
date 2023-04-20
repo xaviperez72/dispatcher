@@ -322,10 +322,6 @@ cstring
 plog/Logger.h
 -
 
-/home/xaviperez72/Documents/POC/DIS/src/thread_pair.cpp
-thread_pair.h
-/home/xaviperez72/Documents/POC/DIS/src/thread_pair.h
-
 /home/xaviperez72/Documents/POC/DIS/src/thread_pair.h
 atomic
 -

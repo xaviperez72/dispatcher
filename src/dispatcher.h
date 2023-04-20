@@ -50,6 +50,11 @@ class Dispatcher {
 public:
     Dispatcher() = delete;
     Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids);
+    Dispatcher(const Dispatcher&) { LOG_DEBUG << "XAVI - COPY CTOR Dispatcher"; }; // run emplace_back : default - let emplace_back( ) work!! 
+    Dispatcher(Dispatcher&&) = default;     // run emplace_back(std::move( )) : default - fail!!
+    Dispatcher& operator=(const Dispatcher&) = delete;
+    Dispatcher& operator=(Dispatcher&&) = delete;
+
 
     void Launch_All_Threads();
     void Prepare_Server_Socket();

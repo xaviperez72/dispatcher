@@ -46,6 +46,8 @@ int Dispatcher::Accept_Thread()
 
     Launch_All_Threads();
 
+    kill(getppid(), SIGUSR1);
+
     Prepare_Server_Socket();
     
     while(_sharedptr_pids->_keep_accepting) 
