@@ -1,4 +1,0 @@
-/home/xaviperez72/Documents/POC/DIS/build/CMakeFiles/rebuild_cache.dir
-/home/xaviperez72/Documents/POC/DIS/build/CMakeFiles/edit_cache.dir
-/home/xaviperez72/Documents/POC/DIS/build/CMakeFiles/tuxcli_tcp.dir
-/home/xaviperez72/Documents/POC/DIS/build/CMakeFiles/dispatcher_tcp.dir
