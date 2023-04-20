@@ -8,7 +8,7 @@ thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx,
     assert(_write_queue && "write_queue not operative.");
     assert(common_queue && "read_queue (common queue) not operative.");
 
-    _accept_mutex = std::make_shared<mutex>();
+    // _accept_mutex = std::make_shared<mutex>();
 
     _common_queue = common_queue;
     _idx = idx;
@@ -56,7 +56,7 @@ void thread_pair::writer_thread(int idx)
 
 int thread_pair::add_sockdata(socket_data_t sdt)
 {
-    std::lock_guard<std::mutex> l_guard{*_accept_mutex};
+    std::lock_guard<std::mutex> l_guard{_accept_mutex};
 
     _sockdata.emplace_back(sdt);
     
@@ -65,7 +65,7 @@ int thread_pair::add_sockdata(socket_data_t sdt)
 
 int thread_pair::remove_sockdata(const socket_data_t &sdt)
 {
-    std::lock_guard<std::mutex> l_guard{*_accept_mutex};
+    std::lock_guard<std::mutex> l_guard{_accept_mutex};
 
     std::list<socket_data_t>::iterator findIter = std::find(_sockdata.begin(), _sockdata.end(), sdt);
 
@@ -77,7 +77,7 @@ int thread_pair::remove_sockdata(const socket_data_t &sdt)
 
 int thread_pair::get_sockdata_list(list<socket_data_t> &lsdt)
 {
-    std::lock_guard<std::mutex> l_guard{*_accept_mutex};
+    std::lock_guard<std::mutex> l_guard{_accept_mutex};
 
     lsdt = _sockdata;
     

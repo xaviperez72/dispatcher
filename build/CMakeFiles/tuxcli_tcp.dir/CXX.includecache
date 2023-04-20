@@ -234,10 +234,6 @@ ipclib.h
 thread_pair.h
 /home/xaviperez72/Documents/POC/DIS/src/thread_pair.h
 
-/home/xaviperez72/Documents/POC/DIS/src/getcfgfile.cpp
-getcfgfile.h
-/home/xaviperez72/Documents/POC/DIS/src/getcfgfile.h
-
 /home/xaviperez72/Documents/POC/DIS/src/getcfgfile.h
 sys/stat.h
 -

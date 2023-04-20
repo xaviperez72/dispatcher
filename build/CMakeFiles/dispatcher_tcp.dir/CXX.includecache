@@ -132,10 +132,6 @@ iconv.h
 
 ../src/plog/WinApi.h
 
-/home/xaviperez72/Documents/POC/DIS/src/Socket.cpp
-Socket.h
-/home/xaviperez72/Documents/POC/DIS/src/Socket.h
-
 /home/xaviperez72/Documents/POC/DIS/src/Socket.h
 iostream
 -
@@ -166,10 +162,6 @@ sys/un.h
 errno.h
 -
 
-/home/xaviperez72/Documents/POC/DIS/src/checker_pids.cpp
-checker_pids.h
-/home/xaviperez72/Documents/POC/DIS/src/checker_pids.h
-
 /home/xaviperez72/Documents/POC/DIS/src/checker_pids.h
 signal.h
 -
@@ -192,10 +184,6 @@ iostream
 plog/Log.h
 /home/xaviperez72/Documents/POC/DIS/src/plog/Log.h
 
-/home/xaviperez72/Documents/POC/DIS/src/connections.cpp
-connections.h
-/home/xaviperez72/Documents/POC/DIS/src/connections.h
-
 /home/xaviperez72/Documents/POC/DIS/src/connections.h
 common.h
 /home/xaviperez72/Documents/POC/DIS/src/common.h
@@ -207,10 +195,6 @@ string
 -
 ipclib.h
 /home/xaviperez72/Documents/POC/DIS/src/ipclib.h
-
-/home/xaviperez72/Documents/POC/DIS/src/dispatch_cfg.cpp
-dispatch_cfg.h
-/home/xaviperez72/Documents/POC/DIS/src/dispatch_cfg.h
 
 /home/xaviperez72/Documents/POC/DIS/src/dispatch_cfg.h
 common.h
@@ -274,10 +258,6 @@ ipclib.h
 thread_pair.h
 /home/xaviperez72/Documents/POC/DIS/src/thread_pair.h
 
-/home/xaviperez72/Documents/POC/DIS/src/getcfgfile.cpp
-getcfgfile.h
-/home/xaviperez72/Documents/POC/DIS/src/getcfgfile.h
-
 /home/xaviperez72/Documents/POC/DIS/src/getcfgfile.h
 sys/stat.h
 -
@@ -295,10 +275,6 @@ json/value.h
 -
 fstream
 -
-
-/home/xaviperez72/Documents/POC/DIS/src/ipclib.cpp
-ipclib.h
-/home/xaviperez72/Documents/POC/DIS/src/ipclib.h
 
 /home/xaviperez72/Documents/POC/DIS/src/ipclib.h
 common.h

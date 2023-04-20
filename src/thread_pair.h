@@ -31,8 +31,8 @@ class thread_pair
     int _pipe[2];
     MessageQueue _write_queue;
     MessageQueue _common_queue;
-    //mutex _accept_mutex;
-    shared_ptr<mutex> _accept_mutex;
+    mutex _accept_mutex;
+    //shared_ptr<mutex> _accept_mutex;
     list<socket_data_t> _sockdata;
     shared_ptr<checker_pids> _sharedptr_pids;
     shared_ptr<connections> _p_cur_connections;
@@ -41,7 +41,8 @@ public:
     thread_pair() = delete;
     thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
                 shared_ptr<checker_pids> shpt_pids, shared_ptr<connections> shpt_conn);
-    thread_pair(const thread_pair&) = delete; // run emplace_back : default - let emplace_back( ) work!! 
+    // It compiles with shared_ptr 
+    thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // run emplace_back : default - let emplace_back( ) work!! 
     thread_pair(thread_pair&&) = delete;     // run emplace_back(std::move( )) : default - fail!!
     thread_pair& operator=(const thread_pair&) = delete;
     thread_pair& operator=(thread_pair&&) = delete;

@@ -9,7 +9,7 @@ Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids
 void Dispatcher::Launch_All_Threads()
 {
     _v_thread_pair.reserve(_config.NumThreads);
-
+    
     for(int i=0; i<_config.NumThreads; i++) {
         _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections);
         // _v_thread_pair.emplace_back(std::move(thread_pair(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections)));
