@@ -95,9 +95,9 @@ int checker_pids::operator()()
 
 void checker_pids::add(std::function<int()> _call, string procname)
 { 
-    checker_struct checker{_call,0,0,procname};
+    checker_struct checker{std::move(_call),0,0,procname};
     
-    _pids.emplace_back(checker);
+    _pids.emplace_back(std::move(checker));
 }
 
 void checker_pids::sigterm_func(int s) 

@@ -258,7 +258,7 @@ namespace plog
     {
     public:
         Record(Severity severity, const char* func, size_t line, const char* file, const void* object, int instanceId)
-            : m_severity(severity), m_tid(util::gettid()), m_object(object), m_line(line), m_func(func), m_file(file), m_instanceId(instanceId)
+            : m_severity(severity), m_tid(util::gettid()), m_pid(getpid()), m_object(object), m_line(line), m_func(func), m_file(file), m_instanceId(instanceId)
         {
             util::ftime(&m_time);
         }
@@ -383,6 +383,11 @@ namespace plog
             return m_tid;
         }
 
+        virtual unsigned int getPid() const
+        {
+            return m_pid;
+        }
+
         virtual const void* getObject() const
         {
             return m_object;
@@ -422,6 +427,7 @@ namespace plog
     private:
         util::Time              m_time;
         const Severity          m_severity;
+        const int               m_pid;
         const unsigned int      m_tid;
         const void* const       m_object;
         const size_t            m_line;

@@ -4,6 +4,7 @@ Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids
         :_config{cfg},
         _sharedptr_pids{shpt_pids}
 {
+    LOG_DEBUG << "DISPATCHER CTOR config ";
 }
 
 void Dispatcher::Launch_All_Threads()

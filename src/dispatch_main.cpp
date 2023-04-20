@@ -83,29 +83,23 @@ int main()
 
     // Object that perform fork for each functor on its vector. 
     checker_pids checking_pids;
-    // 
+    
     std::shared_ptr<checker_pids> shared_pids(&checking_pids, [](checker_pids *){});
 
     // Config every dispatcher:
 
-    
     vector<Dispatcher> v_dispatchers;
-
     v_dispatchers.reserve(cfg.get_num_dispatchers());
-
-    LOG_DEBUG << "num dispatchers: " << cfg.get_num_dispatchers();
 
     for(auto config : cfg.get_all_dispatch_info())
     {
-       // v_dispatchers.emplace_back(Dispatcher(config,shared_pids));
        v_dispatchers.emplace_back(config,shared_pids);
     }
 
     // Prepare for fork() and checking
     for(auto dispat : v_dispatchers)
     {
-        LOG_DEBUG << "dispat ...";
-        checking_pids.add(std::move(dispat),"Dispatcher"));
+        checking_pids.add(dispat,"Dispatcher");
     }
 
     // Launching all dispatchers... 

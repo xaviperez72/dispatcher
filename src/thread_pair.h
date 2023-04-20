@@ -42,7 +42,8 @@ public:
     thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
                 shared_ptr<checker_pids> shpt_pids, shared_ptr<connections> shpt_conn);
     // It compiles with shared_ptr 
-    thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // run emplace_back : default - let emplace_back( ) work!! 
+    thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // NOT CALLED!! run emplace_back : default - let emplace_back( ) work!! 
+    // thread_pair(const thread_pair&) = delete; // fail 
     thread_pair(thread_pair&&) = delete;     // run emplace_back(std::move( )) : default - fail!!
     thread_pair& operator=(const thread_pair&) = delete;
     thread_pair& operator=(thread_pair&&) = delete;
