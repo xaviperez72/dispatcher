@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/tuxcli_tcp.dir/src/tuxcli_main.cpp.o CMakeFiles/tuxcli_tcp.dir/src/getcfgfile.cpp.o  -o tuxcli_tcp  -ljsoncpp 
