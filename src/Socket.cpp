@@ -8,6 +8,7 @@
 
 #include "Socket.h"
 
+using namespace std;
 Socket::Socket(){
     
 }

@@ -91,13 +91,13 @@ int main()
     vector<Dispatcher> v_dispatchers;
     v_dispatchers.reserve(cfg.get_num_dispatchers());
 
-    for(auto config : cfg.get_all_dispatch_info())
+    for(auto &config : cfg.get_all_dispatch_info())
     {
        v_dispatchers.emplace_back(config,shared_pids);
     }
 
     // Prepare for fork() and checking
-    for(auto dispat : v_dispatchers)
+    for(auto &dispat : v_dispatchers)
     {
         checking_pids.add(dispat,"Dispatcher");
     }

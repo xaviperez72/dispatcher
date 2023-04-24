@@ -18,18 +18,16 @@ extern "C" {
 #include <functional>
 #include <atomic>         // std::atomic, std::atomic_flag, ATOMIC_FLAG_INIT
 
-using namespace std;
-
 struct checker_struct 
 {
     std::function<int()> _caller{nullptr};
     time_t _last_fork{0};
     pid_t  _pid{0};
-    string _procname;
+    std::string _procname;
 };
 
 class checker_pids {
-    vector<checker_struct> _pids;
+    std::vector<checker_struct> _pids;
     checker_struct _dead;
     
     sighandler_t _previousInterruptHandler_int{nullptr};
@@ -44,7 +42,7 @@ public:
 
     checker_pids() = default;
     ~checker_pids(){ LOG_DEBUG << "Destructor checker_pids"; }
-    void add(std::function<int()> _call, string procname);
+    void add(std::function<int()> _call, std::string procname);
     static void sigterm_func(int s);
 
     void StoppingChildren();

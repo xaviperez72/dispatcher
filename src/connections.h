@@ -7,13 +7,11 @@
 #include <string>
 #include "ipclib.h"
 
-using namespace std;
-
 struct sockdata {
 	int sd;				    // Socket Descriptor
 	sockaddr_in sockaddr;	// Struct sockaddr_in
 	int idx_con;			// Index to Conections 
-	string rcvmsg;			// Received msg
+	std::string rcvmsg;			// Received msg
 };
 
 constexpr int st_ready{2};

@@ -12,14 +12,13 @@
 #include "ipclib.h"
 #include "checker_pids.h"
 #include "connections.h"
-
-using namespace std;
+#include "proto_pipe.h"
 
 struct socket_data_t {
 	int	        sd;  				// Socket Descriptor.
 	sockaddr_in sockaddr;			// OK Below
 	int		    shm_reg;			// Index to Array conexiones 
-	string      rcvinfo;            // String to keep incoming msg.
+	std::string      rcvinfo;            // String to keep incoming msg.
     bool operator==(const socket_data_t &c) const 
         { return sd==c.sd && sockaddr.sin_addr.s_addr==c.sockaddr.sin_addr.s_addr && sockaddr.sin_family==c.sockaddr.sin_family && 
             sockaddr.sin_port==c.sockaddr.sin_port && sockaddr.sin_zero==c.sockaddr.sin_zero && shm_reg==c.shm_reg;};
@@ -31,16 +30,16 @@ class thread_pair
     int _pipe[2];
     MessageQueue _write_queue;
     MessageQueue _common_queue;
-    mutex _accept_mutex;
+    std::mutex _accept_mutex;
     //shared_ptr<mutex> _accept_mutex;
-    list<socket_data_t> _sockdata;
-    shared_ptr<checker_pids> _sharedptr_pids;
-    shared_ptr<connections> _p_cur_connections;
+    std::list<socket_data_t> _sockdata;
+    std::shared_ptr<checker_pids> _sharedptr_pids;
+    std::shared_ptr<connections> _p_cur_connections;
 
 public:
     thread_pair() = delete;
     thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
-                shared_ptr<checker_pids> shpt_pids, shared_ptr<connections> shpt_conn);
+                std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn);
     // It compiles with shared_ptr 
     thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // NOT CALLED!! run emplace_back : default - let emplace_back( ) work!! 
     // thread_pair(const thread_pair&) = delete; // fail 
@@ -53,9 +52,12 @@ public:
 
     int add_sockdata(socket_data_t sdt);
     int remove_sockdata(const socket_data_t &sdt);
-    int get_sockdata_list(list<socket_data_t> &lsdt);
-    int get_read_pipe() { return _pipe[0];}
-    int get_write_pipe() { return _pipe[1];}
+    int get_sockdata_list(std::list<socket_data_t> &lsdt);
+    int get_size_of_sock_list() const { return _sockdata.size();}
+    int get_read_pipe() const { return _pipe[0];}
+    int get_write_pipe() const { return _pipe[1];}
+    int get_id() const { return _idx;}
+    int get_idx() const { return _idx-1;}
 };
 
 #endif

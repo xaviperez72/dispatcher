@@ -6,7 +6,6 @@
 #include <json/json.h>
 #include <json/value.h>
 
-using namespace std;
 using namespace std::string_literals;
 auto const DEFAULT_IP = "127.0.0.1";
 auto const DEFAULT_PORT = 9000; 
@@ -67,7 +66,7 @@ public:
     explicit all_dispatch_cfg(Json::Value json):_m_json{json}{ load_all_info();}
     Json::Value &get_json(){ return _m_json;}
     void load_all_info();
-    void create_cfg_values(string file_dir);
+    void create_cfg_values(std::string file_dir);
     operator bool() const {return loaded == true;}
     void show_all_config();
     int get_num_dispatchers() const { return NumDispatchers;}

@@ -1,5 +1,7 @@
 #include "dispatch_cfg.h"
 
+using namespace std;
+
 void all_dispatch_cfg::load_all_info()
 {
     int num_disp = getNumDispatchers();

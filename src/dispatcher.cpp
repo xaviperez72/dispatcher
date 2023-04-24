@@ -47,8 +47,6 @@ int Dispatcher::Accept_Thread()
 
     Launch_All_Threads();
 
-    kill(getppid(), SIGUSR1);
-
     Prepare_Server_Socket();
     
     while(_sharedptr_pids->_keep_accepting) 
@@ -69,14 +67,13 @@ int Dispatcher::Accept_Thread()
             int msg_qid=*(_p_cur_connections->get_queue_addr() + nthread);
 
             MessageQueue write_queue(msg_qid);
-            if(write_queue)
-            {
-                write_queue.send<decltype(WEAKUP)>(TYPE_WEAKUP, WEAKUP);
-            }
-            else
-                LOG_ERROR << "MessageQueue (write_queue) " << msg_qid << " doesn't exists.";
-            
+            assert(write_queue && "write_queue doesn't exists");
+            write_queue.send<decltype(protopipe::WEAKUP)>(protopipe::TYPE_WEAKUP, protopipe::WEAKUP);
         }
+
+        // Get less charged.
+
+        int th_id = LessCharged();
 
         LOG_DEBUG << "Accept_Thread";
     }
@@ -103,7 +100,28 @@ int Dispatcher::LaunchTuxCli()
 
 int Dispatcher::LessCharged()
 {
-    return 1;
+    int less_charged=-1;
+
+    for(int i=0 ; i < _config.NumThreads; i++)
+    {
+        int num = _v_thread_pair[i].get_size_of_sock_list();
+        if(num == 0)
+            return i;
+        if(num < 0)
+            less_charged = i;
+        else 
+        {
+            if(_v_thread_pair[less_charged].get_size_of_sock_list() > num)
+                less_charged = i;
+        }
+    }
+
+    // return less_charged;
+
+    auto it_th = std::min_element(_v_thread_pair.begin(),_v_thread_pair.end(),
+        [](thread_pair &a, thread_pair &b){ return a.get_size_of_sock_list() < b.get_size_of_sock_list();}
+        );
+    return it_th->get_idx();
 }
 
 Dispatcher::operator bool()

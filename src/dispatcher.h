@@ -15,11 +15,7 @@
 #include "getcfgfile.h"
 #include "ipclib.h"
 #include "thread_pair.h"
-
-using namespace std;
-
-static char WEAKUP='1';
-static constexpr long TYPE_WEAKUP=1;
+#include "proto_pipe.h"
 
 struct allowed_ips
 {

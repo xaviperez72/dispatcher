@@ -25,8 +25,6 @@ extern "C" {
 #include <json/value.h>
 #include <fstream>
 
-using namespace std;
-
 class GetCfgFile 
 {
 public:
@@ -35,16 +33,16 @@ public:
 
     void save_cfg_file(Json::Value json);
     Json::Value &get_json(){ return _m_json;};
-    string get_file_dir() {return _file_dir;};
-    string get_file_name() {return _filename;};
+    std::string get_file_dir() {return _file_dir;};
+    std::string get_file_name() {return _filename;};
     operator bool() const;
 
 private:
-    string ExtractFileName(const string& s);
-    string ExtractFileDir(const string& s); 
+    std::string ExtractFileName(const std::string& s);
+    std::string ExtractFileDir(const std::string& s); 
 
-    string _filename;
-    string _file_dir;
+    std::string _filename;
+    std::string _file_dir;
     bool _readed{false};
     bool _saved{false};
     Json::Value _m_json;

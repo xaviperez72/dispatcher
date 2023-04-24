@@ -93,7 +93,7 @@ int checker_pids::operator()()
     return static_cast<int>(checker_pids::_forker);
 }
 
-void checker_pids::add(std::function<int()> _call, string procname)
+void checker_pids::add(std::function<int()> _call, std::string procname)
 { 
     checker_struct checker{std::move(_call),0,0,procname};
     

@@ -1,5 +1,7 @@
 #include "thread_pair.h"
 
+using namespace std;
+
 thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
         std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn)
 {
