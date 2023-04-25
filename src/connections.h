@@ -7,13 +7,6 @@
 #include <string>
 #include "ipclib.h"
 
-struct sockdata {
-	int sd;				    // Socket Descriptor
-	sockaddr_in sockaddr;	// Struct sockaddr_in
-	int idx_con;			// Index to Conections 
-	std::string rcvmsg;			// Received msg
-};
-
 constexpr int st_ready{2};
 constexpr int st_obsolete{3};
 
@@ -45,7 +38,9 @@ public:
     int get_nthreads(){ return nThreads;}
     void mark_obsolete(int idx);
     void delete_obsolete(int idx);
-    int clean_ip(sockaddr_in *ppal);
+    int clean_repeated_ip(sockaddr_in *ppal, Semaphore &sem);
+    int register_new_conn(int nthread, int sd, sockaddr_in s_in, Semaphore &sem);
+    int unregister_conn(int idx, Semaphore &sem);
 };
 	
 

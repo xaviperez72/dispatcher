@@ -3,8 +3,10 @@
 using namespace std;
 
 thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
-        std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn)
+        std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn, 
+        std::shared_ptr<signal_synch> shpt_sigsyn)
 {
+    _shpt_sigsyn = shpt_sigsyn;
     _write_queue = MessageQueue(write_queue_id);
 
     assert(_write_queue && "write_queue not operative.");
@@ -33,8 +35,7 @@ void thread_pair::reader_thread(int idx)
     while(_sharedptr_pids->_keep_accepting) 
     {
         // STEP 1 - 
-        sleep(5);
-        LOG_DEBUG << "reader_thread " << idx;
+        sleep(10);
     }
 
     LOG_DEBUG << "Ending reader_thread " << idx;
@@ -46,11 +47,10 @@ void thread_pair::writer_thread(int idx)
 
     while(_sharedptr_pids->_keep_working) 
     {
-        // STEP 1 - ReadFromQueue  (shm_reg on message)
+        // STEP 1 - ReadFromQueue  (idx_con on message)
 
         // STEP 2 - 
-        sleep(5);
-        LOG_DEBUG << "writer_thread " << idx;
+        sleep(10);
     }
 
     LOG_DEBUG << "Ending writer_thread " << idx;

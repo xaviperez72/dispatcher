@@ -12,7 +12,7 @@ void Dispatcher::Launch_All_Threads()
     _v_thread_pair.reserve(_config.NumThreads);
     
     for(int i=0; i<_config.NumThreads; i++) {
-        _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections);
+        _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections, _shpt_sigsyn);
         // _v_thread_pair.emplace_back(std::move(thread_pair(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections)));
     }
 
@@ -35,6 +35,35 @@ void Dispatcher::Prepare_Server_Socket()
     _server_socket.listen(10); 
 }
 
+void Dispatcher::Signal_Handler_For_Threads()
+{
+    _shpt_sigsyn = std::make_shared<signal_synch>();
+
+    sigemptyset(&_shpt_sigsyn->_sigset);
+    sigaddset(&_shpt_sigsyn->_sigset, SIGINT);
+    sigaddset(&_shpt_sigsyn->_sigset, SIGUSR1);
+    sigaddset(&_shpt_sigsyn->_sigset, SIGTERM);
+    pthread_sigmask(SIG_BLOCK, &_shpt_sigsyn->_sigset, nullptr);
+
+    auto signal_handler = [this]() 
+    {
+        int signum = 0;
+        // wait until a signal is delivered:
+        LOG_DEBUG << "In lambda signal_handler" << std::endl;
+        sigwait(&_shpt_sigsyn->_sigset, &signum);
+        LOG_DEBUG << "after sigwait" << std::endl;
+        sleep(2);
+        _sharedptr_pids->_keep_accepting.store(true);
+        LOG_DEBUG << "before notify_all" << std::endl;
+        sleep(2);
+        // notify all waiting workers to check their predicate:
+        _shpt_sigsyn->_cv.notify_all();
+        return signum;
+    };
+
+    _shpt_sigsyn->_ft_signal_handler = std::async(std::launch::async, signal_handler);
+}
+
 int Dispatcher::Accept_Thread()
 {
     // Only father (checker_pids) can delete IPCS.
@@ -44,6 +73,8 @@ int Dispatcher::Accept_Thread()
     _shpt_Common_Msg_Queue->DisableDelete();
     _shpt_shmAllowedIPs->DisableDelete();
     _p_cur_connections->DisableDelete();
+
+    Signal_Handler_For_Threads();
 
     Launch_All_Threads();
 
@@ -56,13 +87,21 @@ int Dispatcher::Accept_Thread()
         
         // Checks if IP is in Table.
 
+        // TO DO...
+
+
+        // Get all socket_data_t info:
+
+        socket_data_t sd_info;
+        sd_info.sd = newSocket.sock;
+        memcpy(&sd_info.sockaddr, newSocket.address_info.ai_addr,sizeof(struct sockaddr_in));
+
         // Clean possible obsoletes.
-        
-        sockaddr_in *s_in = (struct sockaddr_in *) newSocket.address_info.ai_addr;
 
-        int nthread = _p_cur_connections->clean_ip(s_in);
+        int nthread = _p_cur_connections->clean_repeated_ip(&sd_info.sockaddr, *_shpt_semIPCfile);
 
-        if(nthread != -1)
+        // It currently exists, remove it. 
+        if(nthread >= 0)
         {
             int msg_qid=*(_p_cur_connections->get_queue_addr() + nthread);
 
@@ -72,11 +111,38 @@ int Dispatcher::Accept_Thread()
         }
 
         // Get less charged.
-
         int th_id = LessCharged();
 
-        LOG_DEBUG << "Accept_Thread";
+        if ((sd_info.idx_con = _p_cur_connections->register_new_conn(th_id, sd_info.sd, sd_info.sockaddr, *_shpt_semIPCfile)) < 0)
+        {
+            close(sd_info.sd);
+            if(sd_info.idx_con >= 0)
+                _p_cur_connections->unregister_conn(sd_info.idx_con, *_shpt_semIPCfile);
+            continue;
+        }   
+
+        // Assign sd to thread_pair...
+        if(Assign_connection_to_thread_pair(th_id, &sd_info) < 0)
+        {
+            close(sd_info.sd);
+            if(sd_info.idx_con >= 0)
+                _p_cur_connections->unregister_conn(sd_info.idx_con, *_shpt_semIPCfile);
+        }
     }
+    
+    _server_socket.close();
+
+    return 0;
+}
+
+int Dispatcher::Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info)
+{
+    // TO DO - Check result or exceptions...
+    if (_v_thread_pair[th_id].add_sockdata(*sd_info) < 0)
+        return -1;
+
+    // Send WEAKUP byte to notify there is a new connection...
+    write(_v_thread_pair[th_id].get_write_pipe(), &protopipe::WEAKUP, protopipe::TYPE_WEAKUP);
     return 0;
 }
 
@@ -100,22 +166,6 @@ int Dispatcher::LaunchTuxCli()
 
 int Dispatcher::LessCharged()
 {
-    int less_charged=-1;
-
-    for(int i=0 ; i < _config.NumThreads; i++)
-    {
-        int num = _v_thread_pair[i].get_size_of_sock_list();
-        if(num == 0)
-            return i;
-        if(num < 0)
-            less_charged = i;
-        else 
-        {
-            if(_v_thread_pair[less_charged].get_size_of_sock_list() > num)
-                less_charged = i;
-        }
-    }
-
     // return less_charged;
 
     auto it_th = std::min_element(_v_thread_pair.begin(),_v_thread_pair.end(),
@@ -277,10 +327,8 @@ int Dispatcher::operator()()
         _shpt_Common_Msg_Queue->EnableDelete();
         _shpt_shmAllowedIPs->EnableDelete();
         _p_cur_connections->EnableDelete();
-    }
-    else {
-        //LOG_DEBUG << "exiting to avoid destruction disaster.";
-        //exit(1);
+
+
     }
     
     LOG_DEBUG << "Ending operator()";

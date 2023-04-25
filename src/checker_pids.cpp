@@ -105,9 +105,10 @@ void checker_pids::sigterm_func(int s)
     LOG_DEBUG << "Received signal " << s << " : " << strsignal(s) << \
                  " _keep_accepting " << checker_pids::_keep_accepting << " : _forker " << _forker;
     
-    if( checker_pids::_keep_accepting && _forker) 
+    if( (checker_pids::_keep_accepting || checker_pids::_keep_working) && _forker) 
     {
         checker_pids::_keep_accepting = false;
+        checker_pids::_keep_working = false;
         if(_me!=nullptr) {
             LOG_DEBUG << "Before calling _me->StoppingChildren(); (fingers crossed)";
             _me->StoppingChildren();
@@ -117,6 +118,7 @@ void checker_pids::sigterm_func(int s)
     }
 
     checker_pids::_keep_accepting = false;
+    checker_pids::_keep_working = false;
 
     LOG_DEBUG << "Received signal " << s << " : " << strsignal(s) << \
                  " _keep_accepting " << checker_pids::_keep_accepting << " : _forker " << _forker;
