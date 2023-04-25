@@ -32,10 +32,17 @@ void thread_pair::reader_thread(int idx)
 {
     LOG_DEBUG << "reader_thread " << idx;
 
-    while(_sharedptr_pids->_keep_accepting) 
+    while(_sharedptr_pids->_keep_accepting.load()==true) 
     {
+        std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
+
+        auto shpt_pids = _sharedptr_pids;
+        // wait for up to 10 seconds
+        _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
+              [&shpt_pids]() { return !shpt_pids->_keep_accepting.load(); });
+        
         // STEP 1 - 
-        sleep(10);
+        
     }
 
     LOG_DEBUG << "Ending reader_thread " << idx;
@@ -45,12 +52,19 @@ void thread_pair::writer_thread(int idx)
 {
     LOG_DEBUG << "writer_thread " << idx;
 
-    while(_sharedptr_pids->_keep_working) 
+    while(_sharedptr_pids->_keep_working.load()==true) 
     {
+        std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
+
+        auto shpt_pids = _sharedptr_pids;
+        // wait for up to 10 seconds
+        _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
+              [&shpt_pids]() { return !shpt_pids->_keep_working.load(); });
+
         // STEP 1 - ReadFromQueue  (idx_con on message)
 
         // STEP 2 - 
-        sleep(10);
+        
     }
 
     LOG_DEBUG << "Ending writer_thread " << idx;

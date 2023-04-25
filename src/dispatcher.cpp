@@ -49,19 +49,50 @@ void Dispatcher::Signal_Handler_For_Threads()
     {
         int signum = 0;
         // wait until a signal is delivered:
-        LOG_DEBUG << "In lambda signal_handler" << std::endl;
+        LOG_DEBUG << "LAMBDA signal_handler" << std::endl;
         sigwait(&_shpt_sigsyn->_sigset, &signum);
-        LOG_DEBUG << "after sigwait" << std::endl;
-        sleep(2);
-        _sharedptr_pids->_keep_accepting.store(true);
-        LOG_DEBUG << "before notify_all" << std::endl;
-        sleep(2);
+        _sharedptr_pids->_keep_accepting.store(false);
+        _sharedptr_pids->_keep_working.store(false);
+        LOG_DEBUG << "signal_handler WEAK-UP - before notify_all" << std::endl;
         // notify all waiting workers to check their predicate:
         _shpt_sigsyn->_cv.notify_all();
         return signum;
     };
 
     _shpt_sigsyn->_ft_signal_handler = std::async(std::launch::async, signal_handler);
+}
+
+int Dispatcher::Accept_by_Select()
+{
+    int nfound;
+    fd_set readfds;
+    static struct timeval timeout;
+
+    FD_ZERO(&readfds);
+    int n_sock_sel = 0;
+      
+    FD_SET(_server_socket.sock, &readfds);                
+    n_sock_sel=(n_sock_sel>_server_socket.sock)? n_sock_sel : _server_socket.sock+1;
+
+    timeout.tv_sec = 1;
+    timeout.tv_usec= 0;
+
+    if ((nfound = select(n_sock_sel,&readfds,0,0,&timeout)) == -1) 
+    {
+        LOG_ERROR << "select failed!!" << strerror(errno);
+        raise(SIGINT);
+    }
+    else {
+        if(nfound==0)    // timeout 
+        {
+            return 0;
+        }
+        if (FD_ISSET(_server_socket.sock,&readfds)) 
+        {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 int Dispatcher::Accept_Thread()
@@ -80,8 +111,12 @@ int Dispatcher::Accept_Thread()
 
     Prepare_Server_Socket();
     
-    while(_sharedptr_pids->_keep_accepting) 
+    while(_sharedptr_pids->_keep_accepting.load()) 
     {
+
+        if(Accept_by_Select()==0) // timeout - Check _keep_accepting...
+            continue;
+
         // Accept the incoming connection and creates a new Socket to the client
         Socket newSocket = _server_socket.accept(); 
         
@@ -132,6 +167,9 @@ int Dispatcher::Accept_Thread()
     
     _server_socket.close();
 
+    // wait for signal handler to complete
+    int signal = _shpt_sigsyn->_ft_signal_handler.get();
+    LOG_DEBUG << "ok   - RECEIVED SIGNAL FROM FUTURE _ft_signal_handler: " << signal << std::endl;
     return 0;
 }
 

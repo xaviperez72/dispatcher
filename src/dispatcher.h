@@ -55,6 +55,7 @@ public:
     int IPC_Setting_Up();
     int Accept_Thread();
     int Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info);
+    int Accept_by_Select();
 
     int LessCharged();
     int LaunchTuxCli();

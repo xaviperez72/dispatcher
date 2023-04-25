@@ -36,7 +36,7 @@ int checker_pids::operator()()
     _previousInterruptHandler_usr1 = signal(SIGUSR1, &checker_pids::sigterm_func);
     _previousInterruptHandler_term = signal(SIGTERM, &checker_pids::sigterm_func);
 
-    while(_keep_accepting) 
+    while(_keep_accepting.load()) 
     {
         time(&_dead._last_fork);
 
@@ -110,9 +110,8 @@ void checker_pids::sigterm_func(int s)
         checker_pids::_keep_accepting = false;
         checker_pids::_keep_working = false;
         if(_me!=nullptr) {
-            LOG_DEBUG << "Before calling _me->StoppingChildren(); (fingers crossed)";
             _me->StoppingChildren();
-            LOG_DEBUG << "Afet calling _me->StoppingChildren(); (fingers crossed)";
+
             _me = nullptr;
         }
     }
