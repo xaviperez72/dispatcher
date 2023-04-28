@@ -17,10 +17,12 @@
 
 struct signal_synch
 {
-    sigset_t _sigset;
+    sigset_t _sigset_new;
+    sigset_t _sigset_old;
     std::mutex _cv_mutex;
     std::condition_variable _cv;
     std::future<int>  _ft_signal_handler;
+    ~signal_synch(){ LOG_DEBUG << "Dtor signal_synch."; }
 };
 
 struct socket_data_t {
@@ -35,6 +37,11 @@ struct socket_data_t {
 
 class thread_pair
 {
+public:
+    std::thread th_r;
+    std::thread th_w;
+    
+private:
     int _idx;
     int _pipe[2];
     MessageQueue _write_queue;
@@ -54,7 +61,7 @@ public:
     thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // NOT CALLED!! run emplace_back : default - let emplace_back( ) work!! 
     // thread_pair(const thread_pair&) = delete; // fail 
     thread_pair(thread_pair&&) = delete;     // run emplace_back(std::move( )) : default - fail!!
-    thread_pair& operator=(const thread_pair&) = delete;
+    thread_pair& operator=(const thread_pair&) = default;
     thread_pair& operator=(thread_pair&&) = delete;
 
     void reader_thread(int idx);

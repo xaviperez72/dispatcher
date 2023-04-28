@@ -52,6 +52,7 @@ void sigsegv_func(int s)
 
 int main()
 {
+    int ret;
     // TO DO 
     // Get level of log from file config. Now it is only DEBUG.
     static plog::ConsoleAppender<plog::TxtFormatter> consoleAppender;
@@ -82,30 +83,38 @@ int main()
     LOG_DEBUG << "Running on background, parent pid = " << getppid();
 
     // Object that perform fork for each functor on its vector. 
-    checker_pids checking_pids;
-    
-    std::shared_ptr<checker_pids> shared_pids(&checking_pids, [](checker_pids *){});
+    auto checking_pids = make_shared<checker_pids>();
+    //std::shared_ptr<checker_pids> shared_pids(&checking_pids, [](checker_pids *){});
 
     // Config every dispatcher:
 
     vector<Dispatcher> v_dispatchers;
+
     v_dispatchers.reserve(cfg.get_num_dispatchers());
 
+ 
     for(auto &config : cfg.get_all_dispatch_info())
     {
-       v_dispatchers.emplace_back(config,shared_pids);
+       v_dispatchers.emplace_back(config,checking_pids);
     }
 
     // Prepare for fork() and checking
     for(auto &dispat : v_dispatchers)
     {
-        checking_pids.add(dispat,"Dispatcher");
+        checking_pids->add(dispat,"Dispatcher");
     }
 
-    // Launching all dispatchers... 
-    int ret=checking_pids();
+    // Launching all dispatchers...     
+    ret=checking_pids->operator()();
 
-    LOG_DEBUG << "Ending process main";
+    // _pids[0] has Dispatcher object with shared pointers that they are not called when gets out of scope.
+    // TO DO - Deep investigation must be done to discover why is not called destructors of IPC (shared_ptrs).
+    // We must ensure to to a clear...
     
+    v_dispatchers.clear();
+    checking_pids->clear();
+
+    LOG_DEBUG << "Ending process main " << ret;
+
     return ret;
 }

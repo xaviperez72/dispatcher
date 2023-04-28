@@ -8,7 +8,7 @@ std::atomic<bool> checker_pids::_forker{true};
 void checker_pids::StoppingChildren()
 {
     LOG_DEBUG << "Sending signal to children!";
-    for(auto child : _pids)
+    for(auto &child : _pids)
     {
         kill(child._pid, SIGUSR1);
     }
@@ -16,6 +16,8 @@ void checker_pids::StoppingChildren()
 
 int checker_pids::operator()()
 {
+    int ret=0;
+
     checker_pids::_forker = true;       // Important to propagate signal to children and itself
 
     if(_pids.size() == 0)
@@ -65,12 +67,12 @@ int checker_pids::operator()()
                     
                     case 0:                                // Child process
                         checker_pids::_forker = false;     // I am not the forker, I am a child
-                        sleep(1);
-                        return process._caller();         // Call to functor - operator ()
+                        ret=process._caller();         // Call to functor - operator ()
+                        return ret;
+                        break;
 
                     default:                               // Parent process
                         LOG_DEBUG << process._procname << " launched with pid " << process._pid;
-                        sleep(1);
                         break;
                 }
                 if(process._pid == -1)
@@ -81,23 +83,39 @@ int checker_pids::operator()()
         LOG_DEBUG << "waiting - keep_accepting " << _keep_accepting;
 
         _dead._pid = wait(NULL);
-        sleep(1);
         LOG_DEBUG << "wake-up - child dead " << _dead._pid << "... keep_accepting " << _keep_accepting;
+    }
+
+    
+    bool waiting = true;
+    while (waiting)
+    {
+        auto it_pid_alive = std::find_if(_pids.begin(), _pids.end(), [](checker_struct &ch){ return kill(ch._pid,0)!=-1;});
+        if(it_pid_alive == _pids.end()) {
+            LOG_DEBUG << "All process dead!!";
+            waiting = false;
+        }
+        else {
+            LOG_DEBUG << "Still alive, waiting: " << it_pid_alive->_pid;
+            _dead._pid = wait(NULL);
+            LOG_DEBUG << "_dead._pid:" <<_dead._pid;
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
     (void)signal(SIGINT, _previousInterruptHandler_int);
     (void)signal(SIGUSR1, _previousInterruptHandler_usr1);
     (void)signal(SIGTERM, _previousInterruptHandler_term);
 
-    LOG_DEBUG << "end checker_pids::operator() - keep_accepting " << _keep_accepting;
+    LOG_DEBUG << "Ending checker_pids::operator() - checker_pids::_forker " << checker_pids::_forker;
     return static_cast<int>(checker_pids::_forker);
 }
 
 void checker_pids::add(std::function<int()> _call, std::string procname)
 { 
-    checker_struct checker{std::move(_call),0,0,procname};
-    
-    _pids.emplace_back(std::move(checker));
+    checker_struct checker{_call,0,0,procname};
+    _pids.reserve(_pids.size()+1);
+    _pids.emplace_back(checker);
 }
 
 void checker_pids::sigterm_func(int s) 

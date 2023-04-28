@@ -4,7 +4,25 @@ Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids
         :_config{cfg},
         _sharedptr_pids{shpt_pids}
 {
-    LOG_DEBUG << "DISPATCHER CTOR config ";
+    LOG_DEBUG << "CTOR: " << this;
+}
+/*
+void Dispatcher::Show_All_Shared_Ptr()
+{
+    LOG_DEBUG << "Address: " << this;
+    LOG_DEBUG << "std::shared_ptr<checker_pids>:" << _sharedptr_pids.use_count();
+    LOG_DEBUG << "std::shared_ptr<Semaphore>:" << _shpt_semIPCfile.use_count();
+    LOG_DEBUG << "std::shared_ptr<SharedMemory>:" << _shpt_shmIPCfile.use_count();
+    LOG_DEBUG << "std::shared_ptr<connections>:" << _p_cur_connections.use_count();
+    LOG_DEBUG << "std::shared_ptr<MessageQueue>:" << _shpt_Common_Msg_Queue.use_count();
+    LOG_DEBUG << "std::shared_ptr<SharedMemory>:" << _shpt_shmAllowedIPs.use_count();
+    LOG_DEBUG << "std::shared_ptr<signal_synch>:" << _shpt_sigsyn.use_count();
+}
+*/
+
+Dispatcher::~Dispatcher()
+{ 
+    LOG_DEBUG << "DTOR: " << this;
 }
 
 void Dispatcher::Launch_All_Threads()
@@ -39,22 +57,23 @@ void Dispatcher::Signal_Handler_For_Threads()
 {
     _shpt_sigsyn = std::make_shared<signal_synch>();
 
-    sigemptyset(&_shpt_sigsyn->_sigset);
-    sigaddset(&_shpt_sigsyn->_sigset, SIGINT);
-    sigaddset(&_shpt_sigsyn->_sigset, SIGUSR1);
-    sigaddset(&_shpt_sigsyn->_sigset, SIGTERM);
-    pthread_sigmask(SIG_BLOCK, &_shpt_sigsyn->_sigset, nullptr);
+    sigemptyset(&_shpt_sigsyn->_sigset_new);
+    sigaddset(&_shpt_sigsyn->_sigset_new, SIGINT);
+    sigaddset(&_shpt_sigsyn->_sigset_new, SIGUSR1);
+    sigaddset(&_shpt_sigsyn->_sigset_new, SIGTERM);
+    pthread_sigmask(SIG_BLOCK, &_shpt_sigsyn->_sigset_new, &_shpt_sigsyn->_sigset_old);
 
     auto signal_handler = [this]() 
     {
         int signum = 0;
         // wait until a signal is delivered:
         LOG_DEBUG << "LAMBDA signal_handler" << std::endl;
-        sigwait(&_shpt_sigsyn->_sigset, &signum);
+        sigwait(&_shpt_sigsyn->_sigset_new, &signum);
         _sharedptr_pids->_keep_accepting.store(false);
         _sharedptr_pids->_keep_working.store(false);
         LOG_DEBUG << "signal_handler WEAK-UP - before notify_all" << std::endl;
         // notify all waiting workers to check their predicate:
+        pthread_sigmask(SIG_SETMASK, &_shpt_sigsyn->_sigset_old, nullptr);
         _shpt_sigsyn->_cv.notify_all();
         return signum;
     };
@@ -80,7 +99,7 @@ int Dispatcher::Accept_by_Select()
     if ((nfound = select(n_sock_sel,&readfds,0,0,&timeout)) == -1) 
     {
         LOG_ERROR << "select failed!!" << strerror(errno);
-        raise(SIGINT);
+        return 0;
     }
     else {
         if(nfound==0)    // timeout 
@@ -105,7 +124,7 @@ int Dispatcher::Accept_Thread()
     _shpt_shmAllowedIPs->DisableDelete();
     _p_cur_connections->DisableDelete();
 
-    Signal_Handler_For_Threads();
+    // Signal_Handler_For_Threads();
 
     Launch_All_Threads();
 
@@ -168,9 +187,23 @@ int Dispatcher::Accept_Thread()
     _server_socket.close();
 
     // wait for signal handler to complete
-    int signal = _shpt_sigsyn->_ft_signal_handler.get();
-    LOG_DEBUG << "ok   - RECEIVED SIGNAL FROM FUTURE _ft_signal_handler: " << signal << std::endl;
+    // int signal = _shpt_sigsyn->_ft_signal_handler.get();
+    // LOG_DEBUG << "ok   - RECEIVED SIGNAL FROM FUTURE _ft_signal_handler: " << signal << std::endl;
+
+    Join_all_threads();
     return 0;
+}
+
+void Dispatcher::Join_all_threads()
+{
+    for(auto &tp : _v_thread_pair)
+    {
+        if(tp.th_r.joinable())
+            tp.th_r.join();
+        if(tp.th_w.joinable())
+            tp.th_w.join();
+    }
+    LOG_DEBUG << "Join_all_threads done!!";
 }
 
 int Dispatcher::Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info)
@@ -335,10 +368,82 @@ int Dispatcher::IPC_Setting_Up()
     return 0;
 }
 
+// Constructor de copia
+Dispatcher::Dispatcher(const Dispatcher& other) : // _v_thread_pair(other._v_thread_pair),
+                                              _sharedptr_pids(other._sharedptr_pids),
+                                              _shpt_semIPCfile(other._shpt_semIPCfile),
+                                              _shpt_shmIPCfile(other._shpt_shmIPCfile),
+                                              _config(other._config),
+                                              _server_socket(other._server_socket),
+                                              _p_cur_connections(other._p_cur_connections),
+                                              _shpt_Common_Msg_Queue(other._shpt_Common_Msg_Queue),
+                                              _shpt_shmAllowedIPs(other._shpt_shmAllowedIPs),
+                                              _allowed_ips(other._allowed_ips),
+                                              _shpt_sigsyn(other._shpt_sigsyn)
+{
+    LOG_DEBUG << "Copy Ctor: " << this;
+}
+
+// Constructor de movimiento
+Dispatcher::Dispatcher(Dispatcher&& other) noexcept : //_v_thread_pair(std::move(other._v_thread_pair)),
+                                               _sharedptr_pids(std::move(other._sharedptr_pids)),
+                                               _shpt_semIPCfile(std::move(other._shpt_semIPCfile)),
+                                               _shpt_shmIPCfile(std::move(other._shpt_shmIPCfile)),
+                                               _config(std::move(other._config)),
+                                               _server_socket(std::move(other._server_socket)),
+                                               _p_cur_connections(std::move(other._p_cur_connections)),
+                                               _shpt_Common_Msg_Queue(std::move(other._shpt_Common_Msg_Queue)),
+                                               _shpt_shmAllowedIPs(std::move(other._shpt_shmAllowedIPs)),
+                                               _allowed_ips(std::move(other._allowed_ips)),
+                                               _shpt_sigsyn(std::move(other._shpt_sigsyn))
+{
+    LOG_DEBUG << "Move Ctor: " << this;
+}
+
+// Operador de asignación por copia
+Dispatcher& Dispatcher::operator=(const Dispatcher& other)
+{
+    LOG_DEBUG << "Assignment Operator: " << this;
+    if (this != &other) {
+        //_v_thread_pair = other._v_thread_pair;
+        _sharedptr_pids = other._sharedptr_pids;
+        _shpt_semIPCfile = other._shpt_semIPCfile;
+        _shpt_shmIPCfile = other._shpt_shmIPCfile;
+        _config = other._config;
+        _server_socket = other._server_socket;
+        _p_cur_connections = other._p_cur_connections;
+        _shpt_Common_Msg_Queue = other._shpt_Common_Msg_Queue;
+        _shpt_shmAllowedIPs = other._shpt_shmAllowedIPs;
+        _allowed_ips = other._allowed_ips;
+        _shpt_sigsyn = other._shpt_sigsyn;
+    }
+    return *this;
+}
+
+// Operador de asignación por movimiento
+Dispatcher& Dispatcher::operator=(Dispatcher&& other) noexcept
+{
+    LOG_DEBUG << "Movement Assignment Operator: " << this;
+    if (this != &other) {
+        //_v_thread_pair = std::move(other._v_thread_pair);
+        _sharedptr_pids = std::move(other._sharedptr_pids);
+        _shpt_semIPCfile = std::move(other._shpt_semIPCfile);
+        _shpt_shmIPCfile = std::move(other._shpt_shmIPCfile);
+        _config = std::move(other._config);
+        _server_socket = std::move(other._server_socket);
+        _p_cur_connections = std::move(other._p_cur_connections);
+        _shpt_Common_Msg_Queue = std::move(other._shpt_Common_Msg_Queue);
+        _shpt_shmAllowedIPs = std::move(other._shpt_shmAllowedIPs);
+        _allowed_ips = std::move(other._allowed_ips);
+        _shpt_sigsyn = std::move(other._shpt_sigsyn);
+    }
+    return *this;
+}
+
 int Dispatcher::operator()()
 {
     LOG_DEBUG << "Dispatcher Operator " << _config.NumDispatch;
-
+    
     // STEP 1 - Create all IPCs 
 
     if(IPC_Setting_Up() < 0)
@@ -365,8 +470,9 @@ int Dispatcher::operator()()
         _shpt_Common_Msg_Queue->EnableDelete();
         _shpt_shmAllowedIPs->EnableDelete();
         _p_cur_connections->EnableDelete();
-
-
+    }
+    else {
+        LOG_DEBUG << "No delete all. Keep all.";
     }
     
     LOG_DEBUG << "Ending operator()";

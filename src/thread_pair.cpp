@@ -23,8 +23,8 @@ thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx,
         assert(false && "Cannot create a pipe");
 	}
 
-    std::thread(&thread_pair::reader_thread, this, idx).detach();
-    std::thread(&thread_pair::writer_thread, this, idx).detach();
+    th_r = std::thread(&thread_pair::reader_thread, this, idx);
+    th_w = std::thread(&thread_pair::writer_thread, this, idx);
 }
 
 
@@ -34,16 +34,21 @@ void thread_pair::reader_thread(int idx)
 
     while(_sharedptr_pids->_keep_accepting.load()==true) 
     {
+        /*
         std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
 
         auto shpt_pids = _sharedptr_pids;
         // wait for up to 10 seconds
         _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
               [&shpt_pids]() { return !shpt_pids->_keep_accepting.load(); });
-        
+        */
+
+        sleep(1);
         // STEP 1 - 
         
     }
+
+    // pthread_sigmask(SIG_SETMASK, &_shpt_sigsyn->_sigset_old, nullptr);
 
     LOG_DEBUG << "Ending reader_thread " << idx;
 }
@@ -54,19 +59,22 @@ void thread_pair::writer_thread(int idx)
 
     while(_sharedptr_pids->_keep_working.load()==true) 
     {
+        /*
         std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
 
         auto shpt_pids = _sharedptr_pids;
         // wait for up to 10 seconds
         _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
               [&shpt_pids]() { return !shpt_pids->_keep_working.load(); });
-
+        */
+        sleep(1);
         // STEP 1 - ReadFromQueue  (idx_con on message)
 
         // STEP 2 - 
         
     }
 
+    //pthread_sigmask(SIG_SETMASK, &_shpt_sigsyn->_sigset_old, nullptr);
     LOG_DEBUG << "Ending writer_thread " << idx;
 }
 

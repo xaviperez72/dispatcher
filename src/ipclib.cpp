@@ -40,7 +40,7 @@ Semaphore::Semaphore(int semid):Ipc{IPC_PRIVATE,false}
         _ok = true;
         _flags = _st.buf->sem_perm.mode;
         _nsems = _st.buf->sem_nsems;
-        PLOG_DEBUG_IF(loglevel) << "Semaphore Ctor _id " << _id << " _flags " << _flags << " _nsems " << _nsems;
+        // PLOG_DEBUG_IF(loglevel) << "Semaphore Ctor _id " << _id << " _flags " << _flags << " _nsems " << _nsems;
     }
 }
 
@@ -179,7 +179,7 @@ SharedMemory::SharedMemory(int shmid):Ipc{IPC_PRIVATE,false}
             LOG_ERROR << "shmat: " << strerror(errno) << ":" << _id;
             _ok = false;
         }
-        PLOG_DEBUG_IF(loglevel) << "SharedMemory Ctor _id " << _id << " _flags " << _flags << " _size " << _size;
+        //PLOG_DEBUG_IF(loglevel) << "SharedMemory Ctor _id " << _id << " _flags " << _flags << " _size " << _size;
     }
    
 }
@@ -220,20 +220,22 @@ SharedMemory::~SharedMemory()
 {
     if(_ok && _shmaddr) 
     {
-        LOG_DEBUG_IF(loglevel) << "Detaching SharedMemory " << _id;
-        if (shmdt(_shmaddr)==-1) 
-        {
-            LOG_ERROR << "shmdt: " << strerror(errno) << ":" << _id;
-        }
-        else {
-	        if(_deleteOnExit)
-	        {
+        if(_deleteOnExit)
+	    {
+            LOG_DEBUG_IF(loglevel) << "Detaching SharedMemory " << _id;
+
+            if (shmdt(_shmaddr)==-1) 
+            {
+                LOG_ERROR << "shmdt: " << strerror(errno) << ":" << _id;
+            }
+            else 
+            {
                 LOG_DEBUG_IF(loglevel) << "Removing SharedMemory " << _id;
 		        if (shmctl(_id,IPC_RMID,0)) 
 		        {
                     LOG_ERROR << "shmctl: " << strerror(errno) << ":" << _id;
 	    	    }
-    	    }
+            }
         }
    }
 
@@ -273,7 +275,7 @@ MessageQueue::MessageQueue(int msgid):Ipc{IPC_PRIVATE,false}
         _flags = _st.msg_perm.mode;
         _size = _st.msg_qbytes;
 
-        PLOG_DEBUG_IF(loglevel) << "MessageQueue connected _id " << _id << " _flags " << _flags << " _size " << _size;
+        // PLOG_DEBUG_IF(loglevel) << "MessageQueue connected _id " << _id << " _flags " << _flags << " _size " << _size;
     }
 }
 
@@ -315,7 +317,7 @@ MessageQueue::MessageQueue(const key_t key, bool deleteOnExit):
 
 MessageQueue::~MessageQueue()
 {
-     if(_ok) 
+    if(_ok) 
     {
         if(_deleteOnExit)
         {

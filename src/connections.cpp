@@ -122,15 +122,15 @@ int connections::unregister_conn(int idx, Semaphore &sem)
 
 connections::~connections()
 {
-  LOG_DEBUG << "connections dtor " << deleteOnExit;
+  LOG_DEBUG_IF(loglevel) << "Dtor connections " << deleteOnExit;
   if(deleteOnExit) {
-    LOG_DEBUG << "Deleting all queues: ";   
+    LOG_DEBUG_IF(loglevel) << "Deleting all queues: ";   
     // Remove all queues 
     for(int i=0; i < nThreads; i++)
     {
         MessageQueue mq(msg_queues[i]);
         mq.EnableDelete();
     }
-    LOG_DEBUG << "All queues deleted.";   
+    LOG_DEBUG_IF(loglevel) << "All queues deleted.";   
   }
 }

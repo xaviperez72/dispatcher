@@ -25,13 +25,17 @@ struct allowed_ips
 };
 
 class Dispatcher {
+    dispatch_cfg _config;
+
     std::vector<thread_pair> _v_thread_pair;
 
     std::shared_ptr<checker_pids> _sharedptr_pids;
-    dispatch_cfg _config;
-    Socket _server_socket;
+
     std::shared_ptr<Semaphore> _shpt_semIPCfile;
+
     std::shared_ptr<SharedMemory> _shpt_shmIPCfile;
+
+    Socket _server_socket;
     // Shared Connections between dispatcher and tuxclients - MAX_CONNECTIONS
     std::shared_ptr<connections> _p_cur_connections;
 
@@ -48,7 +52,20 @@ class Dispatcher {
 public:
     Dispatcher() = delete;
     Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids);
+    ~Dispatcher();
 
+    // Constructor de copia
+    Dispatcher(const Dispatcher& other);
+
+    // Operador de asignación por copia
+    Dispatcher& operator=(const Dispatcher& other);
+
+    // Constructor de movimiento
+    Dispatcher(Dispatcher&& other) noexcept;
+
+    // Operador de asignación por movimiento
+    Dispatcher& operator=(Dispatcher&& other) noexcept;
+    
     void Launch_All_Threads();
     void Prepare_Server_Socket();
     void Signal_Handler_For_Threads();
@@ -56,6 +73,8 @@ public:
     int Accept_Thread();
     int Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info);
     int Accept_by_Select();
+    void Join_all_threads();
+    //void Show_All_Shared_Ptr();
 
     int LessCharged();
     int LaunchTuxCli();
