@@ -31,7 +31,86 @@ thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx_
 
 void thread_pair::Attending_Read_Socket(socket_data_t &sdt)
 {
+    int status;
+    Socket sock;
+    sock.sock = sdt.sd;
+    std::string msgin;
+    std::string msgout;
+    Json::Value json_msg;
+    protomsg::st_protomsg v_protomsg;
+
+    if((status=sock.socket_read(msgin,1024)) <= 0) 
+    {
+        LOG_ERROR << "Socket_read error: " << errno << ":" << strerror(errno);
+        LOG_ERROR << "Socket sd: " << sdt.sd << " IP:Port: " << 
+               inet_ntoa(sdt.sockaddr.sin_addr) << ":" << ntohs(sdt.sockaddr.sin_port);
+
+        remove_sockdata(sdt);
+        _p_cur_connections->unregister_conn(sdt.idx_con, *_shpt_semIPCfile);
+        close(sdt.sd);
+        return;
+    }
+    sdt.rcvinfo = msgin;
+
+    // TO DO - Check IP is in table. Not needed since AccceptThread checks for valid IP.
+
+    if(!Getting_Json_Msg_Received(msgin, v_protomsg, msgout))
+    {
+        LOG_ERROR << "Error Message Format (json): " << msgin;
+        LOG_ERROR << "Socket sd: " << sdt.sd << " IP:Port: " << 
+            inet_ntoa(sdt.sockaddr.sin_addr) << ":" << ntohs(sdt.sockaddr.sin_port);
+
+        // Send back MSGIN original.
+        v_protomsg.q_write = _common_queue.getid();  // Not usefull in this case...
+        if(!_write_queue.send(&v_protomsg, msgin)) 
+        {
+            LOG_ERROR << "Impossible to send to Writer_Thread through _write_queue: " << sdt.sd;
+            remove_sockdata(sdt);
+            _p_cur_connections->unregister_conn(sdt.idx_con, *_shpt_semIPCfile);
+            close(sdt.sd);
+            return;
+        }
+    }
+    else 
+    {
+        // Send MSGOUT to common queue to process by TuxCli 
+        v_protomsg.q_write = _write_queue.getid();  // Queue to respond to proper Writer_Thread...
+        if(!_common_queue.send(&v_protomsg, msgout)) 
+        {
+            LOG_ERROR << "Impossible to send to TuxCli through _common_queue: " << sdt.sd;
+            remove_sockdata(sdt);
+            _p_cur_connections->unregister_conn(sdt.idx_con, *_shpt_semIPCfile);
+            close(sdt.sd);
+            return;
+        }
+    }
+}
+
+int thread_pair::Getting_Json_Msg_Received(string &msgin, protomsg::st_protomsg &v_protomsg, string &msgout)
+{
+    Json::Value json_msg;
+    stringstream ss(msgin);
+    ss >> json_msg;
+
+    v_protomsg.terf = json_msg["TERF"].asInt();
+    v_protomsg.terl = json_msg["TERL"].asInt();
+    strncpy(v_protomsg.guid, json_msg["GUID"].asCString(), sizeof(v_protomsg.guid)-1);
+    strncpy(v_protomsg.pid, json_msg["PID"].asCString(), sizeof(v_protomsg.pid)-1);
+    strncpy(v_protomsg.aid, json_msg["AID"].asCString(), sizeof(v_protomsg.aid)-1);
+    strncpy(v_protomsg.cabx, json_msg["CABX"].asCString(), sizeof(v_protomsg.cabx)-1);
+    msgout = std::string(json_msg["MSG"].asCString());
+
+    v_protomsg.mtype = protomsg::TYPE_NORMAL_MSG;
+
+    if (v_protomsg.terf==0 || v_protomsg.terl == 0 || 
+        strlen(v_protomsg.guid) == 0 || strlen(v_protomsg.pid) == 0 || 
+        strlen(v_protomsg.aid) == 0 || strlen(v_protomsg.cabx) == 0 || 
+        msgout.size() == 0)
+    {
+        return 0;
+    }
     
+    return 1;
 }
 
 void thread_pair::reader_thread(int idx_thp)
@@ -190,8 +269,11 @@ int thread_pair::remove_sockdata(const socket_data_t &sdt)
 
     if(findIter == _sockdata.end())
         return -1;
-    else
+    else {
+        socket_data_t item = *findIter;
+        _sockdata.remove(item);
         return 0;
+    }
 }
 
 int thread_pair::get_sockdata_list(list<socket_data_t> &lsdt)

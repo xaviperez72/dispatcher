@@ -14,6 +14,8 @@ SET(thread_pair "src/thread_pair.cpp")
 
 SET(tuxcli_main "src/tuxcli_main.cpp")
 
+SET(client_main "src/client_main.cpp")
+
 # To add logger, which is on plog dir inside src
 INCLUDE_DIRECTORIES("src")
 
@@ -41,3 +43,6 @@ target_link_libraries(dispatcher_tcp ${JSONCPP_LIBRARIES} pthread)
 
 ADD_EXECUTABLE(tuxcli_tcp ${tuxcli_main} ${cfgfile})
 target_link_libraries(tuxcli_tcp ${JSONCPP_LIBRARIES})
+
+ADD_EXECUTABLE(testing_client ${client_main} ${cfgfile} ${socket})
+target_link_libraries(testing_client ${JSONCPP_LIBRARIES} pthread)
