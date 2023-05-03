@@ -15,7 +15,7 @@
 #include "getcfgfile.h"
 #include "ipclib.h"
 #include "thread_pair.h"
-#include "proto_pipe.h"
+#include "protocol_msg.h"
 
 struct allowed_ips
 {
@@ -36,7 +36,7 @@ class Dispatcher {
     std::shared_ptr<SharedMemory> _shpt_shmIPCfile;
 
     Socket _server_socket;
-    // Shared Connections between dispatcher and tuxclients - MAX_CONNECTIONS
+    // Shared Connections between dispatcher and tuxclients
     std::shared_ptr<connections> _p_cur_connections;
 
     // Common message queue - All receiving messages go here. 

@@ -8,12 +8,15 @@
 #include <future>
 #include <list>
 #include <algorithm>
+#include <json/json.h>
+#include <json/value.h>
 
 #include "common.h"
 #include "ipclib.h"
 #include "checker_pids.h"
 #include "connections.h"
-#include "proto_pipe.h"
+#include "protocol_msg.h"
+#include "Socket.h"
 
 struct signal_synch
 {
@@ -42,7 +45,7 @@ public:
     std::thread th_w;
     
 private:
-    int _idx;
+    int _idx_thp;
     int _pipe[2];
     MessageQueue _write_queue;
     MessageQueue _common_queue;
@@ -52,11 +55,12 @@ private:
     std::shared_ptr<checker_pids> _sharedptr_pids;
     std::shared_ptr<connections> _p_cur_connections;
     std::shared_ptr<signal_synch> _shpt_sigsyn;
+    std::shared_ptr<Semaphore> _shpt_semIPCfile;
 
 public:
     thread_pair() = delete;
-    thread_pair(int write_queue_id, MessageQueue common_queue, int idx, 
-        std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn, std::shared_ptr<signal_synch> shpt_sigsyn);
+    thread_pair(int write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<checker_pids> shpt_pids, 
+        std::shared_ptr<connections> shpt_conn, std::shared_ptr<signal_synch> shpt_sigsyn, std::shared_ptr<Semaphore> shpt_sem);
     // It compiles with shared_ptr 
     thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // NOT CALLED!! run emplace_back : default - let emplace_back( ) work!! 
     // thread_pair(const thread_pair&) = delete; // fail 
@@ -64,8 +68,8 @@ public:
     thread_pair& operator=(const thread_pair&) = default;
     thread_pair& operator=(thread_pair&&) = delete;
 
-    void reader_thread(int idx);
-    void writer_thread(int idx);
+    void reader_thread(int idx_thp);
+    void writer_thread(int idx_thp);
 
     int add_sockdata(socket_data_t sdt);
     int remove_sockdata(const socket_data_t &sdt);
@@ -73,8 +77,10 @@ public:
     int get_size_of_sock_list() const { return _sockdata.size();}
     int get_read_pipe() const { return _pipe[0];}
     int get_write_pipe() const { return _pipe[1];}
-    int get_id() const { return _idx;}
-    int get_idx() const { return _idx-1;}
+    int get_id() const { return _idx_thp;}
+    int get_idx() const { return _idx_thp-1;}
+    void Prepare_Msg_Json_To_Send(protomsg::st_protomsg &v_protomsg, std::string msg, Json::Value &json_msg);
+    void Attending_Read_Socket(socket_data_t &sdt);
 };
 
 #endif

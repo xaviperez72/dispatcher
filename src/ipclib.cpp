@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int Semaphore::get_stat(int semid)
 {
     return semctl(semid, 0, IPC_STAT, _st);
@@ -279,6 +278,57 @@ MessageQueue::MessageQueue(int msgid):Ipc{IPC_PRIVATE,false}
     }
 }
 
+int MessageQueue::send(protomsg::st_protomsg *p_protomsg, std::string &pdata)
+{
+    if(_ok) 
+    {
+        int nbytes = sizeof(protomsg::st_protomsg)+pdata.size();
+        std::unique_ptr<protomsg::st_protomsg> p_qmsg2((protomsg::st_protomsg*) ::operator new (nbytes));
+
+        memcpy(p_qmsg2.get(), p_protomsg, sizeof(protomsg::st_protomsg));
+        strcpy(p_qmsg2->msg, pdata.c_str());
+
+        if (msgsnd(_id, reinterpret_cast<void *>(p_qmsg2.get()), nbytes - sizeof(long), 0) < 0) 
+        {
+            PLOG_ERROR << "msgsnd: " << strerror(errno) << ":" << _id;
+            return 0;
+        }
+        else 
+            return 1;
+    }
+    else 
+    {
+        PLOG_ERROR << "send: " << _id << " NOT OK!!";
+    }
+    return 0;
+}
+
+int MessageQueue::rcv(protomsg::st_protomsg *p_protomsg, std::string &pdata)
+{
+    if(_ok) 
+    {
+        int msgbytes;
+        std::unique_ptr<protomsg::st_protomsg> p_qmsg2((protomsg::st_protomsg*) ::operator new (sizeof(protomsg::st_protomsg)+protopipe::MAX_MSG_SIZE));
+        protomsg::st_protomsg *p= p_qmsg2.get();
+
+        if ((msgbytes = msgrcv(_id, (void *) p, protopipe::MAX_MSG_SIZE , 0, 0)) < 0) {
+            PLOG_ERROR << "msgrcv: " << strerror(errno) << ":" << _id;
+            return 0;
+        }
+        else {
+            PLOG_DEBUG_IF(loglevel) << "msgrcv " << msgbytes << " bytes.";
+            PLOG_DEBUG_IF(loglevel) << "msg: " << p_qmsg2->msg << "";
+            memcpy(p_protomsg, p, sizeof(protomsg::st_protomsg)-1);
+            pdata = std::string(p->msg);
+            return 1;
+        }
+    }
+    else 
+    {
+        PLOG_ERROR << "send: " << _id << " NOT OK!!";
+    }
+    return 0;
+}
 
 MessageQueue::MessageQueue(const key_t key, bool deleteOnExit):
         Ipc{key,deleteOnExit}

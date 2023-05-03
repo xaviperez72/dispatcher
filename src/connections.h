@@ -18,6 +18,7 @@ struct connection{
     sockaddr_in sockaddr;
     time_t entry;
     time_t last_op;
+    long num_ops;
 };
 
 class connections{
@@ -41,6 +42,8 @@ public:
     int clean_repeated_ip(sockaddr_in *ppal, Semaphore &sem);
     int register_new_conn(int nthread, int sd, sockaddr_in s_in, Semaphore &sem);
     int unregister_conn(int idx, Semaphore &sem);
+    int ending_operation(int idx, Semaphore &sem, connection &cur_conn);
+    int check_obsolete(int idx_con, Semaphore &sem);
 };
 	
 

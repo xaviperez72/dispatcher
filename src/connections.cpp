@@ -46,6 +46,31 @@ void connections::delete_obsolete(int idx)
   this->first_free = idx;
 }
 
+int connections::ending_operation(int idx, Semaphore &sem, connection &cur_conn)
+{
+  if( idx < 0 || idx >= MaxConn)
+    return -1;
+
+  sem.Lock();  
+
+  cur_conn = this->current_connections[idx];
+
+  if( this->current_connections[idx].status != st_ready )
+  {
+    sem.Unlock();
+    return -2;
+  }
+
+  time( &(this->current_connections[idx].last_op));
+  this->current_connections[idx].num_ops++;
+
+  cur_conn = this->current_connections[idx];
+
+  sem.Unlock();
+
+  return 0;
+}
+
 int connections::clean_repeated_ip(sockaddr_in *ppal, Semaphore &sem)
 {
   int nThread = -1;
@@ -103,6 +128,26 @@ int connections::register_new_conn(int nthread, int sd, sockaddr_in s_in, Semaph
   sem.Unlock();
   return idx;
 }
+
+int connections::check_obsolete(int idx_con, Semaphore &sem)
+{
+  if( idx_con < 0 || idx_con >= MaxConn )
+    return -1;
+
+  if(current_connections[idx_con].status == st_obsolete ) 
+  {
+    sem.Lock();
+
+    delete_obsolete(idx_con);
+    
+    sem.Unlock();
+
+    return 1;
+  }
+
+  return 0;
+}
+
 
 int connections::unregister_conn(int idx, Semaphore &sem)
 {

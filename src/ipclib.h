@@ -2,6 +2,9 @@
 #define IPCLIB_H_
 
 #include "common.h"
+#include "protocol_msg.h"
+#include <string>
+#include <memory>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -126,6 +129,10 @@ public:
     MessageQueue(const key_t key, bool deleteOnExit);
     MessageQueue() = default;
     virtual ~MessageQueue();
+
+    int send(protomsg::st_protomsg *p_protomsg, std::string &pdata);
+    int rcv(protomsg::st_protomsg *p_protomsg, std::string &pdata);
+
     template<typename T>
         int send(long type, T& pdata)
         {
@@ -144,6 +151,7 @@ public:
            }
            return 0;
         }
+        
     template<typename T>
         int rcv(long &type, T& pdata)
         {

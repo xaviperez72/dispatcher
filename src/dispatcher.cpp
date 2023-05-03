@@ -30,7 +30,8 @@ void Dispatcher::Launch_All_Threads()
     _v_thread_pair.reserve(_config.NumThreads);
     
     for(int i=0; i<_config.NumThreads; i++) {
-        _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections, _shpt_sigsyn);
+        _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, 
+        _sharedptr_pids, _p_cur_connections, _shpt_sigsyn, _shpt_semIPCfile);
         // _v_thread_pair.emplace_back(std::move(thread_pair(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections)));
     }
 
@@ -52,6 +53,8 @@ void Dispatcher::Prepare_Server_Socket()
     //Start listening for incoming connections (10 => maximum of 10 Connections in Queue)
     _server_socket.listen(10); 
 }
+
+// Discarted by the moment.
 
 void Dispatcher::Signal_Handler_For_Threads()
 {
@@ -157,11 +160,8 @@ int Dispatcher::Accept_Thread()
         // It currently exists, remove it. 
         if(nthread >= 0)
         {
-            int msg_qid=*(_p_cur_connections->get_queue_addr() + nthread);
-
-            MessageQueue write_queue(msg_qid);
-            assert(write_queue && "write_queue doesn't exists");
-            write_queue.send<decltype(protopipe::WEAKUP)>(protopipe::TYPE_WEAKUP, protopipe::WEAKUP);
+            // Send notification to pipe 
+            write(_v_thread_pair[nthread].get_write_pipe(), static_cast<const void *>(protopipe::WEAKUP), protopipe::LEN_WEAKUP);
         }
 
         // Get less charged.
