@@ -14,8 +14,7 @@ int loglevel;
 #include "ipclib.h"
 #include "getcfgfile.h"
 #include "dispatch_cfg.h"
-#include "dispatcher.h"
-#include "Socket.h"
+#include "checker_pids.h"
 #include "plog/Initializers/RollingFileInitializer.h"
 #include "plog/Initializers/ConsoleInitializer.h"
 
@@ -34,6 +33,50 @@ void sigterm_func(int s)
                  " keep_accepting " << keep_accepting;
 }
 
+checker_pids chk_procs;
+
+class TuxClient 
+{
+    int idx_cli{0};
+    MessageQueue &common_queue;
+public:
+    TuxClient(int idx, MessageQueue &queue):idx_cli{idx},common_queue{queue}{}
+    int operator()();
+};
+
+int TuxClient::operator()()
+{
+    LOG_DEBUG << "Running TuxClient " << idx_cli;
+
+    while(chk_procs._keep_accepting.load()) 
+    {
+        std::string msgin;
+        protomsg::st_protomsg v_protomsg;
+
+        common_queue.rcv(&v_protomsg, msgin);
+
+        if(keep_accepting) 
+        {
+            LOG_DEBUG << idx_cli << " Received msg: " << v_protomsg;
+
+            msgin += " OK - TX DONE!! ";
+            sleep(1);
+
+            LOG_DEBUG << idx_cli << " TX EXECUTED OK!! ";
+
+            MessageQueue msg_resp(v_protomsg.q_write);
+        
+            if(msg_resp) {
+                msg_resp.send(&v_protomsg,msgin);
+            }
+        }
+    }
+
+    LOG_DEBUG << "Ending TuxClient " << idx_cli;
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     // TO DO 
@@ -49,6 +92,9 @@ int main(int argc, char **argv)
     }
 
     LOG_DEBUG << "tuxcli_main START!!";
+
+
+    // Getting configs files (IPCS and tuxclisetup ) .....
 
     std::string ipcfile_str(argv[1]);
     std::string tuxclisetup_str(argv[2]);
@@ -77,39 +123,33 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    auto previousInterruptHandler_int = signal(SIGINT, sigterm_func);
-    auto previousInterruptHandler_usr1 = signal(SIGUSR1, sigterm_func);
-    auto previousInterruptHandler_term = signal(SIGTERM, sigterm_func);
+    // LoadIPTXTable - Load all allowed transaction ID on Shared Memory
+    
+    // LoadTRMLTable - Load all allowed terminal ID on Shared Memory
 
-    while(keep_accepting) 
-    {
-        std::string msgin;
-        protomsg::st_protomsg v_protomsg;
 
-        common_queue.rcv(&v_protomsg, msgin);
+    auto previousInterruptHandler_sigsegv = signal(SIGSEGV, sigterm_func);
 
-        if(keep_accepting) 
-        {
-            LOG_DEBUG << "Received msg: " << v_protomsg;
 
-            msgin += " OK - TX DONE!! ";
-            sleep(1);
+    // Launching all processess...
 
-            LOG_DEBUG << "TX EXECUTED OK!! ";
+    Json::Value setup_json = tuxclisetup.get_json();
 
-            MessageQueue msg_resp(v_protomsg.q_write);
-        
-            if(msg_resp) {
-                msg_resp.send(&v_protomsg,msgin);
-            }
-        }
+    int min_tux_cli = setup_json["min_tux_cli"].asInt();
+    int max_tux_cli = setup_json["max_tux_cli"].asInt();
+    int xml_n_term  = setup_json["xml_n_term"].asInt();
+
+    for(int i=0; i < min_tux_cli; i++) {
+        TuxClient tux(i,common_queue);
+        chk_procs.add(tux,"TuxClient");
     }
+
+    // Launching all processes... 
+    int ret=chk_procs();
 
     LOG_DEBUG << "Ending tuxcli_main";
     
-    (void)signal(SIGINT, previousInterruptHandler_int);
-    (void)signal(SIGUSR1, previousInterruptHandler_usr1);
-    (void)signal(SIGTERM, previousInterruptHandler_term);
+    (void)signal(SIGSEGV, previousInterruptHandler_sigsegv);
 
     return 0;
 }
