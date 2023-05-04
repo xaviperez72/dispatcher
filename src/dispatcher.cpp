@@ -88,7 +88,6 @@ int Dispatcher::Accept_by_Select()
 {
     int nfound;
     fd_set readfds;
-    static struct timeval timeout;
 
     FD_ZERO(&readfds);
     int n_sock_sel = 0;
@@ -96,20 +95,12 @@ int Dispatcher::Accept_by_Select()
     FD_SET(_server_socket.sock, &readfds);                
     n_sock_sel=(n_sock_sel>_server_socket.sock)? n_sock_sel : _server_socket.sock+1;
 
-    timeout.tv_sec = 1;
-    timeout.tv_usec= 0;
-
-    if ((nfound = select(n_sock_sel,&readfds,0,0,&timeout)) == -1) 
+    if ((nfound = select(n_sock_sel,&readfds,0,0,0)) == -1) 
     {
         LOG_ERROR << "select failed!!" << strerror(errno);
         return 0;
     }
     else {
-        if(nfound==0)    // timeout 
-        {
-            LOG_DEBUG << "Timeout select...";
-            return 0;
-        }
         if (FD_ISSET(_server_socket.sock,&readfds)) 
         {
             LOG_DEBUG << "New connection...";
@@ -138,7 +129,7 @@ int Dispatcher::Accept_Thread()
     while(_sharedptr_pids->_keep_accepting.load()) 
     {
 
-        if(Accept_by_Select()==0) // timeout - Check _keep_accepting...
+        if(Accept_by_Select()==0) // timeout or signal -> Check _keep_accepting...
             continue;
 
         // Accept the incoming connection and creates a new Socket to the client

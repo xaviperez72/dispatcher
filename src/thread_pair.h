@@ -34,8 +34,15 @@ struct socket_data_t {
 	int		    idx_con;			// Index to Array conexiones 
 	std::string      rcvinfo;       // String to keep incoming msg.
     bool operator==(const socket_data_t &c) const 
-        { return sd==c.sd && sockaddr.sin_addr.s_addr==c.sockaddr.sin_addr.s_addr && sockaddr.sin_family==c.sockaddr.sin_family && 
-            sockaddr.sin_port==c.sockaddr.sin_port && sockaddr.sin_zero==c.sockaddr.sin_zero && idx_con==c.idx_con;};
+        {   
+            // LOG_DEBUG << "        sd " << sd << ":" << c.sd;
+            // LOG_DEBUG << "    s_addr " << sockaddr.sin_addr.s_addr << ":" << c.sockaddr.sin_addr.s_addr;
+            // LOG_DEBUG << "sin_family " << sockaddr.sin_family << ":" << c.sockaddr.sin_family;
+            // LOG_DEBUG << "  sin_port " << sockaddr.sin_port << ":" << c.sockaddr.sin_port;
+            // LOG_DEBUG << "   idx_con " << idx_con << ":" << c.idx_con;
+            return sd==c.sd && sockaddr.sin_addr.s_addr==c.sockaddr.sin_addr.s_addr && sockaddr.sin_family==c.sockaddr.sin_family && 
+            sockaddr.sin_port==c.sockaddr.sin_port && idx_con==c.idx_con;
+        };
 };
 
 class thread_pair
