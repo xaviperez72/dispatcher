@@ -39,6 +39,8 @@ void thread_pair::Attending_Read_Socket(socket_data_t &sdt)
     Json::Value json_msg;
     protomsg::st_protomsg v_protomsg;
 
+    LOG_DEBUG << "Reading from sd " << sdt.sd;
+
     if((status=sock.socket_read(msgin,1024)) <= 0) 
     {
         LOG_ERROR << "Socket_read error: " << errno << ":" << strerror(errno);
@@ -73,6 +75,7 @@ void thread_pair::Attending_Read_Socket(socket_data_t &sdt)
     }
     else 
     {
+        LOG_DEBUG << "Sending to common queue for TuxCli...";
         // Send MSGOUT to common queue to process by TuxCli 
         v_protomsg.q_write = _write_queue.getid();  // Queue to respond to proper Writer_Thread...
         if(!_common_queue.send(&v_protomsg, msgout)) 
@@ -101,6 +104,8 @@ int thread_pair::Getting_Json_Msg_Received(string &msgin, protomsg::st_protomsg 
     msgout = std::string(json_msg["MSG"].asCString());
 
     v_protomsg.mtype = protomsg::TYPE_NORMAL_MSG;
+
+    LOG_DEBUG << "v_protomsg:" << v_protomsg;
 
     if (v_protomsg.terf==0 || v_protomsg.terl == 0 || 
         strlen(v_protomsg.guid) == 0 || strlen(v_protomsg.pid) == 0 || 
@@ -150,6 +155,8 @@ void thread_pair::reader_thread(int idx_thp)
             nfds = (it->sd < nfds) ? nfds : (it->sd+1);
         }
 
+        LOG_DEBUG << "Accepting ndfs=" << nfds << " connections. " << sizeof(readset);
+
         if((ret_sel=select(nfds, &readset, NULL, NULL, NULL)) < 0 ) 
         {
             int someerror=errno;
@@ -161,7 +168,14 @@ void thread_pair::reader_thread(int idx_thp)
 
         if( FD_ISSET(readpipe, &readset) ) 
         {
-            read(readpipe,protopipe::GETWEAKUP,protopipe::LEN_WEAKUP);
+            read(readpipe,protopipe::GETPIPEMSG,protopipe::LEN_PIPEMSG);
+            if(protopipe::GETPIPEMSG[0]==protopipe::ENDING_PIPE[0]) {
+                LOG_DEBUG << "ENDING_PIPE received.";
+                continue;   // TO REMOVE. Maybe it needs to finish all messages. 
+            }
+            else 
+                LOG_DEBUG << "WEAKUP_PIPE received.";
+
         }
 
         for(auto it=lsdt.begin(); it != lsdt.end(); it++) 
@@ -179,7 +193,7 @@ void thread_pair::reader_thread(int idx_thp)
 	        else 
 	        if(FD_ISSET(it->sd, &readset) ) 
             {
-  
+                
                 // Getting message from socket...
                 Attending_Read_Socket(*it);
 
@@ -230,6 +244,12 @@ void thread_pair::writer_thread(int idx_thp)
         
         _write_queue.rcv(&v_protomsg, msg);
 
+        if(v_protomsg.mtype == protomsg::TYPE_ENDING_MSG) 
+        {
+            LOG_DEBUG << "Received protomsg::TYPE_ENDING_MSG"; 
+            continue;
+        }
+
         Prepare_Msg_Json_To_Send(v_protomsg, msg, json_msg);
         
         _p_cur_connections->ending_operation(v_protomsg.idx, *_shpt_semIPCfile, cur_conn);
@@ -239,13 +259,17 @@ void thread_pair::writer_thread(int idx_thp)
         send_sock.sock = cur_conn.sd;
 
         stringstream ss;
+        string field;
         ss << json_msg;
-        ss >> msgout;
-
-        LOG_DEBUG << "msgout: " << msgout; 
+    
+        while (getline(ss, field)) 
+            msgout += field;
+    
+        LOG_DEBUG << "Sending msgout: " << msgout; 
 
         send_sock.socket_write(msgout);
         
+        msgout.clear();
     }
 
     //pthread_sigmask(SIG_SETMASK, &_shpt_sigsyn->_sigset_old, nullptr);
@@ -258,6 +282,7 @@ int thread_pair::add_sockdata(socket_data_t sdt)
 
     _sockdata.emplace_back(sdt);
     
+    LOG_DEBUG << "add_sockdata OK!! " << sdt.sd;
     return 0;
 }
 
@@ -267,11 +292,14 @@ int thread_pair::remove_sockdata(const socket_data_t &sdt)
 
     std::list<socket_data_t>::iterator findIter = std::find(_sockdata.begin(), _sockdata.end(), sdt);
 
-    if(findIter == _sockdata.end())
+    if(findIter == _sockdata.end()) {
+        LOG_DEBUG << "remove_sockdata NOT FOUND!! " << sdt.sd;
         return -1;
+    }
     else {
         socket_data_t item = *findIter;
         _sockdata.remove(item);
+        LOG_DEBUG << "remove_sockdata OK!! " << sdt.sd;
         return 0;
     }
 }
@@ -282,5 +310,7 @@ int thread_pair::get_sockdata_list(list<socket_data_t> &lsdt)
 
     lsdt = _sockdata;
     
+    LOG_DEBUG << "get_sockdata_list OK!! lsdt.size()=" << lsdt.size(); 
+
     return 0;
 }

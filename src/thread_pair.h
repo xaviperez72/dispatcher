@@ -79,6 +79,7 @@ public:
     int get_write_pipe() const { return _pipe[1];}
     int get_id() const { return _idx_thp;}
     int get_idx() const { return _idx_thp-1;}
+    MessageQueue& get_write_queue() { return _write_queue; }
     void Prepare_Msg_Json_To_Send(protomsg::st_protomsg &v_protomsg, std::string msg, Json::Value &json_msg);
     void Attending_Read_Socket(socket_data_t &sdt);
     int Getting_Json_Msg_Received(std::string &msgin, protomsg::st_protomsg &v_protomsg, std::string &msgout);

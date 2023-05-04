@@ -308,16 +308,15 @@ int MessageQueue::rcv(protomsg::st_protomsg *p_protomsg, std::string &pdata)
     if(_ok) 
     {
         int msgbytes;
-        std::unique_ptr<protomsg::st_protomsg> p_qmsg2((protomsg::st_protomsg*) ::operator new (sizeof(protomsg::st_protomsg)+protopipe::MAX_MSG_SIZE));
+        std::unique_ptr<protomsg::st_protomsg> p_qmsg2((protomsg::st_protomsg*) ::operator new (sizeof(protomsg::st_protomsg)+protomsg::MAX_MSG_SIZE));
         protomsg::st_protomsg *p= p_qmsg2.get();
 
-        if ((msgbytes = msgrcv(_id, (void *) p, protopipe::MAX_MSG_SIZE , 0, 0)) < 0) {
+        if ((msgbytes = msgrcv(_id, (void *) p, protomsg::MAX_MSG_SIZE , 0, 0)) < 0) {
             PLOG_ERROR << "msgrcv: " << strerror(errno) << ":" << _id;
             return 0;
         }
         else {
-            PLOG_DEBUG_IF(loglevel) << "msgrcv " << msgbytes << " bytes.";
-            PLOG_DEBUG_IF(loglevel) << "msg: " << p_qmsg2->msg << "";
+            PLOG_DEBUG_IF(loglevel) << "msg(" << msgbytes << "):" << p_qmsg2->msg << "";
             memcpy(p_protomsg, p, sizeof(protomsg::st_protomsg)-1);
             pdata = std::string(p->msg);
             return 1;

@@ -73,7 +73,7 @@ public:
     int Accept_Thread();
     int Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info);
     int Accept_by_Select();
-    void Join_all_threads();
+    void Ending_all_threads();
     //void Show_All_Shared_Ptr();
 
     int LessCharged();

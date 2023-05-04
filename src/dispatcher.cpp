@@ -107,10 +107,12 @@ int Dispatcher::Accept_by_Select()
     else {
         if(nfound==0)    // timeout 
         {
+            LOG_DEBUG << "Timeout select...";
             return 0;
         }
         if (FD_ISSET(_server_socket.sock,&readfds)) 
         {
+            LOG_DEBUG << "New connection...";
             return 1;
         }
     }
@@ -153,6 +155,9 @@ int Dispatcher::Accept_Thread()
         sd_info.sd = newSocket.sock;
         memcpy(&sd_info.sockaddr, newSocket.address_info.ai_addr,sizeof(struct sockaddr_in));
 
+        LOG_DEBUG << "Socket sd: " << sd_info.sd << " IP:Port: " << 
+               inet_ntoa(sd_info.sockaddr.sin_addr) << ":" << ntohs(sd_info.sockaddr.sin_port);
+
         // Clean possible obsoletes.
 
         int nthread = _p_cur_connections->clean_repeated_ip(&sd_info.sockaddr, *_shpt_semIPCfile);
@@ -160,15 +165,19 @@ int Dispatcher::Accept_Thread()
         // It currently exists, remove it. 
         if(nthread >= 0)
         {
+            LOG_DEBUG << "Exists, then write to pipe for Reader Thread to remove it."; 
             // Send notification to pipe 
-            write(_v_thread_pair[nthread].get_write_pipe(), static_cast<const void *>(protopipe::WEAKUP), protopipe::LEN_WEAKUP);
+            write(_v_thread_pair[nthread].get_write_pipe(), static_cast<const void *>(protopipe::WEAKUP_PIPE), protopipe::LEN_PIPEMSG);
         }
 
         // Get less charged.
         int th_id = LessCharged();
 
+        LOG_DEBUG << "LessCharged: " << th_id;
+
         if ((sd_info.idx_con = _p_cur_connections->register_new_conn(th_id, sd_info.sd, sd_info.sockaddr, *_shpt_semIPCfile)) < 0)
         {
+            LOG_DEBUG << "Not possible to register_new_conn: " << th_id;
             close(sd_info.sd);
             if(sd_info.idx_con >= 0)
                 _p_cur_connections->unregister_conn(sd_info.idx_con, *_shpt_semIPCfile);
@@ -178,24 +187,45 @@ int Dispatcher::Accept_Thread()
         // Assign sd to thread_pair...
         if(Assign_connection_to_thread_pair(th_id, &sd_info) < 0)
         {
+            LOG_DEBUG << "Not possible to Assign_connection_to_thread_pair: " << th_id;
             close(sd_info.sd);
             if(sd_info.idx_con >= 0)
                 _p_cur_connections->unregister_conn(sd_info.idx_con, *_shpt_semIPCfile);
         }
+        LOG_DEBUG << "End while, accepting again.";
     }
-    
-    _server_socket.close();
+
+    LOG_DEBUG << "Ending all reader and writer threads.";
+
 
     // wait for signal handler to complete
     // int signal = _shpt_sigsyn->_ft_signal_handler.get();
     // LOG_DEBUG << "ok   - RECEIVED SIGNAL FROM FUTURE _ft_signal_handler: " << signal << std::endl;
 
-    Join_all_threads();
+    _server_socket.close();
+
+    Ending_all_threads();
     return 0;
 }
 
-void Dispatcher::Join_all_threads()
+void Dispatcher::Ending_all_threads()
 {
+    protomsg::st_protomsg v_protomsg;
+    std::string st_end("1");
+    
+    v_protomsg.mtype = protomsg::TYPE_ENDING_MSG;
+
+    for(auto &tp : _v_thread_pair)
+    {
+        // Send ENDING to pipe
+        write(tp.get_write_pipe(), static_cast<const void *>(protopipe::ENDING_PIPE), protopipe::LEN_PIPEMSG);
+
+        // Semd protomsg::TYPE_ENDING_MSG
+        tp.get_write_queue().send(&v_protomsg,st_end);
+    }
+
+    sleep(1);   // Wait a little bit...
+
     for(auto &tp : _v_thread_pair)
     {
         if(tp.th_r.joinable())
@@ -203,7 +233,7 @@ void Dispatcher::Join_all_threads()
         if(tp.th_w.joinable())
             tp.th_w.join();
     }
-    LOG_DEBUG << "Join_all_threads done!!";
+    LOG_DEBUG << "Ending_all_threads done!!";
 }
 
 int Dispatcher::Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info)
@@ -212,22 +242,22 @@ int Dispatcher::Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_in
     if (_v_thread_pair[th_id].add_sockdata(*sd_info) < 0)
         return -1;
 
-    // Send WEAKUP byte to notify there is a new connection...
-    write(_v_thread_pair[th_id].get_write_pipe(), &protopipe::WEAKUP, protopipe::TYPE_WEAKUP);
+    // Send WEAKUP_PIPE byte to notify there is a new connection...
+    write(_v_thread_pair[th_id].get_write_pipe(), &protopipe::WEAKUP_PIPE, protopipe::LEN_PIPEMSG);
     return 0;
 }
 
 int Dispatcher::LaunchTuxCli() 
 {
-    char strmsgq[20];
-    char strshmip[20];
+    std::string prog(_config.TuxCliProg);
+    std::string ipcfile(_config.IpcFile);
+    std::string setup(_config.TuxCliSetup);
 
-    sprintf(strmsgq, "%d", _shpt_Common_Msg_Queue->getid());
-    sprintf(strshmip,"%d", _shpt_shmAllowedIPs->getid());
-    
-    LOG_DEBUG << "Launching Forker Tuxcli:" << _config.TuxCliProg.c_str() << " " << strmsgq << " " << strshmip;
+    LOG_DEBUG << "Launching: " << prog; 
+    LOG_DEBUG << "     with: " << ipcfile;
+    LOG_DEBUG << "     with: " << setup;
 
-    execl(_config.TuxCliProg.c_str(), "Fork_TuxCli" ,strmsgq, strshmip, (char*)0);
+    execl(prog.c_str(), "Fork_TuxCli" , ipcfile.c_str(), setup.c_str(), (char*)0);
 
     LOG_ERROR << "error execl:" << strerror(errno);
   

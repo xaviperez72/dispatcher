@@ -74,14 +74,26 @@ int main()
 
     msg_to_send = "Well, this is the first message going and coming.";
 
+    v_protomsg.terf = 1000;
+    v_protomsg.terl = 3000;
+    strcpy(v_protomsg.guid,"SOMEGUID");
+    strcpy(v_protomsg.pid, "somepid");
+    strcpy(v_protomsg.aid, "400200");
+    strcpy(v_protomsg.cabx,"400201");
+
     Prepare_Msg_Json_To_Send(v_protomsg, msg_to_send, json_msg);
 
     stringstream ss;
+    
+    string field;
+    
     ss << json_msg;
-    ss >> msgout;
-
+    
+    while (getline(ss, field)) 	// Cortamos campos ...
+        msgout += field;
+    
     LOG_DEBUG << "Sending msgout: " << msgout; 
-
+    
     sock->socket_write(msgout);
 
     int seconds = 10;//Wait 10 second for response
@@ -100,7 +112,7 @@ int main()
     {
         string buffer;
         sock->socket_read(buffer, 2048);//Read 1024 bytes of the answer
-        LOG_DEBUG << buffer;
+        LOG_DEBUG << "Response: " << buffer;
     }
 
     LOG_DEBUG << "Ending CLIENT_main";

@@ -21,11 +21,12 @@ void all_dispatch_cfg::load_all_info()
         auto Port=getDispatcherXX_Port(dispatchXX.c_str());
         auto NumThreads=getDispatcherXX_NumThreads(dispatchXX.c_str());
         auto TuxCliProg=getDispatcherXX_TuxCliProg(dispatchXX.c_str());
+        auto TuxCliSetup=getDispatcherXX_TuxCliSetup(dispatchXX.c_str());
         auto LogLevel=getDispatcherXX_LogLevel(dispatchXX.c_str());
         auto MaxConnections=getDispatcherXX_MaxConnections(dispatchXX.c_str());
         auto StopTimeout=getDispatcherXX_StopTimeout(dispatchXX.c_str());
         auto IpcFile=getDispatcherXX_IpcFile(dispatchXX.c_str());
-        dispatch_cfg d={i,IP,Port,NumThreads,TuxCliProg,LogLevel,MaxConnections,StopTimeout,IpcFile};
+        dispatch_cfg d={i,IP,Port,NumThreads,TuxCliProg,TuxCliSetup,LogLevel,MaxConnections,StopTimeout,IpcFile};
         dispatchers_cfg.emplace_back(d);
         PLOG_DEBUG_IF(loglevel) << "Processed " << num_disp; 
         loaded=true;
@@ -48,6 +49,7 @@ void all_dispatch_cfg::create_cfg_values(string file_dir)
     _m_json[dispatch01.c_str()][FIELD_PORT] = DEFAULT_PORT;
     _m_json[dispatch01.c_str()][FIELD_NUMTHREADS] = DEFAULT_NUMTHREADS;
     _m_json[dispatch01.c_str()][FIELD_TUXCLIPROG] = file_dir + DEFAULT_TUXCLIPROG;
+    _m_json[dispatch01.c_str()][FIELD_TUXCLISETUP] = file_dir + DEFAULT_TUXCLISETUP;
     _m_json[dispatch01.c_str()][FIELD_LOGLEVEL] = plog::warning;
     _m_json[dispatch01.c_str()][FIELD_MAXCONN] = DEFAULT_MAXCONN;
     _m_json[dispatch01.c_str()][FIELD_STOPTIMEOUT] = DEFAULT_STOPTIMEOUT;             
@@ -77,6 +79,11 @@ int all_dispatch_cfg::getDispatcherXX_NumThreads(const std::string dispatchXX) c
 const char* all_dispatch_cfg::getDispatcherXX_TuxCliProg(const std::string dispatchXX) const
 {
     return _m_json[dispatchXX]["TuxCliProg"].asCString();
+}
+
+const char* all_dispatch_cfg::getDispatcherXX_TuxCliSetup(const std::string dispatchXX) const
+{
+    return _m_json[dispatchXX]["TuxCliSetup"].asCString();
 }
 
 int all_dispatch_cfg::getDispatcherXX_LogLevel(const std::string dispatchXX) const

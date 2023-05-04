@@ -41,7 +41,7 @@ ADD_EXECUTABLE(dispatcher_tcp ${dispatch_main} ${ipclib} ${cfgfile} ${cfginfo} $
 # To link libraries needed for the linker
 target_link_libraries(dispatcher_tcp ${JSONCPP_LIBRARIES} pthread)
 
-ADD_EXECUTABLE(tuxcli_tcp ${tuxcli_main} ${cfgfile})
+ADD_EXECUTABLE(tuxcli_tcp ${tuxcli_main} ${cfgfile} ${ipclib})
 target_link_libraries(tuxcli_tcp ${JSONCPP_LIBRARIES})
 
 ADD_EXECUTABLE(testing_client ${client_main} ${cfgfile} ${socket})
