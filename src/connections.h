@@ -9,7 +9,9 @@
 
 constexpr int st_ready{2};
 constexpr int st_obsolete{3};
-
+/**
+ * Connection struct. Keep sd, status, nthread, sockaddr_in, entry, last_op and num_ops. 
+ */
 struct connection{
     int next_info;
     int nthread;
@@ -21,22 +23,25 @@ struct connection{
     long num_ops;
 };
 
+/**
+ * Connections class. 
+ */
 class connections{
-    int initialized{0};
-    int first_free{0};
-    int nThreads{0};
-    int MaxConn{0};
-    bool deleteOnExit{false};
-    connection *current_connections{nullptr};
-    int *msg_queues{nullptr};
+    bool initialized{false};                // Is it initialized?
+    int first_free{0};                      // First free connection entry. 
+    int nThreads{0};                        // Number of thread pairs running. 
+    int MaxConn{0};                         // Max number of connections. 
+    bool deleteOnExit{false};               // Delete on exit 
+    
+    connection *current_connections{nullptr};   // Pointer to the connection array.
+    int *msg_queues{nullptr};                   // Pointer to msg queues id (IPC) array. 
 public:
+
     connections(int MaxConnections, int NumThreads, bool deleteonexit);
     ~connections();
     void DisableDelete() { deleteOnExit=false; }
     void EnableDelete() { deleteOnExit=true; }
-    connection *get_conn_addr(){ return current_connections;}
     int *get_queue_addr(){ return msg_queues;}
-    int get_nthreads(){ return nThreads;}
     void mark_obsolete(int idx);
     void delete_obsolete(int idx);
     int clean_repeated_ip(sockaddr_in *ppal, Semaphore &sem);

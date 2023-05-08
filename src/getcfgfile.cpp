@@ -61,7 +61,7 @@ GetCfgFile::operator bool() const
 }
 
 
-void GetCfgFile::save_cfg_file(Json::Value json)
+void GetCfgFile::save_cfg_file(const Json::Value json)
 {
     _m_json = json;
 

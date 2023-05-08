@@ -31,8 +31,8 @@ public:
     GetCfgFile(std::string file, bool createdir = false);
     ~GetCfgFile() = default;
 
-    void save_cfg_file(Json::Value json);
-    Json::Value &get_json(){ return _m_json;};
+    void save_cfg_file(const Json::Value json);
+    const Json::Value &get_json() const { return _m_json;};
     std::string get_file_dir() {return _file_dir;};
     std::string get_file_name() {return _filename;};
     operator bool() const;

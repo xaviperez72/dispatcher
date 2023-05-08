@@ -11,18 +11,23 @@ int loglevel;
 #include <json/json.h>
 
 #include "common.h"
-#include "ipclib.h"
-#include "getcfgfile.h"
-#include "dispatch_cfg.h"
-#include "dispatcher.h"
 #include "Socket.h"
+#include "protocol_msg.h"
 #include "plog/Initializers/RollingFileInitializer.h"
 #include "plog/Initializers/ConsoleInitializer.h"
 
-using namespace std;
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
-using namespace std::string_literals;
-auto const CFGFILE_PATH = getpwuid(getuid()) -> pw_dir + "/.dispatch/tuxconfig.json"s;
+#include <signal.h>
+#include <sys/wait.h>
+
+#ifdef  __cplusplus
+}
+#endif
+
+using namespace std;
 
 auto keep_accepting = true;
 

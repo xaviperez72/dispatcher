@@ -36,7 +36,7 @@ void thread_pair::Attending_Read_Socket(socket_data_t &sdt)
     sock.sock = sdt.sd;
     std::string msgin;
     std::string msgout;
-    Json::Value json_msg;
+
     protomsg::st_protomsg v_protomsg;
 
     LOG_DEBUG << "Reading from sd " << sdt.sd;

@@ -32,7 +32,6 @@ void Dispatcher::Launch_All_Threads()
     for(int i=0; i<_config.NumThreads; i++) {
         _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, 
         _sharedptr_pids, _p_cur_connections, _shpt_sigsyn, _shpt_semIPCfile);
-        // _v_thread_pair.emplace_back(std::move(thread_pair(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, _sharedptr_pids, _p_cur_connections)));
     }
 
     LOG_DEBUG << "All Threads launched!! ---------------------------";
@@ -470,7 +469,7 @@ int Dispatcher::operator()()
     if(IPC_Setting_Up() < 0)
         return -1;
     
-    // STEP 4 - LaunchTuxCli and Accept_Thread...
+    // STEP 2 - LaunchTuxCli and Accept_Thread...
 
     checker_pids chk_procs;
     

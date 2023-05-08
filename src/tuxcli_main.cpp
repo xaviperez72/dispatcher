@@ -111,7 +111,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    Json::Value ipcs_json = ipcfile.get_json();
+    const Json::Value ipcs_json = ipcfile.get_json();
 
     // We just need common queue id:
     int msg_common_id = ipcs_json["msg_common_id"].asInt();
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
 
     // Launching all processess...
 
-    Json::Value setup_json = tuxclisetup.get_json();
+    const Json::Value setup_json = tuxclisetup.get_json();
 
     int min_tux_cli = setup_json["min_tux_cli"].asInt();
     int max_tux_cli = setup_json["max_tux_cli"].asInt();

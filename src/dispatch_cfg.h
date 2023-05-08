@@ -7,7 +7,7 @@
 #include <json/value.h>
 
 using namespace std::string_literals;
-auto const DEFAULT_IP = "127.0.0.1";
+auto const DEFAULT_IP = "127.0.0.1"s;
 auto const DEFAULT_PORT = 9000; 
 auto const DEFAULT_NUMTHREADS = 20;
 auto const DEFAULT_TUXCLIPROG = "/TuxCliProg"s;
@@ -67,8 +67,9 @@ class all_dispatch_cfg {
     int         getDispatcherXX_StopTimeout(const std::string dispatchXX) const;
     const char* getDispatcherXX_IpcFile(const std::string dispatchXX) const;
 public:
-    explicit all_dispatch_cfg(Json::Value json):_m_json{json}{ load_all_info();}
-    Json::Value &get_json(){ return _m_json;}
+    all_dispatch_cfg() = delete;
+    explicit all_dispatch_cfg(const Json::Value json):_m_json{json}{ load_all_info();}
+    const Json::Value &get_json() const { return _m_json;}
     void load_all_info();
     void create_cfg_values(std::string file_dir);
     operator bool() const {return loaded == true;}

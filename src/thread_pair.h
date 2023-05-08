@@ -52,8 +52,8 @@ public:
     std::thread th_w;
     
 private:
-    int _idx_thp;
-    int _pipe[2];
+    int _idx_thp{-1};
+    int _pipe[2]{-1,-1};
     MessageQueue _write_queue;
     MessageQueue _common_queue;
     std::mutex _accept_mutex;

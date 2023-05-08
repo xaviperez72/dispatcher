@@ -28,6 +28,7 @@ connections::connections(int MaxConnections, int NumThreads, bool deleteonexit)
         MessageQueue mq(IPC_PRIVATE,false);
         msg_queues[i]=mq.getid();
     }
+    initialized = true;
  }
 
 void connections::mark_obsolete(int idx)
