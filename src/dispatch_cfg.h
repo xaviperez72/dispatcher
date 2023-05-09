@@ -31,17 +31,20 @@ auto const FIELD_IPCFILE = "IpcFile"s;
 
 static constexpr int CFGFILE_VERSION = 1;
 
+/**
+ * Dispatcher configuration 
+ */
 struct dispatch_cfg {
-    int NumDispatch;
-    std::string IP;
-    int Port;
-    int NumThreads;
-    std::string TuxCliProg;
-    std::string TuxCliSetup;
-    int LogLevel;
-    int MaxConnections;
-    int StopTimeout;
-    std::string IpcFile;
+    int NumDispatch;                // Number of dispatcher
+    std::string IP;                 // IP of dispatcher
+    int Port;                       // Port of dispatcher
+    int NumThreads;                 // Number of threads pair to run concurrently
+    std::string TuxCliProg;         // Transactional Client program.
+    std::string TuxCliSetup;        // Transactional Client configuration file. 
+    int LogLevel;                   // Level of log.
+    int MaxConnections;             // Number of max connections.
+    int StopTimeout;                // Wait until there are no st_ready running on connection array. 
+    std::string IpcFile;            // IPC file path for this dispatcher.
 
     friend std::ostream& operator<<( std::ostream& os, const dispatch_cfg& v )
     {
@@ -51,11 +54,15 @@ struct dispatch_cfg {
     }
 };
 
-class all_dispatch_cfg {
+/**
+ * Class of all Dispatchers configuration. 
+ */
+class all_dispatch_cfg final
+{
     Json::Value _m_json;
-    int NumDispatchers{0};
-    std::vector<dispatch_cfg> dispatchers_cfg;
-    bool loaded{false};
+    int NumDispatchers{0};                              // Number of Dispatchers
+    std::vector<dispatch_cfg> dispatchers_cfg;          // Vector of all configuration dispatcher
+    bool loaded{false};                                 // true=loaded false=not loaded
     int         getNumDispatchers() const;
     const char* getDispatcherXX_IP(const std::string dispatchXX) const;
     int         getDispatcherXX_Port(const std::string dispatchXX) const;
@@ -66,15 +73,29 @@ class all_dispatch_cfg {
     int         getDispatcherXX_MaxConnections(const std::string dispatchXX) const;
     int         getDispatcherXX_StopTimeout(const std::string dispatchXX) const;
     const char* getDispatcherXX_IpcFile(const std::string dispatchXX) const;
+    
 public:
     all_dispatch_cfg() = delete;
     explicit all_dispatch_cfg(const Json::Value json):_m_json{json}{ load_all_info();}
+    all_dispatch_cfg(all_dispatch_cfg const &) = delete;
+    all_dispatch_cfg(all_dispatch_cfg &&) = delete;
+    all_dispatch_cfg& operator=(all_dispatch_cfg const &) = delete;
+    all_dispatch_cfg& operator=(all_dispatch_cfg &&) = delete;
+    ~all_dispatch_cfg() = default;
+    
+    // Gets all json values
     const Json::Value &get_json() const { return _m_json;}
+    // Load all configuration file
     void load_all_info();
+    // Creates a default dispatcher configuration file 
     void create_cfg_values(std::string file_dir);
+    // Returns true if configuration file is correctly loaded, false otherwise. 
     operator bool() const {return loaded == true;}
+    // Log all configuration file 
     void show_all_config();
+    // Gets number of dispatchers loaded on configuration file
     int get_num_dispatchers() const { return NumDispatchers;}
+    // Gets dispatch_cfg struct vector. 
     std::vector<dispatch_cfg> &get_all_dispatch_info(){ return dispatchers_cfg;}
 };
 

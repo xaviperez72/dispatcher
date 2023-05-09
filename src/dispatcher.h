@@ -47,7 +47,7 @@ class Dispatcher {
     std::shared_ptr<SharedMemory> _shpt_shmAllowedIPs;
     allowed_ips *_allowed_ips;
 
-    std::shared_ptr<signal_synch> _shpt_sigsyn;
+    //std::shared_ptr<signal_synch> _shpt_sigsyn;
 
 public:
     Dispatcher() = delete;
@@ -68,7 +68,7 @@ public:
     
     void Launch_All_Threads();
     void Prepare_Server_Socket();
-    void Signal_Handler_For_Threads();
+    // void Signal_Handler_For_Threads();
     int IPC_Setting_Up();
     int Accept_Thread();
     int Assign_connection_to_thread_pair(int th_id, socket_data_t *sd_info);

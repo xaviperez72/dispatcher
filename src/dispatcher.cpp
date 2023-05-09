@@ -31,7 +31,8 @@ void Dispatcher::Launch_All_Threads()
     
     for(int i=0; i<_config.NumThreads; i++) {
         _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, 
-        _sharedptr_pids, _p_cur_connections, _shpt_sigsyn, _shpt_semIPCfile);
+        _sharedptr_pids, _p_cur_connections, //_shpt_sigsyn, 
+        _shpt_semIPCfile);
     }
 
     LOG_DEBUG << "All Threads launched!! ---------------------------";
@@ -54,10 +55,10 @@ void Dispatcher::Prepare_Server_Socket()
 }
 
 // Discarted by the moment.
-
+/*
 void Dispatcher::Signal_Handler_For_Threads()
 {
-    _shpt_sigsyn = std::make_shared<signal_synch>();
+    //_shpt_sigsyn = std::make_shared<signal_synch>();
 
     sigemptyset(&_shpt_sigsyn->_sigset_new);
     sigaddset(&_shpt_sigsyn->_sigset_new, SIGINT);
@@ -82,6 +83,7 @@ void Dispatcher::Signal_Handler_For_Threads()
 
     _shpt_sigsyn->_ft_signal_handler = std::async(std::launch::async, signal_handler);
 }
+*/ 
 
 int Dispatcher::Accept_by_Select()
 {
@@ -398,8 +400,8 @@ Dispatcher::Dispatcher(const Dispatcher& other) : // _v_thread_pair(other._v_thr
                                               _p_cur_connections(other._p_cur_connections),
                                               _shpt_Common_Msg_Queue(other._shpt_Common_Msg_Queue),
                                               _shpt_shmAllowedIPs(other._shpt_shmAllowedIPs),
-                                              _allowed_ips(other._allowed_ips),
-                                              _shpt_sigsyn(other._shpt_sigsyn)
+                                              _allowed_ips(other._allowed_ips)
+                                              //_shpt_sigsyn(other._shpt_sigsyn)
 {
     LOG_DEBUG << "Copy Ctor: " << this;
 }
@@ -414,8 +416,8 @@ Dispatcher::Dispatcher(Dispatcher&& other) noexcept : //_v_thread_pair(std::move
                                                _p_cur_connections(std::move(other._p_cur_connections)),
                                                _shpt_Common_Msg_Queue(std::move(other._shpt_Common_Msg_Queue)),
                                                _shpt_shmAllowedIPs(std::move(other._shpt_shmAllowedIPs)),
-                                               _allowed_ips(std::move(other._allowed_ips)),
-                                               _shpt_sigsyn(std::move(other._shpt_sigsyn))
+                                               _allowed_ips(std::move(other._allowed_ips))
+                                               //_shpt_sigsyn(std::move(other._shpt_sigsyn))
 {
     LOG_DEBUG << "Move Ctor: " << this;
 }
@@ -435,7 +437,7 @@ Dispatcher& Dispatcher::operator=(const Dispatcher& other)
         _shpt_Common_Msg_Queue = other._shpt_Common_Msg_Queue;
         _shpt_shmAllowedIPs = other._shpt_shmAllowedIPs;
         _allowed_ips = other._allowed_ips;
-        _shpt_sigsyn = other._shpt_sigsyn;
+        // _shpt_sigsyn = other._shpt_sigsyn;
     }
     return *this;
 }
@@ -455,7 +457,7 @@ Dispatcher& Dispatcher::operator=(Dispatcher&& other) noexcept
         _shpt_Common_Msg_Queue = std::move(other._shpt_Common_Msg_Queue);
         _shpt_shmAllowedIPs = std::move(other._shpt_shmAllowedIPs);
         _allowed_ips = std::move(other._allowed_ips);
-        _shpt_sigsyn = std::move(other._shpt_sigsyn);
+        // _shpt_sigsyn = std::move(other._shpt_sigsyn);
     }
     return *this;
 }

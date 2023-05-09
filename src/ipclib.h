@@ -191,19 +191,14 @@ public:
 };
 
 
-template<typename T>
-    struct qmsg {
-        long   mtype;       /* Message type. */
-        T      data;
-    };
-
-
 /**
  * Message Queue IPC (ipclib.h)
  */
-class MessageQueue final : public Ipc {
-    msqid_ds _st;
-    int _size;
+class MessageQueue final : public Ipc 
+{
+    msqid_ds _st;                   // Message queue info
+    int _size;                      // Size of message queue
+    // Run msgctl to get all info.
     int get_stat(int msgid);
 public:
    
@@ -234,48 +229,6 @@ public:
     // Receives a protomsg::st_protomsg of the message queue (IPC)
     int rcv(protomsg::st_protomsg *p_protomsg, std::string &pdata);
 
-    template<typename T>
-        int send(long type, T& pdata)
-        {
-           if(_ok) 
-           {
-               qmsg<T> mymsg{};
-               mymsg.mtype = type;
-               mymsg.data = pdata;
-
-               if (msgsnd(_id, &mymsg, sizeof(T), 0) < 0) {
-                   PLOG_ERROR << "msgsnd: " << strerror(errno) << ":" << _id;
-                   return 0;
-               }
-               else 
-                   return 1;
-           }
-           return 0;
-        }
-        
-    template<typename T>
-        int rcv(long &type, T& pdata)
-        {
-            if(_ok) 
-            {
-                qmsg<T> mymsg;
-                int msgbytes;
-
-                if ((msgbytes = msgrcv(_id,&mymsg,sizeof(T),0,0)) < 0) {
-                    PLOG_ERROR << "msgrcv: " << strerror(errno) << ":" << _id;
-                    return 0;
-                }
-                else {
-                    PLOG_DEBUG_IF(loglevel) << "msgrcv " << msgbytes << " bytes.";
-                    PLOG_DEBUG_IF(loglevel) << "sizeof(T) " << sizeof(T) << " bytes.";
-                    type = mymsg.mtype;
-                    pdata = mymsg.data;
-                    return 1;
-                }
-
-            }
-            return 0;
-        }
 };
 
 #endif

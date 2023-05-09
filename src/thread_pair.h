@@ -18,6 +18,7 @@
 #include "protocol_msg.h"
 #include "Socket.h"
 
+/*
 struct signal_synch
 {
     sigset_t _sigset_new;
@@ -27,6 +28,7 @@ struct signal_synch
     std::future<int>  _ft_signal_handler;
     ~signal_synch(){ LOG_DEBUG << "Dtor signal_synch."; }
 };
+*/
 
 struct socket_data_t {
 	int	        sd;  				// Socket Descriptor.
@@ -61,13 +63,15 @@ private:
     std::list<socket_data_t> _sockdata;
     std::shared_ptr<checker_pids> _sharedptr_pids;
     std::shared_ptr<connections> _p_cur_connections;
-    std::shared_ptr<signal_synch> _shpt_sigsyn;
+    //std::shared_ptr<signal_synch> _shpt_sigsyn;
     std::shared_ptr<Semaphore> _shpt_semIPCfile;
 
 public:
     thread_pair() = delete;
     thread_pair(int write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<checker_pids> shpt_pids, 
-        std::shared_ptr<connections> shpt_conn, std::shared_ptr<signal_synch> shpt_sigsyn, std::shared_ptr<Semaphore> shpt_sem);
+        std::shared_ptr<connections> shpt_conn, 
+        //std::shared_ptr<signal_synch> shpt_sigsyn, 
+        std::shared_ptr<Semaphore> shpt_sem);
     // It compiles with shared_ptr 
     thread_pair(const thread_pair&) { LOG_DEBUG << "XAVI - COPY CTOR thread_pair"; }; // NOT CALLED!! run emplace_back : default - let emplace_back( ) work!! 
     // thread_pair(const thread_pair&) = delete; // fail 

@@ -4,9 +4,10 @@ using namespace std;
 
 thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx_thp, 
         std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn, 
-        std::shared_ptr<signal_synch> shpt_sigsyn, std::shared_ptr<Semaphore> shpt_sem)
+        //std::shared_ptr<signal_synch> shpt_sigsyn, 
+        std::shared_ptr<Semaphore> shpt_sem)
 {
-    _shpt_sigsyn = shpt_sigsyn;
+    // _shpt_sigsyn = shpt_sigsyn;
     _write_queue = MessageQueue(write_queue_id);
 
     assert(_write_queue && "write_queue not operative.");
