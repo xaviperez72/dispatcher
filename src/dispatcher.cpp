@@ -30,7 +30,7 @@ void Dispatcher::Launch_All_Threads()
     _v_thread_pair.reserve(_config.NumThreads);
     
     for(int i=0; i<_config.NumThreads; i++) {
-        _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, 
+        _v_thread_pair.emplace_back(_msg_queues[i], *_shpt_Common_Msg_Queue, i+1, 
         _sharedptr_keep_running, _p_cur_connections, //_shpt_sigsyn, 
         _shpt_semIPCfile);
     }
@@ -119,7 +119,6 @@ int Dispatcher::Accept_Thread()
     _shpt_semIPCfile->DisableDelete();
     _shpt_Common_Msg_Queue->DisableDelete();
     _shpt_shmAllowedIPs->DisableDelete();
-    _p_cur_connections->DisableDelete();
 
     // Signal_Handler_For_Threads();
 
@@ -238,7 +237,7 @@ void Dispatcher::Ending_all_threads()
         if(tp.th_w.joinable())
             tp.th_w.join();
     }
-    
+
     LOG_DEBUG << "Ending_all_threads done!!";
 }
 
@@ -360,8 +359,8 @@ int Dispatcher::IPC_Setting_Up()
 
     // PLACEMENT NEW 
     // SHARED POINTER POINTING TO SHARED MEMORY: DELETER NEEDED: calls constructor and deleter on destruction
-    std::shared_ptr<connections> p_conn( new (_shpt_shmIPCfile->getaddr()) connections(_config.MaxConnections,_config.NumThreads, true), 
-                [](connections *p){ LOG_DEBUG << "connections own deleter: "; p->~connections(); }
+    std::shared_ptr<connections> p_conn( new (_shpt_shmIPCfile->getaddr()) connections(_config.MaxConnections, _config.NumThreads), 
+                [](connections *p){ LOG_DEBUG << "connections own deleter: "; }
     );     
 
     _p_cur_connections = p_conn;
@@ -392,6 +391,13 @@ int Dispatcher::IPC_Setting_Up()
     _allowed_ips[1].allowed = true;
     _allowed_ips[1].trace = false;
     inet_aton("127.0.1.1", &(_allowed_ips[1].ip));
+
+    // Create write queues ...
+    _msg_queues.reserve(_config.NumThreads);
+    for(int i=0; i < _config.NumThreads; i++)
+    {
+        _msg_queues.emplace_back(IPC_PRIVATE,false);
+    }
 
     // SAVE ON IPC FILE
 
@@ -505,7 +511,11 @@ int Dispatcher::operator()()
         _shpt_semIPCfile->EnableDelete();
         _shpt_Common_Msg_Queue->EnableDelete();
         _shpt_shmAllowedIPs->EnableDelete();
-        _p_cur_connections->EnableDelete();
+        LOG_DEBUG_IF(loglevel) << "EnableDelete all queues: ";   
+        for(int i=0; i < _config.NumThreads; i++)
+        {
+            _msg_queues[i].EnableDelete();
+        }
     }
     else {
         LOG_DEBUG << "No delete all. Keep all.";

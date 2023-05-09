@@ -1,18 +1,14 @@
 #include "connections.h"
 
-connections::connections(int MaxConnections, int NumThreads, bool deleteonexit)
+connections::connections(int MaxConnections, int NumThreads)
 {
     LOG_DEBUG << "connections Ctor - Creating " << NumThreads << " queues, " << MaxConnections << " connections.";
     nThreads = NumThreads;
     MaxConn = MaxConnections;
-    deleteOnExit = deleteonexit;
 
     current_connections = reinterpret_cast<connection *>(this+1);
-    msg_queues = reinterpret_cast<int *>(current_connections+MaxConnections);
 
-    std::ptrdiff_t len=reinterpret_cast<char *>(msg_queues+NumThreads)-reinterpret_cast<char *>(current_connections);
-
-    memset((void *)current_connections, 0, len);
+    memset((void *)current_connections, 0, sizeof(connection)*MaxConn);
 
     first_free = 0;
 
@@ -22,12 +18,6 @@ connections::connections(int MaxConnections, int NumThreads, bool deleteonexit)
   
     current_connections[MaxConn-1].next_info = -1;
 
-    // Create write queues ...
-    for(int i=0; i < nThreads; i++)
-    {
-        MessageQueue mq(IPC_PRIVATE,false);
-        msg_queues[i]=mq.getid();
-    }
     initialized = true;
  }
 
@@ -163,20 +153,4 @@ int connections::unregister_conn(int idx, Semaphore &sem)
   sem.Unlock();
 
   return 1;
-}
-
-
-connections::~connections()
-{
-  LOG_DEBUG_IF(loglevel) << "Dtor connections " << deleteOnExit;
-  if(deleteOnExit) {
-    LOG_DEBUG_IF(loglevel) << "Deleting all queues: ";   
-    // Remove all queues 
-    for(int i=0; i < nThreads; i++)
-    {
-        MessageQueue mq(msg_queues[i]);
-        mq.EnableDelete();
-    }
-    LOG_DEBUG_IF(loglevel) << "All queues deleted.";   
-  }
 }

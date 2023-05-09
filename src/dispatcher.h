@@ -47,6 +47,7 @@ class Dispatcher {
     std::shared_ptr<SharedMemory> _shpt_shmAllowedIPs;
     allowed_ips *_allowed_ips;
 
+    std::vector<MessageQueue> _msg_queues;
     //std::shared_ptr<signal_synch> _shpt_sigsyn;
 
 public:

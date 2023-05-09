@@ -68,7 +68,7 @@ private:
 
 public:
     thread_pair() = delete;
-    thread_pair(int write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<keep_running_flags> shpt_keep_running, 
+    thread_pair(MessageQueue write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<keep_running_flags> shpt_keep_running, 
         std::shared_ptr<connections> shpt_conn, 
         //std::shared_ptr<signal_synch> shpt_sigsyn, 
         std::shared_ptr<Semaphore> shpt_sem);

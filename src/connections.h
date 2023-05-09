@@ -33,30 +33,16 @@ class connections{
     int first_free{0};                      // First free connection entry. 
     int nThreads{0};                        // Number of thread pairs running. 
     int MaxConn{0};                         // Max number of connections. 
-    bool deleteOnExit{false};               // Delete on exit 
-    
     connection *current_connections{nullptr};   // Pointer to the connection array.
-    int *msg_queues{nullptr};                   // Pointer to msg queues id (IPC) array. 
+
 public:
    /**
     * connections Constructor
     *
     * @param MaxConnections Max number of connections. 
     * @param NumThreads = Number of thread pairs running
-    * @param deleteonexit = (false = don't remove msg_queues on destruction. true = remove it)
     */
-    connections(int MaxConnections, int NumThreads, bool deleteonexit);
-    // connections Destructor - Destroy all msg_queues if deleteOnExit is true
-    ~connections();
-    
-    // Disable delete on destruction.
-    void DisableDelete() { deleteOnExit=false; }
-
-    // Enable delete on destruction.
-    void EnableDelete() { deleteOnExit=true; }
-    
-    // Get msg_queues pointer.
-    int *get_queue_addr(){ return msg_queues;}
+    connections(int MaxConnections, int NumThreads);
     
     // Marks a connection as obsolete (st_obsolete=3) on the idx position of the connection array
     void mark_obsolete(int idx);

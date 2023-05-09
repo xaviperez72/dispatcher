@@ -80,11 +80,11 @@ int main()
         LOG_ERROR << "Can not run on background!";
         return -1;
     }
+
     LOG_DEBUG << "Running on background, parent pid = " << getppid();
 
     // Object that perform fork for each functor on its vector. 
     auto checking_pids = make_shared<checker_pids>();
-    //std::shared_ptr<keep_running_flags> shared_pids(&checking_pids, [](checker_pids *){});
 
     // Config every dispatcher:
 
@@ -98,14 +98,19 @@ int main()
        v_dispatchers.emplace_back(config,checking_pids->get_run_flags());
     }
 
+    LOG_DEBUG << "Dispatcher vector ok! Prepare checker_pids...";
+
     // Prepare for fork() and checking
+
     for(auto &dispat : v_dispatchers)
     {
         checking_pids->add(dispat,"Dispatcher");
     }
 
     // Launching all dispatchers...     
+
     ret=checking_pids->operator()();
+
 
     LOG_DEBUG << "Ending process main " << ret;
 
