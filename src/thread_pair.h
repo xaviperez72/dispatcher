@@ -61,14 +61,14 @@ private:
     std::mutex _accept_mutex;
     //shared_ptr<mutex> _accept_mutex;
     std::list<socket_data_t> _sockdata;
-    std::shared_ptr<checker_pids> _sharedptr_pids;
+    std::shared_ptr<keep_running_flags> _sharedptr_keep_running;
     std::shared_ptr<connections> _p_cur_connections;
     //std::shared_ptr<signal_synch> _shpt_sigsyn;
     std::shared_ptr<Semaphore> _shpt_semIPCfile;
 
 public:
     thread_pair() = delete;
-    thread_pair(int write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<checker_pids> shpt_pids, 
+    thread_pair(int write_queue_id, MessageQueue common_queue, int idx, std::shared_ptr<keep_running_flags> shpt_keep_running, 
         std::shared_ptr<connections> shpt_conn, 
         //std::shared_ptr<signal_synch> shpt_sigsyn, 
         std::shared_ptr<Semaphore> shpt_sem);

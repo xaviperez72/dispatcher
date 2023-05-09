@@ -48,7 +48,7 @@ int TuxClient::operator()()
 {
     LOG_DEBUG << "Running TuxClient " << idx_cli;
 
-    while(chk_procs._keep_accepting.load()) 
+    while(chk_procs.get_run_flags()->_keep_accepting.load()) 
     {
         std::string msgin;
         protomsg::st_protomsg v_protomsg;

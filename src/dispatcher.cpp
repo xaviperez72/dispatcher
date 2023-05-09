@@ -1,8 +1,8 @@
 #include "dispatcher.h"
 
-Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids)
+Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<keep_running_flags> shpt_keep_running)
         :_config{cfg},
-        _sharedptr_pids{shpt_pids}
+        _sharedptr_keep_running{shpt_keep_running}
 {
     LOG_DEBUG << "CTOR: " << this;
 }
@@ -10,7 +10,7 @@ Dispatcher::Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids
 void Dispatcher::Show_All_Shared_Ptr()
 {
     LOG_DEBUG << "Address: " << this;
-    LOG_DEBUG << "std::shared_ptr<checker_pids>:" << _sharedptr_pids.use_count();
+    LOG_DEBUG << "std::shared_ptr<keep_running_flags>:" << _sharedptr_keep_running.use_count();
     LOG_DEBUG << "std::shared_ptr<Semaphore>:" << _shpt_semIPCfile.use_count();
     LOG_DEBUG << "std::shared_ptr<SharedMemory>:" << _shpt_shmIPCfile.use_count();
     LOG_DEBUG << "std::shared_ptr<connections>:" << _p_cur_connections.use_count();
@@ -31,7 +31,7 @@ void Dispatcher::Launch_All_Threads()
     
     for(int i=0; i<_config.NumThreads; i++) {
         _v_thread_pair.emplace_back(*(_p_cur_connections->get_queue_addr()+i), *_shpt_Common_Msg_Queue, i+1, 
-        _sharedptr_pids, _p_cur_connections, //_shpt_sigsyn, 
+        _sharedptr_keep_running, _p_cur_connections, //_shpt_sigsyn, 
         _shpt_semIPCfile);
     }
 
@@ -72,8 +72,8 @@ void Dispatcher::Signal_Handler_For_Threads()
         // wait until a signal is delivered:
         LOG_DEBUG << "LAMBDA signal_handler" << std::endl;
         sigwait(&_shpt_sigsyn->_sigset_new, &signum);
-        _sharedptr_pids->_keep_accepting.store(false);
-        _sharedptr_pids->_keep_working.store(false);
+        _sharedptr_keep_running->_keep_accepting.store(false);
+        _sharedptr_keep_running->_keep_working.store(false);
         LOG_DEBUG << "signal_handler WEAK-UP - before notify_all" << std::endl;
         // notify all waiting workers to check their predicate:
         pthread_sigmask(SIG_SETMASK, &_shpt_sigsyn->_sigset_old, nullptr);
@@ -127,7 +127,7 @@ int Dispatcher::Accept_Thread()
 
     Prepare_Server_Socket();
     
-    while(_sharedptr_pids->_keep_accepting.load()) 
+    while(_sharedptr_keep_running->_keep_accepting.load()) 
     {
 
         if(Accept_by_Select()==0) // timeout or signal -> Check _keep_accepting...
@@ -207,16 +207,29 @@ void Dispatcher::Ending_all_threads()
     
     v_protomsg.mtype = protomsg::TYPE_ENDING_MSG;
 
+    // STEP 1 - No accepting more connections and not reading more input messages (AcceptThread & Reader_Thread)
+    // _keep_accepting is currently FALSE because of signal. 
     for(auto &tp : _v_thread_pair)
     {
-        // Send ENDING to pipe
+        // Send ENDING to pipe - for Reader_Threads to weakup and die. 
         write(tp.get_write_pipe(), static_cast<const void *>(protopipe::ENDING_PIPE), protopipe::LEN_PIPEMSG);
+    }
 
+    while(!_p_cur_connections->is_all_connections_done()) 
+    {
+        LOG_DEBUG << "Waiting all connections to receive pending operations...";
+        sleep(1);   // Wait a little bit...
+    }
+
+    LOG_DEBUG << "Now Writer Threads will be done!";
+    sleep(1);   // Wait a little bit...
+    _sharedptr_keep_running->_keep_working.store(false);
+
+    for(auto &tp : _v_thread_pair)
+    {
         // Semd protomsg::TYPE_ENDING_MSG
         tp.get_write_queue().send(&v_protomsg,st_end);
     }
-
-    sleep(1);   // Wait a little bit...
 
     for(auto &tp : _v_thread_pair)
     {
@@ -225,6 +238,7 @@ void Dispatcher::Ending_all_threads()
         if(tp.th_w.joinable())
             tp.th_w.join();
     }
+    
     LOG_DEBUG << "Ending_all_threads done!!";
 }
 
@@ -392,7 +406,7 @@ int Dispatcher::IPC_Setting_Up()
 
 // Constructor de copia
 Dispatcher::Dispatcher(const Dispatcher& other) : // _v_thread_pair(other._v_thread_pair),
-                                              _sharedptr_pids(other._sharedptr_pids),
+                                              _sharedptr_keep_running(other._sharedptr_keep_running),
                                               _shpt_semIPCfile(other._shpt_semIPCfile),
                                               _shpt_shmIPCfile(other._shpt_shmIPCfile),
                                               _config(other._config),
@@ -408,7 +422,7 @@ Dispatcher::Dispatcher(const Dispatcher& other) : // _v_thread_pair(other._v_thr
 
 // Constructor de movimiento
 Dispatcher::Dispatcher(Dispatcher&& other) noexcept : //_v_thread_pair(std::move(other._v_thread_pair)),
-                                               _sharedptr_pids(std::move(other._sharedptr_pids)),
+                                               _sharedptr_keep_running(std::move(other._sharedptr_keep_running)),
                                                _shpt_semIPCfile(std::move(other._shpt_semIPCfile)),
                                                _shpt_shmIPCfile(std::move(other._shpt_shmIPCfile)),
                                                _config(std::move(other._config)),
@@ -428,7 +442,7 @@ Dispatcher& Dispatcher::operator=(const Dispatcher& other)
     LOG_DEBUG << "Assignment Operator: " << this;
     if (this != &other) {
         //_v_thread_pair = other._v_thread_pair;
-        _sharedptr_pids = other._sharedptr_pids;
+        _sharedptr_keep_running = other._sharedptr_keep_running;
         _shpt_semIPCfile = other._shpt_semIPCfile;
         _shpt_shmIPCfile = other._shpt_shmIPCfile;
         _config = other._config;
@@ -448,7 +462,7 @@ Dispatcher& Dispatcher::operator=(Dispatcher&& other) noexcept
     LOG_DEBUG << "Movement Assignment Operator: " << this;
     if (this != &other) {
         //_v_thread_pair = std::move(other._v_thread_pair);
-        _sharedptr_pids = std::move(other._sharedptr_pids);
+        _sharedptr_keep_running = std::move(other._sharedptr_keep_running);
         _shpt_semIPCfile = std::move(other._shpt_semIPCfile);
         _shpt_shmIPCfile = std::move(other._shpt_shmIPCfile);
         _config = std::move(other._config);

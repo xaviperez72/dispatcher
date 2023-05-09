@@ -1,10 +1,9 @@
 #include "checker_pids.h"
 
 checker_pids* checker_pids::_me{nullptr};
-std::atomic<bool> checker_pids::_keep_accepting{true};
-std::atomic<bool> checker_pids::_keep_working{true};
-std::atomic<bool> checker_pids::_forker{true};
-    
+bool checker_pids::_forker{false};
+std::shared_ptr<keep_running_flags> checker_pids::_p_run = std::make_shared<keep_running_flags>();
+
 void checker_pids::StoppingChildren()
 {
     LOG_DEBUG << "Sending signal to children!";
@@ -18,7 +17,7 @@ int checker_pids::operator()()
 {
     int ret=0;
 
-    checker_pids::_forker = true;       // Important to propagate signal to children and itself
+    _forker = true;       // Important to propagate signal to children and itself
 
     if(_pids.size() == 0)
     {
@@ -30,7 +29,7 @@ int checker_pids::operator()()
     _me = this;
 
     LOG_DEBUG << "Running checker_pids with " << _pids.size() << " processes.";
-    LOG_DEBUG << "_keep_accepting " << _keep_accepting << " : _keep_working " << _keep_working << " : _forker " << _forker;
+    LOG_DEBUG << "_keep_accepting " << _p_run->_keep_accepting << " : _keep_working " << _p_run->_keep_working << " : _forker " << _forker;
 
     using namespace std::placeholders;    // adds visibility of _1, _2, _3,...
 
@@ -38,7 +37,7 @@ int checker_pids::operator()()
     _previousInterruptHandler_usr1 = signal(SIGUSR1, &checker_pids::sigterm_func);
     _previousInterruptHandler_term = signal(SIGTERM, &checker_pids::sigterm_func);
 
-    while(_keep_accepting.load()) 
+    while(_p_run->_keep_accepting.load()) 
     {
         time(&_dead._last_fork);
 
@@ -65,9 +64,9 @@ int checker_pids::operator()()
                         StoppingChildren();
                         break;
                     
-                    case 0:                                // Child process
-                        checker_pids::_forker = false;     // I am not the forker, I am a child
-                        ret=process._caller();         // Call to functor - operator ()
+                    case 0:                             // Child process
+                        _forker = false;                // I am not the forker, I am a child
+                        ret=process._caller();          // Call to functor - operator ()
                         return ret;
                         break;
 
@@ -80,10 +79,10 @@ int checker_pids::operator()()
             }
         }
 
-        LOG_DEBUG << "waiting - keep_accepting " << _keep_accepting;
+        LOG_DEBUG << "waiting - keep_accepting " << _p_run->_keep_accepting;
 
         _dead._pid = wait(NULL);
-        LOG_DEBUG << "wake-up - child dead " << _dead._pid << "... keep_accepting " << _keep_accepting;
+        LOG_DEBUG << "wake-up - child dead " << _dead._pid << "... keep_accepting " << _p_run->_keep_accepting;
     }
 
     
@@ -107,8 +106,8 @@ int checker_pids::operator()()
     (void)signal(SIGUSR1, _previousInterruptHandler_usr1);
     (void)signal(SIGTERM, _previousInterruptHandler_term);
 
-    LOG_DEBUG << "Ending checker_pids::operator() - checker_pids::_forker " << checker_pids::_forker;
-    return static_cast<int>(checker_pids::_forker);
+    LOG_DEBUG << "Ending checker_pids::operator() - _forker " << _forker;
+    return static_cast<int>(_forker);
 }
 
 void checker_pids::add(std::function<int()> _call, std::string procname)
@@ -121,12 +120,11 @@ void checker_pids::add(std::function<int()> _call, std::string procname)
 void checker_pids::sigterm_func(int s) 
 {
     LOG_DEBUG << "Received signal " << s << " : " << strsignal(s) << \
-                 " _keep_accepting " << checker_pids::_keep_accepting << " : _forker " << _forker;
+                 " _keep_accepting " << _p_run->_keep_accepting << " : _forker " << _forker;
     
-    if( (checker_pids::_keep_accepting || checker_pids::_keep_working) && _forker) 
+    if(_p_run->_keep_accepting && _forker) 
     {
-        checker_pids::_keep_accepting = false;
-        checker_pids::_keep_working = false;
+        _p_run->_keep_accepting = false;
         if(_me!=nullptr) {
             _me->StoppingChildren();
 
@@ -134,9 +132,8 @@ void checker_pids::sigterm_func(int s)
         }
     }
 
-    checker_pids::_keep_accepting = false;
-    checker_pids::_keep_working = false;
+    _p_run->_keep_accepting = false;
 
     LOG_DEBUG << "Received signal " << s << " : " << strsignal(s) << \
-                 " _keep_accepting " << checker_pids::_keep_accepting << " : _forker " << _forker;
+                 " _keep_accepting " << _p_run->_keep_accepting << " : _forker " << _forker;
 }

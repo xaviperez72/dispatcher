@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string>
+#include <algorithm>
 #include "ipclib.h"
 
 constexpr int st_free{0};
@@ -50,22 +51,28 @@ public:
     
     // Disable delete on destruction.
     void DisableDelete() { deleteOnExit=false; }
+
     // Enable delete on destruction.
     void EnableDelete() { deleteOnExit=true; }
+    
     // Get msg_queues pointer.
     int *get_queue_addr(){ return msg_queues;}
+    
     // Marks a connection as obsolete (st_obsolete=3) on the idx position of the connection array
     void mark_obsolete(int idx);
+    
     // Marks a connection as free (st_obsolete=3) on the idx position of the connection array
     void delete_obsolete(int idx);
-   /**
+   
+    /**
     * Clean repeated IP in connection array. 
     *
     * @param ppal sockaddr_in data (IP:port)
     * @param sem Semaphore to lock to avoid data races.
     */
     int clean_repeated_ip(sockaddr_in *ppal, Semaphore &sem);
-   /**
+   
+    /**
     * Registers new connection on array. 
     *
     * @param nthread Thread pair idx
@@ -74,6 +81,7 @@ public:
     * @param sem Semaphore to lock to avoid data races.
     */
     int register_new_conn(int nthread, int sd, sockaddr_in s_in, Semaphore &sem);
+   
     /**
     * Unregisters connection on array. 
     *
@@ -81,6 +89,7 @@ public:
     * @param sem Semaphore to lock to avoid data races.
     */
     int unregister_conn(int idx, Semaphore &sem);
+    
     /**
     * Sets connection operation info: add 1 to operation counter, gets time
     *
@@ -89,6 +98,7 @@ public:
     * @param cur_conn Gets connection struct of connection array (idx position)
     */
     int ending_operation(int idx, Semaphore &sem, connection &cur_conn);
+    
     /**
     * if connection[idx_con] is obsolete marks it as st_obsolete=2. 
     *
@@ -96,6 +106,10 @@ public:
     * @param sem Semaphore to lock to avoid data races.
     */
     int check_obsolete(int idx_con, Semaphore &sem);
+
+    bool is_all_connections_done() { 
+        return !std::any_of(&(current_connections[0]),&(current_connections[MaxConn-1]),[](connection c){return c.status==st_ready;} );
+    }
 };
 	
 

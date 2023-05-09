@@ -29,7 +29,7 @@ class Dispatcher {
 
     std::vector<thread_pair> _v_thread_pair;
 
-    std::shared_ptr<checker_pids> _sharedptr_pids;
+    std::shared_ptr<keep_running_flags> _sharedptr_keep_running;
 
     std::shared_ptr<Semaphore> _shpt_semIPCfile;
 
@@ -51,7 +51,7 @@ class Dispatcher {
 
 public:
     Dispatcher() = delete;
-    Dispatcher(dispatch_cfg cfg, std::shared_ptr<checker_pids> shpt_pids);
+    Dispatcher(dispatch_cfg cfg, std::shared_ptr<keep_running_flags> shpt_keep_running);
     ~Dispatcher();
 
     // Constructor de copia

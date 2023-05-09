@@ -3,7 +3,7 @@
 using namespace std;
 
 thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx_thp, 
-        std::shared_ptr<checker_pids> shpt_pids, std::shared_ptr<connections> shpt_conn, 
+        std::shared_ptr<keep_running_flags> shpt_keep_running, std::shared_ptr<connections> shpt_conn, 
         //std::shared_ptr<signal_synch> shpt_sigsyn, 
         std::shared_ptr<Semaphore> shpt_sem)
 {
@@ -17,7 +17,7 @@ thread_pair::thread_pair(int write_queue_id, MessageQueue common_queue, int idx_
 
     _common_queue = common_queue;
     _idx_thp = idx_thp;
-    _sharedptr_pids = shpt_pids;
+    _sharedptr_keep_running = shpt_keep_running;
     _p_cur_connections = shpt_conn;
     _shpt_semIPCfile = shpt_sem;
 
@@ -125,7 +125,7 @@ void thread_pair::reader_thread(int idx_thp)
     int readpipe=get_read_pipe();
     LOG_DEBUG << "reader_thread " << idx_thp;
 
-    while(_sharedptr_pids->_keep_accepting.load()==true) 
+    while(_sharedptr_keep_running->_keep_accepting.load()) 
     {
         fd_set readset;
         int nfds, ret_sel;
@@ -133,10 +133,10 @@ void thread_pair::reader_thread(int idx_thp)
         /*
         std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
 
-        auto shpt_pids = _sharedptr_pids;
+        auto shpt_keep_running = _sharedptr_keep_running;
         // wait for up to 10 seconds
         _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
-              [&shpt_pids]() { return !shpt_pids->_keep_accepting.load(); });
+              [&shpt_keep_running]() { return !shpt_keep_running->_keep_accepting.load(); });
         */
 
         //sleep(1);
@@ -230,15 +230,15 @@ void thread_pair::writer_thread(int idx_thp)
 
     LOG_DEBUG << "writer_thread " << idx_thp;
 
-    while(_sharedptr_pids->_keep_working.load()==true) 
+    while(_sharedptr_keep_running->_keep_working.load()) 
     {
         /*
         std::unique_lock<std::mutex> lck(_shpt_sigsyn->_cv_mutex);
 
-        auto shpt_pids = _sharedptr_pids;
+        auto shpt_keep_running = _sharedptr_keep_running;
         // wait for up to 10 seconds
         _shpt_sigsyn->_cv.wait_for(lck, std::chrono::seconds(10),
-              [&shpt_pids]() { return !shpt_pids->_keep_working.load(); });
+              [&shpt_keep_running]() { return !shpt_keep_running->_keep_working.load(); });
         */
         //sleep(1);
         // STEP 1 - ReadFromQueue  (idx_con on message)

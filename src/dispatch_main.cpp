@@ -84,7 +84,7 @@ int main()
 
     // Object that perform fork for each functor on its vector. 
     auto checking_pids = make_shared<checker_pids>();
-    //std::shared_ptr<checker_pids> shared_pids(&checking_pids, [](checker_pids *){});
+    //std::shared_ptr<keep_running_flags> shared_pids(&checking_pids, [](checker_pids *){});
 
     // Config every dispatcher:
 
@@ -95,7 +95,7 @@ int main()
  
     for(auto &config : cfg.get_all_dispatch_info())
     {
-       v_dispatchers.emplace_back(config,checking_pids);
+       v_dispatchers.emplace_back(config,checking_pids->get_run_flags());
     }
 
     // Prepare for fork() and checking
@@ -106,13 +106,6 @@ int main()
 
     // Launching all dispatchers...     
     ret=checking_pids->operator()();
-
-    // _pids[0] has Dispatcher object with shared pointers that they are not called when gets out of scope.
-    // TO DO - Deep investigation must be done to discover why is not called destructors of IPC (shared_ptrs).
-    // We must ensure to to a clear...
-    
-    v_dispatchers.clear();
-    checking_pids->clear();
 
     LOG_DEBUG << "Ending process main " << ret;
 
