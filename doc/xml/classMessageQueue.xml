@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classMessageQueue" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>MessageQueue</compoundname>
+    <basecompoundref refid="classIpc" prot="public" virt="non-virtual">Ipc</basecompoundref>
+    <includes refid="ipclib_8h" local="no">ipclib.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0" prot="private" static="no" mutable="no">
+        <type>msqid_ds</type>
+        <definition>msqid_ds MessageQueue::_st</definition>
+        <argsstring></argsstring>
+        <name>_st</name>
+        <qualifiedname>MessageQueue::_st</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="199" column="14" bodyfile="src/ipclib.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MessageQueue::_size</definition>
+        <argsstring></argsstring>
+        <name>_size</name>
+        <qualifiedname>MessageQueue::_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="200" column="9" bodyfile="src/ipclib.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMessageQueue_1af553c98265b870662d63b92c53833191" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MessageQueue::get_stat</definition>
+        <argsstring>(int msgid)</argsstring>
+        <name>get_stat</name>
+        <qualifiedname>MessageQueue::get_stat</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>msgid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="202" column="9" bodyfile="src/ipclib.cpp" bodystart="246" bodyend="249"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMessageQueue_1aa1a5814c7a2e8c2ce6c6734ebd9f07ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::MessageQueue</definition>
+        <argsstring>(const key_t key, bool deleteOnExit)</argsstring>
+        <name>MessageQueue</name>
+        <qualifiedname>MessageQueue::MessageQueue</qualifiedname>
+        <param>
+          <type>const key_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteOnExit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(default IPC_PRIVATE) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deleteOnExit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= false (don&apos;t remove semaphore on destruction. true = remove it) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="211" column="5" bodyfile="src/ipclib.cpp" bodystart="320" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1aec2a8525f943a2233ec985007045d54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::MessageQueue</definition>
+        <argsstring>(int msgid)</argsstring>
+        <name>MessageQueue</name>
+        <qualifiedname>MessageQueue::MessageQueue</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>msgid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msgid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id for an existing <ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="218" column="5" bodyfile="src/ipclib.cpp" bodystart="251" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::MessageQueue</definition>
+        <argsstring>()=default</argsstring>
+        <name>MessageQueue</name>
+        <qualifiedname>MessageQueue::MessageQueue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="220" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1a38354d78361fca43ce02c475af48d7d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::MessageQueue</definition>
+        <argsstring>(MessageQueue const &amp;)=default</argsstring>
+        <name>MessageQueue</name>
+        <qualifiedname>MessageQueue::MessageQueue</qualifiedname>
+        <param>
+          <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="221" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1acbe61b138d12e33da964ab8835d232dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::MessageQueue</definition>
+        <argsstring>(MessageQueue &amp;&amp;)=default</argsstring>
+        <name>MessageQueue</name>
+        <qualifiedname>MessageQueue::MessageQueue</qualifiedname>
+        <param>
+          <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="222" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1a675784f3ac981d563574d554a3a43611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;</type>
+        <definition>MessageQueue &amp; MessageQueue::operator=</definition>
+        <argsstring>(MessageQueue const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>MessageQueue::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="223" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1ac153ec850c7213443916857d34a4cc06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;</type>
+        <definition>MessageQueue &amp; MessageQueue::operator=</definition>
+        <argsstring>(MessageQueue &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>MessageQueue::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="224" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1a3640a8a6140801f1e127a41e60c014dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageQueue::~MessageQueue</definition>
+        <argsstring>()</argsstring>
+        <name>~MessageQueue</name>
+        <qualifiedname>MessageQueue::~MessageQueue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="225" column="5" bodyfile="src/ipclib.cpp" bodystart="363" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1ac3138a4b8f10868f1df70519257fa45f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MessageQueue::send</definition>
+        <argsstring>(protomsg::st_protomsg *p_protomsg, std::string &amp;pdata)</argsstring>
+        <name>send</name>
+        <qualifiedname>MessageQueue::send</qualifiedname>
+        <param>
+          <type><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref> *</type>
+          <declname>p_protomsg</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>pdata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="228" column="9" bodyfile="src/ipclib.cpp" bodystart="269" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageQueue_1ae4afb1b560697ce2a0bd8a0b5bca8f21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MessageQueue::rcv</definition>
+        <argsstring>(protomsg::st_protomsg *p_protomsg, std::string &amp;pdata)</argsstring>
+        <name>rcv</name>
+        <qualifiedname>MessageQueue::rcv</qualifiedname>
+        <param>
+          <type><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref> *</type>
+          <declname>p_protomsg</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>pdata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="230" column="9" bodyfile="src/ipclib.cpp" bodystart="294" bodyend="318"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Message Queue IPC (<ref refid="ipclib_8h" kindref="compound">ipclib.h</ref>) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="1">
+        <label>MessageQueue</label>
+        <link refid="classMessageQueue"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="1">
+        <label>MessageQueue</label>
+        <link refid="classMessageQueue"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/ipclib.h" line="197" column="1" bodyfile="src/ipclib.h" bodystart="198" bodyend="232"/>
+    <listofallmembers>
+      <member refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_deleteOnExit</name></member>
+      <member refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_flags</name></member>
+      <member refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_id</name></member>
+      <member refid="classIpc_1a687f050130e1b7c74713385783bd0228" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_key</name></member>
+      <member refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_ok</name></member>
+      <member refid="classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_size</name></member>
+      <member refid="classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>_st</name></member>
+      <member refid="classIpc_1a97d909e0c622ac19431c874f187c505b" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>DisableDelete</name></member>
+      <member refid="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>EnableDelete</name></member>
+      <member refid="classMessageQueue_1af553c98265b870662d63b92c53833191" prot="private" virt="non-virtual"><scope>MessageQueue</scope><name>get_stat</name></member>
+      <member refid="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>getDeleteOnExit</name></member>
+      <member refid="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>getflags</name></member>
+      <member refid="classIpc_1a3e50666a681532a44ed32a283e8e2979" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>getid</name></member>
+      <member refid="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>getkey</name></member>
+      <member refid="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a65a9ce942eaca05e24af65e120f692ef" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a051dff23481be739a5825c03381ed578" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>Ipc</name></member>
+      <member refid="classMessageQueue_1aa1a5814c7a2e8c2ce6c6734ebd9f07ed" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>MessageQueue</name></member>
+      <member refid="classMessageQueue_1aec2a8525f943a2233ec985007045d54f" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>MessageQueue</name></member>
+      <member refid="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>MessageQueue</name></member>
+      <member refid="classMessageQueue_1a38354d78361fca43ce02c475af48d7d9" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>MessageQueue</name></member>
+      <member refid="classMessageQueue_1acbe61b138d12e33da964ab8835d232dc" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>MessageQueue</name></member>
+      <member refid="classIpc_1a526497b4e34b064f779f300d2d011310" prot="public" virt="virtual"><scope>MessageQueue</scope><name>operator bool</name></member>
+      <member refid="classMessageQueue_1a675784f3ac981d563574d554a3a43611" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>operator=</name></member>
+      <member refid="classMessageQueue_1ac153ec850c7213443916857d34a4cc06" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>operator=</name></member>
+      <member refid="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" prot="public" virt="non-virtual" ambiguityscope="Ipc::"><scope>MessageQueue</scope><name>operator=</name></member>
+      <member refid="classIpc_1af046c6367b03099fec0826db68a2298d" prot="public" virt="non-virtual" ambiguityscope="Ipc::"><scope>MessageQueue</scope><name>operator=</name></member>
+      <member refid="classMessageQueue_1ae4afb1b560697ce2a0bd8a0b5bca8f21" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>rcv</name></member>
+      <member refid="classMessageQueue_1ac3138a4b8f10868f1df70519257fa45f" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>send</name></member>
+      <member refid="classIpc_1a9f5e7d9248966affeff2533ebf17f060" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>setflags</name></member>
+      <member refid="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>setid</name></member>
+      <member refid="classIpc_1a042476ca5bce7de73d906b7413922586" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>setkey</name></member>
+      <member refid="classIpc_1aecac89b3a9bdec9833092579712e7cfe" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>setok</name></member>
+      <member refid="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" prot="public" virt="virtual"><scope>MessageQueue</scope><name>~Ipc</name></member>
+      <member refid="classMessageQueue_1a3640a8a6140801f1e127a41e60c014dd" prot="public" virt="non-virtual"><scope>MessageQueue</scope><name>~MessageQueue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

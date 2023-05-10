@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structconnection" xml:lang="en-US">
+<title>connection Struct Reference</title>
+<indexterm><primary>connection</primary></indexterm>
+<para>
+<computeroutput>#include &lt;connections.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link> {0}</para>
+</listitem>
+            <listitem><para>int <link linkend="_structconnection_1ae8b8ce14b8384cbff2724f003e23e856">nthread</link> {0}</para>
+</listitem>
+            <listitem><para>int <link linkend="_structconnection_1a425254df6cac48b837b9991b9df86c6f">status</link> {<link linkend="_connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c">st_free</link>}</para>
+</listitem>
+            <listitem><para>int <link linkend="_structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1">sd</link> {-1}</para>
+</listitem>
+            <listitem><para>sockaddr_in <link linkend="_structconnection_1ad9e7923a71fc9ed30f01d893f340bb33">sockaddr</link> {}</para>
+</listitem>
+            <listitem><para>time_t <link linkend="_structconnection_1aa8a98f765771cd8af05864e34838fc04">entry</link> {}</para>
+</listitem>
+            <listitem><para>time_t <link linkend="_structconnection_1ac578f0ac27bbd5879f0462fa2517d39c">last_op</link> {}</para>
+</listitem>
+            <listitem><para>long <link linkend="_structconnection_1a1d7e91ee2dab6b52781880669e9e38d6">num_ops</link> {0}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Connection struct. Keep sd, status, nthread, sockaddr_in, entry, last_op and num_ops. </para>
+<para>
+Definition at line <link linkend="_connections_8h_source_1l00017">17</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structconnection_1aa8a98f765771cd8af05864e34838fc04"/><section>
+    <title>entry</title>
+<indexterm><primary>entry</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>entry</secondary></indexterm>
+<para><computeroutput>time_t connection::entry {}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00023">23</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1ac578f0ac27bbd5879f0462fa2517d39c"/><section>
+    <title>last_op</title>
+<indexterm><primary>last_op</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>last_op</secondary></indexterm>
+<para><computeroutput>time_t connection::last_op {}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00024">24</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6"/><section>
+    <title>next_info</title>
+<indexterm><primary>next_info</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>next_info</secondary></indexterm>
+<para><computeroutput>int connection::next_info {0}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00018">18</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1ae8b8ce14b8384cbff2724f003e23e856"/><section>
+    <title>nthread</title>
+<indexterm><primary>nthread</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>nthread</secondary></indexterm>
+<para><computeroutput>int connection::nthread {0}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00019">19</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1a1d7e91ee2dab6b52781880669e9e38d6"/><section>
+    <title>num_ops</title>
+<indexterm><primary>num_ops</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>num_ops</secondary></indexterm>
+<para><computeroutput>long connection::num_ops {0}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00025">25</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1"/><section>
+    <title>sd</title>
+<indexterm><primary>sd</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>sd</secondary></indexterm>
+<para><computeroutput>int connection::sd {-1}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00021">21</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1ad9e7923a71fc9ed30f01d893f340bb33"/><section>
+    <title>sockaddr</title>
+<indexterm><primary>sockaddr</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>sockaddr</secondary></indexterm>
+<para><computeroutput>sockaddr_in connection::sockaddr {}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00022">22</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_structconnection_1a425254df6cac48b837b9991b9df86c6f"/><section>
+    <title>status</title>
+<indexterm><primary>status</primary><secondary>connection</secondary></indexterm>
+<indexterm><primary>connection</primary><secondary>status</secondary></indexterm>
+<para><computeroutput>int connection::status {<link linkend="_connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c">st_free</link>}</computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00020">20</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+src/<link linkend="_connections_8h">connections.h</link></section>
+</section>

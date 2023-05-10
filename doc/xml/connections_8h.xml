@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="connections_8h" kind="file" language="C++">
+    <compoundname>connections.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">netinet/in.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">algorithm</includes>
+    <includes refid="ipclib_8h" local="yes">ipclib.h</includes>
+    <includedby refid="connections_8cpp" local="yes">src/connections.cpp</includedby>
+    <includedby refid="dispatcher_8h" local="yes">src/dispatcher.h</includedby>
+    <includedby refid="thread__pair_8h" local="yes">src/thread_pair.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>protocol_msg.h</label>
+        <link refid="protocol__msg_8h"/>
+      </node>
+      <node id="8">
+        <label>algorithm</label>
+      </node>
+      <node id="16">
+        <label>errno.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="11">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="4">
+        <label>plog/Log.h</label>
+      </node>
+      <node id="12">
+        <label>stdio.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="15">
+        <label>string.h</label>
+      </node>
+      <node id="17">
+        <label>sys/ipc.h</label>
+      </node>
+      <node id="19">
+        <label>sys/msg.h</label>
+      </node>
+      <node id="20">
+        <label>sys/sem.h</label>
+      </node>
+      <node id="18">
+        <label>sys/shm.h</label>
+      </node>
+      <node id="5">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="14">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="13">
+        <label>sys/types.h</label>
+      </node>
+      <node id="21">
+        <label>sys/wait.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/connections.cpp</label>
+        <link refid="connections_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/dispatcher.cpp</label>
+        <link refid="dispatcher_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/thread_pair.cpp</label>
+        <link refid="thread__pair_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/thread_pair.h</label>
+        <link refid="thread__pair_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structconnection" prot="public">connection</innerclass>
+    <innerclass refid="classconnections" prot="public">connections</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int st_free</definition>
+        <argsstring></argsstring>
+        <name>st_free</name>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="11" column="15" bodyfile="src/connections.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="connections_8h_1a7cfb338d62be51e2990fb43cb27573a1" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int st_ready</definition>
+        <argsstring></argsstring>
+        <name>st_ready</name>
+        <initializer>{2}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="12" column="15" bodyfile="src/connections.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="connections_8h_1a841c1992874382f999f316fa8162c520" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int st_obsolete</definition>
+        <argsstring></argsstring>
+        <name>st_obsolete</name>
+        <initializer>{3}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="13" column="15" bodyfile="src/connections.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>CONNECTIONS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONNECTIONS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netinet/in.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ipclib_8h" kindref="compound">ipclib.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c" kindref="member">st_free</ref>{0};</highlight></codeline>
+<codeline lineno="12" refid="connections_8h_1a7cfb338d62be51e2990fb43cb27573a1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="connections_8h_1a7cfb338d62be51e2990fb43cb27573a1" kindref="member">st_ready</ref>{2};</highlight></codeline>
+<codeline lineno="13" refid="connections_8h_1a841c1992874382f999f316fa8162c520" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="connections_8h_1a841c1992874382f999f316fa8162c520" kindref="member">st_obsolete</ref>{3};</highlight></codeline>
+<codeline lineno="17" refid="structconnection" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structconnection" kindref="compound">connection</ref>{</highlight></codeline>
+<codeline lineno="18" refid="structconnection_1a392dff3ac59ae78e0cbe5880c150cda6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structconnection_1a392dff3ac59ae78e0cbe5880c150cda6" kindref="member">next_info</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Next<sp/>free<sp/>connection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structconnection_1ae8b8ce14b8384cbff2724f003e23e856" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structconnection_1ae8b8ce14b8384cbff2724f003e23e856" kindref="member">nthread</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>idx<sp/>of<sp/>thread<sp/>pair.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structconnection_1a425254df6cac48b837b9991b9df86c6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structconnection_1a425254df6cac48b837b9991b9df86c6f" kindref="member">status</ref>{<ref refid="connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c" kindref="member">st_free</ref>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>connection<sp/>status<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1" kindref="member">sd</ref>{-1};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Socket<sp/>descriptor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="structconnection_1ad9e7923a71fc9ed30f01d893f340bb33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sockaddr_in<sp/><ref refid="structconnection_1ad9e7923a71fc9ed30f01d893f340bb33" kindref="member">sockaddr</ref>{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IP:port<sp/>info</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structconnection_1aa8a98f765771cd8af05864e34838fc04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>time_t<sp/><ref refid="structconnection_1aa8a98f765771cd8af05864e34838fc04" kindref="member">entry</ref>{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>time<sp/>of<sp/>1st<sp/>operation<sp/>entry</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="structconnection_1ac578f0ac27bbd5879f0462fa2517d39c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>time_t<sp/><ref refid="structconnection_1ac578f0ac27bbd5879f0462fa2517d39c" kindref="member">last_op</ref>{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>time<sp/>of<sp/>last<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="structconnection_1a1d7e91ee2dab6b52781880669e9e38d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structconnection_1a1d7e91ee2dab6b52781880669e9e38d6" kindref="member">num_ops</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>processed<sp/>operations.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classconnections" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classconnections" kindref="compound">connections</ref>{</highlight></codeline>
+<codeline lineno="32" refid="classconnections_1aa422d2929a142e3b88a0035c10ea2799" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classconnections_1aa422d2929a142e3b88a0035c10ea2799" kindref="member">initialized</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Is<sp/>it<sp/>initialized?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classconnections_1a4ef1805523e87bc105015afcce456dc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a4ef1805523e87bc105015afcce456dc4" kindref="member">first_free</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>free<sp/>connection<sp/>entry.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classconnections_1a48e53d849d45c221c4bc1b4df8013a13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a48e53d849d45c221c4bc1b4df8013a13" kindref="member">nThreads</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>thread<sp/>pairs<sp/>running.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classconnections_1ab8405116666865cf960deb54b6beb2c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1ab8405116666865cf960deb54b6beb2c9" kindref="member">MaxConn</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Max<sp/>number<sp/>of<sp/>connections.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classconnections_1aec431699f4e5f15397d398150b97222b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structconnection" kindref="compound">connection</ref><sp/>*<ref refid="classconnections_1aec431699f4e5f15397d398150b97222b" kindref="member">current_connections</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>the<sp/>connection<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classconnections" kindref="compound">connections</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MaxConnections,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NumThreads);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Marks<sp/>a<sp/>connection<sp/>as<sp/>obsolete<sp/>(st_obsolete=3)<sp/>on<sp/>the<sp/>idx<sp/>position<sp/>of<sp/>the<sp/>connection<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classconnections_1abd2f1b462739513f2c23236fb28b08a8" kindref="member">mark_obsolete</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Marks<sp/>a<sp/>connection<sp/>as<sp/>free<sp/>(st_obsolete=3)<sp/>on<sp/>the<sp/>idx<sp/>position<sp/>of<sp/>the<sp/>connection<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a" kindref="member">delete_obsolete</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1aa8c930db3c4885c33de249f67c6f3ca6" kindref="member">clean_repeated_ip</ref>(sockaddr_in<sp/>*ppal,<sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;sem);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a94f933faea3ade69fc63ecd8647d5423" kindref="member">register_new_conn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nthread,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sd,<sp/>sockaddr_in<sp/>s_in,<sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;sem);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a7818be12aec98b6c015b038b667c568f" kindref="member">unregister_conn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx,<sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;sem);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1abad7f85b1ef27d0417c4571b905192b1" kindref="member">ending_operation</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx,<sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;sem,<sp/><ref refid="structconnection" kindref="compound">connection</ref><sp/>&amp;cur_conn);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c" kindref="member">check_obsolete</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx_con,<sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;sem);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classconnections_1a1d163bdeb5127186898ab71987ef6dc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classconnections_1a1d163bdeb5127186898ab71987ef6dc5" kindref="member">is_all_connections_done</ref>()<sp/>{<sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!std::any_of(&amp;(<ref refid="classconnections_1aec431699f4e5f15397d398150b97222b" kindref="member">current_connections</ref>[0]),&amp;(<ref refid="classconnections_1aec431699f4e5f15397d398150b97222b" kindref="member">current_connections</ref>[<ref refid="classconnections_1ab8405116666865cf960deb54b6beb2c9" kindref="member">MaxConn</ref>-1]),[](<ref refid="structconnection" kindref="compound">connection</ref><sp/>c){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>c.<ref refid="structconnection_1a425254df6cac48b837b9991b9df86c6f" kindref="member">status</ref>==<ref refid="connections_8h_1a7cfb338d62be51e2990fb43cb27573a1" kindref="member">st_ready</ref>;}<sp/>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/connections.h"/>
+  </compounddef>
+</doxygen>

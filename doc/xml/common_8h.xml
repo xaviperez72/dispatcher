@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="common_8h" kind="file" language="C++">
+    <compoundname>common.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="yes">plog/Log.h</includes>
+    <includedby refid="checker__pids_8h" local="yes">src/checker_pids.h</includedby>
+    <includedby refid="client__main_8cpp" local="yes">src/client_main.cpp</includedby>
+    <includedby refid="connections_8h" local="yes">src/connections.h</includedby>
+    <includedby refid="dispatch__cfg_8h" local="yes">src/dispatch_cfg.h</includedby>
+    <includedby refid="dispatch__main_8cpp" local="yes">src/dispatch_main.cpp</includedby>
+    <includedby refid="dispatcher_8h" local="yes">src/dispatcher.h</includedby>
+    <includedby refid="getcfgfile_8h" local="yes">src/getcfgfile.h</includedby>
+    <includedby refid="ipclib_8h" local="yes">src/ipclib.h</includedby>
+    <includedby refid="thread__pair_8h" local="yes">src/thread_pair.h</includedby>
+    <includedby refid="tuxcli__main_8cpp" local="yes">src/tuxcli_main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>plog/Log.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/checker_pids.cpp</label>
+        <link refid="checker__pids_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/checker_pids.h</label>
+        <link refid="checker__pids_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/client_main.cpp</label>
+        <link refid="client__main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/connections.cpp</label>
+        <link refid="connections_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/dispatch_cfg.cpp</label>
+        <link refid="dispatch__cfg_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/dispatch_cfg.h</label>
+        <link refid="dispatch__cfg_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/dispatcher.cpp</label>
+        <link refid="dispatcher_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/getcfgfile.cpp</label>
+        <link refid="getcfgfile_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/getcfgfile.h</label>
+        <link refid="getcfgfile_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/ipclib.cpp</label>
+        <link refid="ipclib_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/thread_pair.cpp</label>
+        <link refid="thread__pair_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/thread_pair.h</label>
+        <link refid="thread__pair_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/tuxcli_main.cpp</label>
+        <link refid="tuxcli__main_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="common_8h_1afb19b851dbcd1447c226a8a98c26979d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int loglevel</definition>
+        <argsstring></argsstring>
+        <name>loglevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/common.h" line="8" column="12" bodyfile="src/client_main.cpp" bodystart="6" bodyend="-1" declfile="src/common.h" declline="8" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>COMMON_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COMMON_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;plog/Log.h&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>LOGLEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="common_8h_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/common.h"/>
+  </compounddef>
+</doxygen>

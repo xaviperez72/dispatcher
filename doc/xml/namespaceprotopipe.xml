@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="namespaceprotopipe" kind="namespace" language="C++">
+    <compoundname>protopipe</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr char</type>
+        <definition>constexpr char protopipe::WEAKUP_PIPE[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>WEAKUP_PIPE</name>
+        <qualifiedname>protopipe::WEAKUP_PIPE</qualifiedname>
+        <initializer>={&apos;1&apos;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="6" column="27" bodyfile="src/protocol_msg.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr char</type>
+        <definition>constexpr char protopipe::ENDING_PIPE[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>ENDING_PIPE</name>
+        <qualifiedname>protopipe::ENDING_PIPE</qualifiedname>
+        <initializer>={&apos;2&apos;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="7" column="27" bodyfile="src/protocol_msg.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int protopipe::LEN_PIPEMSG</definition>
+        <argsstring></argsstring>
+        <name>LEN_PIPEMSG</name>
+        <qualifiedname>protopipe::LEN_PIPEMSG</qualifiedname>
+        <initializer>=1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="8" column="26" bodyfile="src/protocol_msg.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceprotopipe_1acdb2afef76b82453234a043e76cbf2a9" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>char protopipe::GETPIPEMSG[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>GETPIPEMSG</name>
+        <qualifiedname>protopipe::GETPIPEMSG</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="9" column="17" bodyfile="src/protocol_msg.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/protocol_msg.h" line="4" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classIpc" kind="class" language="C++" prot="public">
+    <compoundname>Ipc</compoundname>
+    <derivedcompoundref refid="classMessageQueue" prot="public" virt="non-virtual">MessageQueue</derivedcompoundref>
+    <derivedcompoundref refid="classSemaphore" prot="public" virt="non-virtual">Semaphore</derivedcompoundref>
+    <derivedcompoundref refid="classSharedMemory" prot="public" virt="non-virtual">SharedMemory</derivedcompoundref>
+    <includes refid="ipclib_8h" local="no">ipclib.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classIpc_1a687f050130e1b7c74713385783bd0228" prot="private" static="no" mutable="no">
+        <type>key_t</type>
+        <definition>key_t Ipc::_key</definition>
+        <argsstring></argsstring>
+        <name>_key</name>
+        <qualifiedname>Ipc::_key</qualifiedname>
+        <initializer>{IPC_PRIVATE}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="34" column="11" bodyfile="src/ipclib.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classIpc_1ab86fc30de66fe77ab899462638dd052f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Ipc::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <qualifiedname>Ipc::_id</qualifiedname>
+        <initializer>{-1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="35" column="5" bodyfile="src/ipclib.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Ipc::_deleteOnExit</definition>
+        <argsstring></argsstring>
+        <name>_deleteOnExit</name>
+        <qualifiedname>Ipc::_deleteOnExit</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="36" column="6" bodyfile="src/ipclib.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classIpc_1ad7ed294460891e9b1027f949d286eca7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Ipc::_flags</definition>
+        <argsstring></argsstring>
+        <name>_flags</name>
+        <qualifiedname>Ipc::_flags</qualifiedname>
+        <initializer>{0666}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="37" column="9" bodyfile="src/ipclib.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Ipc::_ok</definition>
+        <argsstring></argsstring>
+        <name>_ok</name>
+        <qualifiedname>Ipc::_ok</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="38" column="10" bodyfile="src/ipclib.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ipc::Ipc</definition>
+        <argsstring>()=default</argsstring>
+        <name>Ipc</name>
+        <qualifiedname>Ipc::Ipc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="41" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a65a9ce942eaca05e24af65e120f692ef" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Ipc::Ipc</definition>
+        <argsstring>(key_t key, bool deleteOnExit)</argsstring>
+        <name>Ipc</name>
+        <qualifiedname>Ipc::Ipc</qualifiedname>
+        <param>
+          <type>key_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteOnExit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classIpc" kindref="compound">Ipc</ref> Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(default key=IPC_PRIVATE) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deleteOnExit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= ( false = don&apos;t remove semaphore on destruction. true = remove it) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="48" column="14" bodyfile="src/ipclib.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a051dff23481be739a5825c03381ed578" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ipc::Ipc</definition>
+        <argsstring>(Ipc const &amp;)=default</argsstring>
+        <name>Ipc</name>
+        <qualifiedname>Ipc::Ipc</qualifiedname>
+        <param>
+          <type><ref refid="classIpc" kindref="compound">Ipc</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="49" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ipc::Ipc</definition>
+        <argsstring>(Ipc &amp;&amp;)=default</argsstring>
+        <name>Ipc</name>
+        <qualifiedname>Ipc::Ipc</qualifiedname>
+        <param>
+          <type><ref refid="classIpc" kindref="compound">Ipc</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="50" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classIpc" kindref="compound">Ipc</ref> &amp;</type>
+        <definition>Ipc &amp; Ipc::operator=</definition>
+        <argsstring>(Ipc const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Ipc::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classIpc" kindref="compound">Ipc</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="51" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1af046c6367b03099fec0826db68a2298d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classIpc" kindref="compound">Ipc</ref> &amp;</type>
+        <definition>Ipc &amp; Ipc::operator=</definition>
+        <argsstring>(Ipc &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Ipc::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classIpc" kindref="compound">Ipc</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="52" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Ipc::~Ipc</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Ipc</name>
+        <qualifiedname>Ipc::~Ipc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="53" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::EnableDelete</definition>
+        <argsstring>()</argsstring>
+        <name>EnableDelete</name>
+        <qualifiedname>Ipc::EnableDelete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="56" column="10" bodyfile="src/ipclib.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a97d909e0c622ac19431c874f187c505b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::DisableDelete</definition>
+        <argsstring>()</argsstring>
+        <name>DisableDelete</name>
+        <qualifiedname>Ipc::DisableDelete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="59" column="10" bodyfile="src/ipclib.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>key_t</type>
+        <definition>key_t Ipc::getkey</definition>
+        <argsstring>() const</argsstring>
+        <name>getkey</name>
+        <qualifiedname>Ipc::getkey</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="62" column="11" bodyfile="src/ipclib.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a3e50666a681532a44ed32a283e8e2979" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Ipc::getid</definition>
+        <argsstring>() const</argsstring>
+        <name>getid</name>
+        <qualifiedname>Ipc::getid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="65" column="9" bodyfile="src/ipclib.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Ipc::getflags</definition>
+        <argsstring>() const</argsstring>
+        <name>getflags</name>
+        <qualifiedname>Ipc::getflags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="68" column="9" bodyfile="src/ipclib.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>key_t</type>
+        <definition>key_t Ipc::getDeleteOnExit</definition>
+        <argsstring>() const</argsstring>
+        <name>getDeleteOnExit</name>
+        <qualifiedname>Ipc::getDeleteOnExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="71" column="11" bodyfile="src/ipclib.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a042476ca5bce7de73d906b7413922586" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::setkey</definition>
+        <argsstring>(key_t key)</argsstring>
+        <name>setkey</name>
+        <qualifiedname>Ipc::setkey</qualifiedname>
+        <param>
+          <type>key_t</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="74" column="10" bodyfile="src/ipclib.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::setid</definition>
+        <argsstring>(int id)</argsstring>
+        <name>setid</name>
+        <qualifiedname>Ipc::setid</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="77" column="10" bodyfile="src/ipclib.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1aecac89b3a9bdec9833092579712e7cfe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::setok</definition>
+        <argsstring>(bool ok)</argsstring>
+        <name>setok</name>
+        <qualifiedname>Ipc::setok</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>ok</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="80" column="10" bodyfile="src/ipclib.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a9f5e7d9248966affeff2533ebf17f060" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ipc::setflags</definition>
+        <argsstring>(int flags)</argsstring>
+        <name>setflags</name>
+        <qualifiedname>Ipc::setflags</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="83" column="10" bodyfile="src/ipclib.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classIpc_1a526497b4e34b064f779f300d2d011310" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Ipc::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Ipc::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="86" column="13" bodyfile="src/ipclib.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Common IPC object (<ref refid="ipclib_8h" kindref="compound">ipclib.h</ref>) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="2">
+        <label>MessageQueue</label>
+        <link refid="classMessageQueue"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Semaphore</label>
+        <link refid="classSemaphore"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SharedMemory</label>
+        <link refid="classSharedMemory"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/ipclib.h" line="32" column="1" bodyfile="src/ipclib.h" bodystart="33" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" prot="private" virt="non-virtual"><scope>Ipc</scope><name>_deleteOnExit</name></member>
+      <member refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" prot="private" virt="non-virtual"><scope>Ipc</scope><name>_flags</name></member>
+      <member refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" prot="private" virt="non-virtual"><scope>Ipc</scope><name>_id</name></member>
+      <member refid="classIpc_1a687f050130e1b7c74713385783bd0228" prot="private" virt="non-virtual"><scope>Ipc</scope><name>_key</name></member>
+      <member refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" prot="private" virt="non-virtual"><scope>Ipc</scope><name>_ok</name></member>
+      <member refid="classIpc_1a97d909e0c622ac19431c874f187c505b" prot="public" virt="non-virtual"><scope>Ipc</scope><name>DisableDelete</name></member>
+      <member refid="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" prot="public" virt="non-virtual"><scope>Ipc</scope><name>EnableDelete</name></member>
+      <member refid="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" prot="public" virt="non-virtual"><scope>Ipc</scope><name>getDeleteOnExit</name></member>
+      <member refid="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" prot="public" virt="non-virtual"><scope>Ipc</scope><name>getflags</name></member>
+      <member refid="classIpc_1a3e50666a681532a44ed32a283e8e2979" prot="public" virt="non-virtual"><scope>Ipc</scope><name>getid</name></member>
+      <member refid="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" prot="public" virt="non-virtual"><scope>Ipc</scope><name>getkey</name></member>
+      <member refid="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" prot="public" virt="non-virtual"><scope>Ipc</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a65a9ce942eaca05e24af65e120f692ef" prot="public" virt="non-virtual"><scope>Ipc</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a051dff23481be739a5825c03381ed578" prot="public" virt="non-virtual"><scope>Ipc</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" prot="public" virt="non-virtual"><scope>Ipc</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a526497b4e34b064f779f300d2d011310" prot="public" virt="virtual"><scope>Ipc</scope><name>operator bool</name></member>
+      <member refid="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" prot="public" virt="non-virtual"><scope>Ipc</scope><name>operator=</name></member>
+      <member refid="classIpc_1af046c6367b03099fec0826db68a2298d" prot="public" virt="non-virtual"><scope>Ipc</scope><name>operator=</name></member>
+      <member refid="classIpc_1a9f5e7d9248966affeff2533ebf17f060" prot="public" virt="non-virtual"><scope>Ipc</scope><name>setflags</name></member>
+      <member refid="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" prot="public" virt="non-virtual"><scope>Ipc</scope><name>setid</name></member>
+      <member refid="classIpc_1a042476ca5bce7de73d906b7413922586" prot="public" virt="non-virtual"><scope>Ipc</scope><name>setkey</name></member>
+      <member refid="classIpc_1aecac89b3a9bdec9833092579712e7cfe" prot="public" virt="non-virtual"><scope>Ipc</scope><name>setok</name></member>
+      <member refid="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" prot="public" virt="virtual"><scope>Ipc</scope><name>~Ipc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

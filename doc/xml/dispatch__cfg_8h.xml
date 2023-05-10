@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="dispatch__cfg_8h" kind="file" language="C++">
+    <compoundname>dispatch_cfg.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">json/json.h</includes>
+    <includes local="no">json/value.h</includes>
+    <includedby refid="dispatch__cfg_8cpp" local="yes">src/dispatch_cfg.cpp</includedby>
+    <includedby refid="dispatch__main_8cpp" local="yes">src/dispatch_main.cpp</includedby>
+    <includedby refid="dispatcher_8h" local="yes">src/dispatcher.h</includedby>
+    <includedby refid="tuxcli__main_8cpp" local="yes">src/tuxcli_main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/dispatch_cfg.h</label>
+        <link refid="dispatch__cfg_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>json/json.h</label>
+      </node>
+      <node id="7">
+        <label>json/value.h</label>
+      </node>
+      <node id="4">
+        <label>plog/Log.h</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/dispatch_cfg.cpp</label>
+        <link refid="dispatch__cfg_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/dispatch_cfg.h</label>
+        <link refid="dispatch__cfg_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/dispatcher.cpp</label>
+        <link refid="dispatcher_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/tuxcli_main.cpp</label>
+        <link refid="tuxcli__main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structdispatch__cfg" prot="public">dispatch_cfg</innerclass>
+    <innerclass refid="classall__dispatch__cfg" prot="public">all_dispatch_cfg</innerclass>
+    <innernamespace refid="namespacestd_1_1string__literals">std::string_literals</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dispatch__cfg_8h_1ab8896f36952d9a28d2768738bde32cca" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_IP</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_IP</name>
+        <initializer>= &quot;127.0.0.1&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="10" column="12" bodyfile="src/dispatch_cfg.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1ac9658aed853e1af75285506d7046124d" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_PORT</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_PORT</name>
+        <initializer>= 9000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="11" column="12" bodyfile="src/dispatch_cfg.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1ac378a7cd42df8dca4a7b0481755da598" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_NUMTHREADS</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_NUMTHREADS</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="12" column="12" bodyfile="src/dispatch_cfg.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a9f974a874bb95a44f1a9c6115be5f184" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_TUXCLIPROG</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_TUXCLIPROG</name>
+        <initializer>= &quot;/TuxCliProg&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="13" column="12" bodyfile="src/dispatch_cfg.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a58f06dd5eabdaf53211d08398d44bbed" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_TUXCLISETUP</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_TUXCLISETUP</name>
+        <initializer>= &quot;/TuxCliSetup&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="14" column="12" bodyfile="src/dispatch_cfg.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1acb49fc360f501ffff3281abe6706ca0f" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_MAXCONN</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_MAXCONN</name>
+        <initializer>= 1500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="15" column="12" bodyfile="src/dispatch_cfg.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a0e75596069cf93f9128ae0f085240c5c" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_STOPTIMEOUT</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_STOPTIMEOUT</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="16" column="12" bodyfile="src/dispatch_cfg.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a6c39097944ea16cb9fdb06ac3a6bd991" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const DEFAULT_IPCFILE</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_IPCFILE</name>
+        <initializer>= &quot;/ipcfile_&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="17" column="12" bodyfile="src/dispatch_cfg.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a78b1f1b0287e42f795966734ad94ad90" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_NOTE</definition>
+        <argsstring></argsstring>
+        <name>FIELD_NOTE</name>
+        <initializer>= &quot;1_Note&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="19" column="12" bodyfile="src/dispatch_cfg.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a9c8e880c30c0ac74f885886a182d6a46" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_VERSION</definition>
+        <argsstring></argsstring>
+        <name>FIELD_VERSION</name>
+        <initializer>= &quot;1_Version&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="20" column="12" bodyfile="src/dispatch_cfg.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a93651f1f2383dd22cb5ef16648936b9b" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_NUMDISPATCHERS</definition>
+        <argsstring></argsstring>
+        <name>FIELD_NUMDISPATCHERS</name>
+        <initializer>= &quot;2_NumDispatchers&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="21" column="12" bodyfile="src/dispatch_cfg.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1aae0421734ae2563add92370a27da94b7" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_IP</definition>
+        <argsstring></argsstring>
+        <name>FIELD_IP</name>
+        <initializer>= &quot;IP&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="22" column="12" bodyfile="src/dispatch_cfg.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a09518cacb2ba79ce9069c6f72364c54c" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_PORT</definition>
+        <argsstring></argsstring>
+        <name>FIELD_PORT</name>
+        <initializer>= &quot;Port&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="23" column="12" bodyfile="src/dispatch_cfg.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a4f86f4b170059cd34784d20488d7b6d2" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_NUMTHREADS</definition>
+        <argsstring></argsstring>
+        <name>FIELD_NUMTHREADS</name>
+        <initializer>= &quot;NumThreads&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="24" column="12" bodyfile="src/dispatch_cfg.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a5028d36bcf2fbacfde229572d2bbe6a5" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_TUXCLIPROG</definition>
+        <argsstring></argsstring>
+        <name>FIELD_TUXCLIPROG</name>
+        <initializer>= &quot;TuxCliProg&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="25" column="12" bodyfile="src/dispatch_cfg.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1ad28874272a0ef2432acb84ddc50587bc" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_TUXCLISETUP</definition>
+        <argsstring></argsstring>
+        <name>FIELD_TUXCLISETUP</name>
+        <initializer>= &quot;TuxCliSetup&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="26" column="12" bodyfile="src/dispatch_cfg.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1af2ad0370e820b513045b182c51bb4301" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_LOGLEVEL</definition>
+        <argsstring></argsstring>
+        <name>FIELD_LOGLEVEL</name>
+        <initializer>= &quot;LogLevel&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="27" column="12" bodyfile="src/dispatch_cfg.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1a3cea144ec5bbaf5a6fba9973912d3137" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_MAXCONN</definition>
+        <argsstring></argsstring>
+        <name>FIELD_MAXCONN</name>
+        <initializer>= &quot;MaxConnections&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="28" column="12" bodyfile="src/dispatch_cfg.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1adc3eeedbb043cce76f509644dc17bce9" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_STOPTIMEOUT</definition>
+        <argsstring></argsstring>
+        <name>FIELD_STOPTIMEOUT</name>
+        <initializer>= &quot;StopTimeout&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="29" column="12" bodyfile="src/dispatch_cfg.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1aa5e59b0a8fa4e7c944ba5ae490e33798" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const FIELD_IPCFILE</definition>
+        <argsstring></argsstring>
+        <name>FIELD_IPCFILE</name>
+        <initializer>= &quot;IpcFile&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="30" column="12" bodyfile="src/dispatch_cfg.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__cfg_8h_1ae84e712302e675b44e9975ef130a94ba" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int CFGFILE_VERSION</definition>
+        <argsstring></argsstring>
+        <name>CFGFILE_VERSION</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="32" column="22" bodyfile="src/dispatch_cfg.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>DISPATCH_CFG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DISPATCH_CFG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/json.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/value.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="10" refid="dispatch__cfg_8h_1ab8896f36952d9a28d2768738bde32cca" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1ab8896f36952d9a28d2768738bde32cca" kindref="member">DEFAULT_IP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;127.0.0.1&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="11" refid="dispatch__cfg_8h_1ac9658aed853e1af75285506d7046124d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1ac9658aed853e1af75285506d7046124d" kindref="member">DEFAULT_PORT</ref><sp/>=<sp/>9000;<sp/></highlight></codeline>
+<codeline lineno="12" refid="dispatch__cfg_8h_1ac378a7cd42df8dca4a7b0481755da598" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1ac378a7cd42df8dca4a7b0481755da598" kindref="member">DEFAULT_NUMTHREADS</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="13" refid="dispatch__cfg_8h_1a9f974a874bb95a44f1a9c6115be5f184" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a9f974a874bb95a44f1a9c6115be5f184" kindref="member">DEFAULT_TUXCLIPROG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/TuxCliProg&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="14" refid="dispatch__cfg_8h_1a58f06dd5eabdaf53211d08398d44bbed" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a58f06dd5eabdaf53211d08398d44bbed" kindref="member">DEFAULT_TUXCLISETUP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/TuxCliSetup&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="15" refid="dispatch__cfg_8h_1acb49fc360f501ffff3281abe6706ca0f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1acb49fc360f501ffff3281abe6706ca0f" kindref="member">DEFAULT_MAXCONN</ref><sp/>=<sp/>1500;</highlight></codeline>
+<codeline lineno="16" refid="dispatch__cfg_8h_1a0e75596069cf93f9128ae0f085240c5c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a0e75596069cf93f9128ae0f085240c5c" kindref="member">DEFAULT_STOPTIMEOUT</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="17" refid="dispatch__cfg_8h_1a6c39097944ea16cb9fdb06ac3a6bd991" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a6c39097944ea16cb9fdb06ac3a6bd991" kindref="member">DEFAULT_IPCFILE</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/ipcfile_&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="dispatch__cfg_8h_1a78b1f1b0287e42f795966734ad94ad90" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a78b1f1b0287e42f795966734ad94ad90" kindref="member">FIELD_NOTE</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1_Note&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="20" refid="dispatch__cfg_8h_1a9c8e880c30c0ac74f885886a182d6a46" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a9c8e880c30c0ac74f885886a182d6a46" kindref="member">FIELD_VERSION</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1_Version&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="21" refid="dispatch__cfg_8h_1a93651f1f2383dd22cb5ef16648936b9b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a93651f1f2383dd22cb5ef16648936b9b" kindref="member">FIELD_NUMDISPATCHERS</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;2_NumDispatchers&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="22" refid="dispatch__cfg_8h_1aae0421734ae2563add92370a27da94b7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1aae0421734ae2563add92370a27da94b7" kindref="member">FIELD_IP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;IP&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="23" refid="dispatch__cfg_8h_1a09518cacb2ba79ce9069c6f72364c54c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a09518cacb2ba79ce9069c6f72364c54c" kindref="member">FIELD_PORT</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Port&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="24" refid="dispatch__cfg_8h_1a4f86f4b170059cd34784d20488d7b6d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a4f86f4b170059cd34784d20488d7b6d2" kindref="member">FIELD_NUMTHREADS</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NumThreads&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="25" refid="dispatch__cfg_8h_1a5028d36bcf2fbacfde229572d2bbe6a5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a5028d36bcf2fbacfde229572d2bbe6a5" kindref="member">FIELD_TUXCLIPROG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;TuxCliProg&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="26" refid="dispatch__cfg_8h_1ad28874272a0ef2432acb84ddc50587bc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1ad28874272a0ef2432acb84ddc50587bc" kindref="member">FIELD_TUXCLISETUP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;TuxCliSetup&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="27" refid="dispatch__cfg_8h_1af2ad0370e820b513045b182c51bb4301" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1af2ad0370e820b513045b182c51bb4301" kindref="member">FIELD_LOGLEVEL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;LogLevel&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="28" refid="dispatch__cfg_8h_1a3cea144ec5bbaf5a6fba9973912d3137" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1a3cea144ec5bbaf5a6fba9973912d3137" kindref="member">FIELD_MAXCONN</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MaxConnections&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="29" refid="dispatch__cfg_8h_1adc3eeedbb043cce76f509644dc17bce9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1adc3eeedbb043cce76f509644dc17bce9" kindref="member">FIELD_STOPTIMEOUT</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;StopTimeout&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="30" refid="dispatch__cfg_8h_1aa5e59b0a8fa4e7c944ba5ae490e33798" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1aa5e59b0a8fa4e7c944ba5ae490e33798" kindref="member">FIELD_IPCFILE</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;IpcFile&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="dispatch__cfg_8h_1ae84e712302e675b44e9975ef130a94ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dispatch__cfg_8h_1ae84e712302e675b44e9975ef130a94ba" kindref="member">CFGFILE_VERSION</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="structdispatch__cfg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdispatch__cfg" kindref="compound">dispatch_cfg</ref><sp/>{</highlight></codeline>
+<codeline lineno="38" refid="structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9" kindref="member">NumDispatch</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>dispatcher</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b" kindref="member">IP</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IP<sp/>of<sp/>dispatcher</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290" kindref="member">Port</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Port<sp/>of<sp/>dispatcher</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6" kindref="member">NumThreads</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>threads<sp/>pair<sp/>to<sp/>run<sp/>concurrently</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363" kindref="member">TuxCliProg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Transactional<sp/>Client<sp/>program.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1" kindref="member">TuxCliSetup</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Transactional<sp/>Client<sp/>configuration<sp/>file.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structdispatch__cfg_1a8816dc25bc691cbd08bbddb9a7e347d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1a8816dc25bc691cbd08bbddb9a7e347d6" kindref="member">LogLevel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Level<sp/>of<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695" kindref="member">MaxConnections</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>max<sp/>connections.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structdispatch__cfg_1a16887cd031dc9815a532678e0f3dd4b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg_1a16887cd031dc9815a532678e0f3dd4b5" kindref="member">StopTimeout</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>until<sp/>there<sp/>are<sp/>no<sp/>st_ready<sp/>running<sp/>on<sp/>connection<sp/>array.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c" kindref="member">IpcFile</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IPC<sp/>file<sp/>path<sp/>for<sp/>this<sp/>dispatcher.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structdispatch__cfg_1acc338390f450453695da956cda280157" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="structdispatch__cfg_1acc338390f450453695da956cda280157" kindref="member">operator&lt;&lt;</ref>(<sp/>std::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structdispatch__cfg" kindref="compound">dispatch_cfg</ref>&amp;<sp/>v<sp/>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9" kindref="member">NumDispatch</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b" kindref="member">IP</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290" kindref="member">Port</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6" kindref="member">NumThreads</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363" kindref="member">TuxCliProg</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v.<ref refid="structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1" kindref="member">TuxCliSetup</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1a8816dc25bc691cbd08bbddb9a7e347d6" kindref="member">LogLevel</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695" kindref="member">MaxConnections</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1a16887cd031dc9815a532678e0f3dd4b5" kindref="member">StopTimeout</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c" kindref="member">IpcFile</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classall__dispatch__cfg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/>final</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62" refid="classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Json::Value<sp/><ref refid="classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f" kindref="member">_m_json</ref>;</highlight></codeline>
+<codeline lineno="63" refid="classall__dispatch__cfg_1a89a062ab90a459456c78a36eccf048f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a89a062ab90a459456c78a36eccf048f8" kindref="member">NumDispatchers</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>Dispatchers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classall__dispatch__cfg_1a84709c1960ff66d7e3abdaf3b960ee64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;dispatch_cfg&gt;<sp/><ref refid="classall__dispatch__cfg_1a84709c1960ff66d7e3abdaf3b960ee64" kindref="member">dispatchers_cfg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vector<sp/>of<sp/>all<sp/>configuration<sp/>dispatcher</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classall__dispatch__cfg_1aa8573e903e001b80d3056856a8656b74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1aa8573e903e001b80d3056856a8656b74" kindref="member">loaded</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true=loaded<sp/>false=not<sp/>loaded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1a6c396082d3d091ffcaf17d13b408acd5" kindref="member">getNumDispatchers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classall__dispatch__cfg_1a8e640b60b9b882c88fcd5ff5c8b514ee" kindref="member">getDispatcherXX_IP</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1adea1daf1bde449c40f93a11ad38297be" kindref="member">getDispatcherXX_Port</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1a1378ca64565176db1546847972a0b4c1" kindref="member">getDispatcherXX_NumThreads</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classall__dispatch__cfg_1aa1ed0af52a95019527159b09a42a16b2" kindref="member">getDispatcherXX_TuxCliProg</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classall__dispatch__cfg_1af189902c9c223a698b64ee34bdc53a1c" kindref="member">getDispatcherXX_TuxCliSetup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1ad1c57b8c24055cc6c0372c358f16745e" kindref="member">getDispatcherXX_LogLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1a7a3abf92793526b5e0c053e864f881e0" kindref="member">getDispatcherXX_MaxConnections</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1a692f455b0d88f54bb1ac7a8bb357cd6e" kindref="member">getDispatcherXX_StopTimeout</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classall__dispatch__cfg_1ab1bca3e1fccdd0cbc6690519ac8d6e6f" kindref="member">getDispatcherXX_IpcFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>dispatchXX)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="78" refid="classall__dispatch__cfg_1a16e6364aa0fa9d5d23fc52be30da60ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1a16e6364aa0fa9d5d23fc52be30da60ce" kindref="member">all_dispatch_cfg</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79" refid="classall__dispatch__cfg_1a017e64078a6712b61c6b0c50cec5ddc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a017e64078a6712b61c6b0c50cec5ddc4" kindref="member">all_dispatch_cfg</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Json::Value<sp/>json):<ref refid="classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f" kindref="member">_m_json</ref>{json}{<sp/><ref refid="classall__dispatch__cfg_1a35d710c743e646189b71a791e86486af" kindref="member">load_all_info</ref>();}</highlight></codeline>
+<codeline lineno="80" refid="classall__dispatch__cfg_1ae5284643bf0ad317931d661dd93b31e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1ae5284643bf0ad317931d661dd93b31e7" kindref="member">all_dispatch_cfg</ref>(<ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81" refid="classall__dispatch__cfg_1acf71d6203f95908c2f95389050df18b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1acf71d6203f95908c2f95389050df18b4" kindref="member">all_dispatch_cfg</ref>(<ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82" refid="classall__dispatch__cfg_1ad895e6693fbefef79dcce890cd22193c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref>&amp;<sp/><ref refid="classall__dispatch__cfg_1ad895e6693fbefef79dcce890cd22193c" kindref="member">operator=</ref>(<ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83" refid="classall__dispatch__cfg_1a85bd12ac6a103ca769c0306565040772" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref>&amp;<sp/><ref refid="classall__dispatch__cfg_1a85bd12ac6a103ca769c0306565040772" kindref="member">operator=</ref>(<ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84" refid="classall__dispatch__cfg_1ae29529884cf6da8f8e6ecdbb9cbc59b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg_1ae29529884cf6da8f8e6ecdbb9cbc59b6" kindref="member">~all_dispatch_cfg</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>all<sp/>json<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classall__dispatch__cfg_1a2eea05bea87d84a1b4547ab09ef1b101" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Json::Value<sp/>&amp;<ref refid="classall__dispatch__cfg_1a2eea05bea87d84a1b4547ab09ef1b101" kindref="member">get_json</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f" kindref="member">_m_json</ref>;}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>all<sp/>configuration<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a35d710c743e646189b71a791e86486af" kindref="member">load_all_info</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creates<sp/>a<sp/>default<sp/>dispatcher<sp/>configuration<sp/>file<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1af268e755413b6d473f766d54142195d9" kindref="member">create_cfg_values</ref>(std::string<sp/>file_dir);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>true<sp/>if<sp/>configuration<sp/>file<sp/>is<sp/>correctly<sp/>loaded,<sp/>false<sp/>otherwise.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classall__dispatch__cfg_1a92cd7124adf2bcec95be4aa2372b2e8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1aa8573e903e001b80d3056856a8656b74" kindref="member">loaded</ref><sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>all<sp/>configuration<sp/>file<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1ab44dfa948eee0327345cb1cd0b1ea514" kindref="member">show_all_config</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>number<sp/>of<sp/>dispatchers<sp/>loaded<sp/>on<sp/>configuration<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classall__dispatch__cfg_1a9f4905b32052e78277bf7ddfddd81115" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a9f4905b32052e78277bf7ddfddd81115" kindref="member">get_num_dispatchers</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a89a062ab90a459456c78a36eccf048f8" kindref="member">NumDispatchers</ref>;}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>dispatch_cfg<sp/>struct<sp/>vector.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classall__dispatch__cfg_1a027da4c0819cbc7b6301423ae2e99a17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;dispatch_cfg&gt;<sp/>&amp;<ref refid="classall__dispatch__cfg_1a027da4c0819cbc7b6301423ae2e99a17" kindref="member">get_all_dispatch_info</ref>(){<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classall__dispatch__cfg_1a84709c1960ff66d7e3abdaf3b960ee64" kindref="member">dispatchers_cfg</ref>;}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/dispatch_cfg.h"/>
+  </compounddef>
+</doxygen>

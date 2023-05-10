@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="ipclib_8h" kind="file" language="C++">
+    <compoundname>ipclib.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="protocol__msg_8h" local="yes">protocol_msg.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">sys/ipc.h</includes>
+    <includes local="no">sys/shm.h</includes>
+    <includes local="no">sys/msg.h</includes>
+    <includes local="no">sys/sem.h</includes>
+    <includes local="no">sys/wait.h</includes>
+    <includedby refid="connections_8h" local="yes">src/connections.h</includedby>
+    <includedby refid="dispatch__main_8cpp" local="yes">src/dispatch_main.cpp</includedby>
+    <includedby refid="dispatcher_8h" local="yes">src/dispatcher.h</includedby>
+    <includedby refid="ipclib_8cpp" local="yes">src/ipclib.cpp</includedby>
+    <includedby refid="thread__pair_8h" local="yes">src/thread_pair.h</includedby>
+    <includedby refid="tuxcli__main_8cpp" local="yes">src/tuxcli_main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol_msg.h</label>
+        <link refid="protocol__msg_8h"/>
+      </node>
+      <node id="12">
+        <label>errno.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="4">
+        <label>plog/Log.h</label>
+      </node>
+      <node id="8">
+        <label>stdio.h</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>string.h</label>
+      </node>
+      <node id="13">
+        <label>sys/ipc.h</label>
+      </node>
+      <node id="15">
+        <label>sys/msg.h</label>
+      </node>
+      <node id="16">
+        <label>sys/sem.h</label>
+      </node>
+      <node id="14">
+        <label>sys/shm.h</label>
+      </node>
+      <node id="10">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="9">
+        <label>sys/types.h</label>
+      </node>
+      <node id="17">
+        <label>sys/wait.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/connections.cpp</label>
+        <link refid="connections_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/dispatcher.cpp</label>
+        <link refid="dispatcher_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/ipclib.cpp</label>
+        <link refid="ipclib_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/thread_pair.cpp</label>
+        <link refid="thread__pair_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/thread_pair.h</label>
+        <link refid="thread__pair_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/tuxcli_main.cpp</label>
+        <link refid="tuxcli__main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classIpc" prot="public">Ipc</innerclass>
+    <innerclass refid="unionsemun" prot="public">semun</innerclass>
+    <innerclass refid="classSemaphore" prot="public">Semaphore</innerclass>
+    <innerclass refid="classSharedMemory" prot="public">SharedMemory</innerclass>
+    <innerclass refid="classMessageQueue" prot="public">MessageQueue</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>IPCLIB_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IPCLIB_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="protocol__msg_8h" kindref="compound">protocol_msg.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ipc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/shm.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/msg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/sem.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/wait.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classIpc" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34" refid="classIpc_1a687f050130e1b7c74713385783bd0228" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>key_t<sp/><ref refid="classIpc_1a687f050130e1b7c74713385783bd0228" kindref="member">_key</ref>{IPC_PRIVATE};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Key<sp/>used<sp/>to<sp/>connect/create.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" kindref="member">_id</ref>{-1};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" kindref="member">_deleteOnExit</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flag<sp/>to<sp/>delete<sp/>on<sp/>exit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" kindref="member">_flags</ref>{0666};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flags<sp/>on<sp/>connect/create</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" kindref="member">_ok</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flag<sp/>true=operative<sp/>Ipc,<sp/>false=no<sp/>operative<sp/>Ipc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41" refid="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" kindref="member">Ipc</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48" refid="classIpc_1a65a9ce942eaca05e24af65e120f692ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a65a9ce942eaca05e24af65e120f692ef" kindref="member">Ipc</ref>(key_t<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deleteOnExit):<ref refid="classIpc_1a687f050130e1b7c74713385783bd0228" kindref="member">_key</ref>{key},<ref refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" kindref="member">_deleteOnExit</ref>{deleteOnExit}{}</highlight></codeline>
+<codeline lineno="49" refid="classIpc_1a051dff23481be739a5825c03381ed578" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIpc_1a051dff23481be739a5825c03381ed578" kindref="member">Ipc</ref>(<ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50" refid="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" kindref="member">Ipc</ref>(<ref refid="classIpc" kindref="compound">Ipc</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51" refid="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIpc" kindref="compound">Ipc</ref>&amp;<sp/><ref refid="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" kindref="member">operator=</ref>(<ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52" refid="classIpc_1af046c6367b03099fec0826db68a2298d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIpc" kindref="compound">Ipc</ref>&amp;<sp/><ref refid="classIpc_1af046c6367b03099fec0826db68a2298d" kindref="member">operator=</ref>(<ref refid="classIpc" kindref="compound">Ipc</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53" refid="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" kindref="member">~Ipc</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>delete<sp/>IPC<sp/>on<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" kindref="member">EnableDelete</ref>()<sp/>{<sp/><sp/><sp/><ref refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" kindref="member">_deleteOnExit</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>delete<sp/>IPC<sp/>on<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classIpc_1a97d909e0c622ac19431c874f187c505b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a97d909e0c622ac19431c874f187c505b" kindref="member">DisableDelete</ref>()<sp/>{<sp/><sp/><ref refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" kindref="member">_deleteOnExit</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>key<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>key_t<sp/><ref refid="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" kindref="member">getkey</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a687f050130e1b7c74713385783bd0228" kindref="member">_key</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classIpc_1a3e50666a681532a44ed32a283e8e2979" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a3e50666a681532a44ed32a283e8e2979" kindref="member">getid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" kindref="member">_id</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>flgas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" kindref="member">getflags</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" kindref="member">_flags</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>deleteOnExit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>key_t<sp/><ref refid="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" kindref="member">getDeleteOnExit</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" kindref="member">_deleteOnExit</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>key<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classIpc_1a042476ca5bce7de73d906b7413922586" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a042476ca5bce7de73d906b7413922586" kindref="member">setkey</ref>(key_t<sp/>key)<sp/>{<sp/><ref refid="classIpc_1a687f050130e1b7c74713385783bd0228" kindref="member">_key</ref>=key;<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" kindref="member">setid</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{<sp/><ref refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" kindref="member">_id</ref>=id;<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>ok</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classIpc_1aecac89b3a9bdec9833092579712e7cfe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1aecac89b3a9bdec9833092579712e7cfe" kindref="member">setok</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ok)<sp/>{<sp/><ref refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" kindref="member">_ok</ref>=ok;<sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classIpc_1a9f5e7d9248966affeff2533ebf17f060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIpc_1a9f5e7d9248966affeff2533ebf17f060" kindref="member">setflags</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags)<sp/>{<sp/><ref refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" kindref="member">_flags</ref>=flags;<sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Operator<sp/>bool<sp/>for<sp/>IPC&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classIpc_1a526497b4e34b064f779f300d2d011310" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" kindref="member">_ok</ref><sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNU_LIBRARY__)<sp/>&amp;&amp;<sp/>!defined(_SEM_SEMUN_UNDEFINED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>la<sp/>union<sp/>semun<sp/>se<sp/>define<sp/>al<sp/>incluir<sp/>&lt;sys/sem.h&gt;<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>según<sp/>X/OPEN<sp/>tenemos<sp/>que<sp/>definirla<sp/>nosostros<sp/>mismos<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="unionsemun" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionsemun" kindref="compound">semun</ref><sp/>{</highlight></codeline>
+<codeline lineno="96" refid="unionsemun_1ac6121ecb6d04a024e07e12bd71b94031" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="unionsemun_1ac6121ecb6d04a024e07e12bd71b94031" kindref="member">val</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>valor<sp/>para<sp/>SETVAL<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="unionsemun_1ac6b6428d07d4147fd2cc698b53555bed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">semid_ds<sp/>*<ref refid="unionsemun_1ac6b6428d07d4147fd2cc698b53555bed" kindref="member">buf</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>buffer<sp/>para<sp/>IPC_STAT,<sp/>IPC_SET<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="unionsemun_1ab6029cc01ffece038873310b5adede70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="unionsemun_1ab6029cc01ffece038873310b5adede70" kindref="member">array</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>array<sp/>para<sp/>GETALL,<sp/>SETALL<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="unionsemun_1aa0ac6a1a9174a4ae355bc367e7e64780" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">seminfo<sp/>*<ref refid="unionsemun_1aa0ac6a1a9174a4ae355bc367e7e64780" kindref="member">__buf</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>buffer<sp/>para<sp/>IPC_INFO<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classSemaphore" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109" refid="classSemaphore_1a0636c10df48f7a1045fa2936e8db0525" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a0636c10df48f7a1045fa2936e8db0525" kindref="member">_nsems</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>semaphores</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classSemaphore_1a11050ec50c4b972ac7277ebe6bcac953" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="classSemaphore_1a11050ec50c4b972ac7277ebe6bcac953" kindref="member">_sem_val</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Semaphore<sp/>value<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classSemaphore_1a22eb2db89917021918af8af6c48762c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sembuf<sp/><ref refid="classSemaphore_1a22eb2db89917021918af8af6c48762c7" kindref="member">_sop</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>operate<sp/>on<sp/>semaphore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classSemaphore_1a6960ae0ae5ae957ed1a2fe10e8eb8336" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="unionsemun" kindref="compound">semun</ref><sp/><ref refid="classSemaphore_1a6960ae0ae5ae957ed1a2fe10e8eb8336" kindref="member">_st</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113" refid="classSemaphore_1a35d8908cce66c5cbb462e8e0930ee67d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a35d8908cce66c5cbb462e8e0930ee67d" kindref="member">LOCK</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="114" refid="classSemaphore_1a97cfedba49bdfe92cd1c09d7242fc5b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a97cfedba49bdfe92cd1c09d7242fc5b2" kindref="member">UNLOCK</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SetS<sp/>a<sp/>LOCK<sp/>or<sp/>UNLOCK.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a4849ad52709d27304b2224df375a4d0f" kindref="member">set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>op);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>semctl<sp/>to<sp/>get<sp/>all<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a2b7db06c733cdc2d3599d65e1abcf29d" kindref="member">get_stat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>semid);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" kindref="member">Semaphore</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nsems,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sem_val,<sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deleteOnExit);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" kindref="member">Semaphore</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>semid);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" kindref="member">Semaphore</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138" refid="classSemaphore_1a6db9201abccff11cb167383da129c8b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a6db9201abccff11cb167383da129c8b0" kindref="member">Semaphore</ref>(<ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139" refid="classSemaphore_1a23bb5aead54bb60d2fd31d376fbf2be4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a23bb5aead54bb60d2fd31d376fbf2be4" kindref="member">Semaphore</ref>(<ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140" refid="classSemaphore_1aedc9de13d1ccbba3b354794150013783" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref>&amp;<sp/><ref refid="classSemaphore_1aedc9de13d1ccbba3b354794150013783" kindref="member">operator=</ref>(<ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141" refid="classSemaphore_1abf51dba797f2894ef77d88154423017f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore" kindref="compound">Semaphore</ref>&amp;<sp/><ref refid="classSemaphore_1abf51dba797f2894ef77d88154423017f" kindref="member">operator=</ref>(<ref refid="classSemaphore" kindref="compound">Semaphore</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSemaphore_1a633658a6fde276bffc912028725c6ade" kindref="member">~Semaphore</ref>();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>semaphore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087" kindref="member">Lock</ref>(){<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret=<ref refid="classSemaphore_1a4849ad52709d27304b2224df375a4d0f" kindref="member">set</ref>(<ref refid="classSemaphore_1a35d8908cce66c5cbb462e8e0930ee67d" kindref="member">LOCK</ref>);<sp/>PLOG_DEBUG_IF(<ref refid="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Semaphore<sp/>Locked!&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;<sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Unlock<sp/>semaphore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classSemaphore_1afa909c8f77cf34597aed10df79e82958" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSemaphore_1afa909c8f77cf34597aed10df79e82958" kindref="member">Unlock</ref>(){<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret=<ref refid="classSemaphore_1a4849ad52709d27304b2224df375a4d0f" kindref="member">set</ref>(<ref refid="classSemaphore_1a97cfedba49bdfe92cd1c09d7242fc5b2" kindref="member">UNLOCK</ref>);<sp/>PLOG_DEBUG_IF(<ref refid="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Semaphore<sp/>Unlocked!&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;<sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classSharedMemory" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSharedMemory" kindref="compound">SharedMemory</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157" refid="classSharedMemory_1a7ca4a292828eea29e3fec0cbee0ff84d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classSharedMemory_1a7ca4a292828eea29e3fec0cbee0ff84d" kindref="member">_shmaddr</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>memory<sp/>address.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classSharedMemory_1a2705b16bf1af906e68824582dd849e69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSharedMemory_1a2705b16bf1af906e68824582dd849e69" kindref="member">_size</ref>{4};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Size<sp/>of<sp/>shared<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classSharedMemory_1aba9e372e4dd92be2109ddb36e51c3000" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>shmid_ds<sp/><ref refid="classSharedMemory_1aba9e372e4dd92be2109ddb36e51c3000" kindref="member">_st</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Info<sp/>of<sp/>the<sp/>shared<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>semctl<sp/>to<sp/>get<sp/>all<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSharedMemory_1a4db4a79d92eb5c05e7d326a38905ffb6" kindref="member">get_stat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shmid);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1a851a8d425f9c1e6f49237efd97628df5" kindref="member">SharedMemory</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deleteOnExit);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1a851a8d425f9c1e6f49237efd97628df5" kindref="member">SharedMemory</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shmid);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classSharedMemory_1a851a8d425f9c1e6f49237efd97628df5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1a851a8d425f9c1e6f49237efd97628df5" kindref="member">SharedMemory</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181" refid="classSharedMemory_1ad567d83d65ba65b39ff20bfbd4ac9058" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1ad567d83d65ba65b39ff20bfbd4ac9058" kindref="member">SharedMemory</ref>(<ref refid="classSharedMemory" kindref="compound">SharedMemory</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182" refid="classSharedMemory_1a6ab87c1bdf715820514a716c1c463a56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1a6ab87c1bdf715820514a716c1c463a56" kindref="member">SharedMemory</ref>(<ref refid="classSharedMemory" kindref="compound">SharedMemory</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183" refid="classSharedMemory_1a07aa684777d2cde7db164484f13a3686" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory" kindref="compound">SharedMemory</ref>&amp;<sp/><ref refid="classSharedMemory_1a07aa684777d2cde7db164484f13a3686" kindref="member">operator=</ref>(<ref refid="classSharedMemory" kindref="compound">SharedMemory</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184" refid="classSharedMemory_1a49be1c52b8d78eb9c23f604cf140a177" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory" kindref="compound">SharedMemory</ref>&amp;<sp/><ref refid="classSharedMemory_1a49be1c52b8d78eb9c23f604cf140a177" kindref="member">operator=</ref>(<ref refid="classSharedMemory" kindref="compound">SharedMemory</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSharedMemory_1adc56751ce1b30224689e71cd3b6c09be" kindref="member">~SharedMemory</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>shared<sp/>memory<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classSharedMemory_1a2b41bc86dbf6bc51ff723a763cf27c73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="classSharedMemory_1a2b41bc86dbf6bc51ff723a763cf27c73" kindref="member">getaddr</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSharedMemory_1a7ca4a292828eea29e3fec0cbee0ff84d" kindref="member">_shmaddr</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>number<sp/>of<sp/>processes<sp/>attached<sp/>to<sp/>shared<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classSharedMemory_1a400bd582aa803162fed6b241f784a1fa" kindref="member">get_nattach</ref>();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classMessageQueue" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIpc" kindref="compound">Ipc</ref><sp/></highlight></codeline>
+<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199" refid="classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>msqid_ds<sp/><ref refid="classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0" kindref="member">_st</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>queue<sp/>info</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3" kindref="member">_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Size<sp/>of<sp/>message<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>msgctl<sp/>to<sp/>get<sp/>all<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMessageQueue_1af553c98265b870662d63b92c53833191" kindref="member">get_stat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>msgid);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" kindref="member">MessageQueue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deleteOnExit);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" kindref="member">MessageQueue</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>msgid);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="220" refid="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3" kindref="member">MessageQueue</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221" refid="classMessageQueue_1a38354d78361fca43ce02c475af48d7d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1a38354d78361fca43ce02c475af48d7d9" kindref="member">MessageQueue</ref>(<ref refid="classMessageQueue" kindref="compound">MessageQueue</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="222" refid="classMessageQueue_1acbe61b138d12e33da964ab8835d232dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1acbe61b138d12e33da964ab8835d232dc" kindref="member">MessageQueue</ref>(<ref refid="classMessageQueue" kindref="compound">MessageQueue</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="223" refid="classMessageQueue_1a675784f3ac981d563574d554a3a43611" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref>&amp;<sp/><ref refid="classMessageQueue_1a675784f3ac981d563574d554a3a43611" kindref="member">operator=</ref>(<ref refid="classMessageQueue" kindref="compound">MessageQueue</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224" refid="classMessageQueue_1ac153ec850c7213443916857d34a4cc06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref>&amp;<sp/><ref refid="classMessageQueue_1ac153ec850c7213443916857d34a4cc06" kindref="member">operator=</ref>(<ref refid="classMessageQueue" kindref="compound">MessageQueue</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageQueue_1a3640a8a6140801f1e127a41e60c014dd" kindref="member">~MessageQueue</ref>();</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sends<sp/>a<sp/>protomsg::st_protomsg<sp/>to<sp/>the<sp/>message<sp/>queue<sp/>(IPC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMessageQueue_1ac3138a4b8f10868f1df70519257fa45f" kindref="member">send</ref>(<ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref><sp/>*p_protomsg,<sp/>std::string<sp/>&amp;pdata);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Receives<sp/>a<sp/>protomsg::st_protomsg<sp/>of<sp/>the<sp/>message<sp/>queue<sp/>(IPC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMessageQueue_1ae4afb1b560697ce2a0bd8a0b5bca8f21" kindref="member">rcv</ref>(<ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref><sp/>*p_protomsg,<sp/>std::string<sp/>&amp;pdata);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/ipclib.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,193 @@
+.TH "Ipc" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Ipc
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ipclib\&.h>\fP
+.PP
+Inherited by \fBMessageQueue\fP, \fBSemaphore\fP, and \fBSharedMemory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIpc\fP ()=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (key_t key, bool deleteOnExit)"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "virtual \fB~Ipc\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBEnableDelete\fP ()"
+.br
+.ti -1c
+.RI "void \fBDisableDelete\fP ()"
+.br
+.ti -1c
+.RI "key_t \fBgetkey\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetid\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetflags\fP () const"
+.br
+.ti -1c
+.RI "key_t \fBgetDeleteOnExit\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetkey\fP (key_t key)"
+.br
+.ti -1c
+.RI "void \fBsetid\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBsetok\fP (bool ok)"
+.br
+.ti -1c
+.RI "void \fBsetflags\fP (int flags)"
+.br
+.ti -1c
+.RI "virtual \fBoperator bool\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "key_t \fB_key\fP {IPC_PRIVATE}"
+.br
+.ti -1c
+.RI "int \fB_id\fP {\-1}"
+.br
+.ti -1c
+.RI "bool \fB_deleteOnExit\fP {false}"
+.br
+.ti -1c
+.RI "int \fB_flags\fP {0666}"
+.br
+.ti -1c
+.RI "bool \fB_ok\fP {false}"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common IPC object (\fBipclib\&.h\fP) 
+.PP
+Definition at line \fB32\fP of file \fBipclib\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Ipc::Ipc ()\fC [default]\fP"
+
+.SS "Ipc::Ipc (key_t key, bool deleteOnExit)\fC [inline]\fP, \fC [explicit]\fP"
+\fBIpc\fP Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP (default key=IPC_PRIVATE) 
+.br
+\fIdeleteOnExit\fP = ( false = don't remove semaphore on destruction\&. true = remove it) 
+.RE
+.PP
+
+.PP
+Definition at line \fB48\fP of file \fBipclib\&.h\fP\&.
+.SS "Ipc::Ipc (\fBIpc\fP const &)\fC [default]\fP"
+
+.SS "Ipc::Ipc (\fBIpc\fP &&)\fC [default]\fP"
+
+.SS "virtual Ipc::~Ipc ()\fC [virtual]\fP, \fC [default]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Ipc::DisableDelete ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBipclib\&.h\fP\&.
+.SS "void Ipc::EnableDelete ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB56\fP of file \fBipclib\&.h\fP\&.
+.SS "key_t Ipc::getDeleteOnExit () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB71\fP of file \fBipclib\&.h\fP\&.
+.SS "int Ipc::getflags () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB68\fP of file \fBipclib\&.h\fP\&.
+.SS "int Ipc::getid () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBipclib\&.h\fP\&.
+.SS "key_t Ipc::getkey () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB62\fP of file \fBipclib\&.h\fP\&.
+.SS "virtual Ipc::operator bool () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line \fB86\fP of file \fBipclib\&.h\fP\&.
+.SS "\fBIpc\fP & Ipc::operator= (\fBIpc\fP &&)\fC [default]\fP"
+
+.SS "\fBIpc\fP & Ipc::operator= (\fBIpc\fP const &)\fC [default]\fP"
+
+.SS "void Ipc::setflags (int flags)\fC [inline]\fP"
+
+.PP
+Definition at line \fB83\fP of file \fBipclib\&.h\fP\&.
+.SS "void Ipc::setid (int id)\fC [inline]\fP"
+
+.PP
+Definition at line \fB77\fP of file \fBipclib\&.h\fP\&.
+.SS "void Ipc::setkey (key_t key)\fC [inline]\fP"
+
+.PP
+Definition at line \fB74\fP of file \fBipclib\&.h\fP\&.
+.SS "void Ipc::setok (bool ok)\fC [inline]\fP"
+
+.PP
+Definition at line \fB80\fP of file \fBipclib\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Ipc::_deleteOnExit {false}\fC [private]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBipclib\&.h\fP\&.
+.SS "int Ipc::_flags {0666}\fC [private]\fP"
+
+.PP
+Definition at line \fB37\fP of file \fBipclib\&.h\fP\&.
+.SS "int Ipc::_id {\-1}\fC [private]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBipclib\&.h\fP\&.
+.SS "key_t Ipc::_key {IPC_PRIVATE}\fC [private]\fP"
+
+.PP
+Definition at line \fB34\fP of file \fBipclib\&.h\fP\&.
+.SS "bool Ipc::_ok {false}\fC [private]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBipclib\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

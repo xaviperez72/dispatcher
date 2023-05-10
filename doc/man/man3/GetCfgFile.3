@@ -1,0 +1,131 @@
+.TH "GetCfgFile" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GetCfgFile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <getcfgfile\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGetCfgFile\fP (std::string file, bool createdir=false)"
+.br
+.ti -1c
+.RI "\fB~GetCfgFile\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBsave_cfg_file\fP (const Json::Value json)"
+.br
+.ti -1c
+.RI "const Json::Value & \fBget_json\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBget_file_dir\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBget_file_name\fP ()"
+.br
+.ti -1c
+.RI "\fBoperator bool\fP () const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBExtractFileName\fP (const std::string &s)"
+.br
+.ti -1c
+.RI "std::string \fBExtractFileDir\fP (const std::string &s)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fB_filename\fP"
+.br
+.ti -1c
+.RI "std::string \fB_file_dir\fP"
+.br
+.ti -1c
+.RI "bool \fB_readed\fP {false}"
+.br
+.ti -1c
+.RI "bool \fB_saved\fP {false}"
+.br
+.ti -1c
+.RI "Json::Value \fB_m_json\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB28\fP of file \fBgetcfgfile\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GetCfgFile::GetCfgFile (std::string file, bool createdir = \fCfalse\fP)"
+
+.PP
+Definition at line \fB25\fP of file \fBgetcfgfile\&.cpp\fP\&.
+.SS "GetCfgFile::~GetCfgFile ()\fC [default]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string GetCfgFile::ExtractFileDir (const std::string & s)\fC [private]\fP"
+
+.PP
+Definition at line \fB15\fP of file \fBgetcfgfile\&.cpp\fP\&.
+.SS "string GetCfgFile::ExtractFileName (const std::string & s)\fC [private]\fP"
+
+.PP
+Definition at line \fB5\fP of file \fBgetcfgfile\&.cpp\fP\&.
+.SS "std::string GetCfgFile::get_file_dir ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "std::string GetCfgFile::get_file_name ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB37\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "const Json::Value & GetCfgFile::get_json () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "GetCfgFile::operator bool () const"
+
+.PP
+Definition at line \fB58\fP of file \fBgetcfgfile\&.cpp\fP\&.
+.SS "void GetCfgFile::save_cfg_file (const Json::Value json)"
+
+.PP
+Definition at line \fB64\fP of file \fBgetcfgfile\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string GetCfgFile::_file_dir\fC [private]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "std::string GetCfgFile::_filename\fC [private]\fP"
+
+.PP
+Definition at line \fB44\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "Json::Value GetCfgFile::_m_json\fC [private]\fP"
+
+.PP
+Definition at line \fB48\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "bool GetCfgFile::_readed {false}\fC [private]\fP"
+
+.PP
+Definition at line \fB46\fP of file \fBgetcfgfile\&.h\fP\&.
+.SS "bool GetCfgFile::_saved {false}\fC [private]\fP"
+
+.PP
+Definition at line \fB47\fP of file \fBgetcfgfile\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

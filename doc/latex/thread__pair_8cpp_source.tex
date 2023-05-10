@@ -1,0 +1,323 @@
+\hypertarget{thread__pair_8cpp_source}{}\doxysection{thread\+\_\+pair.\+cpp}
+\label{thread__pair_8cpp_source}\index{src/thread\_pair.cpp@{src/thread\_pair.cpp}}
+\mbox{\hyperlink{thread__pair_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{thread__pair_8h}{thread\_pair.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00005}\mbox{\hyperlink{classthread__pair_acf8b3f678e83f280cb66f7d1ee5d0fd3}{00005}}\ \mbox{\hyperlink{classthread__pair_a436e3475859bcebbc976a3c6105ce794}{thread\_pair::thread\_pair}}(\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ write\_queue\_id,\ \mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ common\_queue,\ \textcolor{keywordtype}{int}\ idx\_thp,\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00006}00006\ \ \ \ \ \ \ \ \ std::shared\_ptr<keep\_running\_flags>\ shpt\_keep\_running,\ std::shared\_ptr<connections>\ shpt\_conn,\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::shared\_ptr<signal\_synch>\ shpt\_sigsyn,\ }}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00008}00008\ \ \ \ \ \ \ \ \ std::shared\_ptr<Semaphore>\ shpt\_sem)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ \_shpt\_sigsyn\ =\ shpt\_sigsyn;}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a6cb38f1b6d4b0b494c3bae5e4b95d093}{\_write\_queue}}\ =\ write\_queue\_id;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00013}00013\ \ \ \ \ assert(\mbox{\hyperlink{classthread__pair_a6cb38f1b6d4b0b494c3bae5e4b95d093}{\_write\_queue}}\ \&\&\ \textcolor{stringliteral}{"{}write\_queue\ not\ operative."{}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00014}00014\ \ \ \ \ assert(common\_queue\ \&\&\ \textcolor{stringliteral}{"{}read\_queue\ (common\ queue)\ not\ operative."{}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ \_accept\_mutex\ =\ std::make\_shared<mutex>();}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{classthread__pair_af0f10327ce77aa56346835d1132a93ad}{\_common\_queue}}\ =\ common\_queue;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a6070dd7cb7890f810b3c8730f800cd5e}{\_idx\_thp}}\ =\ idx\_thp;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{classthread__pair_aef0f78598d5c8bf62f73b0faa5f8ac28}{\_sharedptr\_keep\_running}}\ =\ shpt\_keep\_running;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}\ =\ shpt\_conn;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}}\ =\ shpt\_sem;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (pipe(\mbox{\hyperlink{classthread__pair_a48ce2674603551cda5da4c526bd0ceed}{\_pipe}})\ <\ 0\ )\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ create\ a\ pipe"{}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a5f91b0c7065a5b4ea1d9b2833eec0ee2}{th\_r}}\ =\ std::thread(\&\mbox{\hyperlink{classthread__pair_a542da55488a6cb54517473429d234801}{thread\_pair::reader\_thread}},\ \textcolor{keyword}{this},\ idx\_thp);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classthread__pair_aaab23c5aeabc65a9d6eba6ef6d56e4b3}{th\_w}}\ =\ std::thread(\&\mbox{\hyperlink{classthread__pair_a6ebef75114e800552bdd19598f0964ad}{thread\_pair::writer\_thread}},\ \textcolor{keyword}{this},\ idx\_thp);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00033}\mbox{\hyperlink{classthread__pair_ac8a0f9dd6117f68e75f9222488f115f6}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classthread__pair_ac8a0f9dd6117f68e75f9222488f115f6}{thread\_pair::Attending\_Read\_Socket}}(\mbox{\hyperlink{structsocket__data__t}{socket\_data\_t}}\ \&sdt)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{classSocket}{Socket}}\ sock;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00037}00037\ \ \ \ \ sock.\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}}\ =\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00038}00038\ \ \ \ \ std::string\ msgin;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00039}00039\ \ \ \ \ std::string\ msgout;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ v\_protomsg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00043}00043\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Reading\ from\ sd\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}((status=sock.\mbox{\hyperlink{classSocket_ad7b9a7832dc2384d4f899afd73cb1193}{socket\_read}}(msgin,1024))\ <=\ 0)\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Socket\_read\ error:\ "{}}\ <<\ errno\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ strerror(errno);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Socket\ sd:\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}}\ <<\ \textcolor{stringliteral}{"{}\ IP:Port:\ "{}}\ <<\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inet\_ntoa(sdt.\mbox{\hyperlink{structsocket__data__t_a16aaf1c1d992e8c415df13c9a7032bc9}{sockaddr}}.sin\_addr)\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ ntohs(sdt.\mbox{\hyperlink{structsocket__data__t_a16aaf1c1d992e8c415df13c9a7032bc9}{sockaddr}}.sin\_port);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{remove\_sockdata}}(sdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}-\/>unregister\_conn(sdt.\mbox{\hyperlink{structsocket__data__t_aa252e34de3632643e5679b18654c4f04}{idx\_con}},\ *\mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ close(sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00056}00056\ \ \ \ \ sdt.\mbox{\hyperlink{structsocket__data__t_a6540b92dc049e8e3b2be6033d7084111}{rcvinfo}}\ =\ msgin;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ TO\ DO\ -\/\ Check\ IP\ is\ in\ table.\ Not\ needed\ since\ AccceptThread\ checks\ for\ valid\ IP.}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classthread__pair_ac706f952db441120c6b7ccc709193786}{Getting\_Json\_Msg\_Received}}(msgin,\ v\_protomsg,\ msgout))}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Error\ Message\ Format\ (json):\ "{}}\ <<\ msgin;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Socket\ sd:\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}}\ <<\ \textcolor{stringliteral}{"{}\ IP:Port:\ "{}}\ <<\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ inet\_ntoa(sdt.\mbox{\hyperlink{structsocket__data__t_a16aaf1c1d992e8c415df13c9a7032bc9}{sockaddr}}.sin\_addr)\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ ntohs(sdt.\mbox{\hyperlink{structsocket__data__t_a16aaf1c1d992e8c415df13c9a7032bc9}{sockaddr}}.sin\_port);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ back\ MSGIN\ original.}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ad9b11ac85c4ab8985585d33dadd1dddc}{q\_write}}\ =\ \mbox{\hyperlink{classthread__pair_af0f10327ce77aa56346835d1132a93ad}{\_common\_queue}}.\mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{getid}}();\ \ \textcolor{comment}{//\ Not\ usefull\ in\ this\ case...}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classthread__pair_a6cb38f1b6d4b0b494c3bae5e4b95d093}{\_write\_queue}}.\mbox{\hyperlink{classMessageQueue_ac3138a4b8f10868f1df70519257fa45f}{send}}(\&v\_protomsg,\ msgin))\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Impossible\ to\ send\ to\ Writer\_Thread\ through\ \_write\_queue:\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{remove\_sockdata}}(sdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}-\/>unregister\_conn(sdt.\mbox{\hyperlink{structsocket__data__t_aa252e34de3632643e5679b18654c4f04}{idx\_con}},\ *\mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ close(sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Sending\ to\ common\ queue\ for\ TuxCli..."{}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ MSGOUT\ to\ common\ queue\ to\ process\ by\ TuxCli\ }}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ad9b11ac85c4ab8985585d33dadd1dddc}{q\_write}}\ =\ \mbox{\hyperlink{classthread__pair_a6cb38f1b6d4b0b494c3bae5e4b95d093}{\_write\_queue}}.\mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{getid}}();\ \ \textcolor{comment}{//\ Queue\ to\ respond\ to\ proper\ Writer\_Thread...}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{classthread__pair_af0f10327ce77aa56346835d1132a93ad}{\_common\_queue}}.\mbox{\hyperlink{classMessageQueue_ac3138a4b8f10868f1df70519257fa45f}{send}}(\&v\_protomsg,\ msgout))\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}Impossible\ to\ send\ to\ TuxCli\ through\ \_common\_queue:\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{remove\_sockdata}}(sdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}-\/>unregister\_conn(sdt.\mbox{\hyperlink{structsocket__data__t_aa252e34de3632643e5679b18654c4f04}{idx\_con}},\ *\mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ close(sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00093}\mbox{\hyperlink{classthread__pair_ac706f952db441120c6b7ccc709193786}{00093}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classthread__pair_ac706f952db441120c6b7ccc709193786}{thread\_pair::Getting\_Json\_Msg\_Received}}(\textcolor{keywordtype}{string}\ \&msgin,\ \mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ \&v\_protomsg,\ \textcolor{keywordtype}{string}\ \&msgout)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00095}00095\ \ \ \ \ Json::Value\ json\_msg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00096}00096\ \ \ \ \ stringstream\ ss(msgin);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00097}00097\ \ \ \ \ ss\ >>\ json\_msg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00099}00099\ \ \ \ \ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a7930ab296d19b6d7217ae1acf09229f3}{terf}}\ =\ json\_msg[\textcolor{stringliteral}{"{}TERF"{}}].asInt();}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00100}00100\ \ \ \ \ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a04f17c6355d8722524757604afadae94}{terl}}\ =\ json\_msg[\textcolor{stringliteral}{"{}TERL"{}}].asInt();}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00101}00101\ \ \ \ \ strncpy(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a205b604a6bed38195230067ede131ec8}{guid}},\ json\_msg[\textcolor{stringliteral}{"{}GUID"{}}].asCString(),\ \textcolor{keyword}{sizeof}(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a205b604a6bed38195230067ede131ec8}{guid}})-\/1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00102}00102\ \ \ \ \ strncpy(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a91601b868d6a43ab884fdcc028615700}{pid}},\ json\_msg[\textcolor{stringliteral}{"{}PID"{}}].asCString(),\ \textcolor{keyword}{sizeof}(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a91601b868d6a43ab884fdcc028615700}{pid}})-\/1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00103}00103\ \ \ \ \ strncpy(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ac122e203520778ab49f551db9d6de1b9}{aid}},\ json\_msg[\textcolor{stringliteral}{"{}AID"{}}].asCString(),\ \textcolor{keyword}{sizeof}(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ac122e203520778ab49f551db9d6de1b9}{aid}})-\/1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00104}00104\ \ \ \ \ strncpy(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a87c793980e82b795427b08498c4b6172}{cabx}},\ json\_msg[\textcolor{stringliteral}{"{}CABX"{}}].asCString(),\ \textcolor{keyword}{sizeof}(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a87c793980e82b795427b08498c4b6172}{cabx}})-\/1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00105}00105\ \ \ \ \ msgout\ =\ std::string(json\_msg[\textcolor{stringliteral}{"{}MSG"{}}].asCString());}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00107}00107\ \ \ \ \ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a4da8e282dba03c825108806b9ecbc3e5}{mtype}}\ =\ \mbox{\hyperlink{namespaceprotomsg_a8e34e045d8c49d98e5522e76a20b943a}{protomsg::TYPE\_NORMAL\_MSG}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00109}00109\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}v\_protomsg:"{}}\ <<\ v\_protomsg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a7930ab296d19b6d7217ae1acf09229f3}{terf}}==0\ ||\ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a04f17c6355d8722524757604afadae94}{terl}}\ ==\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ strlen(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a205b604a6bed38195230067ede131ec8}{guid}})\ ==\ 0\ ||\ strlen(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a91601b868d6a43ab884fdcc028615700}{pid}})\ ==\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ strlen(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ac122e203520778ab49f551db9d6de1b9}{aid}})\ ==\ 0\ ||\ strlen(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a87c793980e82b795427b08498c4b6172}{cabx}})\ ==\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ msgout.size()\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00118}00118\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00122}\mbox{\hyperlink{classthread__pair_a542da55488a6cb54517473429d234801}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classthread__pair_a542da55488a6cb54517473429d234801}{thread\_pair::reader\_thread}}(\textcolor{keywordtype}{int}\ idx\_thp)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00124}00124\ \ \ \ \ list<socket\_data\_t>\ lsdt;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{int}\ readpipe=\mbox{\hyperlink{classthread__pair_a6c14f207dab415ad3c4bb8cad8e226f1}{get\_read\_pipe}}();}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00126}00126\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}reader\_thread\ "{}}\ <<\ idx\_thp;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{while}(\mbox{\hyperlink{classthread__pair_aef0f78598d5c8bf62f73b0faa5f8ac28}{\_sharedptr\_keep\_running}}-\/>\_keep\_accepting.load())\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ fd\_set\ readset;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nfds,\ ret\_sel;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00134}00134\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::unique\_lock<std::mutex>\ lck(\_shpt\_sigsyn-\/>\_cv\_mutex);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00135}00135\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00136}00136\ \textcolor{comment}{\ \ \ \ \ \ \ \ auto\ shpt\_keep\_running\ =\ \_sharedptr\_keep\_running;}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ wait\ for\ up\ to\ 10\ seconds}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00138}00138\ \textcolor{comment}{\ \ \ \ \ \ \ \ \_shpt\_sigsyn-\/>\_cv.wait\_for(lck,\ std::chrono::seconds(10),}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00139}00139\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&shpt\_keep\_running]()\ \{\ return\ !shpt\_keep\_running-\/>\_keep\_accepting.load();\ \});}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00140}00140\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sleep(1);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ STEP\ 1\ -\/\ Getting\ all\ sockets\ descriptors\ to\ SELECT.}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a15322b033ebd6882f6ee9c81cc21b512}{get\_sockdata\_list}}(lsdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ FD\_ZERO(\&readset);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ nfds\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ FD\_SET(readpipe,\ \&readset);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ nfds\ =\ (readpipe<nfds)\ ?\ nfds\ :\ (readpipe+1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it=lsdt.begin();\ it\ !=\ lsdt.end();\ it++)\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ FD\_SET(it-\/>sd,\ \&readset);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ nfds\ =\ (it-\/>sd\ <\ nfds)\ ?\ nfds\ :\ (it-\/>sd+1);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Accepting\ ndfs="{}}\ <<\ nfds\ <<\ \textcolor{stringliteral}{"{}\ connections.\ "{}}\ <<\ \textcolor{keyword}{sizeof}(readset);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((ret\_sel=select(nfds,\ \&readset,\ NULL,\ NULL,\ NULL))\ <\ 0\ )\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ someerror=errno;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR\ <<\ \textcolor{stringliteral}{"{}SELECT\ FAILED:\ ("{}}\ <<\ ret\_sel\ <<\ \textcolor{stringliteral}{"{})\ "{}}\ <<\ strerror(someerror);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ someerror\ ==\ EINTR\ )\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ FD\_ISSET(readpipe,\ \&readset)\ )\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ read(readpipe,\mbox{\hyperlink{namespaceprotopipe_acdb2afef76b82453234a043e76cbf2a9}{protopipe::GETPIPEMSG}},\mbox{\hyperlink{namespaceprotopipe_acdd465b67009b36a3c852eaf3a96d760}{protopipe::LEN\_PIPEMSG}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{namespaceprotopipe_acdb2afef76b82453234a043e76cbf2a9}{protopipe::GETPIPEMSG}}[0]==\mbox{\hyperlink{namespaceprotopipe_a51046f23aed03692e33538e1dc59d0de}{protopipe::ENDING\_PIPE}}[0])\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}ENDING\_PIPE\ received."{}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \ \ \textcolor{comment}{//\ TO\ REMOVE.\ Maybe\ it\ needs\ to\ finish\ all\ messages.\ }}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}WEAKUP\_PIPE\ received."{}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it=lsdt.begin();\ it\ !=\ lsdt.end();\ it++)\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}-\/>check\_obsolete(it-\/>idx\_con,\ *\mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}})\ !=\ 0\ )\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Obsolete\ or\ some\ issues\ */}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}SD\ obsolete\ (deleted):\ "{}}\ <<\ it-\/>sd\ <<\ \textcolor{stringliteral}{"{}\ IP:Port:\ "{}}\ <<\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inet\_ntoa(it-\/>sockaddr.sin\_addr)\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ ntohs(it-\/>sockaddr.sin\_port);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{remove\_sockdata}}(*it);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ close(it-\/>sd);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(FD\_ISSET(it-\/>sd,\ \&readset)\ )\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getting\ message\ from\ socket...}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_ac8a0f9dd6117f68e75f9222488f115f6}{Attending\_Read\_Socket}}(*it);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{comment}{//\ pthread\_sigmask(SIG\_SETMASK,\ \&\_shpt\_sigsyn-\/>\_sigset\_old,\ nullptr);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00208}00208\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Ending\ reader\_thread\ "{}}\ <<\ idx\_thp;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00209}00209\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00211}\mbox{\hyperlink{classthread__pair_a7047531ed209fcd47ad85cf8a6ad8623}{00211}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classthread__pair_a7047531ed209fcd47ad85cf8a6ad8623}{thread\_pair::Prepare\_Msg\_Json\_To\_Send}}(\mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ \&v\_protomsg,\ \textcolor{keywordtype}{string}\ msg,\ Json::Value\ \&json\_msg)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00213}00213\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}TERF"{}}]\ =\ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a7930ab296d19b6d7217ae1acf09229f3}{terf}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00214}00214\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}TERL"{}}]\ =\ v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a04f17c6355d8722524757604afadae94}{terl}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00215}00215\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}GUID"{}}]\ =\ std::string(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a205b604a6bed38195230067ede131ec8}{guid}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00216}00216\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}PID"{}}]\ =\ std::string(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a91601b868d6a43ab884fdcc028615700}{pid}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00217}00217\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}AID"{}}]\ =\ std::string(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ac122e203520778ab49f551db9d6de1b9}{aid}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00218}00218\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}CABX"{}}]\ =\ std::string(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a87c793980e82b795427b08498c4b6172}{cabx}});}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00219}00219\ \ \ \ \ json\_msg[\textcolor{stringliteral}{"{}MSG"{}}]\ =\ msg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00220}00220\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00222}\mbox{\hyperlink{classthread__pair_a6ebef75114e800552bdd19598f0964ad}{00222}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classthread__pair_a6ebef75114e800552bdd19598f0964ad}{thread\_pair::writer\_thread}}(\textcolor{keywordtype}{int}\ idx\_thp)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00223}00223\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00224}00224\ \ \ \ \ \textcolor{keywordtype}{long}\ type;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00225}00225\ \ \ \ \ std::string\ msg,\ msgout;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00226}00226\ \ \ \ \ Json::Value\ json\_msg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00227}00227\ \ \ \ \ \mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ v\_protomsg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00228}00228\ \ \ \ \ \mbox{\hyperlink{structconnection}{connection}}\ cur\_conn;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00229}00229\ \ \ \ \ \mbox{\hyperlink{classSocket}{Socket}}\ send\_sock;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00231}00231\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}writer\_thread\ "{}}\ <<\ idx\_thp;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordflow}{while}(\mbox{\hyperlink{classthread__pair_aef0f78598d5c8bf62f73b0faa5f8ac28}{\_sharedptr\_keep\_running}}-\/>\_keep\_working.load())\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00234}00234\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00236}00236\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::unique\_lock<std::mutex>\ lck(\_shpt\_sigsyn-\/>\_cv\_mutex);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00237}00237\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00238}00238\ \textcolor{comment}{\ \ \ \ \ \ \ \ auto\ shpt\_keep\_running\ =\ \_sharedptr\_keep\_running;}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00239}00239\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ wait\ for\ up\ to\ 10\ seconds}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00240}00240\ \textcolor{comment}{\ \ \ \ \ \ \ \ \_shpt\_sigsyn-\/>\_cv.wait\_for(lck,\ std::chrono::seconds(10),}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00241}00241\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&shpt\_keep\_running]()\ \{\ return\ !shpt\_keep\_running-\/>\_keep\_working.load();\ \});}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00242}00242\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sleep(1);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ STEP\ 1\ -\/\ ReadFromQueue\ \ (idx\_con\ on\ message)}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a6cb38f1b6d4b0b494c3bae5e4b95d093}{\_write\_queue}}.\mbox{\hyperlink{classMessageQueue_ae4afb1b560697ce2a0bd8a0b5bca8f21}{rcv}}(\&v\_protomsg,\ msg);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_a4da8e282dba03c825108806b9ecbc3e5}{mtype}}\ ==\ \mbox{\hyperlink{namespaceprotomsg_a170738b21ae44465185c95dc94c4a317}{protomsg::TYPE\_ENDING\_MSG}})\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Received\ protomsg::TYPE\_ENDING\_MSG"{}};\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a7047531ed209fcd47ad85cf8a6ad8623}{Prepare\_Msg\_Json\_To\_Send}}(v\_protomsg,\ msg,\ json\_msg);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a64e6bf076b36b0abd2040545469c13c0}{\_p\_cur\_connections}}-\/>ending\_operation(v\_protomsg.\mbox{\hyperlink{structprotomsg_1_1st__protomsg_ad687a9308b0ea081d445fbaac12c29b7}{idx}},\ *\mbox{\hyperlink{classthread__pair_a04656cf6e7247a59e69eeeb6101b3ddb}{\_shpt\_semIPCfile}},\ cur\_conn);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ STEP\ 2\ -\/\ Send\ msg\ to\ socket\ }}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ send\_sock.\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}}\ =\ cur\_conn.\mbox{\hyperlink{structconnection_aaf5e92500e5f396f4e1e1b70b01168a1}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ field;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ ss\ <<\ json\_msg;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00265}00265\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(ss,\ field))\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ msgout\ +=\ field;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00268}00268\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Sending\ msgout:\ "{}}\ <<\ msgout;\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ send\_sock.\mbox{\hyperlink{classSocket_a564eb3f48d8cb31423076e68f8cc1f54}{socket\_write}}(msgout);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ msgout.clear();}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{comment}{//pthread\_sigmask(SIG\_SETMASK,\ \&\_shpt\_sigsyn-\/>\_sigset\_old,\ nullptr);}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00277}00277\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Ending\ writer\_thread\ "{}}\ <<\ idx\_thp;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00278}00278\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00280}\mbox{\hyperlink{classthread__pair_a5059ef6b79e75c8f15aca5785c8ca15c}{00280}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classthread__pair_a5059ef6b79e75c8f15aca5785c8ca15c}{thread\_pair::add\_sockdata}}(\mbox{\hyperlink{structsocket__data__t}{socket\_data\_t}}\ sdt)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00281}00281\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00282}00282\ \ \ \ \ std::lock\_guard<std::mutex>\ l\_guard\{\mbox{\hyperlink{classthread__pair_ab7a9a2bfb659ede1bebbb06a38a89f19}{\_accept\_mutex}}\};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00284}00284\ \ \ \ \ \mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}}.emplace\_back(sdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00285}00285\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00286}00286\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}add\_sockdata\ OK!!\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00287}00287\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00288}00288\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00290}\mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{00290}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classthread__pair_a2d936545f8c4da9bb9271f1b355f4092}{thread\_pair::remove\_sockdata}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structsocket__data__t}{socket\_data\_t}}\ \&sdt)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00291}00291\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00292}00292\ \ \ \ \ std::lock\_guard<std::mutex>\ l\_guard\{\mbox{\hyperlink{classthread__pair_ab7a9a2bfb659ede1bebbb06a38a89f19}{\_accept\_mutex}}\};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00294}00294\ \ \ \ \ std::list<socket\_data\_t>::iterator\ findIter\ =\ std::find(\mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}}.begin(),\ \mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}}.end(),\ sdt);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00296}00296\ \ \ \ \ \textcolor{keywordflow}{if}(findIter\ ==\ \mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}remove\_sockdata\ NOT\ FOUND!!\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00299}00299\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00300}00300\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsocket__data__t}{socket\_data\_t}}\ item\ =\ *findIter;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}}.remove(item);}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}remove\_sockdata\ OK!!\ "{}}\ <<\ sdt.\mbox{\hyperlink{structsocket__data__t_a0796047c7fbe7ad403803e318d28bf9f}{sd}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00305}00305\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00306}00306\ \}}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00308}\mbox{\hyperlink{classthread__pair_a15322b033ebd6882f6ee9c81cc21b512}{00308}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classthread__pair_a15322b033ebd6882f6ee9c81cc21b512}{thread\_pair::get\_sockdata\_list}}(list<socket\_data\_t>\ \&lsdt)}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00309}00309\ \{}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00310}00310\ \ \ \ \ std::lock\_guard<std::mutex>\ l\_guard\{\mbox{\hyperlink{classthread__pair_ab7a9a2bfb659ede1bebbb06a38a89f19}{\_accept\_mutex}}\};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00312}00312\ \ \ \ \ lsdt\ =\ \mbox{\hyperlink{classthread__pair_a7371d66499abbff03183171892687428}{\_sockdata}};}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00313}00313\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00314}00314\ \ \ \ \ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}get\_sockdata\_list\ OK!!\ lsdt.size()="{}}\ <<\ lsdt.size();\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{thread__pair_8cpp_source_l00317}00317\ \}}
+
+\end{DoxyCode}

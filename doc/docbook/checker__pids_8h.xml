@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_checker__pids_8h" xml:lang="en-US">
+<title>src/checker_pids.h File Reference</title>
+<indexterm><primary>src/checker_pids.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;signal.h&gt;<?linebreak?>#include &lt;sys/wait.h&gt;<?linebreak?>#include &quot;common.h&quot;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;chrono&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structchecker__struct">checker_struct</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structkeep__running__flags">keep_running_flags</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classchecker__pids">checker_pids</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

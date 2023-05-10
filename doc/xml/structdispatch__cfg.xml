@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="structdispatch__cfg" kind="struct" language="C++" prot="public">
+    <compoundname>dispatch_cfg</compoundname>
+    <includes refid="dispatch__cfg_8h" local="no">dispatch_cfg.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::NumDispatch</definition>
+        <argsstring></argsstring>
+        <name>NumDispatch</name>
+        <qualifiedname>dispatch_cfg::NumDispatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="38" column="9" bodyfile="src/dispatch_cfg.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string dispatch_cfg::IP</definition>
+        <argsstring></argsstring>
+        <name>IP</name>
+        <qualifiedname>dispatch_cfg::IP</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="39" column="17" bodyfile="src/dispatch_cfg.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::Port</definition>
+        <argsstring></argsstring>
+        <name>Port</name>
+        <qualifiedname>dispatch_cfg::Port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="40" column="9" bodyfile="src/dispatch_cfg.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::NumThreads</definition>
+        <argsstring></argsstring>
+        <name>NumThreads</name>
+        <qualifiedname>dispatch_cfg::NumThreads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="41" column="9" bodyfile="src/dispatch_cfg.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string dispatch_cfg::TuxCliProg</definition>
+        <argsstring></argsstring>
+        <name>TuxCliProg</name>
+        <qualifiedname>dispatch_cfg::TuxCliProg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="42" column="17" bodyfile="src/dispatch_cfg.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string dispatch_cfg::TuxCliSetup</definition>
+        <argsstring></argsstring>
+        <name>TuxCliSetup</name>
+        <qualifiedname>dispatch_cfg::TuxCliSetup</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="43" column="17" bodyfile="src/dispatch_cfg.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a8816dc25bc691cbd08bbddb9a7e347d6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::LogLevel</definition>
+        <argsstring></argsstring>
+        <name>LogLevel</name>
+        <qualifiedname>dispatch_cfg::LogLevel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="44" column="9" bodyfile="src/dispatch_cfg.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::MaxConnections</definition>
+        <argsstring></argsstring>
+        <name>MaxConnections</name>
+        <qualifiedname>dispatch_cfg::MaxConnections</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="45" column="9" bodyfile="src/dispatch_cfg.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1a16887cd031dc9815a532678e0f3dd4b5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int dispatch_cfg::StopTimeout</definition>
+        <argsstring></argsstring>
+        <name>StopTimeout</name>
+        <qualifiedname>dispatch_cfg::StopTimeout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="46" column="9" bodyfile="src/dispatch_cfg.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string dispatch_cfg::IpcFile</definition>
+        <argsstring></argsstring>
+        <name>IpcFile</name>
+        <qualifiedname>dispatch_cfg::IpcFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="47" column="17" bodyfile="src/dispatch_cfg.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="structdispatch__cfg_1acc338390f450453695da956cda280157" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const dispatch_cfg &amp;v)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>dispatch_cfg::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structdispatch__cfg" kindref="compound">dispatch_cfg</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_cfg.h" line="49" column="12" bodyfile="src/dispatch_cfg.h" bodystart="49" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> configuration </para>
+    </detaileddescription>
+    <location file="src/dispatch_cfg.h" line="37" column="1" bodyfile="src/dispatch_cfg.h" bodystart="37" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>IP</name></member>
+      <member refid="structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>IpcFile</name></member>
+      <member refid="structdispatch__cfg_1a8816dc25bc691cbd08bbddb9a7e347d6" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>LogLevel</name></member>
+      <member refid="structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>MaxConnections</name></member>
+      <member refid="structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>NumDispatch</name></member>
+      <member refid="structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>NumThreads</name></member>
+      <member refid="structdispatch__cfg_1acc338390f450453695da956cda280157" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>Port</name></member>
+      <member refid="structdispatch__cfg_1a16887cd031dc9815a532678e0f3dd4b5" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>StopTimeout</name></member>
+      <member refid="structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>TuxCliProg</name></member>
+      <member refid="structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1" prot="public" virt="non-virtual"><scope>dispatch_cfg</scope><name>TuxCliSetup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

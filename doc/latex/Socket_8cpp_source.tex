@@ -1,0 +1,376 @@
+\hypertarget{Socket_8cpp_source}{}\doxysection{Socket.\+cpp}
+\label{Socket_8cpp_source}\index{src/Socket.cpp@{src/Socket.cpp}}
+\mbox{\hyperlink{Socket_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00002}00002\ \textcolor{comment}{//\ \ Socket.cpp}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00003}00003\ \textcolor{comment}{//\ \ SocketServer}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00005}00005\ \textcolor{comment}{//\ \ Created\ by\ Kay\ Makowsky\ on\ 15.06.16.}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ Copyright\ ©\ 2016\ Kay\ Makowsky.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00007}00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Socket_8h}{Socket.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00011}00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00012}\mbox{\hyperlink{classSocket_a7c3256c4fc6e2c603df73201049fae5a}{00012}}\ \mbox{\hyperlink{classSocket_a7c3256c4fc6e2c603df73201049fae5a}{Socket::Socket}}()\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00013}00013\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00015}\mbox{\hyperlink{classSocket_a87656ab3b60c9f793a426e0cb2d57317}{00015}}\ \mbox{\hyperlink{classSocket_a7c3256c4fc6e2c603df73201049fae5a}{Socket::Socket}}(\textcolor{keywordtype}{int}\ domain,\ \textcolor{keywordtype}{int}\ type,\ \textcolor{keywordtype}{int}\ protocol)}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00017}00017\ \ \ \ \ memset(\&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}},\ 0,\ \textcolor{keyword}{sizeof}\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}});}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}}\ =\ socket(domain,\ type\ ,\ protocol);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}}\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}opening\ socket\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_family\ =\ domain;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_socktype\ =\ type;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_protocol\ =\ protocol;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00031}\mbox{\hyperlink{classSocket_a4f142a9d6ffd312c72bc813797658a1b}{00031}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a4f142a9d6ffd312c72bc813797658a1b}{Socket::bind}}(\textcolor{keywordtype}{string}\ ip,\ \textcolor{keywordtype}{string}\ port)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_family\ ==\ AF\_UNIX)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_un\ addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ memset(\&addr,\ 0,\ \textcolor{keyword}{sizeof}(addr));}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ addr.sun\_family\ =\ AF\_UNIX;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ strncpy(addr.sun\_path,\ ip.c\_str(),\ \textcolor{keyword}{sizeof}(addr.sun\_path)-\/1);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ \mbox{\hyperlink{classSocket_a4f142a9d6ffd312c72bc813797658a1b}{::bind}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ (\textcolor{keyword}{struct}\ sockaddr*)\&addr,\ \textcolor{keyword}{sizeof}(addr));}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}bind\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ ip;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00047}00047\ \ \ \ \ this-\/>port\ =\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ *res;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_flags\ =\ AI\_PASSIVE;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ ((status\ =\ getaddrinfo(ip.c\_str(),\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}.c\_str(),\ \&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}},\ \&res))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}getaddrinfo\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen\ =\ res-\/>ai\_addrlen;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr\ =\ res-\/>ai\_addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00058}00058\ \ \ \ \ freeaddrinfo(res);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00059}00059\ \ \ \ \ status\ =\ \mbox{\hyperlink{classSocket_a4f142a9d6ffd312c72bc813797658a1b}{::bind}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr,\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}bind\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00067}\mbox{\hyperlink{classSocket_ac57cbd359ac6c4c731dbcebebfc6af5c}{00067}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_ac57cbd359ac6c4c731dbcebebfc6af5c}{Socket::connect}}(\textcolor{keywordtype}{string}\ ip,\ \textcolor{keywordtype}{string}\ port)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_family\ ==\ AF\_UNIX)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_un\ addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ memset(\&addr,\ 0,\ \textcolor{keyword}{sizeof}(addr));}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ addr.sun\_family\ =\ AF\_UNIX;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ strncpy(addr.sun\_path,\ ip.c\_str(),\ \textcolor{keyword}{sizeof}(addr.sun\_path)-\/1);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ \mbox{\hyperlink{classSocket_ac57cbd359ac6c4c731dbcebebfc6af5c}{::connect}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ (\textcolor{keyword}{struct}\ sockaddr*)\&addr,\ \textcolor{keyword}{sizeof}(addr));}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}connect\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00081}00081\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ ip;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00084}00084\ \ \ \ \ this-\/>port\ =\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ *res;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ ((status\ =\ getaddrinfo(ip.c\_str(),\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}.c\_str(),\ \&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}},\ \&res))\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}getaddrinfo\ error:\ "{}}\ <<\ gai\_strerror(errno);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen\ =\ res-\/>ai\_addrlen;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr\ =\ res-\/>ai\_addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00094}00094\ \ \ \ \ freeaddrinfo(res);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00095}00095\ \ \ \ \ status\ =\ \mbox{\hyperlink{classSocket_ac57cbd359ac6c4c731dbcebebfc6af5c}{::connect}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr,\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}connect\ error:\ "{}}\ <<\ gai\_strerror(status)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00103}\mbox{\hyperlink{classSocket_af4b275979ee2f9b28bbc54c90daae2e9}{00103}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_af4b275979ee2f9b28bbc54c90daae2e9}{Socket::listen}}(\textcolor{keywordtype}{int}\ max\_queue)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00105}00105\ \ \ \ \ status\ =\ \mbox{\hyperlink{classSocket_af4b275979ee2f9b28bbc54c90daae2e9}{::listen}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},max\_queue);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}listen\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00113}\mbox{\hyperlink{classSocket_a3f749d9a206e48a875e8c24f29500a93}{00113}}\ \mbox{\hyperlink{classSocket}{Socket}}\ \mbox{\hyperlink{classSocket_a3f749d9a206e48a875e8c24f29500a93}{Socket::accept}}()\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00114}00114\ \ \ \ \ socklen\_t\ addr\_size;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00115}00115\ \ \ \ \ addr\_size\ =\ \textcolor{keyword}{sizeof}\ \mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{int}\ newsock\ =\ \mbox{\hyperlink{classSocket_a3f749d9a206e48a875e8c24f29500a93}{::accept}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ (\textcolor{keyword}{struct}\ sockaddr\ *)\&\mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}},\ \&addr\_size);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (newsock\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}accept\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{classSocket}{Socket}}\ newSocket(\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_family,\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_socktype,\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_protocol);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00122}00122\ \ \ \ \ newSocket.\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}}\ =\ newsock;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00123}00123\ \ \ \ \ newSocket.\mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}\ =\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00124}00124\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{char}\ host[NI\_MAXHOST];}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ getnameinfo((\textcolor{keyword}{struct}\ sockaddr\ *)\&\mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}}),\ host,\ \textcolor{keyword}{sizeof}(host),\ NULL,\ 0,\ NI\_NUMERICHOST);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}getnameinfo\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00131}00131\ \ \ \ \ newSocket.\mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ host;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00132}00132\ \ \ \ \ newSocket.\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_family\ =\ \mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}}.ss\_family;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00133}00133\ \ \ \ \ newSocket.\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr\ =\ (\textcolor{keyword}{struct\ }sockaddr\ *)\&\mbox{\hyperlink{classSocket_ac4c0caa322e951195f18053bdfdd81ce}{their\_addr}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{return}\ newSocket;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00136}\mbox{\hyperlink{classSocket_a564eb3f48d8cb31423076e68f8cc1f54}{00136}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a564eb3f48d8cb31423076e68f8cc1f54}{Socket::socket\_write}}(\textcolor{keywordtype}{string}\ msg)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ buf\ =\ msg.c\_str();}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ (int)strlen(buf);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ (int)send(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ buf,\ len,\ 0);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}write\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00145}00145\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00146}\mbox{\hyperlink{classSocket_a27b26f9051e8ff3deeb8bfe0f0dea66f}{00146}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a27b26f9051e8ff3deeb8bfe0f0dea66f}{Socket::socket\_safe\_read}}(\textcolor{keywordtype}{string}\ \&buf,\textcolor{keywordtype}{int}\ len,\textcolor{keywordtype}{int}\ seconds)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00147}00147\ \ \ \ \ vector<Socket>\ reads;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00148}00148\ \ \ \ \ reads.push\_back(*\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ \mbox{\hyperlink{classSocket_a8078f3895616b76dae6367e765bc5744}{Socket::select}}(\&reads,\ NULL,\ NULL,\ seconds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{if}(count\ <\ 1)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \textcolor{comment}{//No\ new\ Connection}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ buf\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[len];}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00156}00156\ \ \ \ \ bzero(buffer,len);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ (int)recv(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ buffer,\ len-\/1,\ 0);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}read\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00161}00161\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00162}00162\ \ \ \ \ buf\ =\ string(buffer);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00165}\mbox{\hyperlink{classSocket_ad7b9a7832dc2384d4f899afd73cb1193}{00165}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_ad7b9a7832dc2384d4f899afd73cb1193}{Socket::socket\_read}}(\textcolor{keywordtype}{string}\ \&buf,\textcolor{keywordtype}{int}\ len)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[len];}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00167}00167\ \ \ \ \ bzero(buffer,len);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ (int)recv(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ buffer,\ len-\/1,\ 0);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}read\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00172}00172\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00173}00173\ \ \ \ \ buf\ =\ string(buffer);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00176}\mbox{\hyperlink{classSocket_afc14b0a6d28023b8388dc63f1715da65}{00176}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_afc14b0a6d28023b8388dc63f1715da65}{Socket::socket\_writeTo}}(\textcolor{keywordtype}{string}\ msg,\ \textcolor{keywordtype}{string}\ ip,\ \textcolor{keywordtype}{string}\ port)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ buf\ =\ msg.c\_str();}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ (int)strlen(buf);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00179}00179\ \ \ \ \ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ ip;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00180}00180\ \ \ \ \ this-\/>port\ =\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}};}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ *res;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{if}\ ((status\ =\ getaddrinfo(ip.c\_str(),\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}.c\_str(),\ \&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}},\ \&res))\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}getaddrinfo\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00187}00187\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen\ =\ res-\/>ai\_addrlen;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr\ =\ res-\/>ai\_addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00190}00190\ \ \ \ \ freeaddrinfo(res);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00191}00191\ \ \ \ \ status\ =\ (int)sendto(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ buf,\ len,\ 0,\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr,\ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}writeTo\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00198}\mbox{\hyperlink{classSocket_ab244c6b09f175b4423790886d2eb9486}{00198}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_ab244c6b09f175b4423790886d2eb9486}{Socket::socket\_readFrom}}(\textcolor{keywordtype}{string}\ \&buf,\ \textcolor{keywordtype}{int}\ len,\ \textcolor{keywordtype}{string}\ ip,\ \textcolor{keywordtype}{string}\ port)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[len];}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00200}00200\ \ \ \ \ bzero(buffer,len);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ *res;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{if}\ ((status\ =\ getaddrinfo(ip.c\_str(),\ \mbox{\hyperlink{classSocket_af75711bf9c0f0788d7767f836a97c5e6}{port}}.c\_str(),\ \&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}},\ \&res))\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}getaddrinfo\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00207}00207\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00208}00208\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen\ =\ res-\/>ai\_addrlen;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00209}00209\ \ \ \ \ \mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr\ =\ res-\/>ai\_addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00210}00210\ \ \ \ \ freeaddrinfo(res);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00211}00211\ \ \ \ \ status\ =\ (int)recvfrom(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ buffer,\ len-\/1,\ 0,\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addr,\ \&\mbox{\hyperlink{classSocket_a641d9c790350664e5e90dce7d78bd59a}{address\_info}}.ai\_addrlen);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}readFrom\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00216}00216\ \ \ \ \ buf\ =\ string(buffer);\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00218}00218\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00220}\mbox{\hyperlink{classSocket_acac0892dfa60b7034b662060f640009a}{00220}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_acac0892dfa60b7034b662060f640009a}{Socket::socket\_set\_opt}}(\textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ optname,\ \textcolor{keywordtype}{void}*\ optval)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ len\ =\ \textcolor{keyword}{sizeof}(optval);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00222}00222\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ ::setsockopt(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},level,optname,optval,len);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}socket\_set\_opt\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00226}00226\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00227}00227\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00228}00228\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00230}\mbox{\hyperlink{classSocket_ab51d01cc80b2a4648086322d9e99417b}{00230}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_ab51d01cc80b2a4648086322d9e99417b}{Socket::socket\_get\_opt}}(\textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ optname,\ \textcolor{keywordtype}{void}*\ optval)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00231}00231\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ len\ =\ \textcolor{keyword}{sizeof}(optval);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00232}00232\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ ::getsockopt(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},level,optname,optval,\&len);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}socket\_get\_opt\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00236}00236\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00238}00238\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00240}\mbox{\hyperlink{classSocket_a2a59b2d7eef6873ab1849951fd23ea0b}{00240}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a2a59b2d7eef6873ab1849951fd23ea0b}{Socket::set\_blocking}}()\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{long}\ status\ =\ fcntl(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ F\_GETFL,\ NULL);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}set\_blocking(get)\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00246}00246\ \ \ \ \ status\ \&=\ (\string~O\_NONBLOCK);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00247}00247\ \ \ \ \ status\ =\ fcntl(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ F\_SETFL,\ status);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}set\_blocking(set)\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00251}00251\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00252}00252\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00255}\mbox{\hyperlink{classSocket_a28772006630fafe066e1e4db34fc8a8d}{00255}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a28772006630fafe066e1e4db34fc8a8d}{Socket::set\_non\_blocking}}()\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00256}00256\ \ \ \ \ \textcolor{keywordtype}{long}\ status\ =\ fcntl(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ F\_GETFL,\ NULL);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}set\_non\_blocking(get)\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00260}00260\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00261}00261\ \ \ \ \ status\ |=\ O\_NONBLOCK;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00262}00262\ \ \ \ \ status\ =\ fcntl(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ F\_SETFL,\ status);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00263}00263\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}set\_non\_blocking(set)\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00266}00266\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00267}00267\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00270}\mbox{\hyperlink{classSocket_af6f86be700a215da342cfaeba37e7c0f}{00270}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_af6f86be700a215da342cfaeba37e7c0f}{Socket::socket\_shutdown}}(\textcolor{keywordtype}{int}\ how)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00271}00271\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ ::shutdown(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}},\ how);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00272}00272\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}shutdown\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00275}00275\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00277}00277\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00279}\mbox{\hyperlink{classSocket_a75ee749264ccbcfc4dfbf5442e55dcb8}{00279}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSocket_a75ee749264ccbcfc4dfbf5442e55dcb8}{Socket::close}}()\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00280}00280\ \ \ \ \ \mbox{\hyperlink{classSocket_a75ee749264ccbcfc4dfbf5442e55dcb8}{::close}}(\mbox{\hyperlink{classSocket_a231ddf6e338a86640e26808b83efeaa1}{sock}});}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00283}\mbox{\hyperlink{classSocket_a8078f3895616b76dae6367e765bc5744}{00283}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSocket_a8078f3895616b76dae6367e765bc5744}{Socket::select}}(vector<Socket>\ *reads,\ vector<Socket>\ *writes,\ vector<Socket>\ *exceptions,\textcolor{keywordtype}{int}\ seconds)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ reads-\/>at(0).sock;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keyword}{struct\ }timeval\ tv;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00286}00286\ \ \ \ \ fd\_set\ readfds;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00287}00287\ \ \ \ \ fd\_set\ writefds;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00288}00288\ \ \ \ \ fd\_set\ exceptfds;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00289}00289\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00290}00290\ \ \ \ \ tv.tv\_sec\ =\ seconds;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00291}00291\ \ \ \ \ tv.tv\_usec\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00292}00292\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00293}00293\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00294}00294\ \ \ \ \ FD\_ZERO(\&readfds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00295}00295\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00296}00296\ \ \ \ \ FD\_ZERO(\&writefds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00297}00297\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00298}00298\ \ \ \ \ FD\_ZERO(\&exceptfds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00299}00299\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00300}00300\ \ \ \ \ \textcolor{keywordtype}{int}\ maxSock\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00301}00301\ \ \ \ \ \textcolor{keywordflow}{if}(reads\ !=\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ reads-\/>size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sockInt\ =\ reads-\/>at(i).sock;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sockInt\ >\ maxSock)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxSock\ =\ sockInt;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ FD\_SET(sockInt,\ \&readfds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00309}00309\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{if}(writes\ !=\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ writes-\/>size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sockInt\ =\ writes-\/>at(i).sock;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sockInt\ >\ maxSock)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxSock\ =\ sockInt;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ FD\_SET(sockInt,\ \&writefds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00318}00318\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00319}00319\ \ \ \ \ \textcolor{keywordflow}{if}(exceptions\ !=\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ exceptions-\/>size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sockInt\ =\ exceptions-\/>at(i).sock;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sockInt\ >\ maxSock)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxSock\ =\ sockInt;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ FD\_SET(sockInt,\ \&exceptfds);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00327}00327\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00328}00328\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00329}00329\ \ \ \ \ \textcolor{comment}{//\ Um\ writefds\ und\ exceptfds\ kümmern\ wir\ uns\ nicht:}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ \mbox{\hyperlink{classSocket_a8078f3895616b76dae6367e765bc5744}{::select}}(maxSock+1,\ \&readfds,\ \&writefds,\ \&exceptfds,\ \&tv);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00331}00331\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00332}00332\ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}select\ error:\ "{}}\ <<\ gai\_strerror(errno)\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00336}00336\ \ \ \ \ \textcolor{keywordflow}{if}\ (reads\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ (\textcolor{keywordtype}{int})reads-\/>size()-\/1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!FD\_ISSET(reads-\/>at(i).sock,\ \&readfds))\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reads-\/>erase(reads-\/>begin()+i);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00342}00342\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00343}00343\ \ \ \ \ \textcolor{keywordflow}{if}\ (writes\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ (\textcolor{keywordtype}{int})writes-\/>size()-\/1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!FD\_ISSET(writes-\/>at(i).sock,\ \&writefds))\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writes-\/>erase(reads-\/>begin()+i);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00349}00349\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00350}00350\ \ \ \ \ \textcolor{keywordflow}{if}\ (exceptions\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ (\textcolor{keywordtype}{int})exceptions-\/>size()-\/1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!FD\_ISSET(exceptions-\/>at(i).sock,\ \&exceptfds))\ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exceptions-\/>erase(exceptions-\/>begin()+i);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00356}00356\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00357}00357\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00358}00358\ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00360}\mbox{\hyperlink{classSocket_a49b6d9bbc776522388ce7c13d3a0ac57}{00360}}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classSocket_a49b6d9bbc776522388ce7c13d3a0ac57}{Socket::ipFromHostName}}(\textcolor{keywordtype}{string}\ hostname)\{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00361}00361\ \ \ \ \ hostent\ *\ record\ =\ gethostbyname(hostname.c\_str());}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordflow}{if}(record\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00363}00363\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Is\ unavailable:\ "{}}\ <<\ hostname\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00366}00366\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00367}00367\ \ \ \ \ in\_addr\ *\ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}}\ =\ (in\_addr\ *\ )record-\/>h\_addr;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00368}00368\ \ \ \ \ \textcolor{keywordtype}{string}\ ip\_address\ =\ inet\_ntoa(*\ \mbox{\hyperlink{classSocket_a2708e6a0b9b2b4c2c547757c86848cf4}{address}});}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00369}00369\ \ \ \ \ \textcolor{keywordflow}{return}\ ip\_address;}
+\DoxyCodeLine{\Hypertarget{Socket_8cpp_source_l00370}00370\ \}}
+
+\end{DoxyCode}

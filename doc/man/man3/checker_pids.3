@@ -1,0 +1,164 @@
+.TH "checker_pids" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+checker_pids
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <checker_pids\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBchecker_pids\fP ()=default"
+.br
+.ti -1c
+.RI "\fBchecker_pids\fP (\fBchecker_pids\fP const &)=delete"
+.br
+.ti -1c
+.RI "\fBchecker_pids\fP (\fBchecker_pids\fP &&)=delete"
+.br
+.ti -1c
+.RI "\fBchecker_pids\fP & \fBoperator=\fP (\fBchecker_pids\fP const &)=delete"
+.br
+.ti -1c
+.RI "\fBchecker_pids\fP & \fBoperator=\fP (\fBchecker_pids\fP &&)=delete"
+.br
+.ti -1c
+.RI "\fB~checker_pids\fP ()"
+.br
+.ti -1c
+.RI "void \fBadd\fP (std::function< int()> _call, std::string procname)"
+.br
+.ti -1c
+.RI "void \fBStoppingChildren\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBkeep_running_flags\fP > \fBget_run_flags\fP () const"
+.br
+.ti -1c
+.RI "int \fBoperator()\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBsigterm_func\fP (int s)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBchecker_struct\fP > \fB_pids\fP"
+.br
+.ti -1c
+.RI "\fBchecker_struct\fP \fB_dead\fP"
+.br
+.ti -1c
+.RI "sighandler_t \fB_previousInterruptHandler_int\fP {nullptr}"
+.br
+.ti -1c
+.RI "sighandler_t \fB_previousInterruptHandler_usr1\fP {nullptr}"
+.br
+.ti -1c
+.RI "sighandler_t \fB_previousInterruptHandler_term\fP {nullptr}"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static std::shared_ptr< \fBkeep_running_flags\fP > \fB_p_run\fP = std::make_shared<\fBkeep_running_flags\fP>()"
+.br
+.ti -1c
+.RI "static bool \fB_forker\fP {false}"
+.br
+.ti -1c
+.RI "static \fBchecker_pids\fP * \fB_me\fP {nullptr}"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Creates processes (fork) and keep them alive until signal is captured\&. 
+.PP
+Definition at line \fB46\fP of file \fBchecker_pids\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "checker_pids::checker_pids ()\fC [default]\fP"
+
+.SS "checker_pids::checker_pids (\fBchecker_pids\fP const &)\fC [delete]\fP"
+
+.SS "checker_pids::checker_pids (\fBchecker_pids\fP &&)\fC [delete]\fP"
+
+.SS "checker_pids::~checker_pids ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB69\fP of file \fBchecker_pids\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void checker_pids::add (std::function< int()> _call, std::string procname)"
+
+.PP
+Definition at line \fB113\fP of file \fBchecker_pids\&.cpp\fP\&.
+.SS "std::shared_ptr< \fBkeep_running_flags\fP > checker_pids::get_run_flags () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB81\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "int checker_pids::operator() ()"
+
+.PP
+Definition at line \fB16\fP of file \fBchecker_pids\&.cpp\fP\&.
+.SS "\fBchecker_pids\fP & checker_pids::operator= (\fBchecker_pids\fP &&)\fC [delete]\fP"
+
+.SS "\fBchecker_pids\fP & checker_pids::operator= (\fBchecker_pids\fP const &)\fC [delete]\fP"
+
+.SS "void checker_pids::sigterm_func (int s)\fC [static]\fP"
+
+.PP
+Definition at line \fB120\fP of file \fBchecker_pids\&.cpp\fP\&.
+.SS "void checker_pids::StoppingChildren ()"
+
+.PP
+Definition at line \fB7\fP of file \fBchecker_pids\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBchecker_struct\fP checker_pids::_dead\fC [private]\fP"
+
+.PP
+Definition at line \fB48\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "bool checker_pids::_forker {false}\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line \fB51\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "\fBchecker_pids\fP * checker_pids::_me {nullptr}\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line \fB52\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "std::shared_ptr< \fBkeep_running_flags\fP > checker_pids::_p_run = std::make_shared<\fBkeep_running_flags\fP>()\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line \fB50\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "std::vector<\fBchecker_struct\fP> checker_pids::_pids\fC [private]\fP"
+
+.PP
+Definition at line \fB47\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "sighandler_t checker_pids::_previousInterruptHandler_int {nullptr}\fC [private]\fP"
+
+.PP
+Definition at line \fB54\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "sighandler_t checker_pids::_previousInterruptHandler_term {nullptr}\fC [private]\fP"
+
+.PP
+Definition at line \fB56\fP of file \fBchecker_pids\&.h\fP\&.
+.SS "sighandler_t checker_pids::_previousInterruptHandler_usr1 {nullptr}\fC [private]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBchecker_pids\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

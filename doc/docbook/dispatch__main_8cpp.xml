@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dispatch__main_8cpp" xml:lang="en-US">
+<title>src/dispatch_main.cpp File Reference</title>
+<indexterm><primary>src/dispatch_main.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;common.h&quot;<?linebreak?>#include &quot;ipclib.h&quot;<?linebreak?>#include &quot;getcfgfile.h&quot;<?linebreak?>#include &quot;dispatch_cfg.h&quot;<?linebreak?>#include &quot;dispatcher.h&quot;<?linebreak?>#include &quot;checker_pids.h&quot;<?linebreak?>#include &quot;Socket.h&quot;<?linebreak?>#include &quot;plog/Initializers/RollingFileInitializer.h&quot;<?linebreak?>#include &quot;plog/Initializers/ConsoleInitializer.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_dispatch__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c">LOGLEVEL</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb">RunOnBackground</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe">sigsegv_func</link> (int s)</para>
+</listitem>
+            <listitem><para>int <link linkend="_dispatch__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d">loglevel</link></para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589">CFGFILE_PATH</link> = getpwuid(getuid()) -&gt; pw_dir + &quot;/.dispatch/config.json&quot;s</para>
+</listitem>
+            <listitem><para>sighandler_t <link linkend="_dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334">_previousInterruptHandler_sigsegv</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_dispatch__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c"/><section>
+    <title>LOGLEVEL</title>
+<indexterm><primary>LOGLEVEL</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>LOGLEVEL</secondary></indexterm>
+<para><computeroutput>#define LOGLEVEL</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00005">5</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_dispatch__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00053">53</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb"/><section>
+    <title>RunOnBackground()</title>
+<indexterm><primary>RunOnBackground</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>RunOnBackground</secondary></indexterm>
+<para><computeroutput>int RunOnBackground ( )</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00021">21</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe"/><section>
+    <title>sigsegv_func()</title>
+<indexterm><primary>sigsegv_func</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>sigsegv_func</secondary></indexterm>
+<para><computeroutput>void sigsegv_func (int s)</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00047">47</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334"/><section>
+    <title>_previousInterruptHandler_sigsegv</title>
+<indexterm><primary>_previousInterruptHandler_sigsegv</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>_previousInterruptHandler_sigsegv</secondary></indexterm>
+<para><computeroutput>sighandler_t _previousInterruptHandler_sigsegv</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00046">46</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589"/><section>
+    <title>CFGFILE_PATH</title>
+<indexterm><primary>CFGFILE_PATH</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>CFGFILE_PATH</secondary></indexterm>
+<para><computeroutput>auto const CFGFILE_PATH = getpwuid(getuid()) -&gt; pw_dir + &quot;/.dispatch/config.json&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00042">42</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d"/><section>
+    <title>loglevel</title>
+<indexterm><primary>loglevel</primary><secondary>dispatch_main.cpp</secondary></indexterm>
+<indexterm><primary>dispatch_main.cpp</primary><secondary>loglevel</secondary></indexterm>
+<para><computeroutput>int loglevel</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__main_8cpp_source_1l00006">6</link> of file <link linkend="_dispatch__main_8cpp_source">dispatch_main.cpp</link>.</para>
+</section>
+</section>
+</section>

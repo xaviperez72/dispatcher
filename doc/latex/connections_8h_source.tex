@@ -1,0 +1,63 @@
+\hypertarget{connections_8h_source}{}\doxysection{connections.\+h}
+\label{connections_8h_source}\index{src/connections.h@{src/connections.h}}
+\mbox{\hyperlink{connections_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CONNECTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CONNECTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ipclib_8h}{ipclib.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00011}\mbox{\hyperlink{connections_8h_aede8a714e0f79ef4a61e79c2e30f607c}{00011}}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{connections_8h_aede8a714e0f79ef4a61e79c2e30f607c}{st\_free}}\{0\};}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00012}\mbox{\hyperlink{connections_8h_a7cfb338d62be51e2990fb43cb27573a1}{00012}}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{connections_8h_a7cfb338d62be51e2990fb43cb27573a1}{st\_ready}}\{2\};}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00013}\mbox{\hyperlink{connections_8h_a841c1992874382f999f316fa8162c520}{00013}}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{connections_8h_a841c1992874382f999f316fa8162c520}{st\_obsolete}}\{3\};}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00017}\mbox{\hyperlink{structconnection}{00017}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structconnection}{connection}}\{}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00018}\mbox{\hyperlink{structconnection_a392dff3ac59ae78e0cbe5880c150cda6}{00018}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structconnection_a392dff3ac59ae78e0cbe5880c150cda6}{next\_info}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Next\ free\ connection}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00019}\mbox{\hyperlink{structconnection_ae8b8ce14b8384cbff2724f003e23e856}{00019}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structconnection_ae8b8ce14b8384cbff2724f003e23e856}{nthread}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ idx\ of\ thread\ pair.}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00020}\mbox{\hyperlink{structconnection_a425254df6cac48b837b9991b9df86c6f}{00020}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structconnection_a425254df6cac48b837b9991b9df86c6f}{status}}\{\mbox{\hyperlink{connections_8h_aede8a714e0f79ef4a61e79c2e30f607c}{st\_free}}\};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ connection\ status\ }}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00021}\mbox{\hyperlink{structconnection_aaf5e92500e5f396f4e1e1b70b01168a1}{00021}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structconnection_aaf5e92500e5f396f4e1e1b70b01168a1}{sd}}\{-\/1\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Socket\ descriptor}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00022}\mbox{\hyperlink{structconnection_ad9e7923a71fc9ed30f01d893f340bb33}{00022}}\ \ \ \ \ sockaddr\_in\ \mbox{\hyperlink{structconnection_ad9e7923a71fc9ed30f01d893f340bb33}{sockaddr}}\{\};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ IP:port\ info}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00023}\mbox{\hyperlink{structconnection_aa8a98f765771cd8af05864e34838fc04}{00023}}\ \ \ \ \ time\_t\ \mbox{\hyperlink{structconnection_aa8a98f765771cd8af05864e34838fc04}{entry}}\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ time\ of\ 1st\ operation\ entry}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00024}\mbox{\hyperlink{structconnection_ac578f0ac27bbd5879f0462fa2517d39c}{00024}}\ \ \ \ \ time\_t\ \mbox{\hyperlink{structconnection_ac578f0ac27bbd5879f0462fa2517d39c}{last\_op}}\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ time\ of\ last\ operation.}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00025}\mbox{\hyperlink{structconnection_a1d7e91ee2dab6b52781880669e9e38d6}{00025}}\ \ \ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structconnection_a1d7e91ee2dab6b52781880669e9e38d6}{num\_ops}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ processed\ operations.\ }}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00026}00026\ \};}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00031}\mbox{\hyperlink{classconnections}{00031}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classconnections}{connections}}\{}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00032}\mbox{\hyperlink{classconnections_aa422d2929a142e3b88a0035c10ea2799}{00032}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classconnections_aa422d2929a142e3b88a0035c10ea2799}{initialized}}\{\textcolor{keyword}{false}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Is\ it\ initialized?}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00033}\mbox{\hyperlink{classconnections_a4ef1805523e87bc105015afcce456dc4}{00033}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_a4ef1805523e87bc105015afcce456dc4}{first\_free}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ free\ connection\ entry.\ }}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00034}\mbox{\hyperlink{classconnections_a48e53d849d45c221c4bc1b4df8013a13}{00034}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_a48e53d849d45c221c4bc1b4df8013a13}{nThreads}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ thread\ pairs\ running.\ }}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00035}\mbox{\hyperlink{classconnections_ab8405116666865cf960deb54b6beb2c9}{00035}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_ab8405116666865cf960deb54b6beb2c9}{MaxConn}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Max\ number\ of\ connections.\ }}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00036}\mbox{\hyperlink{classconnections_aec431699f4e5f15397d398150b97222b}{00036}}\ \ \ \ \ \mbox{\hyperlink{structconnection}{connection}}\ *\mbox{\hyperlink{classconnections_aec431699f4e5f15397d398150b97222b}{current\_connections}}\{\textcolor{keyword}{nullptr}\};\ \ \ \textcolor{comment}{//\ Pointer\ to\ the\ connection\ array.}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00038}00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classconnections}{connections}}(\textcolor{keywordtype}{int}\ MaxConnections,\ \textcolor{keywordtype}{int}\ NumThreads);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Marks\ a\ connection\ as\ obsolete\ (st\_obsolete=3)\ on\ the\ idx\ position\ of\ the\ connection\ array}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classconnections_abd2f1b462739513f2c23236fb28b08a8}{mark\_obsolete}}(\textcolor{keywordtype}{int}\ idx);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00049}00049\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Marks\ a\ connection\ as\ free\ (st\_obsolete=3)\ on\ the\ idx\ position\ of\ the\ connection\ array}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classconnections_aba8db6b2f3d43d4a030b764fb2371b6a}{delete\_obsolete}}(\textcolor{keywordtype}{int}\ idx);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00052}00052\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_aa8c930db3c4885c33de249f67c6f3ca6}{clean\_repeated\_ip}}(sockaddr\_in\ *ppal,\ \mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&sem);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00060}00060\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_a94f933faea3ade69fc63ecd8647d5423}{register\_new\_conn}}(\textcolor{keywordtype}{int}\ nthread,\ \textcolor{keywordtype}{int}\ sd,\ sockaddr\_in\ s\_in,\ \mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&sem);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00070}00070\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_a7818be12aec98b6c015b038b667c568f}{unregister\_conn}}(\textcolor{keywordtype}{int}\ idx,\ \mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&sem);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_abad7f85b1ef27d0417c4571b905192b1}{ending\_operation}}(\textcolor{keywordtype}{int}\ idx,\ \mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&sem,\ \mbox{\hyperlink{structconnection}{connection}}\ \&cur\_conn);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classconnections_a9dd3e4b0392c9eddcdbc2df69071145c}{check\_obsolete}}(\textcolor{keywordtype}{int}\ idx\_con,\ \mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&sem);}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00096}\mbox{\hyperlink{classconnections_a1d163bdeb5127186898ab71987ef6dc5}{00096}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classconnections_a1d163bdeb5127186898ab71987ef6dc5}{is\_all\_connections\_done}}()\ \{\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !std::any\_of(\&(\mbox{\hyperlink{classconnections_aec431699f4e5f15397d398150b97222b}{current\_connections}}[0]),\&(\mbox{\hyperlink{classconnections_aec431699f4e5f15397d398150b97222b}{current\_connections}}[\mbox{\hyperlink{classconnections_ab8405116666865cf960deb54b6beb2c9}{MaxConn}}-\/1]),[](\mbox{\hyperlink{structconnection}{connection}}\ c)\{\textcolor{keywordflow}{return}\ c.\mbox{\hyperlink{structconnection_a425254df6cac48b837b9991b9df86c6f}{status}}==\mbox{\hyperlink{connections_8h_a7cfb338d62be51e2990fb43cb27573a1}{st\_ready}};\}\ );}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00099}00099\ \};}
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{connections_8h_source_l00102}00102\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

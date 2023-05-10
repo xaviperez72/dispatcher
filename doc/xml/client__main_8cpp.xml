@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="client__main_8cpp" kind="file" language="C++">
+    <compoundname>client_main.cpp</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">map</includes>
+    <includes local="no">json/json.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="Socket_8h" local="yes">Socket.h</includes>
+    <includes refid="protocol__msg_8h" local="yes">protocol_msg.h</includes>
+    <includes local="yes">plog/Initializers/RollingFileInitializer.h</includes>
+    <includes local="yes">plog/Initializers/ConsoleInitializer.h</includes>
+    <includes local="no">signal.h</includes>
+    <includes local="no">sys/wait.h</includes>
+    <incdepgraph>
+      <node id="8">
+        <label>Socket.h</label>
+        <link refid="Socket_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/client_main.cpp</label>
+        <link refid="client__main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>protocol_msg.h</label>
+        <link refid="protocol__msg_8h"/>
+      </node>
+      <node id="18">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="21">
+        <label>errno.h</label>
+      </node>
+      <node id="16">
+        <label>fcntl.h</label>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="4">
+        <label>json/json.h</label>
+      </node>
+      <node id="3">
+        <label>map</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="17">
+        <label>netdb.h</label>
+      </node>
+      <node id="15">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="24">
+        <label>plog/Initializers/ConsoleInitializer.h</label>
+      </node>
+      <node id="23">
+        <label>plog/Initializers/RollingFileInitializer.h</label>
+      </node>
+      <node id="7">
+        <label>plog/Log.h</label>
+      </node>
+      <node id="25">
+        <label>signal.h</label>
+      </node>
+      <node id="9">
+        <label>stdlib.h</label>
+      </node>
+      <node id="10">
+        <label>string.h</label>
+      </node>
+      <node id="14">
+        <label>sys/ioctl.h</label>
+      </node>
+      <node id="13">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="12">
+        <label>sys/types.h</label>
+      </node>
+      <node id="20">
+        <label>sys/un.h</label>
+      </node>
+      <node id="26">
+        <label>sys/wait.h</label>
+      </node>
+      <node id="11">
+        <label>unistd.h</label>
+      </node>
+      <node id="19">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacestd">std</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="client__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c" prot="public" static="no">
+        <name>LOGLEVEL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="5" column="9" bodyfile="src/client_main.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int loglevel</definition>
+        <argsstring></argsstring>
+        <name>loglevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="6" column="5" bodyfile="src/client_main.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" prot="public" static="no" mutable="no">
+        <type>auto</type>
+        <definition>auto keep_accepting</definition>
+        <argsstring></argsstring>
+        <name>keep_accepting</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="32" column="6" bodyfile="src/client_main.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sigterm_func</definition>
+        <argsstring>(int s)</argsstring>
+        <name>sigterm_func</name>
+        <param>
+          <type>int</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="34" column="6" bodyfile="src/client_main.cpp" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Prepare_Msg_Json_To_Send</definition>
+        <argsstring>(protomsg::st_protomsg &amp;v_protomsg, string msg, Json::Value &amp;json_msg)</argsstring>
+        <name>Prepare_Msg_Json_To_Send</name>
+        <param>
+          <type><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref> &amp;</type>
+          <declname>v_protomsg</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Json::Value &amp;</type>
+          <declname>json_msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="45" column="6" bodyfile="src/client_main.cpp" bodystart="45" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="client__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/client_main.cpp" line="56" column="5" bodyfile="src/client_main.cpp" bodystart="56" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/***************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>GLOBAL<sp/>VARS<sp/>-<sp/>IN<sp/>COMMON.H</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>***************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>LOGLEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="client__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGLEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/json.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Socket_8h" kindref="compound">Socket.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="protocol__msg_8h" kindref="compound">protocol_msg.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;plog/Initializers/RollingFileInitializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;plog/Initializers/ConsoleInitializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/wait.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" kindref="member">keep_accepting</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" kindref="member">sigterm_func</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s)<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Received<sp/>signal<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strsignal(s)<sp/>&lt;&lt;<sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>keep_accepting<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" kindref="member">keep_accepting</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" kindref="member">keep_accepting</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Received<sp/>signal<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strsignal(s)<sp/>&lt;&lt;<sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>keep_accepting<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d" kindref="member">keep_accepting</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155" kindref="member">Prepare_Msg_Json_To_Send</ref>(<ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref><sp/>&amp;v_protomsg,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>msg,<sp/>Json::Value<sp/>&amp;json_msg)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;TERF&quot;</highlight><highlight class="normal">]<sp/>=<sp/>v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" kindref="member">terf</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;TERL&quot;</highlight><highlight class="normal">]<sp/>=<sp/>v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" kindref="member">terl</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;GUID&quot;</highlight><highlight class="normal">]<sp/>=<sp/>std::string(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" kindref="member">guid</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;PID&quot;</highlight><highlight class="normal">]<sp/>=<sp/>std::string(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" kindref="member">pid</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;AID&quot;</highlight><highlight class="normal">]<sp/>=<sp/>std::string(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" kindref="member">aid</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;CABX&quot;</highlight><highlight class="normal">]<sp/>=<sp/>std::string(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" kindref="member">cabx</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>json_msg[</highlight><highlight class="stringliteral">&quot;MSG&quot;</highlight><highlight class="normal">]<sp/>=<sp/>msg;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="client__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="client__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TO<sp/>DO<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>level<sp/>of<sp/>log<sp/>from<sp/>file<sp/>config.<sp/>Now<sp/>it<sp/>is<sp/>only<sp/>DEBUG.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>plog::ConsoleAppender&lt;plog::TxtFormatter&gt;<sp/>consoleAppender;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>=plog::verbose;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>plog::init(plog::verbose,<sp/>&amp;consoleAppender);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">protomsg::st_protomsg</ref><sp/>v_protomsg;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>msg_to_send,<sp/>msgout;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>Json::Value<sp/>json_msg;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;CLIENT_main<sp/>START!!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>previousInterruptHandler_int<sp/>=<sp/>signal(SIGINT,<sp/><ref refid="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" kindref="member">sigterm_func</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>previousInterruptHandler_usr1<sp/>=<sp/>signal(SIGUSR1,<sp/><ref refid="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" kindref="member">sigterm_func</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>previousInterruptHandler_term<sp/>=<sp/>signal(SIGTERM,<sp/><ref refid="client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0" kindref="member">sigterm_func</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>ip<sp/>=<sp/><ref refid="classSocket_1a49b6d9bbc776522388ce7c13d3a0ac57" kindref="member">Socket::ipFromHostName</ref>(</highlight><highlight class="stringliteral">&quot;localhost&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//Get<sp/>ip<sp/>addres<sp/>from<sp/>hostname</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>port<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;9000&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSocket" kindref="compound">Socket</ref><sp/>*sock<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classSocket" kindref="compound">Socket</ref>(AF_INET,SOCK_STREAM,0);<sp/><sp/></highlight><highlight class="comment">//AF_INET<sp/>(Internet<sp/>mode)<sp/>SOCK_STREAM<sp/>(TCP<sp/>mode)<sp/>0<sp/>(Protocol<sp/>any)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>sock-&gt;<ref refid="classSocket_1ac57cbd359ac6c4c731dbcebebfc6af5c" kindref="member">connect</ref>(ip,<sp/>port);<sp/></highlight><highlight class="comment">//Connect<sp/>to<sp/>localhost</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>msg_to_send<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Well,<sp/>this<sp/>is<sp/>the<sp/>first<sp/>message<sp/>going<sp/>and<sp/>coming.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" kindref="member">terf</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" kindref="member">terl</ref><sp/>=<sp/>3000;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" kindref="member">guid</ref>,</highlight><highlight class="stringliteral">&quot;SOMEGUID&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" kindref="member">pid</ref>,<sp/></highlight><highlight class="stringliteral">&quot;somepid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" kindref="member">aid</ref>,<sp/></highlight><highlight class="stringliteral">&quot;400200&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(v_protomsg.<ref refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" kindref="member">cabx</ref>,</highlight><highlight class="stringliteral">&quot;400201&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155" kindref="member">Prepare_Msg_Json_To_Send</ref>(v_protomsg,<sp/>msg_to_send,<sp/>json_msg);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>field;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>json_msg;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(getline(ss,<sp/>field))<sp/><sp/></highlight><highlight class="comment">//<sp/>Cortamos<sp/>campos<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msgout<sp/>+=<sp/>field;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sending<sp/>msgout:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msgout;<sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>sock-&gt;<ref refid="classSocket_1a564eb3f48d8cb31423076e68f8cc1f54" kindref="member">socket_write</ref>(msgout);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seconds<sp/>=<sp/>10;</highlight><highlight class="comment">//Wait<sp/>10<sp/>second<sp/>for<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;Socket&gt;<sp/>reads(1);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>reads[0]<sp/>=<sp/>*sock;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Socket::select<sp/>waits<sp/>until<sp/>sock<sp/>reveives<sp/>some<sp/>input<sp/>(for<sp/>example<sp/>the<sp/>answer<sp/>from<sp/>google.com)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sock-&gt;<ref refid="classSocket_1a8078f3895616b76dae6367e765bc5744" kindref="member">select</ref>(&amp;reads,<sp/>NULL,<sp/>NULL,<sp/>seconds)<sp/>&lt;<sp/>1)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Something<sp/>went<sp/>wrong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_ERROR<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>on<sp/>select:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>errno<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strerror(errno);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>buffer;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sock-&gt;<ref refid="classSocket_1ad7b9a7832dc2384d4f899afd73cb1193" kindref="member">socket_read</ref>(buffer,<sp/>2048);</highlight><highlight class="comment">//Read<sp/>1024<sp/>bytes<sp/>of<sp/>the<sp/>answer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Response:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>buffer;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ending<sp/>CLIENT_main&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)signal(SIGINT,<sp/>previousInterruptHandler_int);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)signal(SIGUSR1,<sp/>previousInterruptHandler_usr1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)signal(SIGTERM,<sp/>previousInterruptHandler_term);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/client_main.cpp"/>
+  </compounddef>
+</doxygen>

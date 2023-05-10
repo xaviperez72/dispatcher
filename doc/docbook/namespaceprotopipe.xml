@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceprotopipe" xml:lang="en-US">
+<title>protopipe Namespace Reference</title>
+<indexterm><primary>protopipe</primary></indexterm>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static constexpr char <link linkend="_namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e">WEAKUP_PIPE</link> [1] ={&apos;1&apos;}</para>
+</listitem>
+            <listitem><para>static constexpr char <link linkend="_namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de">ENDING_PIPE</link> [1] ={&apos;2&apos;}</para>
+</listitem>
+            <listitem><para>static constexpr int <link linkend="_namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760">LEN_PIPEMSG</link> =1</para>
+</listitem>
+            <listitem><para>static char <link linkend="_namespaceprotopipe_1acdb2afef76b82453234a043e76cbf2a9">GETPIPEMSG</link> [1]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de"/><section>
+    <title>ENDING_PIPE</title>
+<indexterm><primary>ENDING_PIPE</primary><secondary>protopipe</secondary></indexterm>
+<indexterm><primary>protopipe</primary><secondary>ENDING_PIPE</secondary></indexterm>
+<para><computeroutput>constexpr char protopipe::ENDING_PIPE[1] ={&apos;2&apos;}<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00007">7</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotopipe_1acdb2afef76b82453234a043e76cbf2a9"/><section>
+    <title>GETPIPEMSG</title>
+<indexterm><primary>GETPIPEMSG</primary><secondary>protopipe</secondary></indexterm>
+<indexterm><primary>protopipe</primary><secondary>GETPIPEMSG</secondary></indexterm>
+<para><computeroutput>char protopipe::GETPIPEMSG[1]<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00009">9</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760"/><section>
+    <title>LEN_PIPEMSG</title>
+<indexterm><primary>LEN_PIPEMSG</primary><secondary>protopipe</secondary></indexterm>
+<indexterm><primary>protopipe</primary><secondary>LEN_PIPEMSG</secondary></indexterm>
+<para><computeroutput>constexpr int protopipe::LEN_PIPEMSG =1<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00008">8</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e"/><section>
+    <title>WEAKUP_PIPE</title>
+<indexterm><primary>WEAKUP_PIPE</primary><secondary>protopipe</secondary></indexterm>
+<indexterm><primary>protopipe</primary><secondary>WEAKUP_PIPE</secondary></indexterm>
+<para><computeroutput>constexpr char protopipe::WEAKUP_PIPE[1] ={&apos;1&apos;}<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00006">6</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+</section>
+</section>

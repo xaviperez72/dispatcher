@@ -1,0 +1,203 @@
+.TH "SharedMemory" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SharedMemory
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ipclib\&.h>\fP
+.PP
+Inherits \fBIpc\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSharedMemory\fP (const key_t key, int size, bool deleteOnExit)"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP (int shmid)"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP ()=default"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP (\fBSharedMemory\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP (\fBSharedMemory\fP &&)=default"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP & \fBoperator=\fP (\fBSharedMemory\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBSharedMemory\fP & \fBoperator=\fP (\fBSharedMemory\fP &&)=default"
+.br
+.ti -1c
+.RI "\fB~SharedMemory\fP ()"
+.br
+.ti -1c
+.RI "void * \fBgetaddr\fP () const"
+.br
+.ti -1c
+.RI "int \fBget_nattach\fP ()"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIpc\fP
+.in +1c
+.ti -1c
+.RI "\fBIpc\fP ()=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (key_t key, bool deleteOnExit)"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "virtual \fB~Ipc\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBEnableDelete\fP ()"
+.br
+.ti -1c
+.RI "void \fBDisableDelete\fP ()"
+.br
+.ti -1c
+.RI "key_t \fBgetkey\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetid\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetflags\fP () const"
+.br
+.ti -1c
+.RI "key_t \fBgetDeleteOnExit\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetkey\fP (key_t key)"
+.br
+.ti -1c
+.RI "void \fBsetid\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBsetok\fP (bool ok)"
+.br
+.ti -1c
+.RI "void \fBsetflags\fP (int flags)"
+.br
+.ti -1c
+.RI "virtual \fBoperator bool\fP () const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBget_stat\fP (int shmid)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "void * \fB_shmaddr\fP {nullptr}"
+.br
+.ti -1c
+.RI "int \fB_size\fP {4}"
+.br
+.ti -1c
+.RI "shmid_ds \fB_st\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Shared Memory Object IPC (\fBipclib\&.h\fP) 
+.PP
+Definition at line \fB155\fP of file \fBipclib\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SharedMemory::SharedMemory (const key_t key, int size, bool deleteOnExit)"
+\fBSharedMemory\fP Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP (default IPC_PRIVATE) 
+.br
+\fIsize\fP Memory size 
+.br
+\fIdeleteOnExit\fP = false (don't remove semaphore on destruction\&. true = remove it) 
+.RE
+.PP
+
+.PP
+Definition at line \fB181\fP of file \fBipclib\&.cpp\fP\&.
+.SS "SharedMemory::SharedMemory (int shmid)"
+\fBSharedMemory\fP Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIshmid\fP Id for an existing \fBSharedMemory\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB155\fP of file \fBipclib\&.cpp\fP\&.
+.SS "SharedMemory::SharedMemory ()\fC [default]\fP"
+
+.SS "SharedMemory::SharedMemory (\fBSharedMemory\fP const &)\fC [default]\fP"
+
+.SS "SharedMemory::SharedMemory (\fBSharedMemory\fP &&)\fC [default]\fP"
+
+.SS "SharedMemory::~SharedMemory ()"
+
+.PP
+Definition at line \fB221\fP of file \fBipclib\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int SharedMemory::get_nattach ()"
+
+.PP
+Definition at line \fB145\fP of file \fBipclib\&.cpp\fP\&.
+.SS "int SharedMemory::get_stat (int shmid)\fC [private]\fP"
+
+.PP
+Definition at line \fB140\fP of file \fBipclib\&.cpp\fP\&.
+.SS "void * SharedMemory::getaddr () const\fC [inline]\fP"
+
+.PP
+Definition at line \fB188\fP of file \fBipclib\&.h\fP\&.
+.SS "\fBSharedMemory\fP & SharedMemory::operator= (\fBSharedMemory\fP &&)\fC [default]\fP"
+
+.SS "\fBSharedMemory\fP & SharedMemory::operator= (\fBSharedMemory\fP const &)\fC [default]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "void* SharedMemory::_shmaddr {nullptr}\fC [private]\fP"
+
+.PP
+Definition at line \fB157\fP of file \fBipclib\&.h\fP\&.
+.SS "int SharedMemory::_size {4}\fC [private]\fP"
+
+.PP
+Definition at line \fB158\fP of file \fBipclib\&.h\fP\&.
+.SS "shmid_ds SharedMemory::_st\fC [private]\fP"
+
+.PP
+Definition at line \fB159\fP of file \fBipclib\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

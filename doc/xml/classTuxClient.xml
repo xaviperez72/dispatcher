@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classTuxClient" kind="class" language="C++" prot="public">
+    <compoundname>TuxClient</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTuxClient_1ad471945feae29ecb0e123aa8d3fdd82c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TuxClient::idx_cli</definition>
+        <argsstring></argsstring>
+        <name>idx_cli</name>
+        <qualifiedname>TuxClient::idx_cli</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tuxcli_main.cpp" line="40" column="9" bodyfile="src/tuxcli_main.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTuxClient_1ac24e2ed32f42a4065d71eae0a36b6829" prot="private" static="no" mutable="no">
+        <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;</type>
+        <definition>MessageQueue&amp; TuxClient::common_queue</definition>
+        <argsstring></argsstring>
+        <name>common_queue</name>
+        <qualifiedname>TuxClient::common_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tuxcli_main.cpp" line="41" column="18" bodyfile="src/tuxcli_main.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTuxClient_1a0d30b7727e56792657403affcee79901" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TuxClient::TuxClient</definition>
+        <argsstring>(int idx, MessageQueue &amp;queue)</argsstring>
+        <name>TuxClient</name>
+        <qualifiedname>TuxClient::TuxClient</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &amp;</type>
+          <declname>queue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tuxcli_main.cpp" line="43" column="5" bodyfile="src/tuxcli_main.cpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classTuxClient_1a6e00a2d0ed796c1f9a0b6e26499ff9f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TuxClient::operator()</definition>
+        <argsstring>()</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TuxClient::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tuxcli_main.cpp" line="44" column="9" bodyfile="src/tuxcli_main.cpp" bodystart="47" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="2">
+        <label>MessageQueue</label>
+        <link refid="classMessageQueue"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TuxClient</label>
+        <link refid="classTuxClient"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>common_queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/tuxcli_main.cpp" line="38" column="1" bodyfile="src/tuxcli_main.cpp" bodystart="39" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classTuxClient_1ac24e2ed32f42a4065d71eae0a36b6829" prot="private" virt="non-virtual"><scope>TuxClient</scope><name>common_queue</name></member>
+      <member refid="classTuxClient_1ad471945feae29ecb0e123aa8d3fdd82c" prot="private" virt="non-virtual"><scope>TuxClient</scope><name>idx_cli</name></member>
+      <member refid="classTuxClient_1a6e00a2d0ed796c1f9a0b6e26499ff9f5" prot="public" virt="non-virtual"><scope>TuxClient</scope><name>operator()</name></member>
+      <member refid="classTuxClient_1a0d30b7727e56792657403affcee79901" prot="public" virt="non-virtual"><scope>TuxClient</scope><name>TuxClient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

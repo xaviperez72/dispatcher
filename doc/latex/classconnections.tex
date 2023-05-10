@@ -1,0 +1,262 @@
+\hypertarget{classconnections}{}\doxysection{connections Class Reference}
+\label{classconnections}\index{connections@{connections}}
+
+
+{\ttfamily \#include $<$connections.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classconnections_a2fbd49788255115aa209b55b9cfe7bfb}{connections}} (int Max\+Connections, int Num\+Threads)
+\item 
+void \mbox{\hyperlink{classconnections_abd2f1b462739513f2c23236fb28b08a8}{mark\+\_\+obsolete}} (int idx)
+\item 
+void \mbox{\hyperlink{classconnections_aba8db6b2f3d43d4a030b764fb2371b6a}{delete\+\_\+obsolete}} (int idx)
+\item 
+int \mbox{\hyperlink{classconnections_aa8c930db3c4885c33de249f67c6f3ca6}{clean\+\_\+repeated\+\_\+ip}} (sockaddr\+\_\+in $\ast$ppal, \mbox{\hyperlink{classSemaphore}{Semaphore}} \&sem)
+\item 
+int \mbox{\hyperlink{classconnections_a94f933faea3ade69fc63ecd8647d5423}{register\+\_\+new\+\_\+conn}} (int nthread, int sd, sockaddr\+\_\+in s\+\_\+in, \mbox{\hyperlink{classSemaphore}{Semaphore}} \&sem)
+\item 
+int \mbox{\hyperlink{classconnections_a7818be12aec98b6c015b038b667c568f}{unregister\+\_\+conn}} (int idx, \mbox{\hyperlink{classSemaphore}{Semaphore}} \&sem)
+\item 
+int \mbox{\hyperlink{classconnections_abad7f85b1ef27d0417c4571b905192b1}{ending\+\_\+operation}} (int idx, \mbox{\hyperlink{classSemaphore}{Semaphore}} \&sem, \mbox{\hyperlink{structconnection}{connection}} \&cur\+\_\+conn)
+\item 
+int \mbox{\hyperlink{classconnections_a9dd3e4b0392c9eddcdbc2df69071145c}{check\+\_\+obsolete}} (int idx\+\_\+con, \mbox{\hyperlink{classSemaphore}{Semaphore}} \&sem)
+\item 
+bool \mbox{\hyperlink{classconnections_a1d163bdeb5127186898ab71987ef6dc5}{is\+\_\+all\+\_\+connections\+\_\+done}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classconnections_aa422d2929a142e3b88a0035c10ea2799}{initialized}} \{false\}
+\item 
+int \mbox{\hyperlink{classconnections_a4ef1805523e87bc105015afcce456dc4}{first\+\_\+free}} \{0\}
+\item 
+int \mbox{\hyperlink{classconnections_a48e53d849d45c221c4bc1b4df8013a13}{n\+Threads}} \{0\}
+\item 
+int \mbox{\hyperlink{classconnections_ab8405116666865cf960deb54b6beb2c9}{Max\+Conn}} \{0\}
+\item 
+\mbox{\hyperlink{structconnection}{connection}} $\ast$ \mbox{\hyperlink{classconnections_aec431699f4e5f15397d398150b97222b}{current\+\_\+connections}} \{nullptr\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Connections class. 
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00031}{31}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classconnections_a2fbd49788255115aa209b55b9cfe7bfb}\label{classconnections_a2fbd49788255115aa209b55b9cfe7bfb}} 
+\index{connections@{connections}!connections@{connections}}
+\index{connections@{connections}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{connections()}{connections()}}
+{\footnotesize\ttfamily connections\+::connections (\begin{DoxyParamCaption}\item[{int}]{Max\+Connections,  }\item[{int}]{Num\+Threads }\end{DoxyParamCaption})}
+
+connections Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em Max\+Connections} & Max number of connections. \\
+\hline
+{\em Num\+Threads} & = Number of thread pairs running \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classconnections_a9dd3e4b0392c9eddcdbc2df69071145c}\label{classconnections_a9dd3e4b0392c9eddcdbc2df69071145c}} 
+\index{connections@{connections}!check\_obsolete@{check\_obsolete}}
+\index{check\_obsolete@{check\_obsolete}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{check\_obsolete()}{check\_obsolete()}}
+{\footnotesize\ttfamily int connections\+::check\+\_\+obsolete (\begin{DoxyParamCaption}\item[{int}]{idx\+\_\+con,  }\item[{\mbox{\hyperlink{classSemaphore}{Semaphore}} \&}]{sem }\end{DoxyParamCaption})}
+
+if connection\mbox{[}idx\+\_\+con\mbox{]} is obsolete marks it as st\+\_\+obsolete=2.
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index on connection array \\
+\hline
+{\em sem} & \mbox{\hyperlink{classSemaphore}{Semaphore}} to lock to avoid data races. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_aa8c930db3c4885c33de249f67c6f3ca6}\label{classconnections_aa8c930db3c4885c33de249f67c6f3ca6}} 
+\index{connections@{connections}!clean\_repeated\_ip@{clean\_repeated\_ip}}
+\index{clean\_repeated\_ip@{clean\_repeated\_ip}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{clean\_repeated\_ip()}{clean\_repeated\_ip()}}
+{\footnotesize\ttfamily int connections\+::clean\+\_\+repeated\+\_\+ip (\begin{DoxyParamCaption}\item[{sockaddr\+\_\+in $\ast$}]{ppal,  }\item[{\mbox{\hyperlink{classSemaphore}{Semaphore}} \&}]{sem }\end{DoxyParamCaption})}
+
+Clean repeated IP in connection array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ppal} & sockaddr\+\_\+in data (IP\+:port) \\
+\hline
+{\em sem} & \mbox{\hyperlink{classSemaphore}{Semaphore}} to lock to avoid data races. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_aba8db6b2f3d43d4a030b764fb2371b6a}\label{classconnections_aba8db6b2f3d43d4a030b764fb2371b6a}} 
+\index{connections@{connections}!delete\_obsolete@{delete\_obsolete}}
+\index{delete\_obsolete@{delete\_obsolete}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{delete\_obsolete()}{delete\_obsolete()}}
+{\footnotesize\ttfamily void connections\+::delete\+\_\+obsolete (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_abad7f85b1ef27d0417c4571b905192b1}\label{classconnections_abad7f85b1ef27d0417c4571b905192b1}} 
+\index{connections@{connections}!ending\_operation@{ending\_operation}}
+\index{ending\_operation@{ending\_operation}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{ending\_operation()}{ending\_operation()}}
+{\footnotesize\ttfamily int connections\+::ending\+\_\+operation (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{\mbox{\hyperlink{classSemaphore}{Semaphore}} \&}]{sem,  }\item[{\mbox{\hyperlink{structconnection}{connection}} \&}]{cur\+\_\+conn }\end{DoxyParamCaption})}
+
+Sets connection operation info\+: add 1 to operation counter, gets time
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index on connection array \\
+\hline
+{\em sem} & \mbox{\hyperlink{classSemaphore}{Semaphore}} to lock to avoid data races. \\
+\hline
+{\em cur\+\_\+conn} & Gets connection struct of connection array (idx position) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_a1d163bdeb5127186898ab71987ef6dc5}\label{classconnections_a1d163bdeb5127186898ab71987ef6dc5}} 
+\index{connections@{connections}!is\_all\_connections\_done@{is\_all\_connections\_done}}
+\index{is\_all\_connections\_done@{is\_all\_connections\_done}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{is\_all\_connections\_done()}{is\_all\_connections\_done()}}
+{\footnotesize\ttfamily bool connections\+::is\+\_\+all\+\_\+connections\+\_\+done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00096}{96}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+\mbox{\Hypertarget{classconnections_abd2f1b462739513f2c23236fb28b08a8}\label{classconnections_abd2f1b462739513f2c23236fb28b08a8}} 
+\index{connections@{connections}!mark\_obsolete@{mark\_obsolete}}
+\index{mark\_obsolete@{mark\_obsolete}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{mark\_obsolete()}{mark\_obsolete()}}
+{\footnotesize\ttfamily void connections\+::mark\+\_\+obsolete (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_a94f933faea3ade69fc63ecd8647d5423}\label{classconnections_a94f933faea3ade69fc63ecd8647d5423}} 
+\index{connections@{connections}!register\_new\_conn@{register\_new\_conn}}
+\index{register\_new\_conn@{register\_new\_conn}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{register\_new\_conn()}{register\_new\_conn()}}
+{\footnotesize\ttfamily int connections\+::register\+\_\+new\+\_\+conn (\begin{DoxyParamCaption}\item[{int}]{nthread,  }\item[{int}]{sd,  }\item[{sockaddr\+\_\+in}]{s\+\_\+in,  }\item[{\mbox{\hyperlink{classSemaphore}{Semaphore}} \&}]{sem }\end{DoxyParamCaption})}
+
+Registers new connection on array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nthread} & Thread pair idx \\
+\hline
+{\em sd} & \mbox{\hyperlink{classSocket}{Socket}} descriptor \\
+\hline
+{\em s\+\_\+in} & sockaddr\+\_\+in info \\
+\hline
+{\em sem} & \mbox{\hyperlink{classSemaphore}{Semaphore}} to lock to avoid data races. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+\mbox{\Hypertarget{classconnections_a7818be12aec98b6c015b038b667c568f}\label{classconnections_a7818be12aec98b6c015b038b667c568f}} 
+\index{connections@{connections}!unregister\_conn@{unregister\_conn}}
+\index{unregister\_conn@{unregister\_conn}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{unregister\_conn()}{unregister\_conn()}}
+{\footnotesize\ttfamily int connections\+::unregister\+\_\+conn (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{\mbox{\hyperlink{classSemaphore}{Semaphore}} \&}]{sem }\end{DoxyParamCaption})}
+
+Unregisters connection on array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index on connection array \\
+\hline
+{\em sem} & \mbox{\hyperlink{classSemaphore}{Semaphore}} to lock to avoid data races. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{connections_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{connections_8cpp_source}{connections.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classconnections_aec431699f4e5f15397d398150b97222b}\label{classconnections_aec431699f4e5f15397d398150b97222b}} 
+\index{connections@{connections}!current\_connections@{current\_connections}}
+\index{current\_connections@{current\_connections}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{current\_connections}{current\_connections}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structconnection}{connection}}$\ast$ connections\+::current\+\_\+connections \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00036}{36}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+\mbox{\Hypertarget{classconnections_a4ef1805523e87bc105015afcce456dc4}\label{classconnections_a4ef1805523e87bc105015afcce456dc4}} 
+\index{connections@{connections}!first\_free@{first\_free}}
+\index{first\_free@{first\_free}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{first\_free}{first\_free}}
+{\footnotesize\ttfamily int connections\+::first\+\_\+free \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00033}{33}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+\mbox{\Hypertarget{classconnections_aa422d2929a142e3b88a0035c10ea2799}\label{classconnections_aa422d2929a142e3b88a0035c10ea2799}} 
+\index{connections@{connections}!initialized@{initialized}}
+\index{initialized@{initialized}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily bool connections\+::initialized \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00032}{32}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+\mbox{\Hypertarget{classconnections_ab8405116666865cf960deb54b6beb2c9}\label{classconnections_ab8405116666865cf960deb54b6beb2c9}} 
+\index{connections@{connections}!MaxConn@{MaxConn}}
+\index{MaxConn@{MaxConn}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{MaxConn}{MaxConn}}
+{\footnotesize\ttfamily int connections\+::\+Max\+Conn \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00035}{35}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+\mbox{\Hypertarget{classconnections_a48e53d849d45c221c4bc1b4df8013a13}\label{classconnections_a48e53d849d45c221c4bc1b4df8013a13}} 
+\index{connections@{connections}!nThreads@{nThreads}}
+\index{nThreads@{nThreads}!connections@{connections}}
+\doxysubsubsection{\texorpdfstring{nThreads}{nThreads}}
+{\footnotesize\ttfamily int connections\+::n\+Threads \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{connections_8h_source_l00034}{34}} of file \mbox{\hyperlink{connections_8h_source}{connections.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{connections_8h}{connections.\+h}}\item 
+src/\mbox{\hyperlink{connections_8cpp}{connections.\+cpp}}\end{DoxyCompactItemize}

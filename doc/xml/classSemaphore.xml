@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classSemaphore" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Semaphore</compoundname>
+    <basecompoundref refid="classIpc" prot="public" virt="non-virtual">Ipc</basecompoundref>
+    <includes refid="ipclib_8h" local="no">ipclib.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSemaphore_1a0636c10df48f7a1045fa2936e8db0525" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Semaphore::_nsems</definition>
+        <argsstring></argsstring>
+        <name>_nsems</name>
+        <qualifiedname>Semaphore::_nsems</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="109" column="9" bodyfile="src/ipclib.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSemaphore_1a11050ec50c4b972ac7277ebe6bcac953" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; Semaphore::_sem_val</definition>
+        <argsstring></argsstring>
+        <name>_sem_val</name>
+        <qualifiedname>Semaphore::_sem_val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="110" column="17" bodyfile="src/ipclib.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSemaphore_1a22eb2db89917021918af8af6c48762c7" prot="private" static="no" mutable="no">
+        <type>struct sembuf</type>
+        <definition>struct sembuf Semaphore::_sop</definition>
+        <argsstring></argsstring>
+        <name>_sop</name>
+        <qualifiedname>Semaphore::_sop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="111" column="17" bodyfile="src/ipclib.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSemaphore_1a6960ae0ae5ae957ed1a2fe10e8eb8336" prot="private" static="no" mutable="no">
+        <type><ref refid="unionsemun" kindref="compound">semun</ref></type>
+        <definition>semun Semaphore::_st</definition>
+        <argsstring></argsstring>
+        <name>_st</name>
+        <qualifiedname>Semaphore::_st</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="112" column="11" bodyfile="src/ipclib.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classSemaphore_1a35d8908cce66c5cbb462e8e0930ee67d" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Semaphore::LOCK</definition>
+        <argsstring></argsstring>
+        <name>LOCK</name>
+        <qualifiedname>Semaphore::LOCK</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="113" column="22" bodyfile="src/ipclib.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSemaphore_1a97cfedba49bdfe92cd1c09d7242fc5b2" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Semaphore::UNLOCK</definition>
+        <argsstring></argsstring>
+        <name>UNLOCK</name>
+        <qualifiedname>Semaphore::UNLOCK</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="114" column="26" bodyfile="src/ipclib.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSemaphore_1a4849ad52709d27304b2224df375a4d0f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Semaphore::set</definition>
+        <argsstring>(const int op)</argsstring>
+        <name>set</name>
+        <qualifiedname>Semaphore::set</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="116" column="9" bodyfile="src/ipclib.cpp" bodystart="98" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a2b7db06c733cdc2d3599d65e1abcf29d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Semaphore::get_stat</definition>
+        <argsstring>(int semid)</argsstring>
+        <name>get_stat</name>
+        <qualifiedname>Semaphore::get_stat</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>semid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="118" column="9" bodyfile="src/ipclib.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSemaphore_1ab70042f19c0201b877d31b483252684d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::Semaphore</definition>
+        <argsstring>(const key_t key, const int nsems, const int sem_val, bool deleteOnExit)</argsstring>
+        <name>Semaphore</name>
+        <qualifiedname>Semaphore::Semaphore</qualifiedname>
+        <param>
+          <type>const key_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nsems</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>sem_val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteOnExit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(default IPC_PRIVATE) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nsems</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>=1 Number of semaphores </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem_val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>=1 Sempahore value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deleteOnExit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= false (don&apos;t remove semaphore on destruction. true = remove it) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="129" column="5" bodyfile="src/ipclib.cpp" bodystart="41" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a4b0766bfb19b1cc2f8fddc88859014c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::Semaphore</definition>
+        <argsstring>(int semid)</argsstring>
+        <name>Semaphore</name>
+        <qualifiedname>Semaphore::Semaphore</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>semid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>semid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id for an existing <ref refid="classSemaphore" kindref="compound">Semaphore</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="135" column="5" bodyfile="src/ipclib.cpp" bodystart="10" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::Semaphore</definition>
+        <argsstring>()=default</argsstring>
+        <name>Semaphore</name>
+        <qualifiedname>Semaphore::Semaphore</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="137" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a6db9201abccff11cb167383da129c8b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::Semaphore</definition>
+        <argsstring>(Semaphore const &amp;)=default</argsstring>
+        <name>Semaphore</name>
+        <qualifiedname>Semaphore::Semaphore</qualifiedname>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="138" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a23bb5aead54bb60d2fd31d376fbf2be4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::Semaphore</definition>
+        <argsstring>(Semaphore &amp;&amp;)=default</argsstring>
+        <name>Semaphore</name>
+        <qualifiedname>Semaphore::Semaphore</qualifiedname>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="139" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1aedc9de13d1ccbba3b354794150013783" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+        <definition>Semaphore &amp; Semaphore::operator=</definition>
+        <argsstring>(Semaphore const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Semaphore::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="140" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1abf51dba797f2894ef77d88154423017f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+        <definition>Semaphore &amp; Semaphore::operator=</definition>
+        <argsstring>(Semaphore &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Semaphore::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="141" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a633658a6fde276bffc912028725c6ade" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Semaphore::~Semaphore</definition>
+        <argsstring>()</argsstring>
+        <name>~Semaphore</name>
+        <qualifiedname>Semaphore::~Semaphore</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="142" column="5" bodyfile="src/ipclib.cpp" bodystart="125" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Semaphore::Lock</definition>
+        <argsstring>()</argsstring>
+        <name>Lock</name>
+        <qualifiedname>Semaphore::Lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="145" column="9" bodyfile="src/ipclib.h" bodystart="145" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classSemaphore_1afa909c8f77cf34597aed10df79e82958" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Semaphore::Unlock</definition>
+        <argsstring>()</argsstring>
+        <name>Unlock</name>
+        <qualifiedname>Semaphore::Unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="148" column="9" bodyfile="src/ipclib.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> Object IPC (<ref refid="ipclib_8h" kindref="compound">ipclib.h</ref>) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="1">
+        <label>Semaphore</label>
+        <link refid="classSemaphore"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Ipc</label>
+        <link refid="classIpc"/>
+      </node>
+      <node id="1">
+        <label>Semaphore</label>
+        <link refid="classSemaphore"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_st</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>semun</label>
+        <link refid="unionsemun"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/ipclib.h" line="107" column="1" bodyfile="src/ipclib.h" bodystart="108" bodyend="149"/>
+    <listofallmembers>
+      <member refid="classIpc_1ac3d97612d5c63128e5b57e3fe190a91b" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_deleteOnExit</name></member>
+      <member refid="classIpc_1ad7ed294460891e9b1027f949d286eca7" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_flags</name></member>
+      <member refid="classIpc_1ab86fc30de66fe77ab899462638dd052f" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_id</name></member>
+      <member refid="classIpc_1a687f050130e1b7c74713385783bd0228" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_key</name></member>
+      <member refid="classSemaphore_1a0636c10df48f7a1045fa2936e8db0525" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_nsems</name></member>
+      <member refid="classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_ok</name></member>
+      <member refid="classSemaphore_1a11050ec50c4b972ac7277ebe6bcac953" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_sem_val</name></member>
+      <member refid="classSemaphore_1a22eb2db89917021918af8af6c48762c7" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_sop</name></member>
+      <member refid="classSemaphore_1a6960ae0ae5ae957ed1a2fe10e8eb8336" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>_st</name></member>
+      <member refid="classIpc_1a97d909e0c622ac19431c874f187c505b" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>DisableDelete</name></member>
+      <member refid="classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>EnableDelete</name></member>
+      <member refid="classSemaphore_1a2b7db06c733cdc2d3599d65e1abcf29d" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>get_stat</name></member>
+      <member refid="classIpc_1a7faa2e8471f51b76efc446ea9330c49c" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>getDeleteOnExit</name></member>
+      <member refid="classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>getflags</name></member>
+      <member refid="classIpc_1a3e50666a681532a44ed32a283e8e2979" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>getid</name></member>
+      <member refid="classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>getkey</name></member>
+      <member refid="classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a65a9ce942eaca05e24af65e120f692ef" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a051dff23481be739a5825c03381ed578" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Ipc</name></member>
+      <member refid="classIpc_1a5966748aff2218b33cf39ef197c7e9a2" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Ipc</name></member>
+      <member refid="classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Lock</name></member>
+      <member refid="classSemaphore_1a35d8908cce66c5cbb462e8e0930ee67d" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>LOCK</name></member>
+      <member refid="classIpc_1a526497b4e34b064f779f300d2d011310" prot="public" virt="virtual"><scope>Semaphore</scope><name>operator bool</name></member>
+      <member refid="classSemaphore_1aedc9de13d1ccbba3b354794150013783" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>operator=</name></member>
+      <member refid="classSemaphore_1abf51dba797f2894ef77d88154423017f" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>operator=</name></member>
+      <member refid="classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776" prot="public" virt="non-virtual" ambiguityscope="Ipc::"><scope>Semaphore</scope><name>operator=</name></member>
+      <member refid="classIpc_1af046c6367b03099fec0826db68a2298d" prot="public" virt="non-virtual" ambiguityscope="Ipc::"><scope>Semaphore</scope><name>operator=</name></member>
+      <member refid="classSemaphore_1ab70042f19c0201b877d31b483252684d" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Semaphore</name></member>
+      <member refid="classSemaphore_1a4b0766bfb19b1cc2f8fddc88859014c1" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Semaphore</name></member>
+      <member refid="classSemaphore_1a98e1ac90faefeb68a6a5a1b08f8a0470" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Semaphore</name></member>
+      <member refid="classSemaphore_1a6db9201abccff11cb167383da129c8b0" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Semaphore</name></member>
+      <member refid="classSemaphore_1a23bb5aead54bb60d2fd31d376fbf2be4" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Semaphore</name></member>
+      <member refid="classSemaphore_1a4849ad52709d27304b2224df375a4d0f" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>set</name></member>
+      <member refid="classIpc_1a9f5e7d9248966affeff2533ebf17f060" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>setflags</name></member>
+      <member refid="classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>setid</name></member>
+      <member refid="classIpc_1a042476ca5bce7de73d906b7413922586" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>setkey</name></member>
+      <member refid="classIpc_1aecac89b3a9bdec9833092579712e7cfe" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>setok</name></member>
+      <member refid="classSemaphore_1a97cfedba49bdfe92cd1c09d7242fc5b2" prot="private" virt="non-virtual"><scope>Semaphore</scope><name>UNLOCK</name></member>
+      <member refid="classSemaphore_1afa909c8f77cf34597aed10df79e82958" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>Unlock</name></member>
+      <member refid="classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797" prot="public" virt="virtual"><scope>Semaphore</scope><name>~Ipc</name></member>
+      <member refid="classSemaphore_1a633658a6fde276bffc912028725c6ade" prot="public" virt="non-virtual"><scope>Semaphore</scope><name>~Semaphore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classall__dispatch__cfg" xml:lang="en-US">
+<title>all_dispatch_cfg Class Reference</title>
+<indexterm><primary>all_dispatch_cfg</primary></indexterm>
+<para>
+<computeroutput>#include &lt;dispatch_cfg.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1a16e6364aa0fa9d5d23fc52be30da60ce">all_dispatch_cfg</link> ()=delete</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1a017e64078a6712b61c6b0c50cec5ddc4">all_dispatch_cfg</link> (const Json::Value json)</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1ae5284643bf0ad317931d661dd93b31e7">all_dispatch_cfg</link> (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> const &amp;)=delete</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1acf71d6203f95908c2f95389050df18b4">all_dispatch_cfg</link> (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp;&amp;)=delete</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp; <link linkend="_classall__dispatch__cfg_1ad895e6693fbefef79dcce890cd22193c">operator=</link> (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> const &amp;)=delete</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp; <link linkend="_classall__dispatch__cfg_1a85bd12ac6a103ca769c0306565040772">operator=</link> (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp;&amp;)=delete</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1ae29529884cf6da8f8e6ecdbb9cbc59b6">~all_dispatch_cfg</link> ()=default</para>
+</listitem>
+            <listitem><para>const Json::Value &amp; <link linkend="_classall__dispatch__cfg_1a2eea05bea87d84a1b4547ab09ef1b101">get_json</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classall__dispatch__cfg_1a35d710c743e646189b71a791e86486af">load_all_info</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classall__dispatch__cfg_1af268e755413b6d473f766d54142195d9">create_cfg_values</link> (std::string file_dir)</para>
+</listitem>
+            <listitem><para><link linkend="_classall__dispatch__cfg_1a92cd7124adf2bcec95be4aa2372b2e8d">operator bool</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classall__dispatch__cfg_1ab44dfa948eee0327345cb1cd0b1ea514">show_all_config</link> ()</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a9f4905b32052e78277bf7ddfddd81115">get_num_dispatchers</link> () const</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structdispatch__cfg">dispatch_cfg</link> &gt; &amp; <link linkend="_classall__dispatch__cfg_1a027da4c0819cbc7b6301423ae2e99a17">get_all_dispatch_info</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a6c396082d3d091ffcaf17d13b408acd5">getNumDispatchers</link> () const</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classall__dispatch__cfg_1a8e640b60b9b882c88fcd5ff5c8b514ee">getDispatcherXX_IP</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1adea1daf1bde449c40f93a11ad38297be">getDispatcherXX_Port</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a1378ca64565176db1546847972a0b4c1">getDispatcherXX_NumThreads</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classall__dispatch__cfg_1aa1ed0af52a95019527159b09a42a16b2">getDispatcherXX_TuxCliProg</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classall__dispatch__cfg_1af189902c9c223a698b64ee34bdc53a1c">getDispatcherXX_TuxCliSetup</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1ad1c57b8c24055cc6c0372c358f16745e">getDispatcherXX_LogLevel</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a7a3abf92793526b5e0c053e864f881e0">getDispatcherXX_MaxConnections</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a692f455b0d88f54bb1ac7a8bb357cd6e">getDispatcherXX_StopTimeout</link> (const std::string dispatchXX) const</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classall__dispatch__cfg_1ab1bca3e1fccdd0cbc6690519ac8d6e6f">getDispatcherXX_IpcFile</link> (const std::string dispatchXX) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>Json::Value <link linkend="_classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f">_m_json</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_classall__dispatch__cfg_1a89a062ab90a459456c78a36eccf048f8">NumDispatchers</link> {0}</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structdispatch__cfg">dispatch_cfg</link> &gt; <link linkend="_classall__dispatch__cfg_1a84709c1960ff66d7e3abdaf3b960ee64">dispatchers_cfg</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_classall__dispatch__cfg_1aa8573e903e001b80d3056856a8656b74">loaded</link> {false}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Class of all Dispatchers configuration. </para>
+<para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00060">60</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classall__dispatch__cfg_1a16e6364aa0fa9d5d23fc52be30da60ce"/><section>
+    <title>all_dispatch_cfg()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::all_dispatch_cfg ( )<computeroutput>[delete]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classall__dispatch__cfg_1a017e64078a6712b61c6b0c50cec5ddc4"/><section>
+    <title>all_dispatch_cfg()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::all_dispatch_cfg (const Json::Value json)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00079">79</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1ae5284643bf0ad317931d661dd93b31e7"/><section>
+    <title>all_dispatch_cfg()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::all_dispatch_cfg (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> const &amp; )<computeroutput>[delete]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classall__dispatch__cfg_1acf71d6203f95908c2f95389050df18b4"/><section>
+    <title>all_dispatch_cfg()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::all_dispatch_cfg (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp;&amp; )<computeroutput>[delete]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classall__dispatch__cfg_1ae29529884cf6da8f8e6ecdbb9cbc59b6"/><section>
+    <title>~all_dispatch_cfg()</title>
+<indexterm><primary>~all_dispatch_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>~all_dispatch_cfg</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::~all_dispatch_cfg ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classall__dispatch__cfg_1af268e755413b6d473f766d54142195d9"/><section>
+    <title>create_cfg_values()</title>
+<indexterm><primary>create_cfg_values</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>create_cfg_values</secondary></indexterm>
+<para><computeroutput>void all_dispatch_cfg::create_cfg_values (std::string file_dir)</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00038">38</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a027da4c0819cbc7b6301423ae2e99a17"/><section>
+    <title>get_all_dispatch_info()</title>
+<indexterm><primary>get_all_dispatch_info</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>get_all_dispatch_info</secondary></indexterm>
+<para><computeroutput>std::vector&lt; <link linkend="_structdispatch__cfg">dispatch_cfg</link> &gt; &amp; all_dispatch_cfg::get_all_dispatch_info ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00099">99</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a2eea05bea87d84a1b4547ab09ef1b101"/><section>
+    <title>get_json()</title>
+<indexterm><primary>get_json</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>get_json</secondary></indexterm>
+<para><computeroutput>const Json::Value &amp; all_dispatch_cfg::get_json ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00087">87</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a9f4905b32052e78277bf7ddfddd81115"/><section>
+    <title>get_num_dispatchers()</title>
+<indexterm><primary>get_num_dispatchers</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>get_num_dispatchers</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::get_num_dispatchers ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00097">97</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a8e640b60b9b882c88fcd5ff5c8b514ee"/><section>
+    <title>getDispatcherXX_IP()</title>
+<indexterm><primary>getDispatcherXX_IP</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_IP</secondary></indexterm>
+<para><computeroutput>const char * all_dispatch_cfg::getDispatcherXX_IP (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00064">64</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1ab1bca3e1fccdd0cbc6690519ac8d6e6f"/><section>
+    <title>getDispatcherXX_IpcFile()</title>
+<indexterm><primary>getDispatcherXX_IpcFile</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_IpcFile</secondary></indexterm>
+<para><computeroutput>const char * all_dispatch_cfg::getDispatcherXX_IpcFile (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00104">104</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1ad1c57b8c24055cc6c0372c358f16745e"/><section>
+    <title>getDispatcherXX_LogLevel()</title>
+<indexterm><primary>getDispatcherXX_LogLevel</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_LogLevel</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getDispatcherXX_LogLevel (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00089">89</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a7a3abf92793526b5e0c053e864f881e0"/><section>
+    <title>getDispatcherXX_MaxConnections()</title>
+<indexterm><primary>getDispatcherXX_MaxConnections</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_MaxConnections</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getDispatcherXX_MaxConnections (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00094">94</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a1378ca64565176db1546847972a0b4c1"/><section>
+    <title>getDispatcherXX_NumThreads()</title>
+<indexterm><primary>getDispatcherXX_NumThreads</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_NumThreads</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getDispatcherXX_NumThreads (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00074">74</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1adea1daf1bde449c40f93a11ad38297be"/><section>
+    <title>getDispatcherXX_Port()</title>
+<indexterm><primary>getDispatcherXX_Port</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_Port</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getDispatcherXX_Port (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00069">69</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a692f455b0d88f54bb1ac7a8bb357cd6e"/><section>
+    <title>getDispatcherXX_StopTimeout()</title>
+<indexterm><primary>getDispatcherXX_StopTimeout</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_StopTimeout</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getDispatcherXX_StopTimeout (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00099">99</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1aa1ed0af52a95019527159b09a42a16b2"/><section>
+    <title>getDispatcherXX_TuxCliProg()</title>
+<indexterm><primary>getDispatcherXX_TuxCliProg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_TuxCliProg</secondary></indexterm>
+<para><computeroutput>const char * all_dispatch_cfg::getDispatcherXX_TuxCliProg (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00079">79</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1af189902c9c223a698b64ee34bdc53a1c"/><section>
+    <title>getDispatcherXX_TuxCliSetup()</title>
+<indexterm><primary>getDispatcherXX_TuxCliSetup</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getDispatcherXX_TuxCliSetup</secondary></indexterm>
+<para><computeroutput>const char * all_dispatch_cfg::getDispatcherXX_TuxCliSetup (const std::string dispatchXX) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00084">84</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a6c396082d3d091ffcaf17d13b408acd5"/><section>
+    <title>getNumDispatchers()</title>
+<indexterm><primary>getNumDispatchers</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>getNumDispatchers</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::getNumDispatchers ( ) const<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00059">59</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a35d710c743e646189b71a791e86486af"/><section>
+    <title>load_all_info()</title>
+<indexterm><primary>load_all_info</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>load_all_info</secondary></indexterm>
+<para><computeroutput>void all_dispatch_cfg::load_all_info ( )</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00005">5</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a92cd7124adf2bcec95be4aa2372b2e8d"/><section>
+    <title>operator bool()</title>
+<indexterm><primary>operator bool</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>operator bool</secondary></indexterm>
+<para><computeroutput>all_dispatch_cfg::operator bool ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00093">93</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a85bd12ac6a103ca769c0306565040772"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp; all_dispatch_cfg::operator= (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp;&amp; )<computeroutput>[delete]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classall__dispatch__cfg_1ad895e6693fbefef79dcce890cd22193c"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> &amp; all_dispatch_cfg::operator= (<link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link> const &amp; )<computeroutput>[delete]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classall__dispatch__cfg_1ab44dfa948eee0327345cb1cd0b1ea514"/><section>
+    <title>show_all_config()</title>
+<indexterm><primary>show_all_config</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>show_all_config</secondary></indexterm>
+<para><computeroutput>void all_dispatch_cfg::show_all_config ( )</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8cpp_source_1l00109">109</link> of file <link linkend="_dispatch__cfg_8cpp_source">dispatch_cfg.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classall__dispatch__cfg_1a618d79c1569f58766bda6ae26d60862f"/><section>
+    <title>_m_json</title>
+<indexterm><primary>_m_json</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>_m_json</secondary></indexterm>
+<para><computeroutput>Json::Value all_dispatch_cfg::_m_json<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00062">62</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a84709c1960ff66d7e3abdaf3b960ee64"/><section>
+    <title>dispatchers_cfg</title>
+<indexterm><primary>dispatchers_cfg</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>dispatchers_cfg</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_structdispatch__cfg">dispatch_cfg</link>&gt; all_dispatch_cfg::dispatchers_cfg<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00064">64</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1aa8573e903e001b80d3056856a8656b74"/><section>
+    <title>loaded</title>
+<indexterm><primary>loaded</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>loaded</secondary></indexterm>
+<para><computeroutput>bool all_dispatch_cfg::loaded {false}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00065">65</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_classall__dispatch__cfg_1a89a062ab90a459456c78a36eccf048f8"/><section>
+    <title>NumDispatchers</title>
+<indexterm><primary>NumDispatchers</primary><secondary>all_dispatch_cfg</secondary></indexterm>
+<indexterm><primary>all_dispatch_cfg</primary><secondary>NumDispatchers</secondary></indexterm>
+<para><computeroutput>int all_dispatch_cfg::NumDispatchers {0}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00063">63</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/<link linkend="_dispatch__cfg_8h">dispatch_cfg.h</link>src/<link linkend="_dispatch__cfg_8cpp">dispatch_cfg.cpp</link></section>
+</section>

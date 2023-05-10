@@ -1,0 +1,186 @@
+\hypertarget{ipclib_8h_source}{}\doxysection{ipclib.\+h}
+\label{ipclib_8h_source}\index{src/ipclib.h@{src/ipclib.h}}
+\mbox{\hyperlink{ipclib_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ IPCLIB\_H\_}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ IPCLIB\_H\_}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{protocol__msg_8h}{protocol\_msg.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00009}00009\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00010}00010\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00011}00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <sys/ipc.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <sys/shm.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <sys/msg.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <sys/sem.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <sys/wait.h>}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00026}00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00032}\mbox{\hyperlink{classIpc}{00032}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIpc}{Ipc}}\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00034}\mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{00034}}\ \ \ \ \ key\_t\ \mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{\_key}}\{IPC\_PRIVATE\};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Key\ used\ to\ connect/create.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00035}\mbox{\hyperlink{classIpc_ab86fc30de66fe77ab899462638dd052f}{00035}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classIpc_ab86fc30de66fe77ab899462638dd052f}{\_id}}\{-\/1\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ID}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00036}\mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{00036}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\_deleteOnExit}}\{\textcolor{keyword}{false}\};\ \ \ \ \ \ \textcolor{comment}{//\ Flag\ to\ delete\ on\ exit}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00037}\mbox{\hyperlink{classIpc_ad7ed294460891e9b1027f949d286eca7}{00037}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classIpc_ad7ed294460891e9b1027f949d286eca7}{\_flags}}\{0666\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Flags\ on\ connect/create}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00038}\mbox{\hyperlink{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}{00038}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}{\_ok}}\{\textcolor{keyword}{false}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Flag\ true=operative\ Ipc,\ false=no\ operative\ Ipc}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00040}00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00041}\mbox{\hyperlink{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}{00041}}\ \ \ \ \ \mbox{\hyperlink{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}{Ipc}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00048}\mbox{\hyperlink{classIpc_a65a9ce942eaca05e24af65e120f692ef}{00048}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classIpc_a65a9ce942eaca05e24af65e120f692ef}{Ipc}}(key\_t\ key,\ \textcolor{keywordtype}{bool}\ deleteOnExit):\mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{\_key}}\{key\},\mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\_deleteOnExit}}\{deleteOnExit\}\{\}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00049}\mbox{\hyperlink{classIpc_a051dff23481be739a5825c03381ed578}{00049}}\ \ \ \ \ \mbox{\hyperlink{classIpc_a051dff23481be739a5825c03381ed578}{Ipc}}(\mbox{\hyperlink{classIpc}{Ipc}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00050}\mbox{\hyperlink{classIpc_a5966748aff2218b33cf39ef197c7e9a2}{00050}}\ \ \ \ \ \mbox{\hyperlink{classIpc_a5966748aff2218b33cf39ef197c7e9a2}{Ipc}}(\mbox{\hyperlink{classIpc}{Ipc}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00051}\mbox{\hyperlink{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}{00051}}\ \ \ \ \ \mbox{\hyperlink{classIpc}{Ipc}}\&\ \mbox{\hyperlink{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}{operator=}}(\mbox{\hyperlink{classIpc}{Ipc}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00052}\mbox{\hyperlink{classIpc_af046c6367b03099fec0826db68a2298d}{00052}}\ \ \ \ \ \mbox{\hyperlink{classIpc}{Ipc}}\&\ \mbox{\hyperlink{classIpc_af046c6367b03099fec0826db68a2298d}{operator=}}(\mbox{\hyperlink{classIpc}{Ipc}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00053}\mbox{\hyperlink{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}{00053}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}{\string~Ipc}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Enable\ delete\ IPC\ on\ exit.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00056}\mbox{\hyperlink{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}{00056}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}{EnableDelete}}()\ \{\ \ \ \mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\_deleteOnExit}}\ =\ \textcolor{keyword}{true};\ \}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Disable\ delete\ IPC\ on\ exit.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00059}\mbox{\hyperlink{classIpc_a97d909e0c622ac19431c874f187c505b}{00059}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_a97d909e0c622ac19431c874f187c505b}{DisableDelete}}()\ \{\ \ \ \ \ \mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\_deleteOnExit}}\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Get\ key\ id}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00062}\mbox{\hyperlink{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}{00062}}\ \ \ \ \ key\_t\ \mbox{\hyperlink{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}{getkey}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{\_key}};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Get\ id}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00065}\mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{00065}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{getid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIpc_ab86fc30de66fe77ab899462638dd052f}{\_id}};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Get\ flgas}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00068}\mbox{\hyperlink{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}{00068}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}{getflags}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIpc_ad7ed294460891e9b1027f949d286eca7}{\_flags}};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Get\ deleteOnExit}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00071}\mbox{\hyperlink{classIpc_a7faa2e8471f51b76efc446ea9330c49c}{00071}}\ \ \ \ \ key\_t\ \mbox{\hyperlink{classIpc_a7faa2e8471f51b76efc446ea9330c49c}{getDeleteOnExit}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\_deleteOnExit}};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Set\ key\ id}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00074}\mbox{\hyperlink{classIpc_a042476ca5bce7de73d906b7413922586}{00074}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_a042476ca5bce7de73d906b7413922586}{setkey}}(key\_t\ key)\ \{\ \mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{\_key}}=key;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Set\ id}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00077}\mbox{\hyperlink{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}{00077}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}{setid}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{\ \mbox{\hyperlink{classIpc_ab86fc30de66fe77ab899462638dd052f}{\_id}}=id;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Set\ ok}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00080}\mbox{\hyperlink{classIpc_aecac89b3a9bdec9833092579712e7cfe}{00080}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_aecac89b3a9bdec9833092579712e7cfe}{setok}}(\textcolor{keywordtype}{bool}\ ok)\ \{\ \mbox{\hyperlink{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}{\_ok}}=ok;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Set\ flags}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00083}\mbox{\hyperlink{classIpc_a9f5e7d9248966affeff2533ebf17f060}{00083}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIpc_a9f5e7d9248966affeff2533ebf17f060}{setflags}}(\textcolor{keywordtype}{int}\ flags)\ \{\ \mbox{\hyperlink{classIpc_ad7ed294460891e9b1027f949d286eca7}{\_flags}}=flags;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Operator\ bool\ for\ IPC's}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00086}\mbox{\hyperlink{classIpc_a526497b4e34b064f779f300d2d011310}{00086}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{operator}\ bool()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}{\_ok}}\ ==\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00087}00087\ \};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00091}00091\ \textcolor{preprocessor}{\#if\ defined(\_\_GNU\_LIBRARY\_\_)\ \&\&\ !defined(\_SEM\_SEMUN\_UNDEFINED)}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00092}00092\ \ \ \ \ \textcolor{comment}{/*\ la\ union\ semun\ se\ define\ al\ incluir\ <sys/sem.h>\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00093}00093\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00094}00094\ \ \ \ \ \textcolor{comment}{/*\ según\ X/OPEN\ tenemos\ que\ definirla\ nosostros\ mismos\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00095}\mbox{\hyperlink{unionsemun}{00095}}\ \ \ \ \ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionsemun}{semun}}\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00096}\mbox{\hyperlink{unionsemun_ac6121ecb6d04a024e07e12bd71b94031}{00096}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{unionsemun_ac6121ecb6d04a024e07e12bd71b94031}{val}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ valor\ para\ SETVAL\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00097}\mbox{\hyperlink{unionsemun_ac6b6428d07d4147fd2cc698b53555bed}{00097}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }semid\_ds\ *\mbox{\hyperlink{unionsemun_ac6b6428d07d4147fd2cc698b53555bed}{buf}};\ \ \ \ \ \ \ \textcolor{comment}{/*\ buffer\ para\ IPC\_STAT,\ IPC\_SET\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00098}\mbox{\hyperlink{unionsemun_ab6029cc01ffece038873310b5adede70}{00098}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{unionsemun_ab6029cc01ffece038873310b5adede70}{array}};\ \ \textcolor{comment}{/*\ array\ para\ GETALL,\ SETALL\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00099}\mbox{\hyperlink{unionsemun_aa0ac6a1a9174a4ae355bc367e7e64780}{00099}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }seminfo\ *\mbox{\hyperlink{unionsemun_aa0ac6a1a9174a4ae355bc367e7e64780}{\_\_buf}};\ \ \ \ \ \ \textcolor{comment}{/*\ buffer\ para\ IPC\_INFO\ */}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00100}00100\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00101}00101\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00107}\mbox{\hyperlink{classSemaphore}{00107}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSemaphore}{Semaphore}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIpc}{Ipc}}\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00109}\mbox{\hyperlink{classSemaphore_a0636c10df48f7a1045fa2936e8db0525}{00109}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a0636c10df48f7a1045fa2936e8db0525}{\_nsems}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ semaphores}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00110}\mbox{\hyperlink{classSemaphore_a11050ec50c4b972ac7277ebe6bcac953}{00110}}\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classSemaphore_a11050ec50c4b972ac7277ebe6bcac953}{\_sem\_val}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Semaphore\ value\ vector}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00111}\mbox{\hyperlink{classSemaphore_a22eb2db89917021918af8af6c48762c7}{00111}}\ \ \ \ \ \textcolor{keyword}{struct\ }sembuf\ \mbox{\hyperlink{classSemaphore_a22eb2db89917021918af8af6c48762c7}{\_sop}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ operate\ on\ semaphore}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00112}\mbox{\hyperlink{classSemaphore_a6960ae0ae5ae957ed1a2fe10e8eb8336}{00112}}\ \ \ \ \ \mbox{\hyperlink{unionsemun}{semun}}\ \mbox{\hyperlink{classSemaphore_a6960ae0ae5ae957ed1a2fe10e8eb8336}{\_st}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00113}\mbox{\hyperlink{classSemaphore_a35d8908cce66c5cbb462e8e0930ee67d}{00113}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a35d8908cce66c5cbb462e8e0930ee67d}{LOCK}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00114}\mbox{\hyperlink{classSemaphore_a97cfedba49bdfe92cd1c09d7242fc5b2}{00114}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a97cfedba49bdfe92cd1c09d7242fc5b2}{UNLOCK}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ SetS\ a\ LOCK\ or\ UNLOCK.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a4849ad52709d27304b2224df375a4d0f}{set}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ op);\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Run\ semctl\ to\ get\ all\ info.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a2b7db06c733cdc2d3599d65e1abcf29d}{get\_stat}}(\textcolor{keywordtype}{int}\ semid);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00120}00120\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a98e1ac90faefeb68a6a5a1b08f8a0470}{Semaphore}}(\textcolor{keyword}{const}\ key\_t\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nsems,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sem\_val,\ \ \textcolor{keywordtype}{bool}\ deleteOnExit);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00135}00135\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a98e1ac90faefeb68a6a5a1b08f8a0470}{Semaphore}}(\textcolor{keywordtype}{int}\ semid);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00137}\mbox{\hyperlink{classSemaphore_a98e1ac90faefeb68a6a5a1b08f8a0470}{00137}}\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a98e1ac90faefeb68a6a5a1b08f8a0470}{Semaphore}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00138}\mbox{\hyperlink{classSemaphore_a6db9201abccff11cb167383da129c8b0}{00138}}\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a6db9201abccff11cb167383da129c8b0}{Semaphore}}(\mbox{\hyperlink{classSemaphore}{Semaphore}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00139}\mbox{\hyperlink{classSemaphore_a23bb5aead54bb60d2fd31d376fbf2be4}{00139}}\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a23bb5aead54bb60d2fd31d376fbf2be4}{Semaphore}}(\mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00140}\mbox{\hyperlink{classSemaphore_aedc9de13d1ccbba3b354794150013783}{00140}}\ \ \ \ \ \mbox{\hyperlink{classSemaphore}{Semaphore}}\&\ \mbox{\hyperlink{classSemaphore_aedc9de13d1ccbba3b354794150013783}{operator=}}(\mbox{\hyperlink{classSemaphore}{Semaphore}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00141}\mbox{\hyperlink{classSemaphore_abf51dba797f2894ef77d88154423017f}{00141}}\ \ \ \ \ \mbox{\hyperlink{classSemaphore}{Semaphore}}\&\ \mbox{\hyperlink{classSemaphore_abf51dba797f2894ef77d88154423017f}{operator=}}(\mbox{\hyperlink{classSemaphore}{Semaphore}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{classSemaphore_a633658a6fde276bffc912028725c6ade}{\string~Semaphore}}();}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00143}00143\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Lock\ semaphore}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00145}\mbox{\hyperlink{classSemaphore_a8e4aafcf610a23a0d9d1bccf887bb087}{00145}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_a8e4aafcf610a23a0d9d1bccf887bb087}{Lock}}()\{\ \textcolor{keywordtype}{int}\ ret=\mbox{\hyperlink{classSemaphore_a4849ad52709d27304b2224df375a4d0f}{set}}(\mbox{\hyperlink{classSemaphore_a35d8908cce66c5cbb462e8e0930ee67d}{LOCK}});\ PLOG\_DEBUG\_IF(\mbox{\hyperlink{client__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}{loglevel}})\ <<\ \textcolor{stringliteral}{"{}Semaphore\ Locked!"{}};\ \textcolor{keywordflow}{return}\ ret;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Unlock\ semaphore}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00148}\mbox{\hyperlink{classSemaphore_afa909c8f77cf34597aed10df79e82958}{00148}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSemaphore_afa909c8f77cf34597aed10df79e82958}{Unlock}}()\{\ \textcolor{keywordtype}{int}\ ret=\mbox{\hyperlink{classSemaphore_a4849ad52709d27304b2224df375a4d0f}{set}}(\mbox{\hyperlink{classSemaphore_a97cfedba49bdfe92cd1c09d7242fc5b2}{UNLOCK}});\ PLOG\_DEBUG\_IF(\mbox{\hyperlink{client__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}{loglevel}})\ <<\ \textcolor{stringliteral}{"{}Semaphore\ Unlocked!"{}};\ \textcolor{keywordflow}{return}\ ret;\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00149}00149\ \};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00155}\mbox{\hyperlink{classSharedMemory}{00155}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSharedMemory}{SharedMemory}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIpc}{Ipc}}\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00156}00156\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00157}\mbox{\hyperlink{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}{00157}}\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}{\_shmaddr}}\{\textcolor{keyword}{nullptr}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Shared\ memory\ address.\ }}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00158}\mbox{\hyperlink{classSharedMemory_a2705b16bf1af906e68824582dd849e69}{00158}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSharedMemory_a2705b16bf1af906e68824582dd849e69}{\_size}}\{4\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Size\ of\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00159}\mbox{\hyperlink{classSharedMemory_aba9e372e4dd92be2109ddb36e51c3000}{00159}}\ \ \ \ \ shmid\_ds\ \mbox{\hyperlink{classSharedMemory_aba9e372e4dd92be2109ddb36e51c3000}{\_st}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Info\ of\ the\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Run\ semctl\ to\ get\ all\ info.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSharedMemory_a4db4a79d92eb5c05e7d326a38905ffb6}{get\_stat}}(\textcolor{keywordtype}{int}\ shmid);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00163}00163\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00171}00171\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}{SharedMemory}}(\textcolor{keyword}{const}\ key\_t\ key,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{bool}\ deleteOnExit);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00178}00178\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}{SharedMemory}}(\textcolor{keywordtype}{int}\ shmid);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00180}\mbox{\hyperlink{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}{00180}}\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}{SharedMemory}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00181}\mbox{\hyperlink{classSharedMemory_ad567d83d65ba65b39ff20bfbd4ac9058}{00181}}\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_ad567d83d65ba65b39ff20bfbd4ac9058}{SharedMemory}}(\mbox{\hyperlink{classSharedMemory}{SharedMemory}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00182}\mbox{\hyperlink{classSharedMemory_a6ab87c1bdf715820514a716c1c463a56}{00182}}\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_a6ab87c1bdf715820514a716c1c463a56}{SharedMemory}}(\mbox{\hyperlink{classSharedMemory}{SharedMemory}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00183}\mbox{\hyperlink{classSharedMemory_a07aa684777d2cde7db164484f13a3686}{00183}}\ \ \ \ \ \mbox{\hyperlink{classSharedMemory}{SharedMemory}}\&\ \mbox{\hyperlink{classSharedMemory_a07aa684777d2cde7db164484f13a3686}{operator=}}(\mbox{\hyperlink{classSharedMemory}{SharedMemory}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00184}\mbox{\hyperlink{classSharedMemory_a49be1c52b8d78eb9c23f604cf140a177}{00184}}\ \ \ \ \ \mbox{\hyperlink{classSharedMemory}{SharedMemory}}\&\ \mbox{\hyperlink{classSharedMemory_a49be1c52b8d78eb9c23f604cf140a177}{operator=}}(\mbox{\hyperlink{classSharedMemory}{SharedMemory}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00185}00185\ \ \ \ \ \mbox{\hyperlink{classSharedMemory_adc56751ce1b30224689e71cd3b6c09be}{\string~SharedMemory}}();}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00187}00187\ \ \ \ \ \textcolor{comment}{//\ Get\ shared\ memory\ address}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00188}\mbox{\hyperlink{classSharedMemory_a2b41bc86dbf6bc51ff723a763cf27c73}{00188}}\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classSharedMemory_a2b41bc86dbf6bc51ff723a763cf27c73}{getaddr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}{\_shmaddr}};\ \}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00189}00189\ \ \ \ \ \textcolor{comment}{//\ Get\ number\ of\ processes\ attached\ to\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00190}00190\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSharedMemory_a400bd582aa803162fed6b241f784a1fa}{get\_nattach}}();}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00191}00191\ \};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00197}\mbox{\hyperlink{classMessageQueue}{00197}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIpc}{Ipc}}\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00198}00198\ \{}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00199}\mbox{\hyperlink{classMessageQueue_addf9d13122b5988bfde8e8840b0c79c0}{00199}}\ \ \ \ \ msqid\_ds\ \mbox{\hyperlink{classMessageQueue_addf9d13122b5988bfde8e8840b0c79c0}{\_st}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Message\ queue\ info}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00200}\mbox{\hyperlink{classMessageQueue_a77feb6edf381eedb2f466303fc6ca3c3}{00200}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMessageQueue_a77feb6edf381eedb2f466303fc6ca3c3}{\_size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Size\ of\ message\ queue}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ Run\ msgctl\ to\ get\ all\ info.}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMessageQueue_af553c98265b870662d63b92c53833191}{get\_stat}}(\textcolor{keywordtype}{int}\ msgid);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00203}00203\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00204}00204\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_a8662eead8fd2732f4cb68d23b89431c3}{MessageQueue}}(\textcolor{keyword}{const}\ key\_t\ key,\ \textcolor{keywordtype}{bool}\ deleteOnExit);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00212}00212\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00218}00218\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_a8662eead8fd2732f4cb68d23b89431c3}{MessageQueue}}(\textcolor{keywordtype}{int}\ msgid);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00219}00219\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00220}\mbox{\hyperlink{classMessageQueue_a8662eead8fd2732f4cb68d23b89431c3}{00220}}\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_a8662eead8fd2732f4cb68d23b89431c3}{MessageQueue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00221}\mbox{\hyperlink{classMessageQueue_a38354d78361fca43ce02c475af48d7d9}{00221}}\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_a38354d78361fca43ce02c475af48d7d9}{MessageQueue}}(\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00222}\mbox{\hyperlink{classMessageQueue_acbe61b138d12e33da964ab8835d232dc}{00222}}\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_acbe61b138d12e33da964ab8835d232dc}{MessageQueue}}(\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00223}\mbox{\hyperlink{classMessageQueue_a675784f3ac981d563574d554a3a43611}{00223}}\ \ \ \ \ \mbox{\hyperlink{classMessageQueue}{MessageQueue}}\&\ \mbox{\hyperlink{classMessageQueue_a675784f3ac981d563574d554a3a43611}{operator=}}(\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00224}\mbox{\hyperlink{classMessageQueue_ac153ec850c7213443916857d34a4cc06}{00224}}\ \ \ \ \ \mbox{\hyperlink{classMessageQueue}{MessageQueue}}\&\ \mbox{\hyperlink{classMessageQueue_ac153ec850c7213443916857d34a4cc06}{operator=}}(\mbox{\hyperlink{classMessageQueue}{MessageQueue}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00225}00225\ \ \ \ \ \mbox{\hyperlink{classMessageQueue_a3640a8a6140801f1e127a41e60c014dd}{\string~MessageQueue}}();}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00227}00227\ \ \ \ \ \textcolor{comment}{//\ Sends\ a\ protomsg::st\_protomsg\ to\ the\ message\ queue\ (IPC)}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00228}00228\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMessageQueue_ac3138a4b8f10868f1df70519257fa45f}{send}}(\mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ *p\_protomsg,\ std::string\ \&pdata);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00229}00229\ \ \ \ \ \textcolor{comment}{//\ Receives\ a\ protomsg::st\_protomsg\ of\ the\ message\ queue\ (IPC)}}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00230}00230\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMessageQueue_ae4afb1b560697ce2a0bd8a0b5bca8f21}{rcv}}(\mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg::st\_protomsg}}\ *p\_protomsg,\ std::string\ \&pdata);}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00232}00232\ \};}
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{ipclib_8h_source_l00234}00234\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

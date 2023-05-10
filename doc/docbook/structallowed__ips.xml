@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structallowed__ips" xml:lang="en-US">
+<title>allowed_ips Struct Reference</title>
+<indexterm><primary>allowed_ips</primary></indexterm>
+<para>
+<computeroutput>#include &lt;dispatcher.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_structallowed__ips_1a6bf24aea2a2a3024273ce87e694b5083">trace</link> {false}</para>
+</listitem>
+            <listitem><para>bool <link linkend="_structallowed__ips_1a52a2adb3f9b2453095119df134014c6d">allowed</link> {true}</para>
+</listitem>
+            <listitem><para>in_addr <link linkend="_structallowed__ips_1af31d36eb6ad012eee4f5c0564f04ec63">ip</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="_dispatcher_8h_source_1l00020">20</link> of file <link linkend="_dispatcher_8h_source">dispatcher.h</link>.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structallowed__ips_1a52a2adb3f9b2453095119df134014c6d"/><section>
+    <title>allowed</title>
+<indexterm><primary>allowed</primary><secondary>allowed_ips</secondary></indexterm>
+<indexterm><primary>allowed_ips</primary><secondary>allowed</secondary></indexterm>
+<para><computeroutput>bool allowed_ips::allowed {true}</computeroutput></para><para>
+Definition at line <link linkend="_dispatcher_8h_source_1l00023">23</link> of file <link linkend="_dispatcher_8h_source">dispatcher.h</link>.</para>
+</section>
+<anchor xml:id="_structallowed__ips_1af31d36eb6ad012eee4f5c0564f04ec63"/><section>
+    <title>ip</title>
+<indexterm><primary>ip</primary><secondary>allowed_ips</secondary></indexterm>
+<indexterm><primary>allowed_ips</primary><secondary>ip</secondary></indexterm>
+<para><computeroutput>in_addr allowed_ips::ip</computeroutput></para><para>
+Definition at line <link linkend="_dispatcher_8h_source_1l00024">24</link> of file <link linkend="_dispatcher_8h_source">dispatcher.h</link>.</para>
+</section>
+<anchor xml:id="_structallowed__ips_1a6bf24aea2a2a3024273ce87e694b5083"/><section>
+    <title>trace</title>
+<indexterm><primary>trace</primary><secondary>allowed_ips</secondary></indexterm>
+<indexterm><primary>allowed_ips</primary><secondary>trace</secondary></indexterm>
+<para><computeroutput>bool allowed_ips::trace {false}</computeroutput></para><para>
+Definition at line <link linkend="_dispatcher_8h_source_1l00022">22</link> of file <link linkend="_dispatcher_8h_source">dispatcher.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+src/<link linkend="_dispatcher_8h">dispatcher.h</link></section>
+</section>

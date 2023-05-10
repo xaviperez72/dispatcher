@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_connections_8h" xml:lang="en-US">
+<title>src/connections.h File Reference</title>
+<indexterm><primary>src/connections.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;common.h&quot;<?linebreak?>#include &lt;sys/socket.h&gt;<?linebreak?>#include &lt;netinet/in.h&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &quot;ipclib.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structconnection">connection</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classconnections">connections</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>constexpr int <link linkend="_connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c">st_free</link> {0}</para>
+</listitem>
+            <listitem><para>constexpr int <link linkend="_connections_8h_1a7cfb338d62be51e2990fb43cb27573a1">st_ready</link> {2}</para>
+</listitem>
+            <listitem><para>constexpr int <link linkend="_connections_8h_1a841c1992874382f999f316fa8162c520">st_obsolete</link> {3}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c"/><section>
+    <title>st_free</title>
+<indexterm><primary>st_free</primary><secondary>connections.h</secondary></indexterm>
+<indexterm><primary>connections.h</primary><secondary>st_free</secondary></indexterm>
+<para><computeroutput>constexpr int st_free {0}<computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00011">11</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_connections_8h_1a841c1992874382f999f316fa8162c520"/><section>
+    <title>st_obsolete</title>
+<indexterm><primary>st_obsolete</primary><secondary>connections.h</secondary></indexterm>
+<indexterm><primary>connections.h</primary><secondary>st_obsolete</secondary></indexterm>
+<para><computeroutput>constexpr int st_obsolete {3}<computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00013">13</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_connections_8h_1a7cfb338d62be51e2990fb43cb27573a1"/><section>
+    <title>st_ready</title>
+<indexterm><primary>st_ready</primary><secondary>connections.h</secondary></indexterm>
+<indexterm><primary>connections.h</primary><secondary>st_ready</secondary></indexterm>
+<para><computeroutput>constexpr int st_ready {2}<computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00012">12</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+</section>
+</section>

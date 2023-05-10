@@ -1,0 +1,107 @@
+\hypertarget{tuxcli__main_8cpp}{}\doxysection{src/tuxcli\+\_\+main.cpp File Reference}
+\label{tuxcli__main_8cpp}\index{src/tuxcli\_main.cpp@{src/tuxcli\_main.cpp}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$json/json.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ipclib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}getcfgfile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dispatch\+\_\+cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}checker\+\_\+pids.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plog/\+Initializers/\+Rolling\+File\+Initializer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plog/\+Initializers/\+Console\+Initializer.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTuxClient}{Tux\+Client}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tuxcli__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}{LOGLEVEL}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tuxcli__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}{sigterm\+\_\+func}} (int s)
+\item 
+int \mbox{\hyperlink{tuxcli__main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tuxcli__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}{loglevel}}
+\item 
+auto \mbox{\hyperlink{tuxcli__main_8cpp_a182e40f49228b7c44921f0daab080e9d}{keep\+\_\+accepting}} = true
+\item 
+\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \mbox{\hyperlink{tuxcli__main_8cpp_a843417470d039db4cb8fff476bb938b0}{chk\+\_\+procs}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tuxcli__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}\label{tuxcli__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!LOGLEVEL@{LOGLEVEL}}
+\index{LOGLEVEL@{LOGLEVEL}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{LOGLEVEL}{LOGLEVEL}}
+{\footnotesize\ttfamily \#define LOGLEVEL}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tuxcli__main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{tuxcli__main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!main@{main}}
+\index{main@{main}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{tuxcli__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}\label{tuxcli__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!sigterm\_func@{sigterm\_func}}
+\index{sigterm\_func@{sigterm\_func}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{sigterm\_func()}{sigterm\_func()}}
+{\footnotesize\ttfamily void sigterm\+\_\+func (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{tuxcli__main_8cpp_a843417470d039db4cb8fff476bb938b0}\label{tuxcli__main_8cpp_a843417470d039db4cb8fff476bb938b0}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!chk\_procs@{chk\_procs}}
+\index{chk\_procs@{chk\_procs}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{chk\_procs}{chk\_procs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} chk\+\_\+procs}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{tuxcli__main_8cpp_a182e40f49228b7c44921f0daab080e9d}\label{tuxcli__main_8cpp_a182e40f49228b7c44921f0daab080e9d}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!keep\_accepting@{keep\_accepting}}
+\index{keep\_accepting@{keep\_accepting}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{keep\_accepting}{keep\_accepting}}
+{\footnotesize\ttfamily auto keep\+\_\+accepting = true}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{tuxcli__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}\label{tuxcli__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}} 
+\index{tuxcli\_main.cpp@{tuxcli\_main.cpp}!loglevel@{loglevel}}
+\index{loglevel@{loglevel}!tuxcli\_main.cpp@{tuxcli\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{loglevel}{loglevel}}
+{\footnotesize\ttfamily int loglevel}
+
+
+
+Definition at line \mbox{\hyperlink{tuxcli__main_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{tuxcli__main_8cpp_source}{tuxcli\+\_\+main.\+cpp}}.
+

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceprotomsg" xml:lang="en-US">
+<title>protomsg Namespace Reference</title>
+<indexterm><primary>protomsg</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structprotomsg_1_1st__protomsg">st_protomsg</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>static constexpr long <link linkend="_namespaceprotomsg_1a3f940c01628a63d95c5858e265705135">TYPE_WEAKUP_MSG</link> =1</para>
+</listitem>
+            <listitem><para>static constexpr long <link linkend="_namespaceprotomsg_1a8e34e045d8c49d98e5522e76a20b943a">TYPE_NORMAL_MSG</link> =2</para>
+</listitem>
+            <listitem><para>static constexpr long <link linkend="_namespaceprotomsg_1a170738b21ae44465185c95dc94c4a317">TYPE_ENDING_MSG</link> =3</para>
+</listitem>
+            <listitem><para>static constexpr long <link linkend="_namespaceprotomsg_1a4a0f2114518a11deffeeb33541faa41c">MAX_MSG_SIZE</link> =10000</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespaceprotomsg_1a4a0f2114518a11deffeeb33541faa41c"/><section>
+    <title>MAX_MSG_SIZE</title>
+<indexterm><primary>MAX_MSG_SIZE</primary><secondary>protomsg</secondary></indexterm>
+<indexterm><primary>protomsg</primary><secondary>MAX_MSG_SIZE</secondary></indexterm>
+<para><computeroutput>constexpr long protomsg::MAX_MSG_SIZE =10000<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00017">17</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotomsg_1a170738b21ae44465185c95dc94c4a317"/><section>
+    <title>TYPE_ENDING_MSG</title>
+<indexterm><primary>TYPE_ENDING_MSG</primary><secondary>protomsg</secondary></indexterm>
+<indexterm><primary>protomsg</primary><secondary>TYPE_ENDING_MSG</secondary></indexterm>
+<para><computeroutput>constexpr long protomsg::TYPE_ENDING_MSG =3<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00016">16</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotomsg_1a8e34e045d8c49d98e5522e76a20b943a"/><section>
+    <title>TYPE_NORMAL_MSG</title>
+<indexterm><primary>TYPE_NORMAL_MSG</primary><secondary>protomsg</secondary></indexterm>
+<indexterm><primary>protomsg</primary><secondary>TYPE_NORMAL_MSG</secondary></indexterm>
+<para><computeroutput>constexpr long protomsg::TYPE_NORMAL_MSG =2<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00015">15</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+<anchor xml:id="_namespaceprotomsg_1a3f940c01628a63d95c5858e265705135"/><section>
+    <title>TYPE_WEAKUP_MSG</title>
+<indexterm><primary>TYPE_WEAKUP_MSG</primary><secondary>protomsg</secondary></indexterm>
+<indexterm><primary>protomsg</primary><secondary>TYPE_WEAKUP_MSG</secondary></indexterm>
+<para><computeroutput>constexpr long protomsg::TYPE_WEAKUP_MSG =1<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_protocol__msg_8h_source_1l00014">14</link> of file <link linkend="_protocol__msg_8h_source">protocol_msg.h</link>.</para>
+</section>
+</section>
+</section>

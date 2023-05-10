@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classDispatcher" kind="class" language="C++" prot="public">
+    <compoundname>Dispatcher</compoundname>
+    <includes refid="dispatcher_8h" local="no">dispatcher.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8" prot="private" static="no" mutable="no">
+        <type><ref refid="structdispatch__cfg" kindref="compound">dispatch_cfg</ref></type>
+        <definition>dispatch_cfg Dispatcher::_config</definition>
+        <argsstring></argsstring>
+        <name>_config</name>
+        <qualifiedname>Dispatcher::_config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="28" column="18" bodyfile="src/dispatcher.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a023871cf97965bcfe33681aec45c0278" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classthread__pair" kindref="compound">thread_pair</ref> &gt;</type>
+        <definition>std::vector&lt;thread_pair&gt; Dispatcher::_v_thread_pair</definition>
+        <argsstring></argsstring>
+        <name>_v_thread_pair</name>
+        <qualifiedname>Dispatcher::_v_thread_pair</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="30" column="17" bodyfile="src/dispatcher.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a030d89cc64de3ef18b775e563da891e1" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="structkeep__running__flags" kindref="compound">keep_running_flags</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;keep_running_flags&gt; Dispatcher::_sharedptr_keep_running</definition>
+        <argsstring></argsstring>
+        <name>_sharedptr_keep_running</name>
+        <qualifiedname>Dispatcher::_sharedptr_keep_running</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="32" column="21" bodyfile="src/dispatcher.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1aa5cca577db5505a89119c00b931fffa5" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classSemaphore" kindref="compound">Semaphore</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Semaphore&gt; Dispatcher::_shpt_semIPCfile</definition>
+        <argsstring></argsstring>
+        <name>_shpt_semIPCfile</name>
+        <qualifiedname>Dispatcher::_shpt_semIPCfile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="34" column="21" bodyfile="src/dispatcher.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a01fe79a912713358c99828dd8ae33eb4" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classSharedMemory" kindref="compound">SharedMemory</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;SharedMemory&gt; Dispatcher::_shpt_shmIPCfile</definition>
+        <argsstring></argsstring>
+        <name>_shpt_shmIPCfile</name>
+        <qualifiedname>Dispatcher::_shpt_shmIPCfile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="36" column="21" bodyfile="src/dispatcher.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a9d048f400c300c407c5a62c3b4197996" prot="private" static="no" mutable="no">
+        <type><ref refid="classSocket" kindref="compound">Socket</ref></type>
+        <definition>Socket Dispatcher::_server_socket</definition>
+        <argsstring></argsstring>
+        <name>_server_socket</name>
+        <qualifiedname>Dispatcher::_server_socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="38" column="12" bodyfile="src/dispatcher.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classconnections" kindref="compound">connections</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;connections&gt; Dispatcher::_p_cur_connections</definition>
+        <argsstring></argsstring>
+        <name>_p_cur_connections</name>
+        <qualifiedname>Dispatcher::_p_cur_connections</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="40" column="21" bodyfile="src/dispatcher.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1a617169aea8a4c5caec50400a86401466" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;MessageQueue&gt; Dispatcher::_shpt_Common_Msg_Queue</definition>
+        <argsstring></argsstring>
+        <name>_shpt_Common_Msg_Queue</name>
+        <qualifiedname>Dispatcher::_shpt_Common_Msg_Queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="43" column="21" bodyfile="src/dispatcher.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classSharedMemory" kindref="compound">SharedMemory</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;SharedMemory&gt; Dispatcher::_shpt_shmAllowedIPs</definition>
+        <argsstring></argsstring>
+        <name>_shpt_shmAllowedIPs</name>
+        <qualifiedname>Dispatcher::_shpt_shmAllowedIPs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="47" column="21" bodyfile="src/dispatcher.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1aa86de669ffc45c71db171db702c2c939" prot="private" static="no" mutable="no">
+        <type><ref refid="structallowed__ips" kindref="compound">allowed_ips</ref> *</type>
+        <definition>allowed_ips* Dispatcher::_allowed_ips</definition>
+        <argsstring></argsstring>
+        <name>_allowed_ips</name>
+        <qualifiedname>Dispatcher::_allowed_ips</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="48" column="17" bodyfile="src/dispatcher.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDispatcher_1aae40315ea44ae1b054a663fbefae653d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classMessageQueue" kindref="compound">MessageQueue</ref> &gt;</type>
+        <definition>std::vector&lt;MessageQueue&gt; Dispatcher::_msg_queues</definition>
+        <argsstring></argsstring>
+        <name>_msg_queues</name>
+        <qualifiedname>Dispatcher::_msg_queues</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="50" column="17" bodyfile="src/dispatcher.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDispatcher_1a81afc8d131f2724e92e6ca1d68aae6ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::Dispatcher</definition>
+        <argsstring>()=delete</argsstring>
+        <name>Dispatcher</name>
+        <qualifiedname>Dispatcher::Dispatcher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a1187bc4bfb0db5b107b9d480364abb78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::Dispatcher</definition>
+        <argsstring>(dispatch_cfg cfg, std::shared_ptr&lt; keep_running_flags &gt; shpt_keep_running)</argsstring>
+        <name>Dispatcher</name>
+        <qualifiedname>Dispatcher::Dispatcher</qualifiedname>
+        <param>
+          <type><ref refid="structdispatch__cfg" kindref="compound">dispatch_cfg</ref></type>
+          <declname>cfg</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="structkeep__running__flags" kindref="compound">keep_running_flags</ref> &gt;</type>
+          <declname>shpt_keep_running</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="55" column="5" bodyfile="src/dispatcher.cpp" bodystart="3" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a52fc4e8bef278fa415723b39b61c28a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::~Dispatcher</definition>
+        <argsstring>()</argsstring>
+        <name>~Dispatcher</name>
+        <qualifiedname>Dispatcher::~Dispatcher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="56" column="5" bodyfile="src/dispatcher.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a709f96ac930db22f806fb3fe62e46f48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::Dispatcher</definition>
+        <argsstring>(const Dispatcher &amp;other)</argsstring>
+        <name>Dispatcher</name>
+        <qualifiedname>Dispatcher::Dispatcher</qualifiedname>
+        <param>
+          <type>const <ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="59" column="5" bodyfile="src/dispatcher.cpp" bodystart="414" bodyend="427"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a81c3a5eace0c1f1994a3ec6c6f2c3489" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;</type>
+        <definition>Dispatcher &amp; Dispatcher::operator=</definition>
+        <argsstring>(const Dispatcher &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Dispatcher::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="62" column="16" bodyfile="src/dispatcher.cpp" bodystart="446" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a6041513c142a813ff651df3040b642c2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::Dispatcher</definition>
+        <argsstring>(Dispatcher &amp;&amp;other) noexcept</argsstring>
+        <name>Dispatcher</name>
+        <qualifiedname>Dispatcher::Dispatcher</qualifiedname>
+        <param>
+          <type><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="65" column="5" bodyfile="src/dispatcher.cpp" bodystart="430" bodyend="443"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a4258058af8ad9945cc22383fbfbcf601" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;</type>
+        <definition>Dispatcher &amp; Dispatcher::operator=</definition>
+        <argsstring>(Dispatcher &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Dispatcher::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="68" column="16" bodyfile="src/dispatcher.cpp" bodystart="466" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a8847de325dbee771fb33ebebb978e40d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Dispatcher::Launch_All_Threads</definition>
+        <argsstring>()</argsstring>
+        <name>Launch_All_Threads</name>
+        <qualifiedname>Dispatcher::Launch_All_Threads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="70" column="10" bodyfile="src/dispatcher.cpp" bodystart="28" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1ab58d2e0054dd8833324bc86095af82ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Dispatcher::Prepare_Server_Socket</definition>
+        <argsstring>()</argsstring>
+        <name>Prepare_Server_Socket</name>
+        <qualifiedname>Dispatcher::Prepare_Server_Socket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="71" column="10" bodyfile="src/dispatcher.cpp" bodystart="41" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1af6b72f91b36ed0dcee31684992b725a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::IPC_Setting_Up</definition>
+        <argsstring>()</argsstring>
+        <name>IPC_Setting_Up</name>
+        <qualifiedname>Dispatcher::IPC_Setting_Up</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="73" column="9" bodyfile="src/dispatcher.cpp" bodystart="288" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a8f47f787819c857ebd5870ce8f24a787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::Accept_Thread</definition>
+        <argsstring>()</argsstring>
+        <name>Accept_Thread</name>
+        <qualifiedname>Dispatcher::Accept_Thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="74" column="9" bodyfile="src/dispatcher.cpp" bodystart="114" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a1bdce929609ef90ec793b33f004eb256" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::Assign_connection_to_thread_pair</definition>
+        <argsstring>(int th_id, socket_data_t *sd_info)</argsstring>
+        <name>Assign_connection_to_thread_pair</name>
+        <qualifiedname>Dispatcher::Assign_connection_to_thread_pair</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>th_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structsocket__data__t" kindref="compound">socket_data_t</ref> *</type>
+          <declname>sd_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="75" column="9" bodyfile="src/dispatcher.cpp" bodystart="244" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a802fc1e47691fdf18a24434256fe2680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::Accept_by_Select</definition>
+        <argsstring>()</argsstring>
+        <name>Accept_by_Select</name>
+        <qualifiedname>Dispatcher::Accept_by_Select</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="76" column="9" bodyfile="src/dispatcher.cpp" bodystart="88" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1ac4cda43fd65ddf8fda5ae010f4e460ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Dispatcher::Ending_all_threads</definition>
+        <argsstring>()</argsstring>
+        <name>Ending_all_threads</name>
+        <qualifiedname>Dispatcher::Ending_all_threads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="77" column="10" bodyfile="src/dispatcher.cpp" bodystart="202" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a36ada166664995d1fca7676ebae0bacd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::LessCharged</definition>
+        <argsstring>()</argsstring>
+        <name>LessCharged</name>
+        <qualifiedname>Dispatcher::LessCharged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="80" column="9" bodyfile="src/dispatcher.cpp" bodystart="273" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a667b6987746aaff43e0c5635a9e5226a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::LaunchTuxCli</definition>
+        <argsstring>()</argsstring>
+        <name>LaunchTuxCli</name>
+        <qualifiedname>Dispatcher::LaunchTuxCli</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="81" column="9" bodyfile="src/dispatcher.cpp" bodystart="255" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1a6f44162db1b99e05c1a6a0c892610c40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::operator bool</definition>
+        <argsstring>()</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Dispatcher::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="82" column="5" bodyfile="src/dispatcher.cpp" bodystart="283" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_1ac0191211316636f5e5dea1d6ee5a80ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Dispatcher::operator()</definition>
+        <argsstring>()</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Dispatcher::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatcher.h" line="83" column="9" bodyfile="src/dispatcher.cpp" bodystart="485" bodyend="526"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Dispatcher</label>
+        <link refid="classDispatcher"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_server_socket</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_allowed_ips</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Socket</label>
+        <link refid="classSocket"/>
+      </node>
+      <node id="4">
+        <label>allowed_ips</label>
+        <link refid="structallowed__ips"/>
+      </node>
+      <node id="2">
+        <label>dispatch_cfg</label>
+        <link refid="structdispatch__cfg"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/dispatcher.h" line="27" column="1" bodyfile="src/dispatcher.h" bodystart="27" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classDispatcher_1aa86de669ffc45c71db171db702c2c939" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_allowed_ips</name></member>
+      <member refid="classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_config</name></member>
+      <member refid="classDispatcher_1aae40315ea44ae1b054a663fbefae653d" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_msg_queues</name></member>
+      <member refid="classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_p_cur_connections</name></member>
+      <member refid="classDispatcher_1a9d048f400c300c407c5a62c3b4197996" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_server_socket</name></member>
+      <member refid="classDispatcher_1a030d89cc64de3ef18b775e563da891e1" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_sharedptr_keep_running</name></member>
+      <member refid="classDispatcher_1a617169aea8a4c5caec50400a86401466" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_shpt_Common_Msg_Queue</name></member>
+      <member refid="classDispatcher_1aa5cca577db5505a89119c00b931fffa5" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_shpt_semIPCfile</name></member>
+      <member refid="classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_shpt_shmAllowedIPs</name></member>
+      <member refid="classDispatcher_1a01fe79a912713358c99828dd8ae33eb4" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_shpt_shmIPCfile</name></member>
+      <member refid="classDispatcher_1a023871cf97965bcfe33681aec45c0278" prot="private" virt="non-virtual"><scope>Dispatcher</scope><name>_v_thread_pair</name></member>
+      <member refid="classDispatcher_1a802fc1e47691fdf18a24434256fe2680" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Accept_by_Select</name></member>
+      <member refid="classDispatcher_1a8f47f787819c857ebd5870ce8f24a787" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Accept_Thread</name></member>
+      <member refid="classDispatcher_1a1bdce929609ef90ec793b33f004eb256" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Assign_connection_to_thread_pair</name></member>
+      <member refid="classDispatcher_1a81afc8d131f2724e92e6ca1d68aae6ae" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Dispatcher</name></member>
+      <member refid="classDispatcher_1a1187bc4bfb0db5b107b9d480364abb78" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Dispatcher</name></member>
+      <member refid="classDispatcher_1a709f96ac930db22f806fb3fe62e46f48" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Dispatcher</name></member>
+      <member refid="classDispatcher_1a6041513c142a813ff651df3040b642c2" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Dispatcher</name></member>
+      <member refid="classDispatcher_1ac4cda43fd65ddf8fda5ae010f4e460ef" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Ending_all_threads</name></member>
+      <member refid="classDispatcher_1af6b72f91b36ed0dcee31684992b725a6" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>IPC_Setting_Up</name></member>
+      <member refid="classDispatcher_1a8847de325dbee771fb33ebebb978e40d" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Launch_All_Threads</name></member>
+      <member refid="classDispatcher_1a667b6987746aaff43e0c5635a9e5226a" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>LaunchTuxCli</name></member>
+      <member refid="classDispatcher_1a36ada166664995d1fca7676ebae0bacd" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>LessCharged</name></member>
+      <member refid="classDispatcher_1a6f44162db1b99e05c1a6a0c892610c40" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>operator bool</name></member>
+      <member refid="classDispatcher_1ac0191211316636f5e5dea1d6ee5a80ae" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>operator()</name></member>
+      <member refid="classDispatcher_1a81c3a5eace0c1f1994a3ec6c6f2c3489" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>operator=</name></member>
+      <member refid="classDispatcher_1a4258058af8ad9945cc22383fbfbcf601" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>operator=</name></member>
+      <member refid="classDispatcher_1ab58d2e0054dd8833324bc86095af82ba" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>Prepare_Server_Socket</name></member>
+      <member refid="classDispatcher_1a52fc4e8bef278fa415723b39b61c28a7" prot="public" virt="non-virtual"><scope>Dispatcher</scope><name>~Dispatcher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

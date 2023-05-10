@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="dispatch__main_8cpp" kind="file" language="C++">
+    <compoundname>dispatch_main.cpp</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="ipclib_8h" local="yes">ipclib.h</includes>
+    <includes refid="getcfgfile_8h" local="yes">getcfgfile.h</includes>
+    <includes refid="dispatch__cfg_8h" local="yes">dispatch_cfg.h</includes>
+    <includes refid="dispatcher_8h" local="yes">dispatcher.h</includes>
+    <includes refid="checker__pids_8h" local="yes">checker_pids.h</includes>
+    <includes refid="Socket_8h" local="yes">Socket.h</includes>
+    <includes local="yes">plog/Initializers/RollingFileInitializer.h</includes>
+    <includes local="yes">plog/Initializers/ConsoleInitializer.h</includes>
+    <incdepgraph>
+      <node id="37">
+        <label>Socket.h</label>
+        <link refid="Socket_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>checker_pids.h</label>
+        <link refid="checker__pids_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>dispatch_cfg.h</label>
+        <link refid="dispatch__cfg_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>getcfgfile.h</label>
+        <link refid="getcfgfile_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>protocol_msg.h</label>
+        <link refid="protocol__msg_8h"/>
+      </node>
+      <node id="45">
+        <label>thread_pair.h</label>
+        <link refid="thread__pair_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>algorithm</label>
+      </node>
+      <node id="42">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="36">
+        <label>atomic</label>
+      </node>
+      <node id="32">
+        <label>chrono</label>
+      </node>
+      <node id="46">
+        <label>condition_variable</label>
+      </node>
+      <node id="13">
+        <label>errno.h</label>
+      </node>
+      <node id="40">
+        <label>fcntl.h</label>
+      </node>
+      <node id="25">
+        <label>fstream</label>
+      </node>
+      <node id="34">
+        <label>functional</label>
+      </node>
+      <node id="48">
+        <label>future</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="23">
+        <label>json/json.h</label>
+      </node>
+      <node id="24">
+        <label>json/value.h</label>
+      </node>
+      <node id="49">
+        <label>list</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="47">
+        <label>mutex</label>
+      </node>
+      <node id="41">
+        <label>netdb.h</label>
+      </node>
+      <node id="29">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="51">
+        <label>plog/Initializers/ConsoleInitializer.h</label>
+      </node>
+      <node id="50">
+        <label>plog/Initializers/RollingFileInitializer.h</label>
+      </node>
+      <node id="4">
+        <label>plog/Log.h</label>
+      </node>
+      <node id="20">
+        <label>pwd.h</label>
+      </node>
+      <node id="31">
+        <label>signal.h</label>
+      </node>
+      <node id="9">
+        <label>stdio.h</label>
+      </node>
+      <node id="38">
+        <label>stdlib.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="12">
+        <label>string.h</label>
+      </node>
+      <node id="39">
+        <label>sys/ioctl.h</label>
+      </node>
+      <node id="14">
+        <label>sys/ipc.h</label>
+      </node>
+      <node id="16">
+        <label>sys/msg.h</label>
+      </node>
+      <node id="17">
+        <label>sys/sem.h</label>
+      </node>
+      <node id="15">
+        <label>sys/shm.h</label>
+      </node>
+      <node id="28">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="11">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="10">
+        <label>sys/types.h</label>
+      </node>
+      <node id="43">
+        <label>sys/un.h</label>
+      </node>
+      <node id="18">
+        <label>sys/wait.h</label>
+      </node>
+      <node id="33">
+        <label>thread</label>
+      </node>
+      <node id="21">
+        <label>unistd.h</label>
+      </node>
+      <node id="22">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dispatch__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c" prot="public" static="no">
+        <name>LOGLEVEL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="5" column="9" bodyfile="src/dispatch_main.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int loglevel</definition>
+        <argsstring></argsstring>
+        <name>loglevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="6" column="5" bodyfile="src/dispatch_main.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589" prot="public" static="no" mutable="no">
+        <type>auto const</type>
+        <definition>auto const CFGFILE_PATH</definition>
+        <argsstring></argsstring>
+        <name>CFGFILE_PATH</name>
+        <initializer>= getpwuid(getuid()) -&gt; pw_dir + &quot;/.dispatch/config.json&quot;s</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="42" column="12" bodyfile="src/dispatch_main.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334" prot="public" static="no" mutable="no">
+        <type>sighandler_t</type>
+        <definition>sighandler_t _previousInterruptHandler_sigsegv</definition>
+        <argsstring></argsstring>
+        <name>_previousInterruptHandler_sigsegv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="46" column="14" bodyfile="src/dispatch_main.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RunOnBackground</definition>
+        <argsstring>()</argsstring>
+        <name>RunOnBackground</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="21" column="5" bodyfile="src/dispatch_main.cpp" bodystart="21" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sigsegv_func</definition>
+        <argsstring>(int s)</argsstring>
+        <name>sigsegv_func</name>
+        <param>
+          <type>int</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="47" column="6" bodyfile="src/dispatch_main.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="dispatch__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dispatch_main.cpp" line="53" column="5" bodyfile="src/dispatch_main.cpp" bodystart="53" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/***************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>GLOBAL<sp/>VARS<sp/>-<sp/>IN<sp/>COMMON.H</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>***************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>LOGLEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="dispatch__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGLEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ipclib_8h" kindref="compound">ipclib.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="getcfgfile_8h" kindref="compound">getcfgfile.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dispatch__cfg_8h" kindref="compound">dispatch_cfg.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dispatcher_8h" kindref="compound">dispatcher.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="checker__pids_8h" kindref="compound">checker_pids.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Socket_8h" kindref="compound">Socket.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;plog/Initializers/RollingFileInitializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;plog/Initializers/ConsoleInitializer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb" kindref="member">RunOnBackground</ref>()<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(getppid()<sp/>!=<sp/>1)<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>parent<sp/>!=<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setsid();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(fork())<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close(STDIN_FILENO);<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>-1:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_ERROR<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;fork<sp/>background:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strerror(errno);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(0);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="42" refid="dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589" kindref="member">CFGFILE_PATH</ref><sp/>=<sp/>getpwuid(getuid())<sp/>-&gt;<sp/>pw_dir<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/.dispatch/config.json&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>helps<sp/>to<sp/>realize<sp/>about<sp/>COREDUMPS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334" refkind="member"><highlight class="normal">sighandler_t<sp/><ref refid="dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334" kindref="member">_previousInterruptHandler_sigsegv</ref>;</highlight></codeline>
+<codeline lineno="47" refid="dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe" kindref="member">sigsegv_func</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s)<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Received<sp/>signal<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strsignal(s)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ERROR:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>strerror(errno);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)signal(SIGSEGV,<sp/><ref refid="dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334" kindref="member">_previousInterruptHandler_sigsegv</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="dispatch__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dispatch__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TO<sp/>DO<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>level<sp/>of<sp/>log<sp/>from<sp/>file<sp/>config.<sp/>Now<sp/>it<sp/>is<sp/>only<sp/>DEBUG.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>plog::ConsoleAppender&lt;plog::TxtFormatter&gt;<sp/>consoleAppender;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dispatch__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d" kindref="member">loglevel</ref>=plog::verbose;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>plog::init(plog::verbose,<sp/>&amp;consoleAppender);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dispatch__main_8cpp_1af99e6af012c4d41d39b2521b7e1d2334" kindref="member">_previousInterruptHandler_sigsegv</ref><sp/>=<sp/>signal(SIGSEGV,<sp/><ref refid="dispatch__main_8cpp_1aa16be2c25accebcc282457d3e2605cfe" kindref="member">sigsegv_func</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGetCfgFile" kindref="compound">GetCfgFile</ref><sp/>f_config(<ref refid="dispatch__main_8cpp_1afd223b308b5635da2267a2bf3e671589" kindref="member">CFGFILE_PATH</ref>,</highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>directory<sp/>if<sp/>it<sp/>doesn&apos;t<sp/>exist.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classall__dispatch__cfg" kindref="compound">all_dispatch_cfg</ref><sp/>cfg(f_config.<ref refid="classGetCfgFile_1ada73da323a67df88e661ffe0dc7420d7" kindref="member">get_json</ref>());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Error<sp/>reading<sp/>config<sp/>file<sp/>or<sp/>bad<sp/>json<sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!f_config<sp/>||<sp/>!cfg)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg.<ref refid="classall__dispatch__cfg_1af268e755413b6d473f766d54142195d9" kindref="member">create_cfg_values</ref>(f_config.<ref refid="classGetCfgFile_1aa53d21ff1f09671785aaae19d4aef016" kindref="member">get_file_dir</ref>());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f_config.<ref refid="classGetCfgFile_1a9ec1ad40b7b82dc8c37532bdbbf3b7c1" kindref="member">save_cfg_file</ref>(cfg.<ref refid="classall__dispatch__cfg_1a2eea05bea87d84a1b4547ab09ef1b101" kindref="member">get_json</ref>());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg.<ref refid="classall__dispatch__cfg_1a35d710c743e646189b71a791e86486af" kindref="member">load_all_info</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="classall__dispatch__cfg_1ab44dfa948eee0327345cb1cd0b1ea514" kindref="member">show_all_config</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="dispatch__main_8cpp_1a58454aad6e6fcedf1d107f209afdcefb" kindref="member">RunOnBackground</ref>()<sp/>&lt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_ERROR<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Can<sp/>not<sp/>run<sp/>on<sp/>background!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Running<sp/>on<sp/>background,<sp/>parent<sp/>pid<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>getppid();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Object<sp/>that<sp/>perform<sp/>fork<sp/>for<sp/>each<sp/>functor<sp/>on<sp/>its<sp/>vector.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>checking_pids<sp/>=<sp/>make_shared&lt;checker_pids&gt;();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Config<sp/>every<sp/>dispatcher:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;Dispatcher&gt;<sp/>v_dispatchers;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>v_dispatchers.reserve(cfg.<ref refid="classall__dispatch__cfg_1a9f4905b32052e78277bf7ddfddd81115" kindref="member">get_num_dispatchers</ref>());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;config<sp/>:<sp/>cfg.<ref refid="classall__dispatch__cfg_1a027da4c0819cbc7b6301423ae2e99a17" kindref="member">get_all_dispatch_info</ref>())</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v_dispatchers.emplace_back(config,checking_pids-&gt;get_run_flags());</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Dispatcher<sp/>vector<sp/>ok!<sp/>Prepare<sp/>checker_pids...&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prepare<sp/>for<sp/>fork()<sp/>and<sp/>checking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;dispat<sp/>:<sp/>v_dispatchers)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checking_pids-&gt;add(dispat,</highlight><highlight class="stringliteral">&quot;Dispatcher&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Launching<sp/>all<sp/>dispatchers...<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>ret=checking_pids-&gt;operator()();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_DEBUG<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ending<sp/>process<sp/>main<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ret;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/dispatch_main.cpp"/>
+  </compounddef>
+</doxygen>

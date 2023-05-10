@@ -1,0 +1,248 @@
+\hypertarget{classSharedMemory}{}\doxysection{Shared\+Memory Class Reference}
+\label{classSharedMemory}\index{SharedMemory@{SharedMemory}}
+
+
+{\ttfamily \#include $<$ipclib.\+h$>$}
+
+Inheritance diagram for Shared\+Memory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSharedMemory}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSharedMemory_aa0c0f01a0d79e3e806f93fd71a3a69f9}{Shared\+Memory}} (const key\+\_\+t key, int size, bool delete\+On\+Exit)
+\item 
+\mbox{\hyperlink{classSharedMemory_adbbf800cc0d7ac89fdc7372c2755b4f4}{Shared\+Memory}} (int shmid)
+\item 
+\mbox{\hyperlink{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}{Shared\+Memory}} ()=default
+\item 
+\mbox{\hyperlink{classSharedMemory_ad567d83d65ba65b39ff20bfbd4ac9058}{Shared\+Memory}} (\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} const \&)=default
+\item 
+\mbox{\hyperlink{classSharedMemory_a6ab87c1bdf715820514a716c1c463a56}{Shared\+Memory}} (\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \&\&)=default
+\item 
+\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \& \mbox{\hyperlink{classSharedMemory_a07aa684777d2cde7db164484f13a3686}{operator=}} (\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} const \&)=default
+\item 
+\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \& \mbox{\hyperlink{classSharedMemory_a49be1c52b8d78eb9c23f604cf140a177}{operator=}} (\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \&\&)=default
+\item 
+\mbox{\hyperlink{classSharedMemory_adc56751ce1b30224689e71cd3b6c09be}{$\sim$\+Shared\+Memory}} ()
+\item 
+void $\ast$ \mbox{\hyperlink{classSharedMemory_a2b41bc86dbf6bc51ff723a763cf27c73}{getaddr}} () const
+\item 
+int \mbox{\hyperlink{classSharedMemory_a400bd582aa803162fed6b241f784a1fa}{get\+\_\+nattach}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIpc}{Ipc}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}{Ipc}} ()=default
+\item 
+\mbox{\hyperlink{classIpc_a65a9ce942eaca05e24af65e120f692ef}{Ipc}} (key\+\_\+t key, bool delete\+On\+Exit)
+\item 
+\mbox{\hyperlink{classIpc_a051dff23481be739a5825c03381ed578}{Ipc}} (\mbox{\hyperlink{classIpc}{Ipc}} const \&)=default
+\item 
+\mbox{\hyperlink{classIpc_a5966748aff2218b33cf39ef197c7e9a2}{Ipc}} (\mbox{\hyperlink{classIpc}{Ipc}} \&\&)=default
+\item 
+\mbox{\hyperlink{classIpc}{Ipc}} \& \mbox{\hyperlink{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}{operator=}} (\mbox{\hyperlink{classIpc}{Ipc}} const \&)=default
+\item 
+\mbox{\hyperlink{classIpc}{Ipc}} \& \mbox{\hyperlink{classIpc_af046c6367b03099fec0826db68a2298d}{operator=}} (\mbox{\hyperlink{classIpc}{Ipc}} \&\&)=default
+\item 
+virtual \mbox{\hyperlink{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}{$\sim$\+Ipc}} ()=default
+\item 
+void \mbox{\hyperlink{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}{Enable\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classIpc_a97d909e0c622ac19431c874f187c505b}{Disable\+Delete}} ()
+\item 
+key\+\_\+t \mbox{\hyperlink{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}{getkey}} () const
+\item 
+int \mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{getid}} () const
+\item 
+int \mbox{\hyperlink{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}{getflags}} () const
+\item 
+key\+\_\+t \mbox{\hyperlink{classIpc_a7faa2e8471f51b76efc446ea9330c49c}{get\+Delete\+On\+Exit}} () const
+\item 
+void \mbox{\hyperlink{classIpc_a042476ca5bce7de73d906b7413922586}{setkey}} (key\+\_\+t key)
+\item 
+void \mbox{\hyperlink{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}{setid}} (int id)
+\item 
+void \mbox{\hyperlink{classIpc_aecac89b3a9bdec9833092579712e7cfe}{setok}} (bool ok)
+\item 
+void \mbox{\hyperlink{classIpc_a9f5e7d9248966affeff2533ebf17f060}{setflags}} (int flags)
+\item 
+virtual \mbox{\hyperlink{classIpc_a526497b4e34b064f779f300d2d011310}{operator bool}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classSharedMemory_a4db4a79d92eb5c05e7d326a38905ffb6}{get\+\_\+stat}} (int shmid)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}{\+\_\+shmaddr}} \{nullptr\}
+\item 
+int \mbox{\hyperlink{classSharedMemory_a2705b16bf1af906e68824582dd849e69}{\+\_\+size}} \{4\}
+\item 
+shmid\+\_\+ds \mbox{\hyperlink{classSharedMemory_aba9e372e4dd92be2109ddb36e51c3000}{\+\_\+st}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shared Memory Object IPC (\mbox{\hyperlink{ipclib_8h}{ipclib.\+h}}) 
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00155}{155}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSharedMemory_aa0c0f01a0d79e3e806f93fd71a3a69f9}\label{classSharedMemory_aa0c0f01a0d79e3e806f93fd71a3a69f9}} 
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}\item[{const key\+\_\+t}]{key,  }\item[{int}]{size,  }\item[{bool}]{delete\+On\+Exit }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & (default IPC\+\_\+\+PRIVATE) \\
+\hline
+{\em size} & Memory size \\
+\hline
+{\em delete\+On\+Exit} & = false (don\textquotesingle{}t remove semaphore on destruction. true = remove it) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ipclib_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{ipclib_8cpp_source}{ipclib.\+cpp}}.
+
+\mbox{\Hypertarget{classSharedMemory_adbbf800cc0d7ac89fdc7372c2755b4f4}\label{classSharedMemory_adbbf800cc0d7ac89fdc7372c2755b4f4}} 
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}\item[{int}]{shmid }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em shmid} & Id for an existing \mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ipclib_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{ipclib_8cpp_source}{ipclib.\+cpp}}.
+
+\mbox{\Hypertarget{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}\label{classSharedMemory_a851a8d425f9c1e6f49237efd97628df5}} 
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classSharedMemory_ad567d83d65ba65b39ff20bfbd4ac9058}\label{classSharedMemory_ad567d83d65ba65b39ff20bfbd4ac9058}} 
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classSharedMemory_a6ab87c1bdf715820514a716c1c463a56}\label{classSharedMemory_a6ab87c1bdf715820514a716c1c463a56}} 
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classSharedMemory_adc56751ce1b30224689e71cd3b6c09be}\label{classSharedMemory_adc56751ce1b30224689e71cd3b6c09be}} 
+\index{SharedMemory@{SharedMemory}!````~SharedMemory@{$\sim$SharedMemory}}
+\index{````~SharedMemory@{$\sim$SharedMemory}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{$\sim$SharedMemory()}{~SharedMemory()}}
+{\footnotesize\ttfamily Shared\+Memory\+::$\sim$\+Shared\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{ipclib_8cpp_source}{ipclib.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSharedMemory_a400bd582aa803162fed6b241f784a1fa}\label{classSharedMemory_a400bd582aa803162fed6b241f784a1fa}} 
+\index{SharedMemory@{SharedMemory}!get\_nattach@{get\_nattach}}
+\index{get\_nattach@{get\_nattach}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{get\_nattach()}{get\_nattach()}}
+{\footnotesize\ttfamily int Shared\+Memory\+::get\+\_\+nattach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{ipclib_8cpp_source}{ipclib.\+cpp}}.
+
+\mbox{\Hypertarget{classSharedMemory_a4db4a79d92eb5c05e7d326a38905ffb6}\label{classSharedMemory_a4db4a79d92eb5c05e7d326a38905ffb6}} 
+\index{SharedMemory@{SharedMemory}!get\_stat@{get\_stat}}
+\index{get\_stat@{get\_stat}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{get\_stat()}{get\_stat()}}
+{\footnotesize\ttfamily int Shared\+Memory\+::get\+\_\+stat (\begin{DoxyParamCaption}\item[{int}]{shmid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{ipclib_8cpp_source}{ipclib.\+cpp}}.
+
+\mbox{\Hypertarget{classSharedMemory_a2b41bc86dbf6bc51ff723a763cf27c73}\label{classSharedMemory_a2b41bc86dbf6bc51ff723a763cf27c73}} 
+\index{SharedMemory@{SharedMemory}!getaddr@{getaddr}}
+\index{getaddr@{getaddr}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{getaddr()}{getaddr()}}
+{\footnotesize\ttfamily void $\ast$ Shared\+Memory\+::getaddr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00188}{188}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classSharedMemory_a49be1c52b8d78eb9c23f604cf140a177}\label{classSharedMemory_a49be1c52b8d78eb9c23f604cf140a177}} 
+\index{SharedMemory@{SharedMemory}!operator=@{operator=}}
+\index{operator=@{operator=}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \& Shared\+Memory\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classSharedMemory_a07aa684777d2cde7db164484f13a3686}\label{classSharedMemory_a07aa684777d2cde7db164484f13a3686}} 
+\index{SharedMemory@{SharedMemory}!operator=@{operator=}}
+\index{operator=@{operator=}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} \& Shared\+Memory\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}\label{classSharedMemory_a7ca4a292828eea29e3fec0cbee0ff84d}} 
+\index{SharedMemory@{SharedMemory}!\_shmaddr@{\_shmaddr}}
+\index{\_shmaddr@{\_shmaddr}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{\_shmaddr}{\_shmaddr}}
+{\footnotesize\ttfamily void$\ast$ Shared\+Memory\+::\+\_\+shmaddr \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00157}{157}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classSharedMemory_a2705b16bf1af906e68824582dd849e69}\label{classSharedMemory_a2705b16bf1af906e68824582dd849e69}} 
+\index{SharedMemory@{SharedMemory}!\_size@{\_size}}
+\index{\_size@{\_size}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{\_size}{\_size}}
+{\footnotesize\ttfamily int Shared\+Memory\+::\+\_\+size \{4\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00158}{158}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classSharedMemory_aba9e372e4dd92be2109ddb36e51c3000}\label{classSharedMemory_aba9e372e4dd92be2109ddb36e51c3000}} 
+\index{SharedMemory@{SharedMemory}!\_st@{\_st}}
+\index{\_st@{\_st}!SharedMemory@{SharedMemory}}
+\doxysubsubsection{\texorpdfstring{\_st}{\_st}}
+{\footnotesize\ttfamily shmid\+\_\+ds Shared\+Memory\+::\+\_\+st\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00159}{159}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{ipclib_8h}{ipclib.\+h}}\item 
+src/\mbox{\hyperlink{ipclib_8cpp}{ipclib.\+cpp}}\end{DoxyCompactItemize}

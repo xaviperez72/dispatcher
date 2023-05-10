@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="unionsemun" kind="union" language="C++" prot="public">
+    <compoundname>semun</compoundname>
+    <includes refid="ipclib_8h" local="no">ipclib.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionsemun_1ac6121ecb6d04a024e07e12bd71b94031" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int semun::val</definition>
+        <argsstring></argsstring>
+        <name>val</name>
+        <qualifiedname>semun::val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="96" column="13" bodyfile="src/ipclib.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionsemun_1ac6b6428d07d4147fd2cc698b53555bed" prot="public" static="no" mutable="no">
+        <type>struct semid_ds *</type>
+        <definition>struct semid_ds* semun::buf</definition>
+        <argsstring></argsstring>
+        <name>buf</name>
+        <qualifiedname>semun::buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="97" column="23" bodyfile="src/ipclib.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionsemun_1ab6029cc01ffece038873310b5adede70" prot="public" static="no" mutable="no">
+        <type>unsigned short int *</type>
+        <definition>unsigned short int* semun::array</definition>
+        <argsstring></argsstring>
+        <name>array</name>
+        <qualifiedname>semun::array</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="98" column="28" bodyfile="src/ipclib.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionsemun_1aa0ac6a1a9174a4ae355bc367e7e64780" prot="public" static="no" mutable="no">
+        <type>struct seminfo *</type>
+        <definition>struct seminfo* semun::__buf</definition>
+        <argsstring></argsstring>
+        <name>__buf</name>
+        <qualifiedname>semun::__buf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ipclib.h" line="99" column="22" bodyfile="src/ipclib.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/ipclib.h" line="95" column="5" bodyfile="src/ipclib.h" bodystart="95" bodyend="100"/>
+    <listofallmembers>
+      <member refid="unionsemun_1aa0ac6a1a9174a4ae355bc367e7e64780" prot="public" virt="non-virtual"><scope>semun</scope><name>__buf</name></member>
+      <member refid="unionsemun_1ab6029cc01ffece038873310b5adede70" prot="public" virt="non-virtual"><scope>semun</scope><name>array</name></member>
+      <member refid="unionsemun_1ac6b6428d07d4147fd2cc698b53555bed" prot="public" virt="non-virtual"><scope>semun</scope><name>buf</name></member>
+      <member refid="unionsemun_1ac6121ecb6d04a024e07e12bd71b94031" prot="public" virt="non-virtual"><scope>semun</scope><name>val</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

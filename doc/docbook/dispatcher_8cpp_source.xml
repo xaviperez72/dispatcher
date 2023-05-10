@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dispatcher_8cpp_source" xml:lang="en-US">
+<title>dispatcher.cpp</title>
+<indexterm><primary>src/dispatcher.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_dispatcher_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_dispatcher_8h">dispatcher.h</link>&quot;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_dispatcher_8cpp_source_1l00003"/><link linkend="_classDispatcher_1a1187bc4bfb0db5b107b9d480364abb78">00003</link> <link linkend="_classDispatcher_1a81afc8d131f2724e92e6ca1d68aae6ae">Dispatcher::Dispatcher</link>(<link linkend="_structdispatch__cfg">dispatch_cfg</link>&#32;cfg,&#32;std::shared_ptr&lt;keep_running_flags&gt;&#32;shpt_keep_running)
+<anchor xml:id="_dispatcher_8cpp_source_1l00004"/>00004 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:_config{cfg},
+<anchor xml:id="_dispatcher_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running{shpt_keep_running}
+<anchor xml:id="_dispatcher_8cpp_source_1l00006"/>00006 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;CTOR:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00008"/>00008 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00009"/>00009 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00010"/>00010 <emphasis role="comment">void&#32;Dispatcher::Show_All_Shared_Ptr()</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00011"/>00011 <emphasis role="comment">{</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00012"/>00012 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;Address:&#32;&quot;&#32;&lt;&lt;&#32;this;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00013"/>00013 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;keep_running_flags&gt;:&quot;&#32;&lt;&lt;&#32;_sharedptr_keep_running.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00014"/>00014 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;Semaphore&gt;:&quot;&#32;&lt;&lt;&#32;_shpt_semIPCfile.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00015"/>00015 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;SharedMemory&gt;:&quot;&#32;&lt;&lt;&#32;_shpt_shmIPCfile.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00016"/>00016 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;connections&gt;:&quot;&#32;&lt;&lt;&#32;_p_cur_connections.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00017"/>00017 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;MessageQueue&gt;:&quot;&#32;&lt;&lt;&#32;_shpt_Common_Msg_Queue.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00018"/>00018 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;SharedMemory&gt;:&quot;&#32;&lt;&lt;&#32;_shpt_shmAllowedIPs.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00019"/>00019 <emphasis role="comment">&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;std::shared_ptr&lt;signal_synch&gt;:&quot;&#32;&lt;&lt;&#32;_shpt_sigsyn.use_count();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00020"/>00020 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00021"/>00021 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00022"/>00022 
+<anchor xml:id="_dispatcher_8cpp_source_1l00023"/><link linkend="_classDispatcher_1a52fc4e8bef278fa415723b39b61c28a7">00023</link> <link linkend="_classDispatcher_1a52fc4e8bef278fa415723b39b61c28a7">Dispatcher::~Dispatcher</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00024"/>00024 {&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;DTOR:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00026"/>00026 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_dispatcher_8cpp_source_1l00028"/><link linkend="_classDispatcher_1a8847de325dbee771fb33ebebb978e40d">00028</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classDispatcher_1a8847de325dbee771fb33ebebb978e40d">Dispatcher::Launch_All_Threads</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00029"/>00029 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>.reserve(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&lt;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>;&#32;i++)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>.emplace_back(<link linkend="_classDispatcher_1aae40315ea44ae1b054a663fbefae653d">_msg_queues</link>[i],&#32;*<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>,&#32;i+1,&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a030d89cc64de3ef18b775e563da891e1">_sharedptr_keep_running</link>,&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>,&#32;<emphasis role="comment">//_shpt_sigsyn,&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00037"/>00037 
+<anchor xml:id="_dispatcher_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;All&#32;Threads&#32;launched!!&#32;---------------------------&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00039"/>00039 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00040"/>00040 
+<anchor xml:id="_dispatcher_8cpp_source_1l00041"/><link linkend="_classDispatcher_1ab58d2e0054dd8833324bc86095af82ba">00041</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classDispatcher_1ab58d2e0054dd8833324bc86095af82ba">Dispatcher::Prepare_Server_Socket</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00042"/>00042 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//AF_INET&#32;(Internet&#32;mode)&#32;SOCK_STREAM&#32;(TCP&#32;mode)&#32;0&#32;(Protocol&#32;any)</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>&#32;=&#32;<link linkend="_classSocket">Socket</link>(AF_INET,SOCK_STREAM,0);&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00045"/>00045 
+<anchor xml:id="_dispatcher_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">//You&#32;can&#32;reuse&#32;the&#32;address&#32;and&#32;the&#32;port</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;optVal&#32;=&#32;1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1acac0892dfa60b7034b662060f640009a">socket_set_opt</link>(SOL_SOCKET,&#32;SO_REUSEADDR,&#32;&amp;optVal);&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="comment">//Bind&#32;socket&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a4f142a9d6ffd312c72bc813797658a1b">bind</link>(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a9dadf193b92388dc2fb585f13dbf7f6b">IP</link>,&#32;std::to_string(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1ad01f5f8ac72c8d3618d1e2104ea18290">Port</link>));&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00052"/>00052 
+<anchor xml:id="_dispatcher_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="comment">//Start&#32;listening&#32;for&#32;incoming&#32;connections&#32;(10&#32;=&gt;&#32;maximum&#32;of&#32;10&#32;Connections&#32;in&#32;Queue)</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1af4b275979ee2f9b28bbc54c90daae2e9">listen</link>(10);&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00055"/>00055 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00056"/>00056 
+<anchor xml:id="_dispatcher_8cpp_source_1l00057"/>00057 <emphasis role="comment">//&#32;Discarted&#32;by&#32;the&#32;moment.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00059"/>00059 <emphasis role="comment">void&#32;Dispatcher::Signal_Handler_For_Threads()</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00060"/>00060 <emphasis role="comment">{</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00061"/>00061 <emphasis role="comment">&#32;&#32;&#32;&#32;//_shpt_sigsyn&#32;=&#32;std::make_shared&lt;signal_synch&gt;();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00062"/>00062 <emphasis role="comment"></emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00063"/>00063 <emphasis role="comment">&#32;&#32;&#32;&#32;sigemptyset(&amp;_shpt_sigsyn-&gt;_sigset_new);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00064"/>00064 <emphasis role="comment">&#32;&#32;&#32;&#32;sigaddset(&amp;_shpt_sigsyn-&gt;_sigset_new,&#32;SIGINT);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00065"/>00065 <emphasis role="comment">&#32;&#32;&#32;&#32;sigaddset(&amp;_shpt_sigsyn-&gt;_sigset_new,&#32;SIGUSR1);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00066"/>00066 <emphasis role="comment">&#32;&#32;&#32;&#32;sigaddset(&amp;_shpt_sigsyn-&gt;_sigset_new,&#32;SIGTERM);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00067"/>00067 <emphasis role="comment">&#32;&#32;&#32;&#32;pthread_sigmask(SIG_BLOCK,&#32;&amp;_shpt_sigsyn-&gt;_sigset_new,&#32;&amp;_shpt_sigsyn-&gt;_sigset_old);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00068"/>00068 <emphasis role="comment"></emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00069"/>00069 <emphasis role="comment">&#32;&#32;&#32;&#32;auto&#32;signal_handler&#32;=&#32;[this]()&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00070"/>00070 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00071"/>00071 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;signum&#32;=&#32;0;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00072"/>00072 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;wait&#32;until&#32;a&#32;signal&#32;is&#32;delivered:</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00073"/>00073 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;LAMBDA&#32;signal_handler&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00074"/>00074 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigwait(&amp;_shpt_sigsyn-&gt;_sigset_new,&#32;&amp;signum);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00075"/>00075 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running-&gt;_keep_accepting.store(false);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00076"/>00076 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running-&gt;_keep_working.store(false);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00077"/>00077 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;signal_handler&#32;WEAK-UP&#32;-&#32;before&#32;notify_all&quot;&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00078"/>00078 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;notify&#32;all&#32;waiting&#32;workers&#32;to&#32;check&#32;their&#32;predicate:</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00079"/>00079 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pthread_sigmask(SIG_SETMASK,&#32;&amp;_shpt_sigsyn-&gt;_sigset_old,&#32;nullptr);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00080"/>00080 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_sigsyn-&gt;_cv.notify_all();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00081"/>00081 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;signum;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00082"/>00082 <emphasis role="comment">&#32;&#32;&#32;&#32;};</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00083"/>00083 <emphasis role="comment"></emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00084"/>00084 <emphasis role="comment">&#32;&#32;&#32;&#32;_shpt_sigsyn-&gt;_ft_signal_handler&#32;=&#32;std::async(std::launch::async,&#32;signal_handler);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00085"/>00085 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00086"/>00086 <emphasis role="comment">*/</emphasis>&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00087"/>00087 
+<anchor xml:id="_dispatcher_8cpp_source_1l00088"/><link linkend="_classDispatcher_1a802fc1e47691fdf18a24434256fe2680">00088</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1a802fc1e47691fdf18a24434256fe2680">Dispatcher::Accept_by_Select</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00089"/>00089 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nfound;
+<anchor xml:id="_dispatcher_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;fd_set&#32;readfds;
+<anchor xml:id="_dispatcher_8cpp_source_1l00092"/>00092 
+<anchor xml:id="_dispatcher_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;FD_ZERO(&amp;readfds);
+<anchor xml:id="_dispatcher_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_sock_sel&#32;=&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;FD_SET(<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a231ddf6e338a86640e26808b83efeaa1">sock</link>,&#32;&amp;readfds);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;n_sock_sel=(n_sock_sel&gt;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a231ddf6e338a86640e26808b83efeaa1">sock</link>)?&#32;n_sock_sel&#32;:&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a231ddf6e338a86640e26808b83efeaa1">sock</link>+1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00098"/>00098 
+<anchor xml:id="_dispatcher_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;if&#32;((nfound&#32;=&#32;select(n_sock_sel,&amp;readfds,0,0,0))&#32;==&#32;-1)&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;select&#32;failed!!&quot;</emphasis>&#32;&lt;&lt;&#32;strerror(errno);
+<anchor xml:id="_dispatcher_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(FD_ISSET(<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a231ddf6e338a86640e26808b83efeaa1">sock</link>,&amp;readfds))&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;New&#32;connection...&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00112"/>00112 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00113"/>00113 
+<anchor xml:id="_dispatcher_8cpp_source_1l00114"/><link linkend="_classDispatcher_1a8f47f787819c857ebd5870ce8f24a787">00114</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1a8f47f787819c857ebd5870ce8f24a787">Dispatcher::Accept_Thread</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Only&#32;father&#32;(checker_pids)&#32;can&#32;delete&#32;IPCS.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00117"/>00117 
+<anchor xml:id="_dispatcher_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>-&gt;DisableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;DisableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>-&gt;DisableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>-&gt;DisableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00122"/>00122 
+<anchor xml:id="_dispatcher_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Signal_Handler_For_Threads();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00124"/>00124 
+<anchor xml:id="_dispatcher_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a8847de325dbee771fb33ebebb978e40d">Launch_All_Threads</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00126"/>00126 
+<anchor xml:id="_dispatcher_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ab58d2e0054dd8833324bc86095af82ba">Prepare_Server_Socket</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<link linkend="_classDispatcher_1a030d89cc64de3ef18b775e563da891e1">_sharedptr_keep_running</link>-&gt;_keep_accepting.load())&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00131"/>00131 
+<anchor xml:id="_dispatcher_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classDispatcher_1a802fc1e47691fdf18a24434256fe2680">Accept_by_Select</link>()==0)&#32;<emphasis role="comment">//&#32;timeout&#32;or&#32;signal&#32;-&gt;&#32;Check&#32;_keep_accepting...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00134"/>00134 
+<anchor xml:id="_dispatcher_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Accept&#32;the&#32;incoming&#32;connection&#32;and&#32;creates&#32;a&#32;new&#32;Socket&#32;to&#32;the&#32;client</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classSocket">Socket</link>&#32;newSocket&#32;=&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a3f749d9a206e48a875e8c24f29500a93">accept</link>();&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Checks&#32;if&#32;IP&#32;is&#32;in&#32;Table.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00139"/>00139 
+<anchor xml:id="_dispatcher_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TO&#32;DO...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00141"/>00141 
+<anchor xml:id="_dispatcher_8cpp_source_1l00142"/>00142 
+<anchor xml:id="_dispatcher_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;all&#32;socket_data_t&#32;info:</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00144"/>00144 
+<anchor xml:id="_dispatcher_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structsocket__data__t">socket_data_t</link>&#32;sd_info;
+<anchor xml:id="_dispatcher_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sd_info.<link linkend="_structsocket__data__t_1a0796047c7fbe7ad403803e318d28bf9f">sd</link>&#32;=&#32;newSocket.<link linkend="_classSocket_1a231ddf6e338a86640e26808b83efeaa1">sock</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memcpy(&amp;sd_info.<link linkend="_structsocket__data__t_1a16aaf1c1d992e8c415df13c9a7032bc9">sockaddr</link>,&#32;newSocket.<link linkend="_classSocket_1a641d9c790350664e5e90dce7d78bd59a">address_info</link>.ai_addr,<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keyword">struct</emphasis>&#32;sockaddr_in));
+<anchor xml:id="_dispatcher_8cpp_source_1l00148"/>00148 
+<anchor xml:id="_dispatcher_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Socket&#32;sd:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;sd_info.<link linkend="_structsocket__data__t_1a0796047c7fbe7ad403803e318d28bf9f">sd</link>&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;IP:Port:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;inet_ntoa(sd_info.<link linkend="_structsocket__data__t_1a16aaf1c1d992e8c415df13c9a7032bc9">sockaddr</link>.sin_addr)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;:&quot;</emphasis>&#32;&lt;&lt;&#32;ntohs(sd_info.<link linkend="_structsocket__data__t_1a16aaf1c1d992e8c415df13c9a7032bc9">sockaddr</link>.sin_port);
+<anchor xml:id="_dispatcher_8cpp_source_1l00151"/>00151 
+<anchor xml:id="_dispatcher_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Clean&#32;possible&#32;obsoletes.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00153"/>00153 
+<anchor xml:id="_dispatcher_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nthread&#32;=&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>-&gt;clean_repeated_ip(&amp;sd_info.<link linkend="_structsocket__data__t_1a16aaf1c1d992e8c415df13c9a7032bc9">sockaddr</link>,&#32;*<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00155"/>00155 
+<anchor xml:id="_dispatcher_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;It&#32;currently&#32;exists,&#32;remove&#32;it.&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(nthread&#32;&gt;=&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Exists,&#32;then&#32;write&#32;to&#32;pipe&#32;for&#32;Reader&#32;Thread&#32;to&#32;remove&#32;it.&quot;</emphasis>;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Send&#32;notification&#32;to&#32;pipe&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;write(<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>[nthread].get_write_pipe(),&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">void</emphasis>&#32;*<emphasis role="keyword">&gt;</emphasis>(<link linkend="_namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e">protopipe::WEAKUP_PIPE</link>),&#32;<link linkend="_namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760">protopipe::LEN_PIPEMSG</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00163"/>00163 
+<anchor xml:id="_dispatcher_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;less&#32;charged.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;th_id&#32;=&#32;<link linkend="_classDispatcher_1a36ada166664995d1fca7676ebae0bacd">LessCharged</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00166"/>00166 
+<anchor xml:id="_dispatcher_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;LessCharged:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;th_id;
+<anchor xml:id="_dispatcher_8cpp_source_1l00168"/>00168 
+<anchor xml:id="_dispatcher_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((sd_info.<link linkend="_structsocket__data__t_1aa252e34de3632643e5679b18654c4f04">idx_con</link>&#32;=&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>-&gt;register_new_conn(th_id,&#32;sd_info.<link linkend="_structsocket__data__t_1a0796047c7fbe7ad403803e318d28bf9f">sd</link>,&#32;sd_info.<link linkend="_structsocket__data__t_1a16aaf1c1d992e8c415df13c9a7032bc9">sockaddr</link>,&#32;*<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>))&#32;&lt;&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Not&#32;possible&#32;to&#32;register_new_conn:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;th_id;
+<anchor xml:id="_dispatcher_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(sd_info.<link linkend="_structsocket__data__t_1a0796047c7fbe7ad403803e318d28bf9f">sd</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sd_info.<link linkend="_structsocket__data__t_1aa252e34de3632643e5679b18654c4f04">idx_con</link>&#32;&gt;=&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>-&gt;unregister_conn(sd_info.<link linkend="_structsocket__data__t_1aa252e34de3632643e5679b18654c4f04">idx_con</link>,&#32;*<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00177"/>00177 
+<anchor xml:id="_dispatcher_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assign&#32;sd&#32;to&#32;thread_pair...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classDispatcher_1a1bdce929609ef90ec793b33f004eb256">Assign_connection_to_thread_pair</link>(th_id,&#32;&amp;sd_info)&#32;&lt;&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Not&#32;possible&#32;to&#32;Assign_connection_to_thread_pair:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;th_id;
+<anchor xml:id="_dispatcher_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(sd_info.<link linkend="_structsocket__data__t_1a0796047c7fbe7ad403803e318d28bf9f">sd</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sd_info.<link linkend="_structsocket__data__t_1aa252e34de3632643e5679b18654c4f04">idx_con</link>&#32;&gt;=&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>-&gt;unregister_conn(sd_info.<link linkend="_structsocket__data__t_1aa252e34de3632643e5679b18654c4f04">idx_con</link>,&#32;*<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;End&#32;while,&#32;accepting&#32;again.&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00188"/>00188 
+<anchor xml:id="_dispatcher_8cpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ending&#32;all&#32;reader&#32;and&#32;writer&#32;threads.&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00190"/>00190 
+<anchor xml:id="_dispatcher_8cpp_source_1l00191"/>00191 
+<anchor xml:id="_dispatcher_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;signal&#32;handler&#32;to&#32;complete</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;int&#32;signal&#32;=&#32;_shpt_sigsyn-&gt;_ft_signal_handler.get();</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;LOG_DEBUG&#32;&lt;&lt;&#32;&quot;ok&#32;&#32;&#32;-&#32;RECEIVED&#32;SIGNAL&#32;FROM&#32;FUTURE&#32;_ft_signal_handler:&#32;&quot;&#32;&lt;&lt;&#32;signal&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00195"/>00195 
+<anchor xml:id="_dispatcher_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>.<link linkend="_classSocket_1a75ee749264ccbcfc4dfbf5442e55dcb8">close</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00197"/>00197 
+<anchor xml:id="_dispatcher_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ac4cda43fd65ddf8fda5ae010f4e460ef">Ending_all_threads</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00200"/>00200 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00201"/>00201 
+<anchor xml:id="_dispatcher_8cpp_source_1l00202"/><link linkend="_classDispatcher_1ac4cda43fd65ddf8fda5ae010f4e460ef">00202</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classDispatcher_1ac4cda43fd65ddf8fda5ae010f4e460ef">Dispatcher::Ending_all_threads</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00203"/>00203 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link>&#32;v_protomsg;
+<anchor xml:id="_dispatcher_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;std::string&#32;st_end(<emphasis role="stringliteral">&quot;1&quot;</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;v_protomsg.<link linkend="_structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5">mtype</link>&#32;=&#32;<link linkend="_namespaceprotomsg_1a170738b21ae44465185c95dc94c4a317">protomsg::TYPE_ENDING_MSG</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00208"/>00208 
+<anchor xml:id="_dispatcher_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;STEP&#32;1&#32;-&#32;No&#32;accepting&#32;more&#32;connections&#32;and&#32;not&#32;reading&#32;more&#32;input&#32;messages&#32;(AcceptThread&#32;&amp;&#32;Reader_Thread)</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;_keep_accepting&#32;is&#32;currently&#32;FALSE&#32;because&#32;of&#32;signal.&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">auto</emphasis>&#32;&amp;tp&#32;:&#32;<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>)
+<anchor xml:id="_dispatcher_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Send&#32;ENDING&#32;to&#32;pipe&#32;-&#32;for&#32;Reader_Threads&#32;to&#32;weakup&#32;and&#32;die.&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;write(tp.get_write_pipe(),&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">void</emphasis>&#32;*<emphasis role="keyword">&gt;</emphasis>(<link linkend="_namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de">protopipe::ENDING_PIPE</link>),&#32;<link linkend="_namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760">protopipe::LEN_PIPEMSG</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00216"/>00216 
+<anchor xml:id="_dispatcher_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(!<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>-&gt;is_all_connections_done())&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Waiting&#32;all&#32;connections&#32;to&#32;receive&#32;pending&#32;operations...&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sleep(1);&#32;&#32;&#32;<emphasis role="comment">//&#32;Wait&#32;a&#32;little&#32;bit...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00222"/>00222 
+<anchor xml:id="_dispatcher_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Now&#32;Writer&#32;Threads&#32;will&#32;be&#32;done!&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;sleep(1);&#32;&#32;&#32;<emphasis role="comment">//&#32;Wait&#32;a&#32;little&#32;bit...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a030d89cc64de3ef18b775e563da891e1">_sharedptr_keep_running</link>-&gt;_keep_working.store(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00226"/>00226 
+<anchor xml:id="_dispatcher_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">auto</emphasis>&#32;&amp;tp&#32;:&#32;<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>)
+<anchor xml:id="_dispatcher_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Semd&#32;protomsg::TYPE_ENDING_MSG</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tp.get_write_queue().send(&amp;v_protomsg,st_end);
+<anchor xml:id="_dispatcher_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00232"/>00232 
+<anchor xml:id="_dispatcher_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">auto</emphasis>&#32;&amp;tp&#32;:&#32;<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>)
+<anchor xml:id="_dispatcher_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tp.th_r.joinable())
+<anchor xml:id="_dispatcher_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tp.th_r.join();
+<anchor xml:id="_dispatcher_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tp.th_w.joinable())
+<anchor xml:id="_dispatcher_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tp.th_w.join();
+<anchor xml:id="_dispatcher_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00240"/>00240 
+<anchor xml:id="_dispatcher_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ending_all_threads&#32;done!!&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00242"/>00242 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00243"/>00243 
+<anchor xml:id="_dispatcher_8cpp_source_1l00244"/><link linkend="_classDispatcher_1a1bdce929609ef90ec793b33f004eb256">00244</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1a1bdce929609ef90ec793b33f004eb256">Dispatcher::Assign_connection_to_thread_pair</link>(<emphasis role="keywordtype">int</emphasis>&#32;th_id,&#32;<link linkend="_structsocket__data__t">socket_data_t</link>&#32;*sd_info)
+<anchor xml:id="_dispatcher_8cpp_source_1l00245"/>00245 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TO&#32;DO&#32;-&#32;Check&#32;result&#32;or&#32;exceptions...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>[th_id].add_sockdata(*sd_info)&#32;&lt;&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00249"/>00249 
+<anchor xml:id="_dispatcher_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Send&#32;WEAKUP_PIPE&#32;byte&#32;to&#32;notify&#32;there&#32;is&#32;a&#32;new&#32;connection...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;write(<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>[th_id].get_write_pipe(),&#32;&amp;<link linkend="_namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e">protopipe::WEAKUP_PIPE</link>,&#32;<link linkend="_namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760">protopipe::LEN_PIPEMSG</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00253"/>00253 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00254"/>00254 
+<anchor xml:id="_dispatcher_8cpp_source_1l00255"/><link linkend="_classDispatcher_1a667b6987746aaff43e0c5635a9e5226a">00255</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1a667b6987746aaff43e0c5635a9e5226a">Dispatcher::LaunchTuxCli</link>()&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00256"/>00256 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;std::string&#32;prog(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a8ff3fc13dc9d67502e46fb3d4aa7e363">TuxCliProg</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;std::string&#32;ipcfile(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c">IpcFile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;std::string&#32;setup(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a6ecd4aaeefe55774ef864df10d9485d1">TuxCliSetup</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00260"/>00260 
+<anchor xml:id="_dispatcher_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Launching:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;prog;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&#32;&#32;&#32;&#32;with:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ipcfile;
+<anchor xml:id="_dispatcher_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&#32;&#32;&#32;&#32;with:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;setup;
+<anchor xml:id="_dispatcher_8cpp_source_1l00264"/>00264 
+<anchor xml:id="_dispatcher_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;execl(prog.c_str(),&#32;<emphasis role="stringliteral">&quot;Fork_TuxCli&quot;</emphasis>&#32;,&#32;ipcfile.c_str(),&#32;setup.c_str(),&#32;(<emphasis role="keywordtype">char</emphasis>*)0);
+<anchor xml:id="_dispatcher_8cpp_source_1l00266"/>00266 
+<anchor xml:id="_dispatcher_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;error&#32;execl:&quot;</emphasis>&#32;&lt;&lt;&#32;strerror(errno);
+<anchor xml:id="_dispatcher_8cpp_source_1l00268"/>00268 &#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00270"/>00270 
+<anchor xml:id="_dispatcher_8cpp_source_1l00271"/>00271 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00272"/>00272 
+<anchor xml:id="_dispatcher_8cpp_source_1l00273"/><link linkend="_classDispatcher_1a36ada166664995d1fca7676ebae0bacd">00273</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1a36ada166664995d1fca7676ebae0bacd">Dispatcher::LessCharged</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00274"/>00274 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;return&#32;less_charged;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00276"/>00276 
+<anchor xml:id="_dispatcher_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;it_th&#32;=&#32;std::min_element(<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>.begin(),<link linkend="_classDispatcher_1a023871cf97965bcfe33681aec45c0278">_v_thread_pair</link>.end(),
+<anchor xml:id="_dispatcher_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[](<link linkend="_classthread__pair">thread_pair</link>&#32;&amp;a,&#32;<link linkend="_classthread__pair">thread_pair</link>&#32;&amp;b){&#32;return&#32;a.get_size_of_sock_list()&#32;&lt;&#32;b.get_size_of_sock_list();}
+<anchor xml:id="_dispatcher_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_dispatcher_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;it_th-&gt;get_idx();
+<anchor xml:id="_dispatcher_8cpp_source_1l00281"/>00281 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00282"/>00282 
+<anchor xml:id="_dispatcher_8cpp_source_1l00283"/><link linkend="_classDispatcher_1a6f44162db1b99e05c1a6a0c892610c40">00283</link> Dispatcher::operator&#32;bool()
+<anchor xml:id="_dispatcher_8cpp_source_1l00284"/>00284 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00286"/>00286 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00287"/>00287 
+<anchor xml:id="_dispatcher_8cpp_source_1l00288"/><link linkend="_classDispatcher_1af6b72f91b36ed0dcee31684992b725a6">00288</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1af6b72f91b36ed0dcee31684992b725a6">Dispatcher::IPC_Setting_Up</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00289"/>00289 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;Json::Value&#32;ipcs_json;
+<anchor xml:id="_dispatcher_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;shm_conn_id=-1,&#32;sem_conn_id=-1,&#32;msg_common_id=-1,&#32;shm_ips_id=-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00292"/>00292 
+<anchor xml:id="_dispatcher_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;<link linkend="_classGetCfgFile">GetCfgFile</link>&#32;ipcfile(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1ac0c0175bddd6441f5551abcd70657b5c">IpcFile</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ipcfile)
+<anchor xml:id="_dispatcher_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ipcs_json&#32;=&#32;ipcfile.<link linkend="_classGetCfgFile_1ada73da323a67df88e661ffe0dc7420d7">get_json</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sem_conn_id&#32;=&#32;ipcs_json[<emphasis role="stringliteral">&quot;sem_conn_id&quot;</emphasis>].asInt();
+<anchor xml:id="_dispatcher_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shm_conn_id&#32;=&#32;ipcs_json[<emphasis role="stringliteral">&quot;shm_conn_id&quot;</emphasis>].asInt();
+<anchor xml:id="_dispatcher_8cpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;msg_common_id&#32;=&#32;ipcs_json[<emphasis role="stringliteral">&quot;msg_common_id&quot;</emphasis>].asInt();
+<anchor xml:id="_dispatcher_8cpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shm_ips_id&#32;=&#32;ipcs_json[<emphasis role="stringliteral">&quot;shm_ips_id&quot;</emphasis>].asInt();
+<anchor xml:id="_dispatcher_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Try&#32;to&#32;get&#32;all&#32;info.</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;sem(sem_conn_id);
+<anchor xml:id="_dispatcher_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sem)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Semaphore&#32;created&#32;previously&#32;(&quot;</emphasis>&#32;&lt;&lt;&#32;sem_conn_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;)&#32;and&#32;it&#32;is&#32;running&#32;now.&#32;File:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ipcfile.<link linkend="_classGetCfgFile_1aeb520cbfe46cd228acf9bd931b0724ca">get_file_name</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classSharedMemory">SharedMemory</link>&#32;shm(shm_conn_id);
+<anchor xml:id="_dispatcher_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(shm)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;SharedMemory&#32;created&#32;previously&#32;(&quot;</emphasis>&#32;&lt;&lt;&#32;shm_conn_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;)&#32;and&#32;it&#32;is&#32;running&#32;now.&#32;File:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ipcfile.<link linkend="_classGetCfgFile_1aeb520cbfe46cd228acf9bd931b0724ca">get_file_name</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classMessageQueue">MessageQueue</link>&#32;msg(msg_common_id);
+<anchor xml:id="_dispatcher_8cpp_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(msg)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;MessageQueue&#32;created&#32;previously&#32;(&quot;</emphasis>&#32;&lt;&lt;&#32;msg_common_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;)&#32;and&#32;it&#32;is&#32;running&#32;now.&#32;File:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ipcfile.<link linkend="_classGetCfgFile_1aeb520cbfe46cd228acf9bd931b0724ca">get_file_name</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classSharedMemory">SharedMemory</link>&#32;shmip(shm_ips_id);
+<anchor xml:id="_dispatcher_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(shmip)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;SharedMemory&#32;created&#32;previously&#32;(&quot;</emphasis>&#32;&lt;&lt;&#32;shm_ips_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;)&#32;and&#32;it&#32;is&#32;running&#32;now.&#32;File:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ipcfile.<link linkend="_classGetCfgFile_1aeb520cbfe46cd228acf9bd931b0724ca">get_file_name</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;ipcfile&#32;obsolete,&#32;values&#32;(shm_conn_id,sem_conn_id):&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;shm_ips_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>&#32;&lt;&lt;&#32;sem_conn_id;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00332"/>00332 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00333"/>00333 
+<anchor xml:id="_dispatcher_8cpp_source_1l00334"/>00334 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Should&#32;be&#32;0&#32;(creating).&#32;shm_conn_id,sem_conn_id,msg_common_id,shm_ips_id:&quot;</emphasis>&#32;&lt;&lt;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shm_conn_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>&#32;&lt;&lt;&#32;sem_conn_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>&#32;&lt;&lt;&#32;msg_common_id&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>&#32;&lt;&lt;&#32;shm_ips_id;
+<anchor xml:id="_dispatcher_8cpp_source_1l00336"/>00336 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00337"/>00337 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>&#32;=&#32;std::make_shared&lt;Semaphore&gt;(IPC_PRIVATE,&#32;1,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00338"/>00338 
+<anchor xml:id="_dispatcher_8cpp_source_1l00339"/>00339 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!*<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>)
+<anchor xml:id="_dispatcher_8cpp_source_1l00340"/>00340 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Semaphore&#32;not&#32;created&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;Lock();
+<anchor xml:id="_dispatcher_8cpp_source_1l00346"/>00346 
+<anchor xml:id="_dispatcher_8cpp_source_1l00347"/>00347 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;Creating&#32;Shared&#32;Memory</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00348"/>00348 
+<anchor xml:id="_dispatcher_8cpp_source_1l00349"/>00349 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;shm_len&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_classconnections">connections</link>)+(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structconnection">connection</link>)*<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695">MaxConnections</link>)+(<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">int</emphasis>)*<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00350"/>00350 
+<anchor xml:id="_dispatcher_8cpp_source_1l00351"/>00351 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>&#32;=&#32;std::make_shared&lt;SharedMemory&gt;(IPC_PRIVATE,shm_len,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00352"/>00352 
+<anchor xml:id="_dispatcher_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!*<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>)&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;Unlock();&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_ERROR&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;SharedMemory&#32;not&#32;created&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00359"/>00359 
+<anchor xml:id="_dispatcher_8cpp_source_1l00360"/>00360 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;PLACEMENT&#32;NEW&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00361"/>00361 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;SHARED&#32;POINTER&#32;POINTING&#32;TO&#32;SHARED&#32;MEMORY:&#32;DELETER&#32;NEEDED:&#32;calls&#32;constructor&#32;and&#32;deleter&#32;on&#32;destruction</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00362"/>00362 &#32;&#32;&#32;&#32;std::shared_ptr&lt;connections&gt;&#32;p_conn(&#32;<emphasis role="keyword">new</emphasis>&#32;(<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>-&gt;getaddr())&#32;<link linkend="_classconnections">connections</link>(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1ade44a34e9695f92820ab1d28bb04d695">MaxConnections</link>,&#32;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>),&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[](<link linkend="_classconnections">connections</link>&#32;*p){&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;connections&#32;own&#32;deleter:&#32;&quot;</emphasis>;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00364"/>00364 &#32;&#32;&#32;&#32;);&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00365"/>00365 
+<anchor xml:id="_dispatcher_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>&#32;=&#32;p_conn;
+<anchor xml:id="_dispatcher_8cpp_source_1l00367"/>00367 
+<anchor xml:id="_dispatcher_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;Unlock();
+<anchor xml:id="_dispatcher_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;STEP&#32;2&#32;-&#32;Common&#32;message&#32;queue&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00371"/>00371 
+<anchor xml:id="_dispatcher_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>&#32;=&#32;std::make_shared&lt;MessageQueue&gt;(IPC_PRIVATE,<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00373"/>00373 
+<anchor xml:id="_dispatcher_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!*<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>)
+<anchor xml:id="_dispatcher_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00378"/>00378 &#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;STEP&#32;3&#32;-&#32;Allowed&#32;IP&apos;s&#32;-&#32;TO&#32;DO&#32;a&#32;better&#32;implementation&#32;(2&#32;IP&apos;s&#32;by&#32;now)</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00380"/>00380 
+<anchor xml:id="_dispatcher_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;shm_len&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structallowed__ips">allowed_ips</link>)*2;
+<anchor xml:id="_dispatcher_8cpp_source_1l00382"/>00382 
+<anchor xml:id="_dispatcher_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>&#32;=&#32;std::make_shared&lt;SharedMemory&gt;(IPC_PRIVATE,shm_len,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00384"/>00384 
+<anchor xml:id="_dispatcher_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis><link linkend="_structallowed__ips">allowed_ips</link>&#32;*<emphasis role="keyword">&gt;</emphasis>(<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>-&gt;getaddr());
+<anchor xml:id="_dispatcher_8cpp_source_1l00386"/>00386 
+<anchor xml:id="_dispatcher_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[0].<link linkend="_structallowed__ips_1a52a2adb3f9b2453095119df134014c6d">allowed</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[0].<link linkend="_structallowed__ips_1a6bf24aea2a2a3024273ce87e694b5083">trace</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00389"/>00389 &#32;&#32;&#32;&#32;inet_aton(<emphasis role="stringliteral">&quot;127.0.0.1&quot;</emphasis>,&#32;&amp;(<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[0].ip));
+<anchor xml:id="_dispatcher_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00391"/>00391 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[1].<link linkend="_structallowed__ips_1a52a2adb3f9b2453095119df134014c6d">allowed</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[1].<link linkend="_structallowed__ips_1a6bf24aea2a2a3024273ce87e694b5083">trace</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;inet_aton(<emphasis role="stringliteral">&quot;127.0.1.1&quot;</emphasis>,&#32;&amp;(<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>[1].ip));
+<anchor xml:id="_dispatcher_8cpp_source_1l00394"/>00394 
+<anchor xml:id="_dispatcher_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;write&#32;queues&#32;...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aae40315ea44ae1b054a663fbefae653d">_msg_queues</link>.reserve(<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>;&#32;i++)
+<anchor xml:id="_dispatcher_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aae40315ea44ae1b054a663fbefae653d">_msg_queues</link>.emplace_back(IPC_PRIVATE,<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00401"/>00401 
+<anchor xml:id="_dispatcher_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;SAVE&#32;ON&#32;IPC&#32;FILE</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00403"/>00403 
+<anchor xml:id="_dispatcher_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;ipcs_json[<emphasis role="stringliteral">&quot;shm_conn_id&quot;</emphasis>]&#32;=&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>-&gt;getid();
+<anchor xml:id="_dispatcher_8cpp_source_1l00405"/>00405 &#32;&#32;&#32;&#32;ipcs_json[<emphasis role="stringliteral">&quot;sem_conn_id&quot;</emphasis>]&#32;=&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;getid();
+<anchor xml:id="_dispatcher_8cpp_source_1l00406"/>00406 &#32;&#32;&#32;&#32;ipcs_json[<emphasis role="stringliteral">&quot;msg_common_id&quot;</emphasis>]&#32;=&#32;<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>-&gt;getid();
+<anchor xml:id="_dispatcher_8cpp_source_1l00407"/>00407 &#32;&#32;&#32;&#32;ipcs_json[<emphasis role="stringliteral">&quot;shm_ips_id&quot;</emphasis>]&#32;=&#32;<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>-&gt;getid();
+<anchor xml:id="_dispatcher_8cpp_source_1l00408"/>00408 &#32;&#32;&#32;&#32;ipcfile.<link linkend="_classGetCfgFile_1a9ec1ad40b7b82dc8c37532bdbbf3b7c1">save_cfg_file</link>(ipcs_json);
+<anchor xml:id="_dispatcher_8cpp_source_1l00409"/>00409 
+<anchor xml:id="_dispatcher_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_dispatcher_8cpp_source_1l00411"/>00411 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00412"/>00412 
+<anchor xml:id="_dispatcher_8cpp_source_1l00413"/>00413 <emphasis role="comment">//&#32;Constructor&#32;de&#32;copia</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00414"/><link linkend="_classDispatcher_1a709f96ac930db22f806fb3fe62e46f48">00414</link> <link linkend="_classDispatcher_1a81afc8d131f2724e92e6ca1d68aae6ae">Dispatcher::Dispatcher</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classDispatcher">Dispatcher</link>&amp;&#32;other)&#32;:&#32;<emphasis role="comment">//&#32;_v_thread_pair(other._v_thread_pair),</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running(other._sharedptr_keep_running),
+<anchor xml:id="_dispatcher_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_semIPCfile(other._shpt_semIPCfile),
+<anchor xml:id="_dispatcher_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmIPCfile(other._shpt_shmIPCfile),
+<anchor xml:id="_dispatcher_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_config(other._config),
+<anchor xml:id="_dispatcher_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_server_socket(other._server_socket),
+<anchor xml:id="_dispatcher_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_p_cur_connections(other._p_cur_connections),
+<anchor xml:id="_dispatcher_8cpp_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_Common_Msg_Queue(other._shpt_Common_Msg_Queue),
+<anchor xml:id="_dispatcher_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmAllowedIPs(other._shpt_shmAllowedIPs),
+<anchor xml:id="_dispatcher_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_allowed_ips(other._allowed_ips)
+<anchor xml:id="_dispatcher_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//_shpt_sigsyn(other._shpt_sigsyn)</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00425"/>00425 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Copy&#32;Ctor:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00427"/>00427 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00428"/>00428 
+<anchor xml:id="_dispatcher_8cpp_source_1l00429"/>00429 <emphasis role="comment">//&#32;Constructor&#32;de&#32;movimiento</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00430"/><link linkend="_classDispatcher_1a6041513c142a813ff651df3040b642c2">00430</link> <link linkend="_classDispatcher_1a81afc8d131f2724e92e6ca1d68aae6ae">Dispatcher::Dispatcher</link>(<link linkend="_classDispatcher">Dispatcher</link>&amp;&amp;&#32;other)&#32;noexcept&#32;:&#32;<emphasis role="comment">//_v_thread_pair(std::move(other._v_thread_pair)),</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running(std::move(other._sharedptr_keep_running)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_semIPCfile(std::move(other._shpt_semIPCfile)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmIPCfile(std::move(other._shpt_shmIPCfile)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_config(std::move(other._config)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_server_socket(std::move(other._server_socket)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_p_cur_connections(std::move(other._p_cur_connections)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_Common_Msg_Queue(std::move(other._shpt_Common_Msg_Queue)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmAllowedIPs(std::move(other._shpt_shmAllowedIPs)),
+<anchor xml:id="_dispatcher_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_allowed_ips(std::move(other._allowed_ips))
+<anchor xml:id="_dispatcher_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//_shpt_sigsyn(std::move(other._shpt_sigsyn))</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00441"/>00441 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00442"/>00442 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Move&#32;Ctor:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00443"/>00443 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00444"/>00444 
+<anchor xml:id="_dispatcher_8cpp_source_1l00445"/>00445 <emphasis role="comment">//&#32;Operador&#32;de&#32;asignación&#32;por&#32;copia</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00446"/><link linkend="_classDispatcher_1a81c3a5eace0c1f1994a3ec6c6f2c3489">00446</link> <link linkend="_classDispatcher">Dispatcher</link>&amp;&#32;<link linkend="_classDispatcher_1a81c3a5eace0c1f1994a3ec6c6f2c3489">Dispatcher::operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classDispatcher">Dispatcher</link>&amp;&#32;other)
+<anchor xml:id="_dispatcher_8cpp_source_1l00447"/>00447 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00448"/>00448 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Assignment&#32;Operator:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00449"/>00449 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keyword">this</emphasis>&#32;!=&#32;&amp;other)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//_v_thread_pair&#32;=&#32;other._v_thread_pair;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a030d89cc64de3ef18b775e563da891e1">_sharedptr_keep_running</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a030d89cc64de3ef18b775e563da891e1">_sharedptr_keep_running</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>&#32;=&#32;other.<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a9d048f400c300c407c5a62c3b4197996">_server_socket</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a4ef272a9b4eb41f62c6f28e6f790b7e8">_p_cur_connections</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00457"/>00457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>&#32;=&#32;other.<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>&#32;=&#32;other.<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00459"/>00459 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>&#32;=&#32;other.<link linkend="_classDispatcher_1aa86de669ffc45c71db171db702c2c939">_allowed_ips</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;_shpt_sigsyn&#32;=&#32;other._shpt_sigsyn;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00463"/>00463 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00464"/>00464 
+<anchor xml:id="_dispatcher_8cpp_source_1l00465"/>00465 <emphasis role="comment">//&#32;Operador&#32;de&#32;asignación&#32;por&#32;movimiento</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00466"/><link linkend="_classDispatcher_1a4258058af8ad9945cc22383fbfbcf601">00466</link> <link linkend="_classDispatcher">Dispatcher</link>&amp;&#32;<link linkend="_classDispatcher_1a81c3a5eace0c1f1994a3ec6c6f2c3489">Dispatcher::operator=</link>(<link linkend="_classDispatcher">Dispatcher</link>&amp;&amp;&#32;other)&#32;<emphasis role="keyword">noexcept</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00467"/>00467 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Movement&#32;Assignment&#32;Operator:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keyword">this</emphasis>&#32;!=&#32;&amp;other)&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//_v_thread_pair&#32;=&#32;std::move(other._v_thread_pair);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_sharedptr_keep_running&#32;=&#32;std::move(other._sharedptr_keep_running);
+<anchor xml:id="_dispatcher_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_semIPCfile&#32;=&#32;std::move(other._shpt_semIPCfile);
+<anchor xml:id="_dispatcher_8cpp_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmIPCfile&#32;=&#32;std::move(other._shpt_shmIPCfile);
+<anchor xml:id="_dispatcher_8cpp_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_config&#32;=&#32;std::move(other._config);
+<anchor xml:id="_dispatcher_8cpp_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_server_socket&#32;=&#32;std::move(other._server_socket);
+<anchor xml:id="_dispatcher_8cpp_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_p_cur_connections&#32;=&#32;std::move(other._p_cur_connections);
+<anchor xml:id="_dispatcher_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_Common_Msg_Queue&#32;=&#32;std::move(other._shpt_Common_Msg_Queue);
+<anchor xml:id="_dispatcher_8cpp_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_shpt_shmAllowedIPs&#32;=&#32;std::move(other._shpt_shmAllowedIPs);
+<anchor xml:id="_dispatcher_8cpp_source_1l00479"/>00479 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_allowed_ips&#32;=&#32;std::move(other._allowed_ips);
+<anchor xml:id="_dispatcher_8cpp_source_1l00480"/>00480 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;_shpt_sigsyn&#32;=&#32;std::move(other._shpt_sigsyn);</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00483"/>00483 }
+<anchor xml:id="_dispatcher_8cpp_source_1l00484"/>00484 
+<anchor xml:id="_dispatcher_8cpp_source_1l00485"/><link linkend="_classDispatcher_1ac0191211316636f5e5dea1d6ee5a80ae">00485</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classDispatcher_1ac0191211316636f5e5dea1d6ee5a80ae">Dispatcher::operator()</link>()
+<anchor xml:id="_dispatcher_8cpp_source_1l00486"/>00486 {
+<anchor xml:id="_dispatcher_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Dispatcher&#32;Operator&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1af00aa0bde4e49f79df9e386b840482f9">NumDispatch</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;STEP&#32;1&#32;-&#32;Create&#32;all&#32;IPCs&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00490"/>00490 
+<anchor xml:id="_dispatcher_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classDispatcher_1af6b72f91b36ed0dcee31684992b725a6">IPC_Setting_Up</link>()&#32;&lt;&#32;0)
+<anchor xml:id="_dispatcher_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_dispatcher_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;STEP&#32;2&#32;-&#32;LaunchTuxCli&#32;and&#32;Accept_Thread...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00495"/>00495 
+<anchor xml:id="_dispatcher_8cpp_source_1l00496"/>00496 &#32;&#32;&#32;&#32;<link linkend="_classchecker__pids">checker_pids</link>&#32;<link linkend="_tuxcli__main_8cpp_1a843417470d039db4cb8fff476bb938b0">chk_procs</link>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;<link linkend="_tuxcli__main_8cpp_1a843417470d039db4cb8fff476bb938b0">chk_procs</link>.<link linkend="_classchecker__pids_1a27c1ae8def4db8f6cb36917f61048e6d">add</link>(std::bind(&amp;<link linkend="_classDispatcher_1a667b6987746aaff43e0c5635a9e5226a">Dispatcher::LaunchTuxCli</link>,&#32;<emphasis role="keyword">this</emphasis>),<emphasis role="stringliteral">&quot;LaunchTuxCli&quot;</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00499"/>00499 
+<anchor xml:id="_dispatcher_8cpp_source_1l00500"/>00500 &#32;&#32;&#32;&#32;<link linkend="_tuxcli__main_8cpp_1a843417470d039db4cb8fff476bb938b0">chk_procs</link>.<link linkend="_classchecker__pids_1a27c1ae8def4db8f6cb36917f61048e6d">add</link>(std::bind(&amp;<link linkend="_classDispatcher_1a8f47f787819c857ebd5870ce8f24a787">Dispatcher::Accept_Thread</link>,&#32;<emphasis role="keyword">this</emphasis>),<emphasis role="stringliteral">&quot;Accept_Thread&quot;</emphasis>);
+<anchor xml:id="_dispatcher_8cpp_source_1l00501"/>00501 
+<anchor xml:id="_dispatcher_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Attached&#32;to&#32;Connections:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>-&gt;get_nattach();
+<anchor xml:id="_dispatcher_8cpp_source_1l00503"/>00503 
+<anchor xml:id="_dispatcher_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Launching&#32;all&#32;processes...&#32;</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret=<link linkend="_tuxcli__main_8cpp_1a843417470d039db4cb8fff476bb938b0">chk_procs</link>();
+<anchor xml:id="_dispatcher_8cpp_source_1l00506"/>00506 
+<anchor xml:id="_dispatcher_8cpp_source_1l00507"/>00507 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ret)&#32;<emphasis role="comment">//&#32;forker&#32;=&#32;1&#32;--&gt;&#32;delete&#32;all&#32;resources...</emphasis>
+<anchor xml:id="_dispatcher_8cpp_source_1l00508"/>00508 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;EnableDelete&#32;all&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a01fe79a912713358c99828dd8ae33eb4">_shpt_shmIPCfile</link>-&gt;EnableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aa5cca577db5505a89119c00b931fffa5">_shpt_semIPCfile</link>-&gt;EnableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1a617169aea8a4c5caec50400a86401466">_shpt_Common_Msg_Queue</link>-&gt;EnableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1ac81547d0bc6aa870455e218ae8bb58e8">_shpt_shmAllowedIPs</link>-&gt;EnableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG_IF(<link linkend="_client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d">loglevel</link>)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;EnableDelete&#32;all&#32;queues:&#32;&quot;</emphasis>;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;<link linkend="_classDispatcher_1a16272dd720e97587260cd1d85b8d9cd8">_config</link>.<link linkend="_structdispatch__cfg_1a2268a74e9fce19a10b0f81808375a6c6">NumThreads</link>;&#32;i++)
+<anchor xml:id="_dispatcher_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classDispatcher_1aae40315ea44ae1b054a663fbefae653d">_msg_queues</link>[i].EnableDelete();
+<anchor xml:id="_dispatcher_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_dispatcher_8cpp_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;No&#32;delete&#32;all.&#32;Keep&#32;all.&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00522"/>00522 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_dispatcher_8cpp_source_1l00523"/>00523 &#32;&#32;&#32;&#32;
+<anchor xml:id="_dispatcher_8cpp_source_1l00524"/>00524 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ending&#32;operator()&quot;</emphasis>;
+<anchor xml:id="_dispatcher_8cpp_source_1l00525"/>00525 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+<anchor xml:id="_dispatcher_8cpp_source_1l00526"/>00526 }
+</programlisting></section>

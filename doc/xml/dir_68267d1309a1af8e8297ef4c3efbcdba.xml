@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="checker__pids_8cpp">checker_pids.cpp</innerfile>
+    <innerfile refid="checker__pids_8h">checker_pids.h</innerfile>
+    <innerfile refid="client__main_8cpp">client_main.cpp</innerfile>
+    <innerfile refid="common_8h">common.h</innerfile>
+    <innerfile refid="connections_8cpp">connections.cpp</innerfile>
+    <innerfile refid="connections_8h">connections.h</innerfile>
+    <innerfile refid="dispatch__cfg_8cpp">dispatch_cfg.cpp</innerfile>
+    <innerfile refid="dispatch__cfg_8h">dispatch_cfg.h</innerfile>
+    <innerfile refid="dispatch__main_8cpp">dispatch_main.cpp</innerfile>
+    <innerfile refid="dispatcher_8cpp">dispatcher.cpp</innerfile>
+    <innerfile refid="dispatcher_8h">dispatcher.h</innerfile>
+    <innerfile refid="getcfgfile_8cpp">getcfgfile.cpp</innerfile>
+    <innerfile refid="getcfgfile_8h">getcfgfile.h</innerfile>
+    <innerfile refid="ipclib_8cpp">ipclib.cpp</innerfile>
+    <innerfile refid="ipclib_8h">ipclib.h</innerfile>
+    <innerfile refid="protocol__msg_8h">protocol_msg.h</innerfile>
+    <innerfile refid="Socket_8cpp">Socket.cpp</innerfile>
+    <innerfile refid="Socket_8h">Socket.h</innerfile>
+    <innerfile refid="thread__pair_8cpp">thread_pair.cpp</innerfile>
+    <innerfile refid="thread__pair_8h">thread_pair.h</innerfile>
+    <innerfile refid="tuxcli__main_8cpp">tuxcli_main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

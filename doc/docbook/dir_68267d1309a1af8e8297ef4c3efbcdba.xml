@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_68267d1309a1af8e8297ef4c3efbcdba" xml:lang="en-US">
+<title>src Directory Reference</title>
+<indexterm><primary>src Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_checker__pids_8cpp">checker_pids.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_checker__pids_8h">checker_pids.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_client__main_8cpp">client_main.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_common_8h">common.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_connections_8cpp">connections.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_connections_8h">connections.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_dispatch__cfg_8cpp">dispatch_cfg.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_dispatch__cfg_8h">dispatch_cfg.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_dispatch__main_8cpp">dispatch_main.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_dispatcher_8cpp">dispatcher.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_dispatcher_8h">dispatcher.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_getcfgfile_8cpp">getcfgfile.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_getcfgfile_8h">getcfgfile.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_ipclib_8cpp">ipclib.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_ipclib_8h">ipclib.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_protocol__msg_8h">protocol_msg.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Socket_8cpp">Socket.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_Socket_8h">Socket.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_thread__pair_8cpp">thread_pair.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_thread__pair_8h">thread_pair.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_tuxcli__main_8cpp">tuxcli_main.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

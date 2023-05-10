@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="structprotomsg_1_1st__protomsg" kind="struct" language="C++" prot="public">
+    <compoundname>protomsg::st_protomsg</compoundname>
+    <includes refid="protocol__msg_8h" local="no">protocol_msg.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long protomsg::st_protomsg::mtype</definition>
+        <argsstring></argsstring>
+        <name>mtype</name>
+        <qualifiedname>protomsg::st_protomsg::mtype</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="20" column="10" bodyfile="src/protocol_msg.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1ad9b11ac85c4ab8985585d33dadd1dddc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int protomsg::st_protomsg::q_write</definition>
+        <argsstring></argsstring>
+        <name>q_write</name>
+        <qualifiedname>protomsg::st_protomsg::q_write</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="21" column="21" bodyfile="src/protocol_msg.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int protomsg::st_protomsg::terf</definition>
+        <argsstring></argsstring>
+        <name>terf</name>
+        <qualifiedname>protomsg::st_protomsg::terf</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="22" column="21" bodyfile="src/protocol_msg.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int protomsg::st_protomsg::terl</definition>
+        <argsstring></argsstring>
+        <name>terl</name>
+        <qualifiedname>protomsg::st_protomsg::terl</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="23" column="21" bodyfile="src/protocol_msg.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1ad687a9308b0ea081d445fbaac12c29b7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int protomsg::st_protomsg::idx</definition>
+        <argsstring></argsstring>
+        <name>idx</name>
+        <qualifiedname>protomsg::st_protomsg::idx</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="24" column="21" bodyfile="src/protocol_msg.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char protomsg::st_protomsg::guid[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>guid</name>
+        <qualifiedname>protomsg::st_protomsg::guid</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="25" column="21" bodyfile="src/protocol_msg.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char protomsg::st_protomsg::pid[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>pid</name>
+        <qualifiedname>protomsg::st_protomsg::pid</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="26" column="21" bodyfile="src/protocol_msg.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char protomsg::st_protomsg::aid[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>aid</name>
+        <qualifiedname>protomsg::st_protomsg::aid</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="27" column="21" bodyfile="src/protocol_msg.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char protomsg::st_protomsg::cabx[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>cabx</name>
+        <qualifiedname>protomsg::st_protomsg::cabx</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="28" column="21" bodyfile="src/protocol_msg.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structprotomsg_1_1st__protomsg_1aa2b9f791b1d3114a7ff0dd875144579e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char protomsg::st_protomsg::msg[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>msg</name>
+        <qualifiedname>protomsg::st_protomsg::msg</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="29" column="21" bodyfile="src/protocol_msg.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="structprotomsg_1_1st__protomsg_1aa28a7014a343cd7e9ecb2b42ab611717" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const st_protomsg &amp;v)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>protomsg::st_protomsg::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structprotomsg_1_1st__protomsg" kindref="compound">st_protomsg</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/protocol_msg.h" line="31" column="16" bodyfile="src/protocol_msg.h" bodystart="31" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/protocol_msg.h" line="18" column="5" bodyfile="src/protocol_msg.h" bodystart="19" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>aid</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>cabx</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>guid</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1ad687a9308b0ea081d445fbaac12c29b7" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>idx</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1aa2b9f791b1d3114a7ff0dd875144579e" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>msg</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>mtype</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1aa28a7014a343cd7e9ecb2b42ab611717" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>pid</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1ad9b11ac85c4ab8985585d33dadd1dddc" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>q_write</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>terf</name></member>
+      <member refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" prot="public" virt="non-virtual"><scope>protomsg::st_protomsg</scope><name>terl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

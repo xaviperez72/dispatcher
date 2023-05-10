@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classMessageQueue" xml:lang="en-US">
+<title>MessageQueue Class Reference</title>
+<indexterm><primary>MessageQueue</primary></indexterm>
+<para>
+<computeroutput>#include &lt;ipclib.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for MessageQueue:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classMessageQueue.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classMessageQueue_1aa1a5814c7a2e8c2ce6c6734ebd9f07ed">MessageQueue</link> (const key_t key, bool deleteOnExit)</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue_1aec2a8525f943a2233ec985007045d54f">MessageQueue</link> (int msgid)</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3">MessageQueue</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue_1a38354d78361fca43ce02c475af48d7d9">MessageQueue</link> (<link linkend="_classMessageQueue">MessageQueue</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue_1acbe61b138d12e33da964ab8835d232dc">MessageQueue</link> (<link linkend="_classMessageQueue">MessageQueue</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue">MessageQueue</link> &amp; <link linkend="_classMessageQueue_1a675784f3ac981d563574d554a3a43611">operator=</link> (<link linkend="_classMessageQueue">MessageQueue</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue">MessageQueue</link> &amp; <link linkend="_classMessageQueue_1ac153ec850c7213443916857d34a4cc06">operator=</link> (<link linkend="_classMessageQueue">MessageQueue</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classMessageQueue_1a3640a8a6140801f1e127a41e60c014dd">~MessageQueue</link> ()</para>
+</listitem>
+            <listitem><para>int <link linkend="_classMessageQueue_1ac3138a4b8f10868f1df70519257fa45f">send</link> (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> *p_protomsg, std::string &amp;pdata)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classMessageQueue_1ae4afb1b560697ce2a0bd8a0b5bca8f21">rcv</link> (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> *p_protomsg, std::string &amp;pdata)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_classIpc">Ipc</link>        <itemizedlist>
+            <listitem><para><link linkend="_classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737">Ipc</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a65a9ce942eaca05e24af65e120f692ef">Ipc</link> (key_t key, bool deleteOnExit)</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a051dff23481be739a5825c03381ed578">Ipc</link> (<link linkend="_classIpc">Ipc</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a5966748aff2218b33cf39ef197c7e9a2">Ipc</link> (<link linkend="_classIpc">Ipc</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc">Ipc</link> &amp; <link linkend="_classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776">operator=</link> (<link linkend="_classIpc">Ipc</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc">Ipc</link> &amp; <link linkend="_classIpc_1af046c6367b03099fec0826db68a2298d">operator=</link> (<link linkend="_classIpc">Ipc</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797">~Ipc</link> ()=default</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65">EnableDelete</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a97d909e0c622ac19431c874f187c505b">DisableDelete</link> ()</para>
+</listitem>
+            <listitem><para>key_t <link linkend="_classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb">getkey</link> () const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1a3e50666a681532a44ed32a283e8e2979">getid</link> () const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6">getflags</link> () const</para>
+</listitem>
+            <listitem><para>key_t <link linkend="_classIpc_1a7faa2e8471f51b76efc446ea9330c49c">getDeleteOnExit</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a042476ca5bce7de73d906b7413922586">setkey</link> (key_t key)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19">setid</link> (int id)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1aecac89b3a9bdec9833092579712e7cfe">setok</link> (bool ok)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a9f5e7d9248966affeff2533ebf17f060">setflags</link> (int flags)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classIpc_1a526497b4e34b064f779f300d2d011310">operator bool</link> () const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_classMessageQueue_1af553c98265b870662d63b92c53833191">get_stat</link> (int msgid)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>msqid_ds <link linkend="_classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0">_st</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3">_size</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Message Queue IPC (<link linkend="_ipclib_8h">ipclib.h</link>) </para>
+<para>
+Definition at line <link linkend="_ipclib_8h_source_1l00197">197</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classMessageQueue_1aa1a5814c7a2e8c2ce6c6734ebd9f07ed"/><section>
+    <title>MessageQueue()<computeroutput>[1/5]</computeroutput></title>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::MessageQueue (const key_t key, bool deleteOnExit)</computeroutput></para>
+<para><link linkend="_classMessageQueue">MessageQueue</link> Constructor</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>(default IPC_PRIVATE) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>deleteOnExit</entry><entry>
+<para>= false (don&apos;t remove semaphore on destruction. true = remove it) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00320">320</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+<anchor xml:id="_classMessageQueue_1aec2a8525f943a2233ec985007045d54f"/><section>
+    <title>MessageQueue()<computeroutput>[2/5]</computeroutput></title>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::MessageQueue (int msgid)</computeroutput></para>
+<para><link linkend="_classMessageQueue">MessageQueue</link> Constructor</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>msgid</entry><entry>
+<para>Id for an existing <link linkend="_classMessageQueue">MessageQueue</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00251">251</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+<anchor xml:id="_classMessageQueue_1a8662eead8fd2732f4cb68d23b89431c3"/><section>
+    <title>MessageQueue()<computeroutput>[3/5]</computeroutput></title>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::MessageQueue ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classMessageQueue_1a38354d78361fca43ce02c475af48d7d9"/><section>
+    <title>MessageQueue()<computeroutput>[4/5]</computeroutput></title>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::MessageQueue (<link linkend="_classMessageQueue">MessageQueue</link> const &amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classMessageQueue_1acbe61b138d12e33da964ab8835d232dc"/><section>
+    <title>MessageQueue()<computeroutput>[5/5]</computeroutput></title>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::MessageQueue (<link linkend="_classMessageQueue">MessageQueue</link> &amp;&amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classMessageQueue_1a3640a8a6140801f1e127a41e60c014dd"/><section>
+    <title>~MessageQueue()</title>
+<indexterm><primary>~MessageQueue</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>~MessageQueue</secondary></indexterm>
+<para><computeroutput>MessageQueue::~MessageQueue ( )</computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00363">363</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classMessageQueue_1af553c98265b870662d63b92c53833191"/><section>
+    <title>get_stat()</title>
+<indexterm><primary>get_stat</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>get_stat</secondary></indexterm>
+<para><computeroutput>int MessageQueue::get_stat (int msgid)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00246">246</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+<anchor xml:id="_classMessageQueue_1ac153ec850c7213443916857d34a4cc06"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classMessageQueue">MessageQueue</link> &amp; MessageQueue::operator= (<link linkend="_classMessageQueue">MessageQueue</link> &amp;&amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classMessageQueue_1a675784f3ac981d563574d554a3a43611"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classMessageQueue">MessageQueue</link> &amp; MessageQueue::operator= (<link linkend="_classMessageQueue">MessageQueue</link> const &amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classMessageQueue_1ae4afb1b560697ce2a0bd8a0b5bca8f21"/><section>
+    <title>rcv()</title>
+<indexterm><primary>rcv</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>rcv</secondary></indexterm>
+<para><computeroutput>int MessageQueue::rcv (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> * p_protomsg, std::string &amp; pdata)</computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00294">294</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+<anchor xml:id="_classMessageQueue_1ac3138a4b8f10868f1df70519257fa45f"/><section>
+    <title>send()</title>
+<indexterm><primary>send</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>send</secondary></indexterm>
+<para><computeroutput>int MessageQueue::send (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> * p_protomsg, std::string &amp; pdata)</computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8cpp_source_1l00269">269</link> of file <link linkend="_ipclib_8cpp_source">ipclib.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classMessageQueue_1a77feb6edf381eedb2f466303fc6ca3c3"/><section>
+    <title>_size</title>
+<indexterm><primary>_size</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>_size</secondary></indexterm>
+<para><computeroutput>int MessageQueue::_size<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00200">200</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classMessageQueue_1addf9d13122b5988bfde8e8840b0c79c0"/><section>
+    <title>_st</title>
+<indexterm><primary>_st</primary><secondary>MessageQueue</secondary></indexterm>
+<indexterm><primary>MessageQueue</primary><secondary>_st</secondary></indexterm>
+<para><computeroutput>msqid_ds MessageQueue::_st<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00199">199</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/<link linkend="_ipclib_8h">ipclib.h</link>src/<link linkend="_ipclib_8cpp">ipclib.cpp</link></section>
+</section>

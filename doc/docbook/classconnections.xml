@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classconnections" xml:lang="en-US">
+<title>connections Class Reference</title>
+<indexterm><primary>connections</primary></indexterm>
+<para>
+<computeroutput>#include &lt;connections.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classconnections_1a2fbd49788255115aa209b55b9cfe7bfb">connections</link> (int MaxConnections, int NumThreads)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classconnections_1abd2f1b462739513f2c23236fb28b08a8">mark_obsolete</link> (int idx)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a">delete_obsolete</link> (int idx)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1aa8c930db3c4885c33de249f67c6f3ca6">clean_repeated_ip</link> (sockaddr_in *ppal, <link linkend="_classSemaphore">Semaphore</link> &amp;sem)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1a94f933faea3ade69fc63ecd8647d5423">register_new_conn</link> (int nthread, int sd, sockaddr_in s_in, <link linkend="_classSemaphore">Semaphore</link> &amp;sem)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1a7818be12aec98b6c015b038b667c568f">unregister_conn</link> (int idx, <link linkend="_classSemaphore">Semaphore</link> &amp;sem)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1abad7f85b1ef27d0417c4571b905192b1">ending_operation</link> (int idx, <link linkend="_classSemaphore">Semaphore</link> &amp;sem, <link linkend="_structconnection">connection</link> &amp;cur_conn)</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c">check_obsolete</link> (int idx_con, <link linkend="_classSemaphore">Semaphore</link> &amp;sem)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classconnections_1a1d163bdeb5127186898ab71987ef6dc5">is_all_connections_done</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_classconnections_1aa422d2929a142e3b88a0035c10ea2799">initialized</link> {false}</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link> {0}</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1a48e53d849d45c221c4bc1b4df8013a13">nThreads</link> {0}</para>
+</listitem>
+            <listitem><para>int <link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link> {0}</para>
+</listitem>
+            <listitem><para><link linkend="_structconnection">connection</link> * <link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link> {nullptr}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Connections class. </para>
+<para>
+Definition at line <link linkend="_connections_8h_source_1l00031">31</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classconnections_1a2fbd49788255115aa209b55b9cfe7bfb"/><section>
+    <title>connections()</title>
+<indexterm><primary>connections</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>connections</secondary></indexterm>
+<para><computeroutput>connections::connections (int MaxConnections, int NumThreads)</computeroutput></para>
+<para>connections Constructor</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MaxConnections</entry><entry>
+<para>Max number of connections. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>NumThreads</entry><entry>
+<para>= Number of thread pairs running </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00003">3</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c"/><section>
+    <title>check_obsolete()</title>
+<indexterm><primary>check_obsolete</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>check_obsolete</secondary></indexterm>
+<para><computeroutput>int connections::check_obsolete (int idx_con, <link linkend="_classSemaphore">Semaphore</link> &amp; sem)</computeroutput></para>
+<para>if connection[idx_con] is obsolete marks it as st_obsolete=2.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>idx</entry><entry>
+<para>Index on connection array </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sem</entry><entry>
+<para><link linkend="_classSemaphore">Semaphore</link> to lock to avoid data races. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00123">123</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1aa8c930db3c4885c33de249f67c6f3ca6"/><section>
+    <title>clean_repeated_ip()</title>
+<indexterm><primary>clean_repeated_ip</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>clean_repeated_ip</secondary></indexterm>
+<para><computeroutput>int connections::clean_repeated_ip (sockaddr_in * ppal, <link linkend="_classSemaphore">Semaphore</link> &amp; sem)</computeroutput></para>
+<para>Clean repeated IP in connection array.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ppal</entry><entry>
+<para>sockaddr_in data (IP:port) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sem</entry><entry>
+<para><link linkend="_classSemaphore">Semaphore</link> to lock to avoid data races. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00065">65</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a"/><section>
+    <title>delete_obsolete()</title>
+<indexterm><primary>delete_obsolete</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>delete_obsolete</secondary></indexterm>
+<para><computeroutput>void connections::delete_obsolete (int idx)</computeroutput></para><para>
+Definition at line <link linkend="_connections_8cpp_source_1l00033">33</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1abad7f85b1ef27d0417c4571b905192b1"/><section>
+    <title>ending_operation()</title>
+<indexterm><primary>ending_operation</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>ending_operation</secondary></indexterm>
+<para><computeroutput>int connections::ending_operation (int idx, <link linkend="_classSemaphore">Semaphore</link> &amp; sem, <link linkend="_structconnection">connection</link> &amp; cur_conn)</computeroutput></para>
+<para>Sets connection operation info: add 1 to operation counter, gets time</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>idx</entry><entry>
+<para>Index on connection array </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sem</entry><entry>
+<para><link linkend="_classSemaphore">Semaphore</link> to lock to avoid data races. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cur_conn</entry><entry>
+<para>Gets connection struct of connection array (idx position) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00040">40</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1a1d163bdeb5127186898ab71987ef6dc5"/><section>
+    <title>is_all_connections_done()</title>
+<indexterm><primary>is_all_connections_done</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>is_all_connections_done</secondary></indexterm>
+<para><computeroutput>bool connections::is_all_connections_done ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00096">96</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1abd2f1b462739513f2c23236fb28b08a8"/><section>
+    <title>mark_obsolete()</title>
+<indexterm><primary>mark_obsolete</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>mark_obsolete</secondary></indexterm>
+<para><computeroutput>void connections::mark_obsolete (int idx)</computeroutput></para><para>
+Definition at line <link linkend="_connections_8cpp_source_1l00024">24</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1a94f933faea3ade69fc63ecd8647d5423"/><section>
+    <title>register_new_conn()</title>
+<indexterm><primary>register_new_conn</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>register_new_conn</secondary></indexterm>
+<para><computeroutput>int connections::register_new_conn (int nthread, int sd, sockaddr_in s_in, <link linkend="_classSemaphore">Semaphore</link> &amp; sem)</computeroutput></para>
+<para>Registers new connection on array.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>nthread</entry><entry>
+<para>Thread pair idx </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sd</entry><entry>
+<para><link linkend="_classSocket">Socket</link> descriptor </para>
+</entry>
+                            </row>
+                            <row>
+<entry>s_in</entry><entry>
+<para>sockaddr_in info </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sem</entry><entry>
+<para><link linkend="_classSemaphore">Semaphore</link> to lock to avoid data races. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00095">95</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1a7818be12aec98b6c015b038b667c568f"/><section>
+    <title>unregister_conn()</title>
+<indexterm><primary>unregister_conn</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>unregister_conn</secondary></indexterm>
+<para><computeroutput>int connections::unregister_conn (int idx, <link linkend="_classSemaphore">Semaphore</link> &amp; sem)</computeroutput></para>
+<para>Unregisters connection on array.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>idx</entry><entry>
+<para>Index on connection array </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sem</entry><entry>
+<para><link linkend="_classSemaphore">Semaphore</link> to lock to avoid data races. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_connections_8cpp_source_1l00143">143</link> of file <link linkend="_connections_8cpp_source">connections.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classconnections_1aec431699f4e5f15397d398150b97222b"/><section>
+    <title>current_connections</title>
+<indexterm><primary>current_connections</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>current_connections</secondary></indexterm>
+<para><computeroutput><link linkend="_structconnection">connection</link>* connections::current_connections {nullptr}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00036">36</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1a4ef1805523e87bc105015afcce456dc4"/><section>
+    <title>first_free</title>
+<indexterm><primary>first_free</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>first_free</secondary></indexterm>
+<para><computeroutput>int connections::first_free {0}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00033">33</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1aa422d2929a142e3b88a0035c10ea2799"/><section>
+    <title>initialized</title>
+<indexterm><primary>initialized</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>initialized</secondary></indexterm>
+<para><computeroutput>bool connections::initialized {false}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00032">32</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1ab8405116666865cf960deb54b6beb2c9"/><section>
+    <title>MaxConn</title>
+<indexterm><primary>MaxConn</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>MaxConn</secondary></indexterm>
+<para><computeroutput>int connections::MaxConn {0}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00035">35</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<anchor xml:id="_classconnections_1a48e53d849d45c221c4bc1b4df8013a13"/><section>
+    <title>nThreads</title>
+<indexterm><primary>nThreads</primary><secondary>connections</secondary></indexterm>
+<indexterm><primary>connections</primary><secondary>nThreads</secondary></indexterm>
+<para><computeroutput>int connections::nThreads {0}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_connections_8h_source_1l00034">34</link> of file <link linkend="_connections_8h_source">connections.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/<link linkend="_connections_8h">connections.h</link>src/<link linkend="_connections_8cpp">connections.cpp</link></section>
+</section>

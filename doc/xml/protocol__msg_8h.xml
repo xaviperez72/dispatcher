@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="protocol__msg_8h" kind="file" language="C++">
+    <compoundname>protocol_msg.h</compoundname>
+    <includedby refid="client__main_8cpp" local="yes">src/client_main.cpp</includedby>
+    <includedby refid="dispatcher_8h" local="yes">src/dispatcher.h</includedby>
+    <includedby refid="ipclib_8h" local="yes">src/ipclib.h</includedby>
+    <includedby refid="thread__pair_8h" local="yes">src/thread_pair.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/client_main.cpp</label>
+        <link refid="client__main_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/connections.cpp</label>
+        <link refid="connections_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/connections.h</label>
+        <link refid="connections_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/dispatch_main.cpp</label>
+        <link refid="dispatch__main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/dispatcher.cpp</label>
+        <link refid="dispatcher_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/dispatcher.h</label>
+        <link refid="dispatcher_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/ipclib.cpp</label>
+        <link refid="ipclib_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/ipclib.h</label>
+        <link refid="ipclib_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/protocol_msg.h</label>
+        <link refid="protocol__msg_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/thread_pair.cpp</label>
+        <link refid="thread__pair_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/thread_pair.h</label>
+        <link refid="thread__pair_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/tuxcli_main.cpp</label>
+        <link refid="tuxcli__main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structprotomsg_1_1st__protomsg" prot="public">protomsg::st_protomsg</innerclass>
+    <innernamespace refid="namespaceprotopipe">protopipe</innernamespace>
+    <innernamespace refid="namespaceprotomsg">protomsg</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>PROTOCOL_MSG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROTOCOL_MSG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="namespaceprotopipe" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceprotopipe" kindref="compound">protopipe</ref></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6" refid="namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespaceprotopipe_1a9f31fedef0879b851ea45cc25e5ede7e" kindref="member">WEAKUP_PIPE</ref>[1]={</highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="7" refid="namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespaceprotopipe_1a51046f23aed03692e33538e1dc59d0de" kindref="member">ENDING_PIPE</ref>[1]={</highlight><highlight class="charliteral">&apos;2&apos;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="8" refid="namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceprotopipe_1acdd465b67009b36a3c852eaf3a96d760" kindref="member">LEN_PIPEMSG</ref>=1;</highlight></codeline>
+<codeline lineno="9" refid="namespaceprotopipe_1acdb2afef76b82453234a043e76cbf2a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespaceprotopipe_1acdb2afef76b82453234a043e76cbf2a9" kindref="member">GETPIPEMSG</ref>[1];</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceprotomsg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceprotomsg" kindref="compound">protomsg</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14" refid="namespaceprotomsg_1a3f940c01628a63d95c5858e265705135" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="namespaceprotomsg_1a3f940c01628a63d95c5858e265705135" kindref="member">TYPE_WEAKUP_MSG</ref>=1;</highlight></codeline>
+<codeline lineno="15" refid="namespaceprotomsg_1a8e34e045d8c49d98e5522e76a20b943a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="namespaceprotomsg_1a8e34e045d8c49d98e5522e76a20b943a" kindref="member">TYPE_NORMAL_MSG</ref>=2;</highlight></codeline>
+<codeline lineno="16" refid="namespaceprotomsg_1a170738b21ae44465185c95dc94c4a317" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="namespaceprotomsg_1a170738b21ae44465185c95dc94c4a317" kindref="member">TYPE_ENDING_MSG</ref>=3;</highlight></codeline>
+<codeline lineno="17" refid="namespaceprotomsg_1a4a0f2114518a11deffeeb33541faa41c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="namespaceprotomsg_1a4a0f2114518a11deffeeb33541faa41c" kindref="member">MAX_MSG_SIZE</ref>=10000;</highlight></codeline>
+<codeline lineno="18" refid="structprotomsg_1_1st__protomsg" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">st_protomsg</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5" kindref="member">mtype</ref>{0};</highlight></codeline>
+<codeline lineno="21" refid="structprotomsg_1_1st__protomsg_1ad9b11ac85c4ab8985585d33dadd1dddc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1ad9b11ac85c4ab8985585d33dadd1dddc" kindref="member">q_write</ref>{0};</highlight></codeline>
+<codeline lineno="22" refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" kindref="member">terf</ref>{0};</highlight></codeline>
+<codeline lineno="23" refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" kindref="member">terl</ref>{0};</highlight></codeline>
+<codeline lineno="24" refid="structprotomsg_1_1st__protomsg_1ad687a9308b0ea081d445fbaac12c29b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1ad687a9308b0ea081d445fbaac12c29b7" kindref="member">idx</ref>{0};</highlight></codeline>
+<codeline lineno="25" refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" kindref="member">guid</ref>[10]{0};</highlight></codeline>
+<codeline lineno="26" refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" kindref="member">pid</ref>[10]{0};</highlight></codeline>
+<codeline lineno="27" refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" kindref="member">aid</ref>[8]{0};</highlight></codeline>
+<codeline lineno="28" refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" kindref="member">cabx</ref>[8]{0};</highlight></codeline>
+<codeline lineno="29" refid="structprotomsg_1_1st__protomsg_1aa2b9f791b1d3114a7ff0dd875144579e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprotomsg_1_1st__protomsg_1aa2b9f791b1d3114a7ff0dd875144579e" kindref="member">msg</ref>[1]{0};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="structprotomsg_1_1st__protomsg_1aa28a7014a343cd7e9ecb2b42ab611717" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="structprotomsg_1_1st__protomsg_1aa28a7014a343cd7e9ecb2b42ab611717" kindref="member">operator&lt;&lt;</ref>(<sp/>std::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structprotomsg_1_1st__protomsg" kindref="compound">st_protomsg</ref>&amp;<sp/>v<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a4da8e282dba03c825108806b9ecbc3e5" kindref="member">mtype</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1ad9b11ac85c4ab8985585d33dadd1dddc" kindref="member">q_write</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a7930ab296d19b6d7217ae1acf09229f3" kindref="member">terf</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a04f17c6355d8722524757604afadae94" kindref="member">terl</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1ad687a9308b0ea081d445fbaac12c29b7" kindref="member">idx</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a205b604a6bed38195230067ede131ec8" kindref="member">guid</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a91601b868d6a43ab884fdcc028615700" kindref="member">pid</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1ac122e203520778ab49f551db9d6de1b9" kindref="member">aid</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v.<ref refid="structprotomsg_1_1st__protomsg_1a87c793980e82b795427b08498c4b6172" kindref="member">cabx</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/protocol_msg.h"/>
+  </compounddef>
+</doxygen>

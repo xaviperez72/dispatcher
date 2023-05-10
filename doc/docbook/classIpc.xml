@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classIpc" xml:lang="en-US">
+<title>Ipc Class Reference</title>
+<indexterm><primary>Ipc</primary></indexterm>
+<para>
+<computeroutput>#include &lt;ipclib.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Ipc:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classIpc.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737">Ipc</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a65a9ce942eaca05e24af65e120f692ef">Ipc</link> (key_t key, bool deleteOnExit)</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a051dff23481be739a5825c03381ed578">Ipc</link> (<link linkend="_classIpc">Ipc</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc_1a5966748aff2218b33cf39ef197c7e9a2">Ipc</link> (<link linkend="_classIpc">Ipc</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc">Ipc</link> &amp; <link linkend="_classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776">operator=</link> (<link linkend="_classIpc">Ipc</link> const &amp;)=default</para>
+</listitem>
+            <listitem><para><link linkend="_classIpc">Ipc</link> &amp; <link linkend="_classIpc_1af046c6367b03099fec0826db68a2298d">operator=</link> (<link linkend="_classIpc">Ipc</link> &amp;&amp;)=default</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797">~Ipc</link> ()=default</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65">EnableDelete</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a97d909e0c622ac19431c874f187c505b">DisableDelete</link> ()</para>
+</listitem>
+            <listitem><para>key_t <link linkend="_classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb">getkey</link> () const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1a3e50666a681532a44ed32a283e8e2979">getid</link> () const</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6">getflags</link> () const</para>
+</listitem>
+            <listitem><para>key_t <link linkend="_classIpc_1a7faa2e8471f51b76efc446ea9330c49c">getDeleteOnExit</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a042476ca5bce7de73d906b7413922586">setkey</link> (key_t key)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19">setid</link> (int id)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1aecac89b3a9bdec9833092579712e7cfe">setok</link> (bool ok)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classIpc_1a9f5e7d9248966affeff2533ebf17f060">setflags</link> (int flags)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_classIpc_1a526497b4e34b064f779f300d2d011310">operator bool</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>key_t <link linkend="_classIpc_1a687f050130e1b7c74713385783bd0228">_key</link> {IPC_PRIVATE}</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1ab86fc30de66fe77ab899462638dd052f">_id</link> {-1}</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classIpc_1ac3d97612d5c63128e5b57e3fe190a91b">_deleteOnExit</link> {false}</para>
+</listitem>
+            <listitem><para>int <link linkend="_classIpc_1ad7ed294460891e9b1027f949d286eca7">_flags</link> {0666}</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b">_ok</link> {false}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Common IPC object (<link linkend="_ipclib_8h">ipclib.h</link>) </para>
+<para>
+Definition at line <link linkend="_ipclib_8h_source_1l00032">32</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classIpc_1ad4b53305ca5ea53acc86ca7eab6ce737"/><section>
+    <title>Ipc()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<para><computeroutput>Ipc::Ipc ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classIpc_1a65a9ce942eaca05e24af65e120f692ef"/><section>
+    <title>Ipc()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<para><computeroutput>Ipc::Ipc (key_t key, bool deleteOnExit)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para>
+<para><link linkend="_classIpc">Ipc</link> Constructor</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>(default key=IPC_PRIVATE) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>deleteOnExit</entry><entry>
+<para>= ( false = don&apos;t remove semaphore on destruction. true = remove it) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_ipclib_8h_source_1l00048">48</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a051dff23481be739a5825c03381ed578"/><section>
+    <title>Ipc()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<para><computeroutput>Ipc::Ipc (<link linkend="_classIpc">Ipc</link> const &amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classIpc_1a5966748aff2218b33cf39ef197c7e9a2"/><section>
+    <title>Ipc()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>Ipc</secondary></indexterm>
+<para><computeroutput>Ipc::Ipc (<link linkend="_classIpc">Ipc</link> &amp;&amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classIpc_1a1ecb3e8ee06f9566b9c10a81a64a1797"/><section>
+    <title>~Ipc()</title>
+<indexterm><primary>~Ipc</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>~Ipc</secondary></indexterm>
+<para><computeroutput>virtual Ipc::~Ipc ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classIpc_1a97d909e0c622ac19431c874f187c505b"/><section>
+    <title>DisableDelete()</title>
+<indexterm><primary>DisableDelete</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>DisableDelete</secondary></indexterm>
+<para><computeroutput>void Ipc::DisableDelete ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00059">59</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1adc11c0e6cf5f3642877bc40ae8b50e65"/><section>
+    <title>EnableDelete()</title>
+<indexterm><primary>EnableDelete</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>EnableDelete</secondary></indexterm>
+<para><computeroutput>void Ipc::EnableDelete ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00056">56</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a7faa2e8471f51b76efc446ea9330c49c"/><section>
+    <title>getDeleteOnExit()</title>
+<indexterm><primary>getDeleteOnExit</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>getDeleteOnExit</secondary></indexterm>
+<para><computeroutput>key_t Ipc::getDeleteOnExit ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00071">71</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a4b2e0e102d3e0991129b0fc3a511e1e6"/><section>
+    <title>getflags()</title>
+<indexterm><primary>getflags</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>getflags</secondary></indexterm>
+<para><computeroutput>int Ipc::getflags ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00068">68</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a3e50666a681532a44ed32a283e8e2979"/><section>
+    <title>getid()</title>
+<indexterm><primary>getid</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>getid</secondary></indexterm>
+<para><computeroutput>int Ipc::getid ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00065">65</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1aa0ad768b2ee58c3c6795f0e23aaa29eb"/><section>
+    <title>getkey()</title>
+<indexterm><primary>getkey</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>getkey</secondary></indexterm>
+<para><computeroutput>key_t Ipc::getkey ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00062">62</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a526497b4e34b064f779f300d2d011310"/><section>
+    <title>operator bool()</title>
+<indexterm><primary>operator bool</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>operator bool</secondary></indexterm>
+<para><computeroutput>virtual Ipc::operator bool ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00086">86</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1af046c6367b03099fec0826db68a2298d"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classIpc">Ipc</link> &amp; Ipc::operator= (<link linkend="_classIpc">Ipc</link> &amp;&amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classIpc_1a8e66cc0c4d1754b3ea8bd2a4195e0776"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_classIpc">Ipc</link> &amp; Ipc::operator= (<link linkend="_classIpc">Ipc</link> const &amp; )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classIpc_1a9f5e7d9248966affeff2533ebf17f060"/><section>
+    <title>setflags()</title>
+<indexterm><primary>setflags</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>setflags</secondary></indexterm>
+<para><computeroutput>void Ipc::setflags (int flags)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00083">83</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a80dbed0a4e45a95d04bfe8d432c50d19"/><section>
+    <title>setid()</title>
+<indexterm><primary>setid</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>setid</secondary></indexterm>
+<para><computeroutput>void Ipc::setid (int id)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00077">77</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a042476ca5bce7de73d906b7413922586"/><section>
+    <title>setkey()</title>
+<indexterm><primary>setkey</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>setkey</secondary></indexterm>
+<para><computeroutput>void Ipc::setkey (key_t key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00074">74</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1aecac89b3a9bdec9833092579712e7cfe"/><section>
+    <title>setok()</title>
+<indexterm><primary>setok</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>setok</secondary></indexterm>
+<para><computeroutput>void Ipc::setok (bool ok)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00080">80</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classIpc_1ac3d97612d5c63128e5b57e3fe190a91b"/><section>
+    <title>_deleteOnExit</title>
+<indexterm><primary>_deleteOnExit</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>_deleteOnExit</secondary></indexterm>
+<para><computeroutput>bool Ipc::_deleteOnExit {false}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00036">36</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1ad7ed294460891e9b1027f949d286eca7"/><section>
+    <title>_flags</title>
+<indexterm><primary>_flags</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>_flags</secondary></indexterm>
+<para><computeroutput>int Ipc::_flags {0666}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00037">37</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1ab86fc30de66fe77ab899462638dd052f"/><section>
+    <title>_id</title>
+<indexterm><primary>_id</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>_id</secondary></indexterm>
+<para><computeroutput>int Ipc::_id {-1}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00035">35</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1a687f050130e1b7c74713385783bd0228"/><section>
+    <title>_key</title>
+<indexterm><primary>_key</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>_key</secondary></indexterm>
+<para><computeroutput>key_t Ipc::_key {IPC_PRIVATE}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00034">34</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<anchor xml:id="_classIpc_1ac6c02c8ae2a0a8a267e6f836742f2b2b"/><section>
+    <title>_ok</title>
+<indexterm><primary>_ok</primary><secondary>Ipc</secondary></indexterm>
+<indexterm><primary>Ipc</primary><secondary>_ok</secondary></indexterm>
+<para><computeroutput>bool Ipc::_ok {false}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_ipclib_8h_source_1l00038">38</link> of file <link linkend="_ipclib_8h_source">ipclib.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/<link linkend="_ipclib_8h">ipclib.h</link></section>
+</section>

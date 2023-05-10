@@ -1,0 +1,194 @@
+.TH "MessageQueue" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MessageQueue
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ipclib\&.h>\fP
+.PP
+Inherits \fBIpc\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMessageQueue\fP (const key_t key, bool deleteOnExit)"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP (int msgid)"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP ()=default"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP (\fBMessageQueue\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP (\fBMessageQueue\fP &&)=default"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP & \fBoperator=\fP (\fBMessageQueue\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBMessageQueue\fP & \fBoperator=\fP (\fBMessageQueue\fP &&)=default"
+.br
+.ti -1c
+.RI "\fB~MessageQueue\fP ()"
+.br
+.ti -1c
+.RI "int \fBsend\fP (\fBprotomsg::st_protomsg\fP *p_protomsg, std::string &pdata)"
+.br
+.ti -1c
+.RI "int \fBrcv\fP (\fBprotomsg::st_protomsg\fP *p_protomsg, std::string &pdata)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBIpc\fP
+.in +1c
+.ti -1c
+.RI "\fBIpc\fP ()=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (key_t key, bool deleteOnExit)"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBIpc\fP & \fBoperator=\fP (\fBIpc\fP &&)=default"
+.br
+.ti -1c
+.RI "virtual \fB~Ipc\fP ()=default"
+.br
+.ti -1c
+.RI "void \fBEnableDelete\fP ()"
+.br
+.ti -1c
+.RI "void \fBDisableDelete\fP ()"
+.br
+.ti -1c
+.RI "key_t \fBgetkey\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetid\fP () const"
+.br
+.ti -1c
+.RI "int \fBgetflags\fP () const"
+.br
+.ti -1c
+.RI "key_t \fBgetDeleteOnExit\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetkey\fP (key_t key)"
+.br
+.ti -1c
+.RI "void \fBsetid\fP (int id)"
+.br
+.ti -1c
+.RI "void \fBsetok\fP (bool ok)"
+.br
+.ti -1c
+.RI "void \fBsetflags\fP (int flags)"
+.br
+.ti -1c
+.RI "virtual \fBoperator bool\fP () const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBget_stat\fP (int msgid)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "msqid_ds \fB_st\fP"
+.br
+.ti -1c
+.RI "int \fB_size\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Message Queue IPC (\fBipclib\&.h\fP) 
+.PP
+Definition at line \fB197\fP of file \fBipclib\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MessageQueue::MessageQueue (const key_t key, bool deleteOnExit)"
+\fBMessageQueue\fP Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP (default IPC_PRIVATE) 
+.br
+\fIdeleteOnExit\fP = false (don't remove semaphore on destruction\&. true = remove it) 
+.RE
+.PP
+
+.PP
+Definition at line \fB320\fP of file \fBipclib\&.cpp\fP\&.
+.SS "MessageQueue::MessageQueue (int msgid)"
+\fBMessageQueue\fP Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fImsgid\fP Id for an existing \fBMessageQueue\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB251\fP of file \fBipclib\&.cpp\fP\&.
+.SS "MessageQueue::MessageQueue ()\fC [default]\fP"
+
+.SS "MessageQueue::MessageQueue (\fBMessageQueue\fP const &)\fC [default]\fP"
+
+.SS "MessageQueue::MessageQueue (\fBMessageQueue\fP &&)\fC [default]\fP"
+
+.SS "MessageQueue::~MessageQueue ()"
+
+.PP
+Definition at line \fB363\fP of file \fBipclib\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int MessageQueue::get_stat (int msgid)\fC [private]\fP"
+
+.PP
+Definition at line \fB246\fP of file \fBipclib\&.cpp\fP\&.
+.SS "\fBMessageQueue\fP & MessageQueue::operator= (\fBMessageQueue\fP &&)\fC [default]\fP"
+
+.SS "\fBMessageQueue\fP & MessageQueue::operator= (\fBMessageQueue\fP const &)\fC [default]\fP"
+
+.SS "int MessageQueue::rcv (\fBprotomsg::st_protomsg\fP * p_protomsg, std::string & pdata)"
+
+.PP
+Definition at line \fB294\fP of file \fBipclib\&.cpp\fP\&.
+.SS "int MessageQueue::send (\fBprotomsg::st_protomsg\fP * p_protomsg, std::string & pdata)"
+
+.PP
+Definition at line \fB269\fP of file \fBipclib\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int MessageQueue::_size\fC [private]\fP"
+
+.PP
+Definition at line \fB200\fP of file \fBipclib\&.h\fP\&.
+.SS "msqid_ds MessageQueue::_st\fC [private]\fP"
+
+.PP
+Definition at line \fB199\fP of file \fBipclib\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

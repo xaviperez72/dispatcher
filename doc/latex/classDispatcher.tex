@@ -1,0 +1,378 @@
+\hypertarget{classDispatcher}{}\doxysection{Dispatcher Class Reference}
+\label{classDispatcher}\index{Dispatcher@{Dispatcher}}
+
+
+{\ttfamily \#include $<$dispatcher.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDispatcher_a81afc8d131f2724e92e6ca1d68aae6ae}{Dispatcher}} ()=delete
+\item 
+\mbox{\hyperlink{classDispatcher_a1187bc4bfb0db5b107b9d480364abb78}{Dispatcher}} (\mbox{\hyperlink{structdispatch__cfg}{dispatch\+\_\+cfg}} cfg, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ shpt\+\_\+keep\+\_\+running)
+\item 
+\mbox{\hyperlink{classDispatcher_a52fc4e8bef278fa415723b39b61c28a7}{$\sim$\+Dispatcher}} ()
+\item 
+\mbox{\hyperlink{classDispatcher_a709f96ac930db22f806fb3fe62e46f48}{Dispatcher}} (const \mbox{\hyperlink{classDispatcher}{Dispatcher}} \&other)
+\item 
+\mbox{\hyperlink{classDispatcher}{Dispatcher}} \& \mbox{\hyperlink{classDispatcher_a81c3a5eace0c1f1994a3ec6c6f2c3489}{operator=}} (const \mbox{\hyperlink{classDispatcher}{Dispatcher}} \&other)
+\item 
+\mbox{\hyperlink{classDispatcher_a6041513c142a813ff651df3040b642c2}{Dispatcher}} (\mbox{\hyperlink{classDispatcher}{Dispatcher}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{classDispatcher}{Dispatcher}} \& \mbox{\hyperlink{classDispatcher_a4258058af8ad9945cc22383fbfbcf601}{operator=}} (\mbox{\hyperlink{classDispatcher}{Dispatcher}} \&\&other) noexcept
+\item 
+void \mbox{\hyperlink{classDispatcher_a8847de325dbee771fb33ebebb978e40d}{Launch\+\_\+\+All\+\_\+\+Threads}} ()
+\item 
+void \mbox{\hyperlink{classDispatcher_ab58d2e0054dd8833324bc86095af82ba}{Prepare\+\_\+\+Server\+\_\+\+Socket}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_af6b72f91b36ed0dcee31684992b725a6}{IPC\+\_\+\+Setting\+\_\+\+Up}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_a8f47f787819c857ebd5870ce8f24a787}{Accept\+\_\+\+Thread}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_a1bdce929609ef90ec793b33f004eb256}{Assign\+\_\+connection\+\_\+to\+\_\+thread\+\_\+pair}} (int th\+\_\+id, \mbox{\hyperlink{structsocket__data__t}{socket\+\_\+data\+\_\+t}} $\ast$sd\+\_\+info)
+\item 
+int \mbox{\hyperlink{classDispatcher_a802fc1e47691fdf18a24434256fe2680}{Accept\+\_\+by\+\_\+\+Select}} ()
+\item 
+void \mbox{\hyperlink{classDispatcher_ac4cda43fd65ddf8fda5ae010f4e460ef}{Ending\+\_\+all\+\_\+threads}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_a36ada166664995d1fca7676ebae0bacd}{Less\+Charged}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_a667b6987746aaff43e0c5635a9e5226a}{Launch\+Tux\+Cli}} ()
+\item 
+\mbox{\hyperlink{classDispatcher_a6f44162db1b99e05c1a6a0c892610c40}{operator bool}} ()
+\item 
+int \mbox{\hyperlink{classDispatcher_ac0191211316636f5e5dea1d6ee5a80ae}{operator()}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structdispatch__cfg}{dispatch\+\_\+cfg}} \mbox{\hyperlink{classDispatcher_a16272dd720e97587260cd1d85b8d9cd8}{\+\_\+config}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classthread__pair}{thread\+\_\+pair}} $>$ \mbox{\hyperlink{classDispatcher_a023871cf97965bcfe33681aec45c0278}{\+\_\+v\+\_\+thread\+\_\+pair}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ \mbox{\hyperlink{classDispatcher_a030d89cc64de3ef18b775e563da891e1}{\+\_\+sharedptr\+\_\+keep\+\_\+running}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSemaphore}{Semaphore}} $>$ \mbox{\hyperlink{classDispatcher_aa5cca577db5505a89119c00b931fffa5}{\+\_\+shpt\+\_\+sem\+IPCfile}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} $>$ \mbox{\hyperlink{classDispatcher_a01fe79a912713358c99828dd8ae33eb4}{\+\_\+shpt\+\_\+shm\+IPCfile}}
+\item 
+\mbox{\hyperlink{classSocket}{Socket}} \mbox{\hyperlink{classDispatcher_a9d048f400c300c407c5a62c3b4197996}{\+\_\+server\+\_\+socket}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classconnections}{connections}} $>$ \mbox{\hyperlink{classDispatcher_a4ef272a9b4eb41f62c6f28e6f790b7e8}{\+\_\+p\+\_\+cur\+\_\+connections}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMessageQueue}{Message\+Queue}} $>$ \mbox{\hyperlink{classDispatcher_a617169aea8a4c5caec50400a86401466}{\+\_\+shpt\+\_\+\+Common\+\_\+\+Msg\+\_\+\+Queue}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSharedMemory}{Shared\+Memory}} $>$ \mbox{\hyperlink{classDispatcher_ac81547d0bc6aa870455e218ae8bb58e8}{\+\_\+shpt\+\_\+shm\+Allowed\+IPs}}
+\item 
+\mbox{\hyperlink{structallowed__ips}{allowed\+\_\+ips}} $\ast$ \mbox{\hyperlink{classDispatcher_aa86de669ffc45c71db171db702c2c939}{\+\_\+allowed\+\_\+ips}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classMessageQueue}{Message\+Queue}} $>$ \mbox{\hyperlink{classDispatcher_aae40315ea44ae1b054a663fbefae653d}{\+\_\+msg\+\_\+queues}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00027}{27}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDispatcher_a81afc8d131f2724e92e6ca1d68aae6ae}\label{classDispatcher_a81afc8d131f2724e92e6ca1d68aae6ae}} 
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Dispatcher()}{Dispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Dispatcher\+::\+Dispatcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classDispatcher_a1187bc4bfb0db5b107b9d480364abb78}\label{classDispatcher_a1187bc4bfb0db5b107b9d480364abb78}} 
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Dispatcher()}{Dispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Dispatcher\+::\+Dispatcher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structdispatch__cfg}{dispatch\+\_\+cfg}}}]{cfg,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$}]{shpt\+\_\+keep\+\_\+running }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a52fc4e8bef278fa415723b39b61c28a7}\label{classDispatcher_a52fc4e8bef278fa415723b39b61c28a7}} 
+\index{Dispatcher@{Dispatcher}!````~Dispatcher@{$\sim$Dispatcher}}
+\index{````~Dispatcher@{$\sim$Dispatcher}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{$\sim$Dispatcher()}{~Dispatcher()}}
+{\footnotesize\ttfamily Dispatcher\+::$\sim$\+Dispatcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a709f96ac930db22f806fb3fe62e46f48}\label{classDispatcher_a709f96ac930db22f806fb3fe62e46f48}} 
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Dispatcher()}{Dispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Dispatcher\+::\+Dispatcher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDispatcher}{Dispatcher}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a6041513c142a813ff651df3040b642c2}\label{classDispatcher_a6041513c142a813ff651df3040b642c2}} 
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\index{Dispatcher@{Dispatcher}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Dispatcher()}{Dispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Dispatcher\+::\+Dispatcher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDispatcher}{Dispatcher}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00430}{430}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDispatcher_a802fc1e47691fdf18a24434256fe2680}\label{classDispatcher_a802fc1e47691fdf18a24434256fe2680}} 
+\index{Dispatcher@{Dispatcher}!Accept\_by\_Select@{Accept\_by\_Select}}
+\index{Accept\_by\_Select@{Accept\_by\_Select}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Accept\_by\_Select()}{Accept\_by\_Select()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+Accept\+\_\+by\+\_\+\+Select (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a8f47f787819c857ebd5870ce8f24a787}\label{classDispatcher_a8f47f787819c857ebd5870ce8f24a787}} 
+\index{Dispatcher@{Dispatcher}!Accept\_Thread@{Accept\_Thread}}
+\index{Accept\_Thread@{Accept\_Thread}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Accept\_Thread()}{Accept\_Thread()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+Accept\+\_\+\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a1bdce929609ef90ec793b33f004eb256}\label{classDispatcher_a1bdce929609ef90ec793b33f004eb256}} 
+\index{Dispatcher@{Dispatcher}!Assign\_connection\_to\_thread\_pair@{Assign\_connection\_to\_thread\_pair}}
+\index{Assign\_connection\_to\_thread\_pair@{Assign\_connection\_to\_thread\_pair}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Assign\_connection\_to\_thread\_pair()}{Assign\_connection\_to\_thread\_pair()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+Assign\+\_\+connection\+\_\+to\+\_\+thread\+\_\+pair (\begin{DoxyParamCaption}\item[{int}]{th\+\_\+id,  }\item[{\mbox{\hyperlink{structsocket__data__t}{socket\+\_\+data\+\_\+t}} $\ast$}]{sd\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00244}{244}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_ac4cda43fd65ddf8fda5ae010f4e460ef}\label{classDispatcher_ac4cda43fd65ddf8fda5ae010f4e460ef}} 
+\index{Dispatcher@{Dispatcher}!Ending\_all\_threads@{Ending\_all\_threads}}
+\index{Ending\_all\_threads@{Ending\_all\_threads}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Ending\_all\_threads()}{Ending\_all\_threads()}}
+{\footnotesize\ttfamily void Dispatcher\+::\+Ending\+\_\+all\+\_\+threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_af6b72f91b36ed0dcee31684992b725a6}\label{classDispatcher_af6b72f91b36ed0dcee31684992b725a6}} 
+\index{Dispatcher@{Dispatcher}!IPC\_Setting\_Up@{IPC\_Setting\_Up}}
+\index{IPC\_Setting\_Up@{IPC\_Setting\_Up}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{IPC\_Setting\_Up()}{IPC\_Setting\_Up()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+IPC\+\_\+\+Setting\+\_\+\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00288}{288}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a8847de325dbee771fb33ebebb978e40d}\label{classDispatcher_a8847de325dbee771fb33ebebb978e40d}} 
+\index{Dispatcher@{Dispatcher}!Launch\_All\_Threads@{Launch\_All\_Threads}}
+\index{Launch\_All\_Threads@{Launch\_All\_Threads}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Launch\_All\_Threads()}{Launch\_All\_Threads()}}
+{\footnotesize\ttfamily void Dispatcher\+::\+Launch\+\_\+\+All\+\_\+\+Threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a667b6987746aaff43e0c5635a9e5226a}\label{classDispatcher_a667b6987746aaff43e0c5635a9e5226a}} 
+\index{Dispatcher@{Dispatcher}!LaunchTuxCli@{LaunchTuxCli}}
+\index{LaunchTuxCli@{LaunchTuxCli}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{LaunchTuxCli()}{LaunchTuxCli()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+Launch\+Tux\+Cli (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00255}{255}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a36ada166664995d1fca7676ebae0bacd}\label{classDispatcher_a36ada166664995d1fca7676ebae0bacd}} 
+\index{Dispatcher@{Dispatcher}!LessCharged@{LessCharged}}
+\index{LessCharged@{LessCharged}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{LessCharged()}{LessCharged()}}
+{\footnotesize\ttfamily int Dispatcher\+::\+Less\+Charged (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00273}{273}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a6f44162db1b99e05c1a6a0c892610c40}\label{classDispatcher_a6f44162db1b99e05c1a6a0c892610c40}} 
+\index{Dispatcher@{Dispatcher}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily Dispatcher\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_ac0191211316636f5e5dea1d6ee5a80ae}\label{classDispatcher_ac0191211316636f5e5dea1d6ee5a80ae}} 
+\index{Dispatcher@{Dispatcher}!operator()@{operator()}}
+\index{operator()@{operator()}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily int Dispatcher\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00485}{485}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a81c3a5eace0c1f1994a3ec6c6f2c3489}\label{classDispatcher_a81c3a5eace0c1f1994a3ec6c6f2c3489}} 
+\index{Dispatcher@{Dispatcher}!operator=@{operator=}}
+\index{operator=@{operator=}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDispatcher}{Dispatcher}} \& Dispatcher\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDispatcher}{Dispatcher}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00446}{446}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_a4258058af8ad9945cc22383fbfbcf601}\label{classDispatcher_a4258058af8ad9945cc22383fbfbcf601}} 
+\index{Dispatcher@{Dispatcher}!operator=@{operator=}}
+\index{operator=@{operator=}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDispatcher}{Dispatcher}} \& Dispatcher\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDispatcher}{Dispatcher}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00466}{466}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+\mbox{\Hypertarget{classDispatcher_ab58d2e0054dd8833324bc86095af82ba}\label{classDispatcher_ab58d2e0054dd8833324bc86095af82ba}} 
+\index{Dispatcher@{Dispatcher}!Prepare\_Server\_Socket@{Prepare\_Server\_Socket}}
+\index{Prepare\_Server\_Socket@{Prepare\_Server\_Socket}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{Prepare\_Server\_Socket()}{Prepare\_Server\_Socket()}}
+{\footnotesize\ttfamily void Dispatcher\+::\+Prepare\+\_\+\+Server\+\_\+\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{dispatcher_8cpp_source}{dispatcher.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDispatcher_aa86de669ffc45c71db171db702c2c939}\label{classDispatcher_aa86de669ffc45c71db171db702c2c939}} 
+\index{Dispatcher@{Dispatcher}!\_allowed\_ips@{\_allowed\_ips}}
+\index{\_allowed\_ips@{\_allowed\_ips}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_allowed\_ips}{\_allowed\_ips}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structallowed__ips}{allowed\+\_\+ips}}$\ast$ Dispatcher\+::\+\_\+allowed\+\_\+ips\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00048}{48}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a16272dd720e97587260cd1d85b8d9cd8}\label{classDispatcher_a16272dd720e97587260cd1d85b8d9cd8}} 
+\index{Dispatcher@{Dispatcher}!\_config@{\_config}}
+\index{\_config@{\_config}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_config}{\_config}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structdispatch__cfg}{dispatch\+\_\+cfg}} Dispatcher\+::\+\_\+config\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00028}{28}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_aae40315ea44ae1b054a663fbefae653d}\label{classDispatcher_aae40315ea44ae1b054a663fbefae653d}} 
+\index{Dispatcher@{Dispatcher}!\_msg\_queues@{\_msg\_queues}}
+\index{\_msg\_queues@{\_msg\_queues}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_msg\_queues}{\_msg\_queues}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classMessageQueue}{Message\+Queue}}$>$ Dispatcher\+::\+\_\+msg\+\_\+queues\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00050}{50}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a4ef272a9b4eb41f62c6f28e6f790b7e8}\label{classDispatcher_a4ef272a9b4eb41f62c6f28e6f790b7e8}} 
+\index{Dispatcher@{Dispatcher}!\_p\_cur\_connections@{\_p\_cur\_connections}}
+\index{\_p\_cur\_connections@{\_p\_cur\_connections}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_p\_cur\_connections}{\_p\_cur\_connections}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classconnections}{connections}}$>$ Dispatcher\+::\+\_\+p\+\_\+cur\+\_\+connections\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00040}{40}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a9d048f400c300c407c5a62c3b4197996}\label{classDispatcher_a9d048f400c300c407c5a62c3b4197996}} 
+\index{Dispatcher@{Dispatcher}!\_server\_socket@{\_server\_socket}}
+\index{\_server\_socket@{\_server\_socket}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_server\_socket}{\_server\_socket}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSocket}{Socket}} Dispatcher\+::\+\_\+server\+\_\+socket\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00038}{38}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a030d89cc64de3ef18b775e563da891e1}\label{classDispatcher_a030d89cc64de3ef18b775e563da891e1}} 
+\index{Dispatcher@{Dispatcher}!\_sharedptr\_keep\_running@{\_sharedptr\_keep\_running}}
+\index{\_sharedptr\_keep\_running@{\_sharedptr\_keep\_running}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_sharedptr\_keep\_running}{\_sharedptr\_keep\_running}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}}$>$ Dispatcher\+::\+\_\+sharedptr\+\_\+keep\+\_\+running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00032}{32}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a617169aea8a4c5caec50400a86401466}\label{classDispatcher_a617169aea8a4c5caec50400a86401466}} 
+\index{Dispatcher@{Dispatcher}!\_shpt\_Common\_Msg\_Queue@{\_shpt\_Common\_Msg\_Queue}}
+\index{\_shpt\_Common\_Msg\_Queue@{\_shpt\_Common\_Msg\_Queue}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_shpt\_Common\_Msg\_Queue}{\_shpt\_Common\_Msg\_Queue}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classMessageQueue}{Message\+Queue}}$>$ Dispatcher\+::\+\_\+shpt\+\_\+\+Common\+\_\+\+Msg\+\_\+\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00043}{43}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_aa5cca577db5505a89119c00b931fffa5}\label{classDispatcher_aa5cca577db5505a89119c00b931fffa5}} 
+\index{Dispatcher@{Dispatcher}!\_shpt\_semIPCfile@{\_shpt\_semIPCfile}}
+\index{\_shpt\_semIPCfile@{\_shpt\_semIPCfile}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_shpt\_semIPCfile}{\_shpt\_semIPCfile}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classSemaphore}{Semaphore}}$>$ Dispatcher\+::\+\_\+shpt\+\_\+sem\+IPCfile\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00034}{34}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_ac81547d0bc6aa870455e218ae8bb58e8}\label{classDispatcher_ac81547d0bc6aa870455e218ae8bb58e8}} 
+\index{Dispatcher@{Dispatcher}!\_shpt\_shmAllowedIPs@{\_shpt\_shmAllowedIPs}}
+\index{\_shpt\_shmAllowedIPs@{\_shpt\_shmAllowedIPs}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_shpt\_shmAllowedIPs}{\_shpt\_shmAllowedIPs}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}}$>$ Dispatcher\+::\+\_\+shpt\+\_\+shm\+Allowed\+IPs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00047}{47}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a01fe79a912713358c99828dd8ae33eb4}\label{classDispatcher_a01fe79a912713358c99828dd8ae33eb4}} 
+\index{Dispatcher@{Dispatcher}!\_shpt\_shmIPCfile@{\_shpt\_shmIPCfile}}
+\index{\_shpt\_shmIPCfile@{\_shpt\_shmIPCfile}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_shpt\_shmIPCfile}{\_shpt\_shmIPCfile}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classSharedMemory}{Shared\+Memory}}$>$ Dispatcher\+::\+\_\+shpt\+\_\+shm\+IPCfile\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00036}{36}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+\mbox{\Hypertarget{classDispatcher_a023871cf97965bcfe33681aec45c0278}\label{classDispatcher_a023871cf97965bcfe33681aec45c0278}} 
+\index{Dispatcher@{Dispatcher}!\_v\_thread\_pair@{\_v\_thread\_pair}}
+\index{\_v\_thread\_pair@{\_v\_thread\_pair}!Dispatcher@{Dispatcher}}
+\doxysubsubsection{\texorpdfstring{\_v\_thread\_pair}{\_v\_thread\_pair}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classthread__pair}{thread\+\_\+pair}}$>$ Dispatcher\+::\+\_\+v\+\_\+thread\+\_\+pair\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{dispatcher_8h_source_l00030}{30}} of file \mbox{\hyperlink{dispatcher_8h_source}{dispatcher.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{dispatcher_8h}{dispatcher.\+h}}\item 
+src/\mbox{\hyperlink{dispatcher_8cpp}{dispatcher.\+cpp}}\end{DoxyCompactItemize}

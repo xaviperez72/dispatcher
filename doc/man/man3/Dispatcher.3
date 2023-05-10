@@ -1,0 +1,232 @@
+.TH "Dispatcher" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Dispatcher
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <dispatcher\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDispatcher\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBDispatcher\fP (\fBdispatch_cfg\fP cfg, std::shared_ptr< \fBkeep_running_flags\fP > shpt_keep_running)"
+.br
+.ti -1c
+.RI "\fB~Dispatcher\fP ()"
+.br
+.ti -1c
+.RI "\fBDispatcher\fP (const \fBDispatcher\fP &other)"
+.br
+.ti -1c
+.RI "\fBDispatcher\fP & \fBoperator=\fP (const \fBDispatcher\fP &other)"
+.br
+.ti -1c
+.RI "\fBDispatcher\fP (\fBDispatcher\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "\fBDispatcher\fP & \fBoperator=\fP (\fBDispatcher\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "void \fBLaunch_All_Threads\fP ()"
+.br
+.ti -1c
+.RI "void \fBPrepare_Server_Socket\fP ()"
+.br
+.ti -1c
+.RI "int \fBIPC_Setting_Up\fP ()"
+.br
+.ti -1c
+.RI "int \fBAccept_Thread\fP ()"
+.br
+.ti -1c
+.RI "int \fBAssign_connection_to_thread_pair\fP (int th_id, \fBsocket_data_t\fP *sd_info)"
+.br
+.ti -1c
+.RI "int \fBAccept_by_Select\fP ()"
+.br
+.ti -1c
+.RI "void \fBEnding_all_threads\fP ()"
+.br
+.ti -1c
+.RI "int \fBLessCharged\fP ()"
+.br
+.ti -1c
+.RI "int \fBLaunchTuxCli\fP ()"
+.br
+.ti -1c
+.RI "\fBoperator bool\fP ()"
+.br
+.ti -1c
+.RI "int \fBoperator()\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBdispatch_cfg\fP \fB_config\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBthread_pair\fP > \fB_v_thread_pair\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBkeep_running_flags\fP > \fB_sharedptr_keep_running\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSemaphore\fP > \fB_shpt_semIPCfile\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSharedMemory\fP > \fB_shpt_shmIPCfile\fP"
+.br
+.ti -1c
+.RI "\fBSocket\fP \fB_server_socket\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBconnections\fP > \fB_p_cur_connections\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBMessageQueue\fP > \fB_shpt_Common_Msg_Queue\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSharedMemory\fP > \fB_shpt_shmAllowedIPs\fP"
+.br
+.ti -1c
+.RI "\fBallowed_ips\fP * \fB_allowed_ips\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBMessageQueue\fP > \fB_msg_queues\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB27\fP of file \fBdispatcher\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Dispatcher::Dispatcher ()\fC [delete]\fP"
+
+.SS "Dispatcher::Dispatcher (\fBdispatch_cfg\fP cfg, std::shared_ptr< \fBkeep_running_flags\fP > shpt_keep_running)"
+
+.PP
+Definition at line \fB3\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "Dispatcher::~Dispatcher ()"
+
+.PP
+Definition at line \fB23\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "Dispatcher::Dispatcher (const \fBDispatcher\fP & other)"
+
+.PP
+Definition at line \fB414\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "Dispatcher::Dispatcher (\fBDispatcher\fP && other)\fC [noexcept]\fP"
+
+.PP
+Definition at line \fB430\fP of file \fBdispatcher\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int Dispatcher::Accept_by_Select ()"
+
+.PP
+Definition at line \fB88\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::Accept_Thread ()"
+
+.PP
+Definition at line \fB114\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::Assign_connection_to_thread_pair (int th_id, \fBsocket_data_t\fP * sd_info)"
+
+.PP
+Definition at line \fB244\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "void Dispatcher::Ending_all_threads ()"
+
+.PP
+Definition at line \fB202\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::IPC_Setting_Up ()"
+
+.PP
+Definition at line \fB288\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "void Dispatcher::Launch_All_Threads ()"
+
+.PP
+Definition at line \fB28\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::LaunchTuxCli ()"
+
+.PP
+Definition at line \fB255\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::LessCharged ()"
+
+.PP
+Definition at line \fB273\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "Dispatcher::operator bool ()"
+
+.PP
+Definition at line \fB283\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "int Dispatcher::operator() ()"
+
+.PP
+Definition at line \fB485\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "\fBDispatcher\fP & Dispatcher::operator= (const \fBDispatcher\fP & other)"
+
+.PP
+Definition at line \fB446\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "\fBDispatcher\fP & Dispatcher::operator= (\fBDispatcher\fP && other)\fC [noexcept]\fP"
+
+.PP
+Definition at line \fB466\fP of file \fBdispatcher\&.cpp\fP\&.
+.SS "void Dispatcher::Prepare_Server_Socket ()"
+
+.PP
+Definition at line \fB41\fP of file \fBdispatcher\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBallowed_ips\fP* Dispatcher::_allowed_ips\fC [private]\fP"
+
+.PP
+Definition at line \fB48\fP of file \fBdispatcher\&.h\fP\&.
+.SS "\fBdispatch_cfg\fP Dispatcher::_config\fC [private]\fP"
+
+.PP
+Definition at line \fB28\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::vector<\fBMessageQueue\fP> Dispatcher::_msg_queues\fC [private]\fP"
+
+.PP
+Definition at line \fB50\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBconnections\fP> Dispatcher::_p_cur_connections\fC [private]\fP"
+
+.PP
+Definition at line \fB40\fP of file \fBdispatcher\&.h\fP\&.
+.SS "\fBSocket\fP Dispatcher::_server_socket\fC [private]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBkeep_running_flags\fP> Dispatcher::_sharedptr_keep_running\fC [private]\fP"
+
+.PP
+Definition at line \fB32\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBMessageQueue\fP> Dispatcher::_shpt_Common_Msg_Queue\fC [private]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBSemaphore\fP> Dispatcher::_shpt_semIPCfile\fC [private]\fP"
+
+.PP
+Definition at line \fB34\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBSharedMemory\fP> Dispatcher::_shpt_shmAllowedIPs\fC [private]\fP"
+
+.PP
+Definition at line \fB47\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::shared_ptr<\fBSharedMemory\fP> Dispatcher::_shpt_shmIPCfile\fC [private]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBdispatcher\&.h\fP\&.
+.SS "std::vector<\fBthread_pair\fP> Dispatcher::_v_thread_pair\fC [private]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBdispatcher\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

@@ -1,0 +1,300 @@
+\hypertarget{classIpc}{}\doxysection{Ipc Class Reference}
+\label{classIpc}\index{Ipc@{Ipc}}
+
+
+{\ttfamily \#include $<$ipclib.\+h$>$}
+
+Inheritance diagram for Ipc\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIpc}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}{Ipc}} ()=default
+\item 
+\mbox{\hyperlink{classIpc_a65a9ce942eaca05e24af65e120f692ef}{Ipc}} (key\+\_\+t key, bool delete\+On\+Exit)
+\item 
+\mbox{\hyperlink{classIpc_a051dff23481be739a5825c03381ed578}{Ipc}} (\mbox{\hyperlink{classIpc}{Ipc}} const \&)=default
+\item 
+\mbox{\hyperlink{classIpc_a5966748aff2218b33cf39ef197c7e9a2}{Ipc}} (\mbox{\hyperlink{classIpc}{Ipc}} \&\&)=default
+\item 
+\mbox{\hyperlink{classIpc}{Ipc}} \& \mbox{\hyperlink{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}{operator=}} (\mbox{\hyperlink{classIpc}{Ipc}} const \&)=default
+\item 
+\mbox{\hyperlink{classIpc}{Ipc}} \& \mbox{\hyperlink{classIpc_af046c6367b03099fec0826db68a2298d}{operator=}} (\mbox{\hyperlink{classIpc}{Ipc}} \&\&)=default
+\item 
+virtual \mbox{\hyperlink{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}{$\sim$\+Ipc}} ()=default
+\item 
+void \mbox{\hyperlink{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}{Enable\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classIpc_a97d909e0c622ac19431c874f187c505b}{Disable\+Delete}} ()
+\item 
+key\+\_\+t \mbox{\hyperlink{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}{getkey}} () const
+\item 
+int \mbox{\hyperlink{classIpc_a3e50666a681532a44ed32a283e8e2979}{getid}} () const
+\item 
+int \mbox{\hyperlink{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}{getflags}} () const
+\item 
+key\+\_\+t \mbox{\hyperlink{classIpc_a7faa2e8471f51b76efc446ea9330c49c}{get\+Delete\+On\+Exit}} () const
+\item 
+void \mbox{\hyperlink{classIpc_a042476ca5bce7de73d906b7413922586}{setkey}} (key\+\_\+t key)
+\item 
+void \mbox{\hyperlink{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}{setid}} (int id)
+\item 
+void \mbox{\hyperlink{classIpc_aecac89b3a9bdec9833092579712e7cfe}{setok}} (bool ok)
+\item 
+void \mbox{\hyperlink{classIpc_a9f5e7d9248966affeff2533ebf17f060}{setflags}} (int flags)
+\item 
+virtual \mbox{\hyperlink{classIpc_a526497b4e34b064f779f300d2d011310}{operator bool}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+key\+\_\+t \mbox{\hyperlink{classIpc_a687f050130e1b7c74713385783bd0228}{\+\_\+key}} \{IPC\+\_\+\+PRIVATE\}
+\item 
+int \mbox{\hyperlink{classIpc_ab86fc30de66fe77ab899462638dd052f}{\+\_\+id}} \{-\/1\}
+\item 
+bool \mbox{\hyperlink{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}{\+\_\+delete\+On\+Exit}} \{false\}
+\item 
+int \mbox{\hyperlink{classIpc_ad7ed294460891e9b1027f949d286eca7}{\+\_\+flags}} \{0666\}
+\item 
+bool \mbox{\hyperlink{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}{\+\_\+ok}} \{false\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Common IPC object (\mbox{\hyperlink{ipclib_8h}{ipclib.\+h}}) 
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00032}{32}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}\label{classIpc_ad4b53305ca5ea53acc86ca7eab6ce737}} 
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{Ipc()}{Ipc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Ipc\+::\+Ipc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIpc_a65a9ce942eaca05e24af65e120f692ef}\label{classIpc_a65a9ce942eaca05e24af65e120f692ef}} 
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{Ipc()}{Ipc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Ipc\+::\+Ipc (\begin{DoxyParamCaption}\item[{key\+\_\+t}]{key,  }\item[{bool}]{delete\+On\+Exit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\hyperlink{classIpc}{Ipc}} Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & (default key=IPC\+\_\+\+PRIVATE) \\
+\hline
+{\em delete\+On\+Exit} & = ( false = don\textquotesingle{}t remove semaphore on destruction. true = remove it) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00048}{48}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a051dff23481be739a5825c03381ed578}\label{classIpc_a051dff23481be739a5825c03381ed578}} 
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{Ipc()}{Ipc()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Ipc\+::\+Ipc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIpc}{Ipc}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIpc_a5966748aff2218b33cf39ef197c7e9a2}\label{classIpc_a5966748aff2218b33cf39ef197c7e9a2}} 
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\index{Ipc@{Ipc}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{Ipc()}{Ipc()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Ipc\+::\+Ipc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIpc}{Ipc}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}\label{classIpc_a1ecb3e8ee06f9566b9c10a81a64a1797}} 
+\index{Ipc@{Ipc}!````~Ipc@{$\sim$Ipc}}
+\index{````~Ipc@{$\sim$Ipc}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ipc()}{~Ipc()}}
+{\footnotesize\ttfamily virtual Ipc\+::$\sim$\+Ipc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIpc_a97d909e0c622ac19431c874f187c505b}\label{classIpc_a97d909e0c622ac19431c874f187c505b}} 
+\index{Ipc@{Ipc}!DisableDelete@{DisableDelete}}
+\index{DisableDelete@{DisableDelete}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{DisableDelete()}{DisableDelete()}}
+{\footnotesize\ttfamily void Ipc\+::\+Disable\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00059}{59}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}\label{classIpc_adc11c0e6cf5f3642877bc40ae8b50e65}} 
+\index{Ipc@{Ipc}!EnableDelete@{EnableDelete}}
+\index{EnableDelete@{EnableDelete}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{EnableDelete()}{EnableDelete()}}
+{\footnotesize\ttfamily void Ipc\+::\+Enable\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00056}{56}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a7faa2e8471f51b76efc446ea9330c49c}\label{classIpc_a7faa2e8471f51b76efc446ea9330c49c}} 
+\index{Ipc@{Ipc}!getDeleteOnExit@{getDeleteOnExit}}
+\index{getDeleteOnExit@{getDeleteOnExit}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{getDeleteOnExit()}{getDeleteOnExit()}}
+{\footnotesize\ttfamily key\+\_\+t Ipc\+::get\+Delete\+On\+Exit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00071}{71}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}\label{classIpc_a4b2e0e102d3e0991129b0fc3a511e1e6}} 
+\index{Ipc@{Ipc}!getflags@{getflags}}
+\index{getflags@{getflags}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{getflags()}{getflags()}}
+{\footnotesize\ttfamily int Ipc\+::getflags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00068}{68}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a3e50666a681532a44ed32a283e8e2979}\label{classIpc_a3e50666a681532a44ed32a283e8e2979}} 
+\index{Ipc@{Ipc}!getid@{getid}}
+\index{getid@{getid}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{getid()}{getid()}}
+{\footnotesize\ttfamily int Ipc\+::getid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00065}{65}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}\label{classIpc_aa0ad768b2ee58c3c6795f0e23aaa29eb}} 
+\index{Ipc@{Ipc}!getkey@{getkey}}
+\index{getkey@{getkey}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{getkey()}{getkey()}}
+{\footnotesize\ttfamily key\+\_\+t Ipc\+::getkey (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00062}{62}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a526497b4e34b064f779f300d2d011310}\label{classIpc_a526497b4e34b064f779f300d2d011310}} 
+\index{Ipc@{Ipc}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily virtual Ipc\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00086}{86}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_af046c6367b03099fec0826db68a2298d}\label{classIpc_af046c6367b03099fec0826db68a2298d}} 
+\index{Ipc@{Ipc}!operator=@{operator=}}
+\index{operator=@{operator=}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIpc}{Ipc}} \& Ipc\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIpc}{Ipc}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}\label{classIpc_a8e66cc0c4d1754b3ea8bd2a4195e0776}} 
+\index{Ipc@{Ipc}!operator=@{operator=}}
+\index{operator=@{operator=}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIpc}{Ipc}} \& Ipc\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIpc}{Ipc}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIpc_a9f5e7d9248966affeff2533ebf17f060}\label{classIpc_a9f5e7d9248966affeff2533ebf17f060}} 
+\index{Ipc@{Ipc}!setflags@{setflags}}
+\index{setflags@{setflags}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{setflags()}{setflags()}}
+{\footnotesize\ttfamily void Ipc\+::setflags (\begin{DoxyParamCaption}\item[{int}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00083}{83}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}\label{classIpc_a80dbed0a4e45a95d04bfe8d432c50d19}} 
+\index{Ipc@{Ipc}!setid@{setid}}
+\index{setid@{setid}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{setid()}{setid()}}
+{\footnotesize\ttfamily void Ipc\+::setid (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00077}{77}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a042476ca5bce7de73d906b7413922586}\label{classIpc_a042476ca5bce7de73d906b7413922586}} 
+\index{Ipc@{Ipc}!setkey@{setkey}}
+\index{setkey@{setkey}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{setkey()}{setkey()}}
+{\footnotesize\ttfamily void Ipc\+::setkey (\begin{DoxyParamCaption}\item[{key\+\_\+t}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00074}{74}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_aecac89b3a9bdec9833092579712e7cfe}\label{classIpc_aecac89b3a9bdec9833092579712e7cfe}} 
+\index{Ipc@{Ipc}!setok@{setok}}
+\index{setok@{setok}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{setok()}{setok()}}
+{\footnotesize\ttfamily void Ipc\+::setok (\begin{DoxyParamCaption}\item[{bool}]{ok }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00080}{80}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}\label{classIpc_ac3d97612d5c63128e5b57e3fe190a91b}} 
+\index{Ipc@{Ipc}!\_deleteOnExit@{\_deleteOnExit}}
+\index{\_deleteOnExit@{\_deleteOnExit}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{\_deleteOnExit}{\_deleteOnExit}}
+{\footnotesize\ttfamily bool Ipc\+::\+\_\+delete\+On\+Exit \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00036}{36}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_ad7ed294460891e9b1027f949d286eca7}\label{classIpc_ad7ed294460891e9b1027f949d286eca7}} 
+\index{Ipc@{Ipc}!\_flags@{\_flags}}
+\index{\_flags@{\_flags}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{\_flags}{\_flags}}
+{\footnotesize\ttfamily int Ipc\+::\+\_\+flags \{0666\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00037}{37}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_ab86fc30de66fe77ab899462638dd052f}\label{classIpc_ab86fc30de66fe77ab899462638dd052f}} 
+\index{Ipc@{Ipc}!\_id@{\_id}}
+\index{\_id@{\_id}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily int Ipc\+::\+\_\+id \{-\/1\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00035}{35}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_a687f050130e1b7c74713385783bd0228}\label{classIpc_a687f050130e1b7c74713385783bd0228}} 
+\index{Ipc@{Ipc}!\_key@{\_key}}
+\index{\_key@{\_key}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{\_key}{\_key}}
+{\footnotesize\ttfamily key\+\_\+t Ipc\+::\+\_\+key \{IPC\+\_\+\+PRIVATE\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00034}{34}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+\mbox{\Hypertarget{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}\label{classIpc_ac6c02c8ae2a0a8a267e6f836742f2b2b}} 
+\index{Ipc@{Ipc}!\_ok@{\_ok}}
+\index{\_ok@{\_ok}!Ipc@{Ipc}}
+\doxysubsubsection{\texorpdfstring{\_ok}{\_ok}}
+{\footnotesize\ttfamily bool Ipc\+::\+\_\+ok \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{ipclib_8h_source_l00038}{38}} of file \mbox{\hyperlink{ipclib_8h_source}{ipclib.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{ipclib_8h}{ipclib.\+h}}\end{DoxyCompactItemize}

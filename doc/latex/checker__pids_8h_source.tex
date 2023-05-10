@@ -1,0 +1,87 @@
+\hypertarget{checker__pids_8h_source}{}\doxysection{checker\+\_\+pids.\+h}
+\label{checker__pids_8h_source}\index{src/checker\_pids.h@{src/checker\_pids.h}}
+\mbox{\hyperlink{checker__pids_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CHECKER\_PIDS\_H\_}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CHECKER\_PIDS\_H\_}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00004}00004\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00005}00005\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00006}00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sys/wait.h>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00011}00011\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00013}00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{common_8h}{common.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00027}\mbox{\hyperlink{structchecker__struct}{00027}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structchecker__struct}{checker\_struct}}\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00029}\mbox{\hyperlink{structchecker__struct_a3914028540b569e66b4d36e44dc9c003}{00029}}\ \ \ \ \ std::function<int()>\ \mbox{\hyperlink{structchecker__struct_a3914028540b569e66b4d36e44dc9c003}{\_caller}};\ \ \ \ \ \ \ \textcolor{comment}{//\ Functor\ callback}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00030}\mbox{\hyperlink{structchecker__struct_a5f2c58e3995bf1f1c895981df8b98ea7}{00030}}\ \ \ \ \ time\_t\ \mbox{\hyperlink{structchecker__struct_a5f2c58e3995bf1f1c895981df8b98ea7}{\_last\_fork}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Time\ of\ last\ fork}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00031}\mbox{\hyperlink{structchecker__struct_a25b2258433c107a1b447d1e97796c450}{00031}}\ \ \ \ \ pid\_t\ \ \mbox{\hyperlink{structchecker__struct_a25b2258433c107a1b447d1e97796c450}{\_pid}}\{0\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pid\ of\ the\ process}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00032}\mbox{\hyperlink{structchecker__struct_a8bdef9cac5a8c77492a3dd9d28b99720}{00032}}\ \ \ \ \ std::string\ \mbox{\hyperlink{structchecker__struct_a8bdef9cac5a8c77492a3dd9d28b99720}{\_procname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Process\ name}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00033}00033\ \};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00035}\mbox{\hyperlink{structkeep__running__flags}{00035}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkeep__running__flags}{keep\_running\_flags}}\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00037}\mbox{\hyperlink{structkeep__running__flags_aa9ffa8890c1087fc76cbc45970ad0656}{00037}}\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{structkeep__running__flags_aa9ffa8890c1087fc76cbc45970ad0656}{\_keep\_accepting}}\{\textcolor{keyword}{true}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ When\ true\ keeps\ AcceptThread\ accepting\ calls.}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00038}\mbox{\hyperlink{structkeep__running__flags_a58676400c1619db399b03dd343b6cde0}{00038}}\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{structkeep__running__flags_a58676400c1619db399b03dd343b6cde0}{\_keep\_working}}\{\textcolor{keyword}{true}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ When\ true\ keeps\ WriterThread\ sending\ last\ operations.\ }}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00039}\mbox{\hyperlink{structkeep__running__flags_ad8f3eacf9377b25f07e8e54f5dfd3b47}{00039}}\ \ \ \ \ \mbox{\hyperlink{structkeep__running__flags_ad8f3eacf9377b25f07e8e54f5dfd3b47}{keep\_running\_flags}}()\{\ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}keep\_running\_flags\ Ctor"{}};\ \}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00040}\mbox{\hyperlink{structkeep__running__flags_a3846905519224859f98afb8ee5d3969f}{00040}}\ \ \ \ \ \mbox{\hyperlink{structkeep__running__flags_a3846905519224859f98afb8ee5d3969f}{\string~keep\_running\_flags}}()\{\ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}keep\_running\_flags\ Dtor"{}};\ \}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00041}00041\ \};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00046}\mbox{\hyperlink{classchecker__pids}{00046}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ final\ \{}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00047}\mbox{\hyperlink{classchecker__pids_aeaf6d7cdb81c03a5d152f5122cb485e9}{00047}}\ \ \ \ \ std::vector<checker\_struct>\ \mbox{\hyperlink{classchecker__pids_aeaf6d7cdb81c03a5d152f5122cb485e9}{\_pids}};\ \ \ \ \ \ \textcolor{comment}{//\ Vector\ of\ processes}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00048}\mbox{\hyperlink{classchecker__pids_a8ba295ce04686629f2e545eef082688a}{00048}}\ \ \ \ \ \mbox{\hyperlink{structchecker__struct}{checker\_struct}}\ \mbox{\hyperlink{classchecker__pids_a8ba295ce04686629f2e545eef082688a}{\_dead}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gets\ dead\ process\ on\ wait()}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00049}00049\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00050}\mbox{\hyperlink{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}{00050}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<keep\_running\_flags>\ \mbox{\hyperlink{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}{\_p\_run}};\ \ \ \ \ \ \textcolor{comment}{//\ Shared\ pointer\ to\ atomic\ bool\ variables}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00051}\mbox{\hyperlink{classchecker__pids_a065564a41603626bb7d1258c0cb075c3}{00051}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classchecker__pids_a065564a41603626bb7d1258c0cb075c3}{\_forker}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Identifies\ which\ process\ is\ the\ forker.}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00052}\mbox{\hyperlink{classchecker__pids_acd2982254315ed5976aee9f33001baee}{00052}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ *\mbox{\hyperlink{classchecker__pids_acd2982254315ed5976aee9f33001baee}{\_me}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pointer\ to\ an\ existing\ instance.}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00054}\mbox{\hyperlink{classchecker__pids_a12fce3aed3117c10f47eaddf28fcdba8}{00054}}\ \ \ \ \ sighandler\_t\ \mbox{\hyperlink{classchecker__pids_a12fce3aed3117c10f47eaddf28fcdba8}{\_previousInterruptHandler\_int}}\{\textcolor{keyword}{nullptr}\};\ \ \ \ \textcolor{comment}{//\ Signal\ handler\ for\ SIGINT}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00055}\mbox{\hyperlink{classchecker__pids_a19aa5267dd935b87eed2fb7b2192e3de}{00055}}\ \ \ \ \ sighandler\_t\ \mbox{\hyperlink{classchecker__pids_a19aa5267dd935b87eed2fb7b2192e3de}{\_previousInterruptHandler\_usr1}}\{\textcolor{keyword}{nullptr}\};\ \ \ \textcolor{comment}{//\ Signal\ handler\ for\ SIGUSR1}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00056}\mbox{\hyperlink{classchecker__pids_a7aaab276668326d002cdd1f4e333c5b7}{00056}}\ \ \ \ \ sighandler\_t\ \mbox{\hyperlink{classchecker__pids_a7aaab276668326d002cdd1f4e333c5b7}{\_previousInterruptHandler\_term}}\{\textcolor{keyword}{nullptr}\};\ \ \ \textcolor{comment}{//\ Signal\ handler\ for\ SIGTERM}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00058}00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00059}00059\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Static\ signal\ handler.}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchecker__pids_a8670706ea3c75c45b7a9e43a99bf5a4e}{sigterm\_func}}(\textcolor{keywordtype}{int}\ s);}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00063}\mbox{\hyperlink{classchecker__pids_ab2bffb76c0da98777ad2109be0b127ca}{00063}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids_ab2bffb76c0da98777ad2109be0b127ca}{checker\_pids}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00064}\mbox{\hyperlink{classchecker__pids_ad481c24cbe8f60fa780cf8f807188a7a}{00064}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids_ad481c24cbe8f60fa780cf8f807188a7a}{checker\_pids}}(\mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00065}\mbox{\hyperlink{classchecker__pids_a10b144de7e14bc5cc1934f8f33143397}{00065}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids_a10b144de7e14bc5cc1934f8f33143397}{checker\_pids}}(\mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00066}\mbox{\hyperlink{classchecker__pids_aa17a1b4c4b9b182fff3d78215488b1e4}{00066}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids}{checker\_pids}}\&\ \mbox{\hyperlink{classchecker__pids_aa17a1b4c4b9b182fff3d78215488b1e4}{operator=}}(\mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00067}\mbox{\hyperlink{classchecker__pids_a1e22231fb040beab1861fa5b14a864b8}{00067}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids}{checker\_pids}}\&\ \mbox{\hyperlink{classchecker__pids_a1e22231fb040beab1861fa5b14a864b8}{operator=}}(\mbox{\hyperlink{classchecker__pids}{checker\_pids}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00069}\mbox{\hyperlink{classchecker__pids_a6318efeaea01e0e716dbd9931bf9c171}{00069}}\ \ \ \ \ \mbox{\hyperlink{classchecker__pids_a6318efeaea01e0e716dbd9931bf9c171}{\string~checker\_pids}}()\{\ LOG\_DEBUG\ <<\ \textcolor{stringliteral}{"{}Destructor\ checker\_pids"{}};\ \}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Adds\ a\ new\ process\ (functor\ callback\ and\ process\ name)}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchecker__pids_a27c1ae8def4db8f6cb36917f61048e6d}{add}}(std::function<\textcolor{keywordtype}{int}()>\ \_call,\ std::string\ procname);}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ Clears\ all\ \_pics\ vector.}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//void\ clear()\{\ \_pids.clear();\ \}\ \ \ //\ Temporal\ solution\ to\ clean\ up\ all\ shared\_ptr\ to\ IPC's\ of\ Dispatcher\ Object}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Sends\ a\ SIGUSR1\ to\ children\ processes.\ }}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchecker__pids_a8065fcd19912ad3e9b5affeaf3232ec6}{StoppingChildren}}();}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Gets\ shared\ pointer\ to\ atomic\ flags\ to\ keep\_accepting\ and\ keep\_working\ variables.\ }}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00081}\mbox{\hyperlink{classchecker__pids_a418d36e7f2d0ddff6b5b74c5a89f5540}{00081}}\ \ \ \ \ std::shared\_ptr<keep\_running\_flags>\ \mbox{\hyperlink{classchecker__pids_a418d36e7f2d0ddff6b5b74c5a89f5540}{get\_run\_flags}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}{\_p\_run}};\ \}}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Launch\ and\ keep\ working\ all\ processes.\ }}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classchecker__pids_afe18e52b8c0557fe2d791d4246d7b940}{operator()}}();}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00085}00085\ \};}
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{checker__pids_8h_source_l00087}00087\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

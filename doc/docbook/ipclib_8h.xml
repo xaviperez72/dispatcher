@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_ipclib_8h" xml:lang="en-US">
+<title>src/ipclib.h File Reference</title>
+<indexterm><primary>src/ipclib.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;common.h&quot;<?linebreak?>#include &quot;protocol_msg.h&quot;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?>#include &lt;sys/types.h&gt;<?linebreak?>#include &lt;sys/stat.h&gt;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;errno.h&gt;<?linebreak?>#include &lt;sys/ipc.h&gt;<?linebreak?>#include &lt;sys/shm.h&gt;<?linebreak?>#include &lt;sys/msg.h&gt;<?linebreak?>#include &lt;sys/sem.h&gt;<?linebreak?>#include &lt;sys/wait.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classIpc">Ipc</link></para>
+</listitem>
+            <listitem><para>union <link linkend="_unionsemun">semun</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classSemaphore">Semaphore</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classSharedMemory">SharedMemory</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classMessageQueue">MessageQueue</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

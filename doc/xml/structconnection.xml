@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="structconnection" kind="struct" language="C++" prot="public">
+    <compoundname>connection</compoundname>
+    <includes refid="connections_8h" local="no">connections.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structconnection_1a392dff3ac59ae78e0cbe5880c150cda6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connection::next_info</definition>
+        <argsstring></argsstring>
+        <name>next_info</name>
+        <qualifiedname>connection::next_info</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="18" column="9" bodyfile="src/connections.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1ae8b8ce14b8384cbff2724f003e23e856" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connection::nthread</definition>
+        <argsstring></argsstring>
+        <name>nthread</name>
+        <qualifiedname>connection::nthread</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="19" column="9" bodyfile="src/connections.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1a425254df6cac48b837b9991b9df86c6f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connection::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <qualifiedname>connection::status</qualifiedname>
+        <initializer>{<ref refid="connections_8h_1aede8a714e0f79ef4a61e79c2e30f607c" kindref="member">st_free</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="20" column="9" bodyfile="src/connections.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connection::sd</definition>
+        <argsstring></argsstring>
+        <name>sd</name>
+        <qualifiedname>connection::sd</qualifiedname>
+        <initializer>{-1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="21" column="9" bodyfile="src/connections.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1ad9e7923a71fc9ed30f01d893f340bb33" prot="public" static="no" mutable="no">
+        <type>sockaddr_in</type>
+        <definition>sockaddr_in connection::sockaddr</definition>
+        <argsstring></argsstring>
+        <name>sockaddr</name>
+        <qualifiedname>connection::sockaddr</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="22" column="17" bodyfile="src/connections.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1aa8a98f765771cd8af05864e34838fc04" prot="public" static="no" mutable="no">
+        <type>time_t</type>
+        <definition>time_t connection::entry</definition>
+        <argsstring></argsstring>
+        <name>entry</name>
+        <qualifiedname>connection::entry</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="23" column="12" bodyfile="src/connections.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1ac578f0ac27bbd5879f0462fa2517d39c" prot="public" static="no" mutable="no">
+        <type>time_t</type>
+        <definition>time_t connection::last_op</definition>
+        <argsstring></argsstring>
+        <name>last_op</name>
+        <qualifiedname>connection::last_op</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="24" column="12" bodyfile="src/connections.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structconnection_1a1d7e91ee2dab6b52781880669e9e38d6" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long connection::num_ops</definition>
+        <argsstring></argsstring>
+        <name>num_ops</name>
+        <qualifiedname>connection::num_ops</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="25" column="10" bodyfile="src/connections.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Connection struct. Keep sd, status, nthread, sockaddr_in, entry, last_op and num_ops. </para>
+    </detaileddescription>
+    <location file="src/connections.h" line="17" column="1" bodyfile="src/connections.h" bodystart="17" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structconnection_1aa8a98f765771cd8af05864e34838fc04" prot="public" virt="non-virtual"><scope>connection</scope><name>entry</name></member>
+      <member refid="structconnection_1ac578f0ac27bbd5879f0462fa2517d39c" prot="public" virt="non-virtual"><scope>connection</scope><name>last_op</name></member>
+      <member refid="structconnection_1a392dff3ac59ae78e0cbe5880c150cda6" prot="public" virt="non-virtual"><scope>connection</scope><name>next_info</name></member>
+      <member refid="structconnection_1ae8b8ce14b8384cbff2724f003e23e856" prot="public" virt="non-virtual"><scope>connection</scope><name>nthread</name></member>
+      <member refid="structconnection_1a1d7e91ee2dab6b52781880669e9e38d6" prot="public" virt="non-virtual"><scope>connection</scope><name>num_ops</name></member>
+      <member refid="structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1" prot="public" virt="non-virtual"><scope>connection</scope><name>sd</name></member>
+      <member refid="structconnection_1ad9e7923a71fc9ed30f01d893f340bb33" prot="public" virt="non-virtual"><scope>connection</scope><name>sockaddr</name></member>
+      <member refid="structconnection_1a425254df6cac48b837b9991b9df86c6f" prot="public" virt="non-virtual"><scope>connection</scope><name>status</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

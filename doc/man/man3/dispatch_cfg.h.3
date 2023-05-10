@@ -1,0 +1,183 @@
+.TH "src/dispatch_cfg.h" 3 "Wed May 10 2023" "Version 01.00" "Dispatcher TCP/IP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/dispatch_cfg.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'common\&.h'\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <json/json\&.h>\fP
+.br
+\fC#include <json/value\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBdispatch_cfg\fP"
+.br
+.ti -1c
+.RI "class \fBall_dispatch_cfg\fP"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "auto const \fBDEFAULT_IP\fP = '127\&.0\&.0\&.1's"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_PORT\fP = 9000"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_NUMTHREADS\fP = 20"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_TUXCLIPROG\fP = '/TuxCliProg's"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_TUXCLISETUP\fP = '/TuxCliSetup's"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_MAXCONN\fP = 1500"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_STOPTIMEOUT\fP = 30"
+.br
+.ti -1c
+.RI "auto const \fBDEFAULT_IPCFILE\fP = '/ipcfile_'s"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_NOTE\fP = '1_Note's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_VERSION\fP = '1_Version's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_NUMDISPATCHERS\fP = '2_NumDispatchers's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_IP\fP = 'IP's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_PORT\fP = 'Port's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_NUMTHREADS\fP = 'NumThreads's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_TUXCLIPROG\fP = 'TuxCliProg's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_TUXCLISETUP\fP = 'TuxCliSetup's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_LOGLEVEL\fP = 'LogLevel's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_MAXCONN\fP = 'MaxConnections's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_STOPTIMEOUT\fP = 'StopTimeout's"
+.br
+.ti -1c
+.RI "auto const \fBFIELD_IPCFILE\fP = 'IpcFile's"
+.br
+.ti -1c
+.RI "static constexpr int \fBCFGFILE_VERSION\fP = 1"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "constexpr int CFGFILE_VERSION = 1\fC [static]\fP, \fC [constexpr]\fP"
+
+.PP
+Definition at line \fB32\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_IP = '127\&.0\&.0\&.1's"
+
+.PP
+Definition at line \fB10\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_IPCFILE = '/ipcfile_'s"
+
+.PP
+Definition at line \fB17\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_MAXCONN = 1500"
+
+.PP
+Definition at line \fB15\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_NUMTHREADS = 20"
+
+.PP
+Definition at line \fB12\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_PORT = 9000"
+
+.PP
+Definition at line \fB11\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_STOPTIMEOUT = 30"
+
+.PP
+Definition at line \fB16\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_TUXCLIPROG = '/TuxCliProg's"
+
+.PP
+Definition at line \fB13\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const DEFAULT_TUXCLISETUP = '/TuxCliSetup's"
+
+.PP
+Definition at line \fB14\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_IP = 'IP's"
+
+.PP
+Definition at line \fB22\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_IPCFILE = 'IpcFile's"
+
+.PP
+Definition at line \fB30\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_LOGLEVEL = 'LogLevel's"
+
+.PP
+Definition at line \fB27\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_MAXCONN = 'MaxConnections's"
+
+.PP
+Definition at line \fB28\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_NOTE = '1_Note's"
+
+.PP
+Definition at line \fB19\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_NUMDISPATCHERS = '2_NumDispatchers's"
+
+.PP
+Definition at line \fB21\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_NUMTHREADS = 'NumThreads's"
+
+.PP
+Definition at line \fB24\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_PORT = 'Port's"
+
+.PP
+Definition at line \fB23\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_STOPTIMEOUT = 'StopTimeout's"
+
+.PP
+Definition at line \fB29\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_TUXCLIPROG = 'TuxCliProg's"
+
+.PP
+Definition at line \fB25\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_TUXCLISETUP = 'TuxCliSetup's"
+
+.PP
+Definition at line \fB26\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SS "auto const FIELD_VERSION = '1_Version's"
+
+.PP
+Definition at line \fB20\fP of file \fBdispatch_cfg\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dispatcher TCP/IP from the source code\&.

@@ -1,0 +1,248 @@
+\hypertarget{classchecker__pids}{}\doxysection{checker\+\_\+pids Class Reference}
+\label{classchecker__pids}\index{checker\_pids@{checker\_pids}}
+
+
+{\ttfamily \#include $<$checker\+\_\+pids.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classchecker__pids_ab2bffb76c0da98777ad2109be0b127ca}{checker\+\_\+pids}} ()=default
+\item 
+\mbox{\hyperlink{classchecker__pids_ad481c24cbe8f60fa780cf8f807188a7a}{checker\+\_\+pids}} (\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} const \&)=delete
+\item 
+\mbox{\hyperlink{classchecker__pids_a10b144de7e14bc5cc1934f8f33143397}{checker\+\_\+pids}} (\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \& \mbox{\hyperlink{classchecker__pids_aa17a1b4c4b9b182fff3d78215488b1e4}{operator=}} (\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} const \&)=delete
+\item 
+\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \& \mbox{\hyperlink{classchecker__pids_a1e22231fb040beab1861fa5b14a864b8}{operator=}} (\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classchecker__pids_a6318efeaea01e0e716dbd9931bf9c171}{$\sim$checker\+\_\+pids}} ()
+\item 
+void \mbox{\hyperlink{classchecker__pids_a27c1ae8def4db8f6cb36917f61048e6d}{add}} (std\+::function$<$ int()$>$ \+\_\+call, std\+::string procname)
+\item 
+void \mbox{\hyperlink{classchecker__pids_a8065fcd19912ad3e9b5affeaf3232ec6}{Stopping\+Children}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ \mbox{\hyperlink{classchecker__pids_a418d36e7f2d0ddff6b5b74c5a89f5540}{get\+\_\+run\+\_\+flags}} () const
+\item 
+int \mbox{\hyperlink{classchecker__pids_afe18e52b8c0557fe2d791d4246d7b940}{operator()}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classchecker__pids_a8670706ea3c75c45b7a9e43a99bf5a4e}{sigterm\+\_\+func}} (int s)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structchecker__struct}{checker\+\_\+struct}} $>$ \mbox{\hyperlink{classchecker__pids_aeaf6d7cdb81c03a5d152f5122cb485e9}{\+\_\+pids}}
+\item 
+\mbox{\hyperlink{structchecker__struct}{checker\+\_\+struct}} \mbox{\hyperlink{classchecker__pids_a8ba295ce04686629f2e545eef082688a}{\+\_\+dead}}
+\item 
+sighandler\+\_\+t \mbox{\hyperlink{classchecker__pids_a12fce3aed3117c10f47eaddf28fcdba8}{\+\_\+previous\+Interrupt\+Handler\+\_\+int}} \{nullptr\}
+\item 
+sighandler\+\_\+t \mbox{\hyperlink{classchecker__pids_a19aa5267dd935b87eed2fb7b2192e3de}{\+\_\+previous\+Interrupt\+Handler\+\_\+usr1}} \{nullptr\}
+\item 
+sighandler\+\_\+t \mbox{\hyperlink{classchecker__pids_a7aaab276668326d002cdd1f4e333c5b7}{\+\_\+previous\+Interrupt\+Handler\+\_\+term}} \{nullptr\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ \mbox{\hyperlink{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}{\+\_\+p\+\_\+run}} = std\+::make\+\_\+shared$<$\mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}}$>$()
+\item 
+static bool \mbox{\hyperlink{classchecker__pids_a065564a41603626bb7d1258c0cb075c3}{\+\_\+forker}} \{false\}
+\item 
+static \mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} $\ast$ \mbox{\hyperlink{classchecker__pids_acd2982254315ed5976aee9f33001baee}{\+\_\+me}} \{nullptr\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Creates processes (fork) and keep them alive until signal is captured. 
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00046}{46}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classchecker__pids_ab2bffb76c0da98777ad2109be0b127ca}\label{classchecker__pids_ab2bffb76c0da98777ad2109be0b127ca}} 
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{checker\_pids()}{checker\_pids()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily checker\+\_\+pids\+::checker\+\_\+pids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classchecker__pids_ad481c24cbe8f60fa780cf8f807188a7a}\label{classchecker__pids_ad481c24cbe8f60fa780cf8f807188a7a}} 
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{checker\_pids()}{checker\_pids()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily checker\+\_\+pids\+::checker\+\_\+pids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classchecker__pids_a10b144de7e14bc5cc1934f8f33143397}\label{classchecker__pids_a10b144de7e14bc5cc1934f8f33143397}} 
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\index{checker\_pids@{checker\_pids}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{checker\_pids()}{checker\_pids()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily checker\+\_\+pids\+::checker\+\_\+pids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classchecker__pids_a6318efeaea01e0e716dbd9931bf9c171}\label{classchecker__pids_a6318efeaea01e0e716dbd9931bf9c171}} 
+\index{checker\_pids@{checker\_pids}!````~checker\_pids@{$\sim$checker\_pids}}
+\index{````~checker\_pids@{$\sim$checker\_pids}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{$\sim$checker\_pids()}{~checker\_pids()}}
+{\footnotesize\ttfamily checker\+\_\+pids\+::$\sim$checker\+\_\+pids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00069}{69}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classchecker__pids_a27c1ae8def4db8f6cb36917f61048e6d}\label{classchecker__pids_a27c1ae8def4db8f6cb36917f61048e6d}} 
+\index{checker\_pids@{checker\_pids}!add@{add}}
+\index{add@{add}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void checker\+\_\+pids\+::add (\begin{DoxyParamCaption}\item[{std\+::function$<$ int()$>$}]{\+\_\+call,  }\item[{std\+::string}]{procname }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{checker__pids_8cpp_source}{checker\+\_\+pids.\+cpp}}.
+
+\mbox{\Hypertarget{classchecker__pids_a418d36e7f2d0ddff6b5b74c5a89f5540}\label{classchecker__pids_a418d36e7f2d0ddff6b5b74c5a89f5540}} 
+\index{checker\_pids@{checker\_pids}!get\_run\_flags@{get\_run\_flags}}
+\index{get\_run\_flags@{get\_run\_flags}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{get\_run\_flags()}{get\_run\_flags()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ checker\+\_\+pids\+::get\+\_\+run\+\_\+flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00081}{81}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_afe18e52b8c0557fe2d791d4246d7b940}\label{classchecker__pids_afe18e52b8c0557fe2d791d4246d7b940}} 
+\index{checker\_pids@{checker\_pids}!operator()@{operator()}}
+\index{operator()@{operator()}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily int checker\+\_\+pids\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{checker__pids_8cpp_source}{checker\+\_\+pids.\+cpp}}.
+
+\mbox{\Hypertarget{classchecker__pids_a1e22231fb040beab1861fa5b14a864b8}\label{classchecker__pids_a1e22231fb040beab1861fa5b14a864b8}} 
+\index{checker\_pids@{checker\_pids}!operator=@{operator=}}
+\index{operator=@{operator=}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \& checker\+\_\+pids\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classchecker__pids_aa17a1b4c4b9b182fff3d78215488b1e4}\label{classchecker__pids_aa17a1b4c4b9b182fff3d78215488b1e4}} 
+\index{checker\_pids@{checker\_pids}!operator=@{operator=}}
+\index{operator=@{operator=}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} \& checker\+\_\+pids\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classchecker__pids_a8670706ea3c75c45b7a9e43a99bf5a4e}\label{classchecker__pids_a8670706ea3c75c45b7a9e43a99bf5a4e}} 
+\index{checker\_pids@{checker\_pids}!sigterm\_func@{sigterm\_func}}
+\index{sigterm\_func@{sigterm\_func}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{sigterm\_func()}{sigterm\_func()}}
+{\footnotesize\ttfamily void checker\+\_\+pids\+::sigterm\+\_\+func (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{checker__pids_8cpp_source}{checker\+\_\+pids.\+cpp}}.
+
+\mbox{\Hypertarget{classchecker__pids_a8065fcd19912ad3e9b5affeaf3232ec6}\label{classchecker__pids_a8065fcd19912ad3e9b5affeaf3232ec6}} 
+\index{checker\_pids@{checker\_pids}!StoppingChildren@{StoppingChildren}}
+\index{StoppingChildren@{StoppingChildren}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{StoppingChildren()}{StoppingChildren()}}
+{\footnotesize\ttfamily void checker\+\_\+pids\+::\+Stopping\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{checker__pids_8cpp_source}{checker\+\_\+pids.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classchecker__pids_a8ba295ce04686629f2e545eef082688a}\label{classchecker__pids_a8ba295ce04686629f2e545eef082688a}} 
+\index{checker\_pids@{checker\_pids}!\_dead@{\_dead}}
+\index{\_dead@{\_dead}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_dead}{\_dead}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structchecker__struct}{checker\+\_\+struct}} checker\+\_\+pids\+::\+\_\+dead\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00048}{48}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_a065564a41603626bb7d1258c0cb075c3}\label{classchecker__pids_a065564a41603626bb7d1258c0cb075c3}} 
+\index{checker\_pids@{checker\_pids}!\_forker@{\_forker}}
+\index{\_forker@{\_forker}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_forker}{\_forker}}
+{\footnotesize\ttfamily bool checker\+\_\+pids\+::\+\_\+forker \{false\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00051}{51}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_acd2982254315ed5976aee9f33001baee}\label{classchecker__pids_acd2982254315ed5976aee9f33001baee}} 
+\index{checker\_pids@{checker\_pids}!\_me@{\_me}}
+\index{\_me@{\_me}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_me}{\_me}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classchecker__pids}{checker\+\_\+pids}} $\ast$ checker\+\_\+pids\+::\+\_\+me \{nullptr\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00052}{52}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}\label{classchecker__pids_ad738c2a7f7747a492d61a45d94a1ab51}} 
+\index{checker\_pids@{checker\_pids}!\_p\_run@{\_p\_run}}
+\index{\_p\_run@{\_p\_run}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_p\_run}{\_p\_run}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}} $>$ checker\+\_\+pids\+::\+\_\+p\+\_\+run = std\+::make\+\_\+shared$<$\mbox{\hyperlink{structkeep__running__flags}{keep\+\_\+running\+\_\+flags}}$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00050}{50}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_aeaf6d7cdb81c03a5d152f5122cb485e9}\label{classchecker__pids_aeaf6d7cdb81c03a5d152f5122cb485e9}} 
+\index{checker\_pids@{checker\_pids}!\_pids@{\_pids}}
+\index{\_pids@{\_pids}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_pids}{\_pids}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structchecker__struct}{checker\+\_\+struct}}$>$ checker\+\_\+pids\+::\+\_\+pids\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00047}{47}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_a12fce3aed3117c10f47eaddf28fcdba8}\label{classchecker__pids_a12fce3aed3117c10f47eaddf28fcdba8}} 
+\index{checker\_pids@{checker\_pids}!\_previousInterruptHandler\_int@{\_previousInterruptHandler\_int}}
+\index{\_previousInterruptHandler\_int@{\_previousInterruptHandler\_int}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_previousInterruptHandler\_int}{\_previousInterruptHandler\_int}}
+{\footnotesize\ttfamily sighandler\+\_\+t checker\+\_\+pids\+::\+\_\+previous\+Interrupt\+Handler\+\_\+int \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00054}{54}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_a7aaab276668326d002cdd1f4e333c5b7}\label{classchecker__pids_a7aaab276668326d002cdd1f4e333c5b7}} 
+\index{checker\_pids@{checker\_pids}!\_previousInterruptHandler\_term@{\_previousInterruptHandler\_term}}
+\index{\_previousInterruptHandler\_term@{\_previousInterruptHandler\_term}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_previousInterruptHandler\_term}{\_previousInterruptHandler\_term}}
+{\footnotesize\ttfamily sighandler\+\_\+t checker\+\_\+pids\+::\+\_\+previous\+Interrupt\+Handler\+\_\+term \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00056}{56}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+\mbox{\Hypertarget{classchecker__pids_a19aa5267dd935b87eed2fb7b2192e3de}\label{classchecker__pids_a19aa5267dd935b87eed2fb7b2192e3de}} 
+\index{checker\_pids@{checker\_pids}!\_previousInterruptHandler\_usr1@{\_previousInterruptHandler\_usr1}}
+\index{\_previousInterruptHandler\_usr1@{\_previousInterruptHandler\_usr1}!checker\_pids@{checker\_pids}}
+\doxysubsubsection{\texorpdfstring{\_previousInterruptHandler\_usr1}{\_previousInterruptHandler\_usr1}}
+{\footnotesize\ttfamily sighandler\+\_\+t checker\+\_\+pids\+::\+\_\+previous\+Interrupt\+Handler\+\_\+usr1 \{nullptr\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{checker__pids_8h_source_l00055}{55}} of file \mbox{\hyperlink{checker__pids_8h_source}{checker\+\_\+pids.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{checker__pids_8h}{checker\+\_\+pids.\+h}}\item 
+src/\mbox{\hyperlink{checker__pids_8cpp}{checker\+\_\+pids.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.6" xml:lang="en-US">
+  <compounddef id="classconnections" kind="class" language="C++" prot="public">
+    <compoundname>connections</compoundname>
+    <includes refid="connections_8h" local="no">connections.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classconnections_1aa422d2929a142e3b88a0035c10ea2799" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool connections::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>connections::initialized</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="32" column="10" bodyfile="src/connections.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classconnections_1a4ef1805523e87bc105015afcce456dc4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connections::first_free</definition>
+        <argsstring></argsstring>
+        <name>first_free</name>
+        <qualifiedname>connections::first_free</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="33" column="9" bodyfile="src/connections.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classconnections_1a48e53d849d45c221c4bc1b4df8013a13" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connections::nThreads</definition>
+        <argsstring></argsstring>
+        <name>nThreads</name>
+        <qualifiedname>connections::nThreads</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="34" column="9" bodyfile="src/connections.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classconnections_1ab8405116666865cf960deb54b6beb2c9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int connections::MaxConn</definition>
+        <argsstring></argsstring>
+        <name>MaxConn</name>
+        <qualifiedname>connections::MaxConn</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="35" column="9" bodyfile="src/connections.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classconnections_1aec431699f4e5f15397d398150b97222b" prot="private" static="no" mutable="no">
+        <type><ref refid="structconnection" kindref="compound">connection</ref> *</type>
+        <definition>connection* connections::current_connections</definition>
+        <argsstring></argsstring>
+        <name>current_connections</name>
+        <qualifiedname>connections::current_connections</qualifiedname>
+        <initializer>{nullptr}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="36" column="16" bodyfile="src/connections.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classconnections_1a2fbd49788255115aa209b55b9cfe7bfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>connections::connections</definition>
+        <argsstring>(int MaxConnections, int NumThreads)</argsstring>
+        <name>connections</name>
+        <qualifiedname>connections::connections</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>MaxConnections</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>NumThreads</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>connections Constructor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>MaxConnections</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max number of connections. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NumThreads</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= Number of thread pairs running </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="45" column="5" bodyfile="src/connections.cpp" bodystart="3" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1abd2f1b462739513f2c23236fb28b08a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void connections::mark_obsolete</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>mark_obsolete</name>
+        <qualifiedname>connections::mark_obsolete</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="48" column="10" bodyfile="src/connections.cpp" bodystart="24" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void connections::delete_obsolete</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>delete_obsolete</name>
+        <qualifiedname>connections::delete_obsolete</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="51" column="10" bodyfile="src/connections.cpp" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1aa8c930db3c4885c33de249f67c6f3ca6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int connections::clean_repeated_ip</definition>
+        <argsstring>(sockaddr_in *ppal, Semaphore &amp;sem)</argsstring>
+        <name>clean_repeated_ip</name>
+        <qualifiedname>connections::clean_repeated_ip</qualifiedname>
+        <param>
+          <type>sockaddr_in *</type>
+          <declname>ppal</declname>
+        </param>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clean repeated IP in connection array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ppal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>sockaddr_in data (IP:port) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> to lock to avoid data races. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="59" column="9" bodyfile="src/connections.cpp" bodystart="65" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1a94f933faea3ade69fc63ecd8647d5423" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int connections::register_new_conn</definition>
+        <argsstring>(int nthread, int sd, sockaddr_in s_in, Semaphore &amp;sem)</argsstring>
+        <name>register_new_conn</name>
+        <qualifiedname>connections::register_new_conn</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>nthread</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sd</declname>
+        </param>
+        <param>
+          <type>sockaddr_in</type>
+          <declname>s_in</declname>
+        </param>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers new connection on array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nthread</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread pair idx </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSocket" kindref="compound">Socket</ref> descriptor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>sockaddr_in info </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> to lock to avoid data races. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="69" column="9" bodyfile="src/connections.cpp" bodystart="95" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1a7818be12aec98b6c015b038b667c568f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int connections::unregister_conn</definition>
+        <argsstring>(int idx, Semaphore &amp;sem)</argsstring>
+        <name>unregister_conn</name>
+        <qualifiedname>connections::unregister_conn</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unregisters connection on array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index on connection array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> to lock to avoid data races. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="77" column="9" bodyfile="src/connections.cpp" bodystart="143" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1abad7f85b1ef27d0417c4571b905192b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int connections::ending_operation</definition>
+        <argsstring>(int idx, Semaphore &amp;sem, connection &amp;cur_conn)</argsstring>
+        <name>ending_operation</name>
+        <qualifiedname>connections::ending_operation</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <param>
+          <type><ref refid="structconnection" kindref="compound">connection</ref> &amp;</type>
+          <declname>cur_conn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets connection operation info: add 1 to operation counter, gets time</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index on connection array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> to lock to avoid data races. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cur_conn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gets connection struct of connection array (idx position) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="86" column="9" bodyfile="src/connections.cpp" bodystart="40" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int connections::check_obsolete</definition>
+        <argsstring>(int idx_con, Semaphore &amp;sem)</argsstring>
+        <name>check_obsolete</name>
+        <qualifiedname>connections::check_obsolete</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx_con</declname>
+        </param>
+        <param>
+          <type><ref refid="classSemaphore" kindref="compound">Semaphore</ref> &amp;</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>if connection[idx_con] is obsolete marks it as st_obsolete=2.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index on connection array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classSemaphore" kindref="compound">Semaphore</ref> to lock to avoid data races. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="94" column="9" bodyfile="src/connections.cpp" bodystart="123" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classconnections_1a1d163bdeb5127186898ab71987ef6dc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool connections::is_all_connections_done</definition>
+        <argsstring>()</argsstring>
+        <name>is_all_connections_done</name>
+        <qualifiedname>connections::is_all_connections_done</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/connections.h" line="96" column="10" bodyfile="src/connections.h" bodystart="96" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Connections class. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>connection</label>
+        <link refid="structconnection"/>
+      </node>
+      <node id="1">
+        <label>connections</label>
+        <link refid="classconnections"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>current_connections</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/connections.h" line="31" column="1" bodyfile="src/connections.h" bodystart="31" bodyend="99"/>
+    <listofallmembers>
+      <member refid="classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c" prot="public" virt="non-virtual"><scope>connections</scope><name>check_obsolete</name></member>
+      <member refid="classconnections_1aa8c930db3c4885c33de249f67c6f3ca6" prot="public" virt="non-virtual"><scope>connections</scope><name>clean_repeated_ip</name></member>
+      <member refid="classconnections_1a2fbd49788255115aa209b55b9cfe7bfb" prot="public" virt="non-virtual"><scope>connections</scope><name>connections</name></member>
+      <member refid="classconnections_1aec431699f4e5f15397d398150b97222b" prot="private" virt="non-virtual"><scope>connections</scope><name>current_connections</name></member>
+      <member refid="classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a" prot="public" virt="non-virtual"><scope>connections</scope><name>delete_obsolete</name></member>
+      <member refid="classconnections_1abad7f85b1ef27d0417c4571b905192b1" prot="public" virt="non-virtual"><scope>connections</scope><name>ending_operation</name></member>
+      <member refid="classconnections_1a4ef1805523e87bc105015afcce456dc4" prot="private" virt="non-virtual"><scope>connections</scope><name>first_free</name></member>
+      <member refid="classconnections_1aa422d2929a142e3b88a0035c10ea2799" prot="private" virt="non-virtual"><scope>connections</scope><name>initialized</name></member>
+      <member refid="classconnections_1a1d163bdeb5127186898ab71987ef6dc5" prot="public" virt="non-virtual"><scope>connections</scope><name>is_all_connections_done</name></member>
+      <member refid="classconnections_1abd2f1b462739513f2c23236fb28b08a8" prot="public" virt="non-virtual"><scope>connections</scope><name>mark_obsolete</name></member>
+      <member refid="classconnections_1ab8405116666865cf960deb54b6beb2c9" prot="private" virt="non-virtual"><scope>connections</scope><name>MaxConn</name></member>
+      <member refid="classconnections_1a48e53d849d45c221c4bc1b4df8013a13" prot="private" virt="non-virtual"><scope>connections</scope><name>nThreads</name></member>
+      <member refid="classconnections_1a94f933faea3ade69fc63ecd8647d5423" prot="public" virt="non-virtual"><scope>connections</scope><name>register_new_conn</name></member>
+      <member refid="classconnections_1a7818be12aec98b6c015b038b667c568f" prot="public" virt="non-virtual"><scope>connections</scope><name>unregister_conn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

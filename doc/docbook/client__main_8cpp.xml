@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_client__main_8cpp" xml:lang="en-US">
+<title>src/client_main.cpp File Reference</title>
+<indexterm><primary>src/client_main.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;memory&gt;<?linebreak?>#include &lt;map&gt;<?linebreak?>#include &lt;json/json.h&gt;<?linebreak?>#include &quot;common.h&quot;<?linebreak?>#include &quot;Socket.h&quot;<?linebreak?>#include &quot;protocol_msg.h&quot;<?linebreak?>#include &quot;plog/Initializers/RollingFileInitializer.h&quot;<?linebreak?>#include &quot;plog/Initializers/ConsoleInitializer.h&quot;<?linebreak?>#include &lt;signal.h&gt;<?linebreak?>#include &lt;sys/wait.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_client__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c">LOGLEVEL</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0">sigterm_func</link> (int s)</para>
+</listitem>
+            <listitem><para>void <link linkend="_client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155">Prepare_Msg_Json_To_Send</link> (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> &amp;v_protomsg, string msg, Json::Value &amp;json_msg)</para>
+</listitem>
+            <listitem><para>int <link linkend="_client__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d">loglevel</link></para>
+</listitem>
+            <listitem><para>auto <link linkend="_client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d">keep_accepting</link> = true</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_client__main_8cpp_1a6c6fd5e242df15a7a42e9b75d55d5d3c"/><section>
+    <title>LOGLEVEL</title>
+<indexterm><primary>LOGLEVEL</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>LOGLEVEL</secondary></indexterm>
+<para><computeroutput>#define LOGLEVEL</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00005">5</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_client__main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00056">56</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_client__main_8cpp_1a601b647decf34eb2826ae82ebe2ea155"/><section>
+    <title>Prepare_Msg_Json_To_Send()</title>
+<indexterm><primary>Prepare_Msg_Json_To_Send</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>Prepare_Msg_Json_To_Send</secondary></indexterm>
+<para><computeroutput>void Prepare_Msg_Json_To_Send (<link linkend="_structprotomsg_1_1st__protomsg">protomsg::st_protomsg</link> &amp; v_protomsg, string msg, Json::Value &amp; json_msg)</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00045">45</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_client__main_8cpp_1a5cdc13615c23187d16e4834c15d054e0"/><section>
+    <title>sigterm_func()</title>
+<indexterm><primary>sigterm_func</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>sigterm_func</secondary></indexterm>
+<para><computeroutput>void sigterm_func (int s)</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00034">34</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_client__main_8cpp_1a182e40f49228b7c44921f0daab080e9d"/><section>
+    <title>keep_accepting</title>
+<indexterm><primary>keep_accepting</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>keep_accepting</secondary></indexterm>
+<para><computeroutput>auto keep_accepting = true</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00032">32</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+<anchor xml:id="_client__main_8cpp_1afb19b851dbcd1447c226a8a98c26979d"/><section>
+    <title>loglevel</title>
+<indexterm><primary>loglevel</primary><secondary>client_main.cpp</secondary></indexterm>
+<indexterm><primary>client_main.cpp</primary><secondary>loglevel</secondary></indexterm>
+<para><computeroutput>int loglevel</computeroutput></para><para>
+Definition at line <link linkend="_client__main_8cpp_source_1l00006">6</link> of file <link linkend="_client__main_8cpp_source">client_main.cpp</link>.</para>
+</section>
+</section>
+</section>

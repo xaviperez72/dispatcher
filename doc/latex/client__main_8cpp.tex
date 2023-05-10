@@ -1,0 +1,102 @@
+\hypertarget{client__main_8cpp}{}\doxysection{src/client\+\_\+main.cpp File Reference}
+\label{client__main_8cpp}\index{src/client\_main.cpp@{src/client\_main.cpp}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$json/json.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Socket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}protocol\+\_\+msg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plog/\+Initializers/\+Rolling\+File\+Initializer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plog/\+Initializers/\+Console\+Initializer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{client__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}{LOGLEVEL}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{client__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}{sigterm\+\_\+func}} (int s)
+\item 
+void \mbox{\hyperlink{client__main_8cpp_a601b647decf34eb2826ae82ebe2ea155}{Prepare\+\_\+\+Msg\+\_\+\+Json\+\_\+\+To\+\_\+\+Send}} (\mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg\+::st\+\_\+protomsg}} \&v\+\_\+protomsg, string msg, Json\+::\+Value \&json\+\_\+msg)
+\item 
+int \mbox{\hyperlink{client__main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{client__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}{loglevel}}
+\item 
+auto \mbox{\hyperlink{client__main_8cpp_a182e40f49228b7c44921f0daab080e9d}{keep\+\_\+accepting}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{client__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}\label{client__main_8cpp_a6c6fd5e242df15a7a42e9b75d55d5d3c}} 
+\index{client\_main.cpp@{client\_main.cpp}!LOGLEVEL@{LOGLEVEL}}
+\index{LOGLEVEL@{LOGLEVEL}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{LOGLEVEL}{LOGLEVEL}}
+{\footnotesize\ttfamily \#define LOGLEVEL}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{client__main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{client__main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{client\_main.cpp@{client\_main.cpp}!main@{main}}
+\index{main@{main}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{client__main_8cpp_a601b647decf34eb2826ae82ebe2ea155}\label{client__main_8cpp_a601b647decf34eb2826ae82ebe2ea155}} 
+\index{client\_main.cpp@{client\_main.cpp}!Prepare\_Msg\_Json\_To\_Send@{Prepare\_Msg\_Json\_To\_Send}}
+\index{Prepare\_Msg\_Json\_To\_Send@{Prepare\_Msg\_Json\_To\_Send}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{Prepare\_Msg\_Json\_To\_Send()}{Prepare\_Msg\_Json\_To\_Send()}}
+{\footnotesize\ttfamily void Prepare\+\_\+\+Msg\+\_\+\+Json\+\_\+\+To\+\_\+\+Send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprotomsg_1_1st__protomsg}{protomsg\+::st\+\_\+protomsg}} \&}]{v\+\_\+protomsg,  }\item[{string}]{msg,  }\item[{Json\+::\+Value \&}]{json\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{client__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}\label{client__main_8cpp_a5cdc13615c23187d16e4834c15d054e0}} 
+\index{client\_main.cpp@{client\_main.cpp}!sigterm\_func@{sigterm\_func}}
+\index{sigterm\_func@{sigterm\_func}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{sigterm\_func()}{sigterm\_func()}}
+{\footnotesize\ttfamily void sigterm\+\_\+func (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{client__main_8cpp_a182e40f49228b7c44921f0daab080e9d}\label{client__main_8cpp_a182e40f49228b7c44921f0daab080e9d}} 
+\index{client\_main.cpp@{client\_main.cpp}!keep\_accepting@{keep\_accepting}}
+\index{keep\_accepting@{keep\_accepting}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{keep\_accepting}{keep\_accepting}}
+{\footnotesize\ttfamily auto keep\+\_\+accepting = true}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+
+\mbox{\Hypertarget{client__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}\label{client__main_8cpp_afb19b851dbcd1447c226a8a98c26979d}} 
+\index{client\_main.cpp@{client\_main.cpp}!loglevel@{loglevel}}
+\index{loglevel@{loglevel}!client\_main.cpp@{client\_main.cpp}}
+\doxysubsubsection{\texorpdfstring{loglevel}{loglevel}}
+{\footnotesize\ttfamily int loglevel}
+
+
+
+Definition at line \mbox{\hyperlink{client__main_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{client__main_8cpp_source}{client\+\_\+main.\+cpp}}.
+

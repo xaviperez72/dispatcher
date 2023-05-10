@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dispatch__cfg_8h" xml:lang="en-US">
+<title>src/dispatch_cfg.h File Reference</title>
+<indexterm><primary>src/dispatch_cfg.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;common.h&quot;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;json/json.h&gt;<?linebreak?>#include &lt;json/value.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structdispatch__cfg">dispatch_cfg</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classall__dispatch__cfg">all_dispatch_cfg</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1ab8896f36952d9a28d2768738bde32cca">DEFAULT_IP</link> = &quot;127.0.0.1&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1ac9658aed853e1af75285506d7046124d">DEFAULT_PORT</link> = 9000</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1ac378a7cd42df8dca4a7b0481755da598">DEFAULT_NUMTHREADS</link> = 20</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a9f974a874bb95a44f1a9c6115be5f184">DEFAULT_TUXCLIPROG</link> = &quot;/TuxCliProg&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a58f06dd5eabdaf53211d08398d44bbed">DEFAULT_TUXCLISETUP</link> = &quot;/TuxCliSetup&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1acb49fc360f501ffff3281abe6706ca0f">DEFAULT_MAXCONN</link> = 1500</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a0e75596069cf93f9128ae0f085240c5c">DEFAULT_STOPTIMEOUT</link> = 30</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a6c39097944ea16cb9fdb06ac3a6bd991">DEFAULT_IPCFILE</link> = &quot;/ipcfile_&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a78b1f1b0287e42f795966734ad94ad90">FIELD_NOTE</link> = &quot;1_Note&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a9c8e880c30c0ac74f885886a182d6a46">FIELD_VERSION</link> = &quot;1_Version&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a93651f1f2383dd22cb5ef16648936b9b">FIELD_NUMDISPATCHERS</link> = &quot;2_NumDispatchers&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1aae0421734ae2563add92370a27da94b7">FIELD_IP</link> = &quot;IP&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a09518cacb2ba79ce9069c6f72364c54c">FIELD_PORT</link> = &quot;Port&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a4f86f4b170059cd34784d20488d7b6d2">FIELD_NUMTHREADS</link> = &quot;NumThreads&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a5028d36bcf2fbacfde229572d2bbe6a5">FIELD_TUXCLIPROG</link> = &quot;TuxCliProg&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1ad28874272a0ef2432acb84ddc50587bc">FIELD_TUXCLISETUP</link> = &quot;TuxCliSetup&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1af2ad0370e820b513045b182c51bb4301">FIELD_LOGLEVEL</link> = &quot;LogLevel&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1a3cea144ec5bbaf5a6fba9973912d3137">FIELD_MAXCONN</link> = &quot;MaxConnections&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1adc3eeedbb043cce76f509644dc17bce9">FIELD_STOPTIMEOUT</link> = &quot;StopTimeout&quot;s</para>
+</listitem>
+            <listitem><para>auto const <link linkend="_dispatch__cfg_8h_1aa5e59b0a8fa4e7c944ba5ae490e33798">FIELD_IPCFILE</link> = &quot;IpcFile&quot;s</para>
+</listitem>
+            <listitem><para>static constexpr int <link linkend="_dispatch__cfg_8h_1ae84e712302e675b44e9975ef130a94ba">CFGFILE_VERSION</link> = 1</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_dispatch__cfg_8h_1ae84e712302e675b44e9975ef130a94ba"/><section>
+    <title>CFGFILE_VERSION</title>
+<indexterm><primary>CFGFILE_VERSION</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>CFGFILE_VERSION</secondary></indexterm>
+<para><computeroutput>constexpr int CFGFILE_VERSION = 1<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00032">32</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1ab8896f36952d9a28d2768738bde32cca"/><section>
+    <title>DEFAULT_IP</title>
+<indexterm><primary>DEFAULT_IP</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_IP</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_IP = &quot;127.0.0.1&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00010">10</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a6c39097944ea16cb9fdb06ac3a6bd991"/><section>
+    <title>DEFAULT_IPCFILE</title>
+<indexterm><primary>DEFAULT_IPCFILE</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_IPCFILE</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_IPCFILE = &quot;/ipcfile_&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00017">17</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1acb49fc360f501ffff3281abe6706ca0f"/><section>
+    <title>DEFAULT_MAXCONN</title>
+<indexterm><primary>DEFAULT_MAXCONN</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_MAXCONN</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_MAXCONN = 1500</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00015">15</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1ac378a7cd42df8dca4a7b0481755da598"/><section>
+    <title>DEFAULT_NUMTHREADS</title>
+<indexterm><primary>DEFAULT_NUMTHREADS</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_NUMTHREADS</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_NUMTHREADS = 20</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00012">12</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1ac9658aed853e1af75285506d7046124d"/><section>
+    <title>DEFAULT_PORT</title>
+<indexterm><primary>DEFAULT_PORT</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_PORT</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_PORT = 9000</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00011">11</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a0e75596069cf93f9128ae0f085240c5c"/><section>
+    <title>DEFAULT_STOPTIMEOUT</title>
+<indexterm><primary>DEFAULT_STOPTIMEOUT</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_STOPTIMEOUT</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_STOPTIMEOUT = 30</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00016">16</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a9f974a874bb95a44f1a9c6115be5f184"/><section>
+    <title>DEFAULT_TUXCLIPROG</title>
+<indexterm><primary>DEFAULT_TUXCLIPROG</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_TUXCLIPROG</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_TUXCLIPROG = &quot;/TuxCliProg&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00013">13</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a58f06dd5eabdaf53211d08398d44bbed"/><section>
+    <title>DEFAULT_TUXCLISETUP</title>
+<indexterm><primary>DEFAULT_TUXCLISETUP</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>DEFAULT_TUXCLISETUP</secondary></indexterm>
+<para><computeroutput>auto const DEFAULT_TUXCLISETUP = &quot;/TuxCliSetup&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00014">14</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1aae0421734ae2563add92370a27da94b7"/><section>
+    <title>FIELD_IP</title>
+<indexterm><primary>FIELD_IP</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_IP</secondary></indexterm>
+<para><computeroutput>auto const FIELD_IP = &quot;IP&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00022">22</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1aa5e59b0a8fa4e7c944ba5ae490e33798"/><section>
+    <title>FIELD_IPCFILE</title>
+<indexterm><primary>FIELD_IPCFILE</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_IPCFILE</secondary></indexterm>
+<para><computeroutput>auto const FIELD_IPCFILE = &quot;IpcFile&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00030">30</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1af2ad0370e820b513045b182c51bb4301"/><section>
+    <title>FIELD_LOGLEVEL</title>
+<indexterm><primary>FIELD_LOGLEVEL</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_LOGLEVEL</secondary></indexterm>
+<para><computeroutput>auto const FIELD_LOGLEVEL = &quot;LogLevel&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00027">27</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a3cea144ec5bbaf5a6fba9973912d3137"/><section>
+    <title>FIELD_MAXCONN</title>
+<indexterm><primary>FIELD_MAXCONN</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_MAXCONN</secondary></indexterm>
+<para><computeroutput>auto const FIELD_MAXCONN = &quot;MaxConnections&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00028">28</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a78b1f1b0287e42f795966734ad94ad90"/><section>
+    <title>FIELD_NOTE</title>
+<indexterm><primary>FIELD_NOTE</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_NOTE</secondary></indexterm>
+<para><computeroutput>auto const FIELD_NOTE = &quot;1_Note&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00019">19</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a93651f1f2383dd22cb5ef16648936b9b"/><section>
+    <title>FIELD_NUMDISPATCHERS</title>
+<indexterm><primary>FIELD_NUMDISPATCHERS</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_NUMDISPATCHERS</secondary></indexterm>
+<para><computeroutput>auto const FIELD_NUMDISPATCHERS = &quot;2_NumDispatchers&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00021">21</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a4f86f4b170059cd34784d20488d7b6d2"/><section>
+    <title>FIELD_NUMTHREADS</title>
+<indexterm><primary>FIELD_NUMTHREADS</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_NUMTHREADS</secondary></indexterm>
+<para><computeroutput>auto const FIELD_NUMTHREADS = &quot;NumThreads&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00024">24</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a09518cacb2ba79ce9069c6f72364c54c"/><section>
+    <title>FIELD_PORT</title>
+<indexterm><primary>FIELD_PORT</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_PORT</secondary></indexterm>
+<para><computeroutput>auto const FIELD_PORT = &quot;Port&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00023">23</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1adc3eeedbb043cce76f509644dc17bce9"/><section>
+    <title>FIELD_STOPTIMEOUT</title>
+<indexterm><primary>FIELD_STOPTIMEOUT</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_STOPTIMEOUT</secondary></indexterm>
+<para><computeroutput>auto const FIELD_STOPTIMEOUT = &quot;StopTimeout&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00029">29</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a5028d36bcf2fbacfde229572d2bbe6a5"/><section>
+    <title>FIELD_TUXCLIPROG</title>
+<indexterm><primary>FIELD_TUXCLIPROG</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_TUXCLIPROG</secondary></indexterm>
+<para><computeroutput>auto const FIELD_TUXCLIPROG = &quot;TuxCliProg&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00025">25</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1ad28874272a0ef2432acb84ddc50587bc"/><section>
+    <title>FIELD_TUXCLISETUP</title>
+<indexterm><primary>FIELD_TUXCLISETUP</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_TUXCLISETUP</secondary></indexterm>
+<para><computeroutput>auto const FIELD_TUXCLISETUP = &quot;TuxCliSetup&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00026">26</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+<anchor xml:id="_dispatch__cfg_8h_1a9c8e880c30c0ac74f885886a182d6a46"/><section>
+    <title>FIELD_VERSION</title>
+<indexterm><primary>FIELD_VERSION</primary><secondary>dispatch_cfg.h</secondary></indexterm>
+<indexterm><primary>dispatch_cfg.h</primary><secondary>FIELD_VERSION</secondary></indexterm>
+<para><computeroutput>auto const FIELD_VERSION = &quot;1_Version&quot;s</computeroutput></para><para>
+Definition at line <link linkend="_dispatch__cfg_8h_source_1l00020">20</link> of file <link linkend="_dispatch__cfg_8h_source">dispatch_cfg.h</link>.</para>
+</section>
+</section>
+</section>

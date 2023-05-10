@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_connections_8cpp_source" xml:lang="en-US">
+<title>connections.cpp</title>
+<indexterm><primary>src/connections.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_connections_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_connections_8h">connections.h</link>&quot;</emphasis>
+<anchor xml:id="_connections_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_connections_8cpp_source_1l00003"/><link linkend="_classconnections_1a2fbd49788255115aa209b55b9cfe7bfb">00003</link> <link linkend="_classconnections_1a2fbd49788255115aa209b55b9cfe7bfb">connections::connections</link>(<emphasis role="keywordtype">int</emphasis>&#32;MaxConnections,&#32;<emphasis role="keywordtype">int</emphasis>&#32;NumThreads)
+<anchor xml:id="_connections_8cpp_source_1l00004"/>00004 {
+<anchor xml:id="_connections_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;LOG_DEBUG&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;connections&#32;Ctor&#32;-&#32;Creating&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;NumThreads&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;queues,&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;MaxConnections&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;connections.&quot;</emphasis>;
+<anchor xml:id="_connections_8cpp_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1a48e53d849d45c221c4bc1b4df8013a13">nThreads</link>&#32;=&#32;NumThreads;
+<anchor xml:id="_connections_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>&#32;=&#32;MaxConnections;
+<anchor xml:id="_connections_8cpp_source_1l00008"/>00008 
+<anchor xml:id="_connections_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>&#32;=&#32;<emphasis role="keyword">reinterpret_cast&lt;</emphasis><link linkend="_structconnection">connection</link>&#32;*<emphasis role="keyword">&gt;</emphasis>(<emphasis role="keyword">this</emphasis>+1);
+<anchor xml:id="_connections_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_connections_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;memset((<emphasis role="keywordtype">void</emphasis>&#32;*)<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structconnection">connection</link>)*<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>);
+<anchor xml:id="_connections_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_connections_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>&#32;=&#32;0;
+<anchor xml:id="_connections_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_connections_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>-1;&#32;i++)&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[i].<link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link>&#32;=&#32;i+1;
+<anchor xml:id="_connections_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00018"/>00018 &#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>-1].<link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link>&#32;=&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_connections_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1aa422d2929a142e3b88a0035c10ea2799">initialized</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_connections_8cpp_source_1l00022"/>00022 &#32;}
+<anchor xml:id="_connections_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_connections_8cpp_source_1l00024"/><link linkend="_classconnections_1abd2f1b462739513f2c23236fb28b08a8">00024</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classconnections_1abd2f1b462739513f2c23236fb28b08a8">connections::mark_obsolete</link>(<emphasis role="keywordtype">int</emphasis>&#32;idx)
+<anchor xml:id="_connections_8cpp_source_1l00025"/>00025 {
+<anchor xml:id="_connections_8cpp_source_1l00026"/>00026 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;next,prev;
+<anchor xml:id="_connections_8cpp_source_1l00027"/>00027 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ind;
+<anchor xml:id="_connections_8cpp_source_1l00028"/>00028 
+<anchor xml:id="_connections_8cpp_source_1l00029"/>00029 &#32;&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a425254df6cac48b837b9991b9df86c6f">status</link>&#32;=&#32;<link linkend="_connections_8h_1a841c1992874382f999f316fa8162c520">st_obsolete</link>;
+<anchor xml:id="_connections_8cpp_source_1l00030"/>00030 
+<anchor xml:id="_connections_8cpp_source_1l00031"/>00031 }
+<anchor xml:id="_connections_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_connections_8cpp_source_1l00033"/><link linkend="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a">00033</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a">connections::delete_obsolete</link>(<emphasis role="keywordtype">int</emphasis>&#32;idx)&#32;
+<anchor xml:id="_connections_8cpp_source_1l00034"/>00034 {
+<anchor xml:id="_connections_8cpp_source_1l00035"/>00035 &#32;&#32;memset(&amp;(<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx]),&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structconnection">connection</link>));
+<anchor xml:id="_connections_8cpp_source_1l00036"/>00036 &#32;&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link>&#32;=&#32;this-&gt;<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>;
+<anchor xml:id="_connections_8cpp_source_1l00037"/>00037 &#32;&#32;this-&gt;<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>&#32;=&#32;idx;
+<anchor xml:id="_connections_8cpp_source_1l00038"/>00038 }
+<anchor xml:id="_connections_8cpp_source_1l00039"/>00039 
+<anchor xml:id="_connections_8cpp_source_1l00040"/><link linkend="_classconnections_1abad7f85b1ef27d0417c4571b905192b1">00040</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classconnections_1abad7f85b1ef27d0417c4571b905192b1">connections::ending_operation</link>(<emphasis role="keywordtype">int</emphasis>&#32;idx,&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;&amp;sem,&#32;<link linkend="_structconnection">connection</link>&#32;&amp;cur_conn)
+<anchor xml:id="_connections_8cpp_source_1l00041"/>00041 {
+<anchor xml:id="_connections_8cpp_source_1l00042"/>00042 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(&#32;idx&#32;&lt;&#32;0&#32;||&#32;idx&#32;&gt;=&#32;<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>)
+<anchor xml:id="_connections_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00044"/>00044 
+<anchor xml:id="_connections_8cpp_source_1l00045"/>00045 &#32;&#32;sem.<link linkend="_classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087">Lock</link>();&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00046"/>00046 
+<anchor xml:id="_connections_8cpp_source_1l00047"/>00047 &#32;&#32;cur_conn&#32;=&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx];
+<anchor xml:id="_connections_8cpp_source_1l00048"/>00048 
+<anchor xml:id="_connections_8cpp_source_1l00049"/>00049 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].status&#32;!=&#32;<link linkend="_connections_8h_1a7cfb338d62be51e2990fb43cb27573a1">st_ready</link>&#32;)
+<anchor xml:id="_connections_8cpp_source_1l00050"/>00050 &#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-2;
+<anchor xml:id="_connections_8cpp_source_1l00053"/>00053 &#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00054"/>00054 
+<anchor xml:id="_connections_8cpp_source_1l00055"/>00055 &#32;&#32;time(&#32;&amp;(this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].last_op));
+<anchor xml:id="_connections_8cpp_source_1l00056"/>00056 &#32;&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a1d7e91ee2dab6b52781880669e9e38d6">num_ops</link>++;
+<anchor xml:id="_connections_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_connections_8cpp_source_1l00058"/>00058 &#32;&#32;cur_conn&#32;=&#32;this-&gt;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx];
+<anchor xml:id="_connections_8cpp_source_1l00059"/>00059 
+<anchor xml:id="_connections_8cpp_source_1l00060"/>00060 &#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_connections_8cpp_source_1l00062"/>00062 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_connections_8cpp_source_1l00063"/>00063 }
+<anchor xml:id="_connections_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_connections_8cpp_source_1l00065"/><link linkend="_classconnections_1aa8c930db3c4885c33de249f67c6f3ca6">00065</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classconnections_1aa8c930db3c4885c33de249f67c6f3ca6">connections::clean_repeated_ip</link>(sockaddr_in&#32;*ppal,&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;&amp;sem)
+<anchor xml:id="_connections_8cpp_source_1l00066"/>00066 {
+<anchor xml:id="_connections_8cpp_source_1l00067"/>00067 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nThread&#32;=&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00068"/>00068 
+<anchor xml:id="_connections_8cpp_source_1l00069"/>00069 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>-1;&#32;i++)&#32;
+<anchor xml:id="_connections_8cpp_source_1l00070"/>00070 &#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[i].status)&#32;
+<anchor xml:id="_connections_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;2:&#32;&#32;&#32;<emphasis role="comment">/*&#32;Sinchronized,&#32;lets&#32;see&#32;...&#32;*/</emphasis>
+<anchor xml:id="_connections_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;1:&#32;&#32;&#32;<emphasis role="comment">/*&#32;Not&#32;sinchronized,&#32;lets&#32;see&#32;...&#32;*/</emphasis>
+<anchor xml:id="_connections_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((ppal-&gt;sin_addr.s_addr==<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[i].<link linkend="_structconnection_1ad9e7923a71fc9ed30f01d893f340bb33">sockaddr</link>.sin_addr.s_addr)&#32;&amp;&amp;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(ppal-&gt;sin_port==<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[i].<link linkend="_structconnection_1ad9e7923a71fc9ed30f01d893f340bb33">sockaddr</link>.sin_port))&#32;
+<anchor xml:id="_connections_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087">Lock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nThread&#32;=&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[i].<link linkend="_structconnection_1ae8b8ce14b8384cbff2724f003e23e856">nthread</link>;
+<anchor xml:id="_connections_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classconnections_1abd2f1b462739513f2c23236fb28b08a8">mark_obsolete</link>(i);
+<anchor xml:id="_connections_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_connections_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;3:&#32;<emphasis role="comment">/*&#32;ya&#32;marcado,&#32;pasar&#32;de&#32;el&#32;*/</emphasis>
+<anchor xml:id="_connections_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;0:&#32;<emphasis role="comment">/*&#32;vacio,&#32;pasar&#32;de&#32;el&#32;*/</emphasis>
+<anchor xml:id="_connections_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+<anchor xml:id="_connections_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_connections_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00091"/>00091 &#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00092"/>00092 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nThread;
+<anchor xml:id="_connections_8cpp_source_1l00093"/>00093 }
+<anchor xml:id="_connections_8cpp_source_1l00094"/>00094 
+<anchor xml:id="_connections_8cpp_source_1l00095"/><link linkend="_classconnections_1a94f933faea3ade69fc63ecd8647d5423">00095</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classconnections_1a94f933faea3ade69fc63ecd8647d5423">connections::register_new_conn</link>(<emphasis role="keywordtype">int</emphasis>&#32;nthread,&#32;<emphasis role="keywordtype">int</emphasis>&#32;sd,&#32;sockaddr_in&#32;s_in,&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;&amp;sem)
+<anchor xml:id="_connections_8cpp_source_1l00096"/>00096 {
+<anchor xml:id="_connections_8cpp_source_1l00097"/>00097 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;idx&#32;=&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00098"/>00098 &#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00099"/>00099 &#32;&#32;sem.<link linkend="_classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087">Lock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00100"/>00100 
+<anchor xml:id="_connections_8cpp_source_1l00101"/>00101 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>==-1)&#32;
+<anchor xml:id="_connections_8cpp_source_1l00102"/>00102 &#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;idx;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00105"/>00105 &#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00106"/>00106 
+<anchor xml:id="_connections_8cpp_source_1l00107"/>00107 &#32;&#32;idx&#32;=&#32;<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>;
+<anchor xml:id="_connections_8cpp_source_1l00108"/>00108 &#32;&#32;<link linkend="_classconnections_1a4ef1805523e87bc105015afcce456dc4">first_free</link>&#32;=&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link>;
+<anchor xml:id="_connections_8cpp_source_1l00109"/>00109 &#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00110"/>00110 &#32;&#32;memset(&amp;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx],&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structconnection">connection</link>));
+<anchor xml:id="_connections_8cpp_source_1l00111"/>00111 
+<anchor xml:id="_connections_8cpp_source_1l00112"/>00112 &#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a425254df6cac48b837b9991b9df86c6f">status</link>&#32;=&#32;<link linkend="_connections_8h_1a7cfb338d62be51e2990fb43cb27573a1">st_ready</link>;
+<anchor xml:id="_connections_8cpp_source_1l00113"/>00113 &#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1a392dff3ac59ae78e0cbe5880c150cda6">next_info</link>&#32;=&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00114"/>00114 &#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1ae8b8ce14b8384cbff2724f003e23e856">nthread</link>&#32;=&#32;nthread;
+<anchor xml:id="_connections_8cpp_source_1l00115"/>00115 &#32;&#32;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].<link linkend="_structconnection_1aaf5e92500e5f396f4e1e1b70b01168a1">sd</link>&#32;=&#32;sd;
+<anchor xml:id="_connections_8cpp_source_1l00116"/>00116 &#32;&#32;memcpy(&amp;(<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].sockaddr),&#32;&amp;s_in,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keyword">struct</emphasis>&#32;sockaddr_in));
+<anchor xml:id="_connections_8cpp_source_1l00117"/>00117 &#32;&#32;time(&amp;<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].entry);
+<anchor xml:id="_connections_8cpp_source_1l00118"/>00118 
+<anchor xml:id="_connections_8cpp_source_1l00119"/>00119 &#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00120"/>00120 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;idx;
+<anchor xml:id="_connections_8cpp_source_1l00121"/>00121 }
+<anchor xml:id="_connections_8cpp_source_1l00122"/>00122 
+<anchor xml:id="_connections_8cpp_source_1l00123"/><link linkend="_classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c">00123</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classconnections_1a9dd3e4b0392c9eddcdbc2df69071145c">connections::check_obsolete</link>(<emphasis role="keywordtype">int</emphasis>&#32;idx_con,&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;&amp;sem)
+<anchor xml:id="_connections_8cpp_source_1l00124"/>00124 {
+<anchor xml:id="_connections_8cpp_source_1l00125"/>00125 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(&#32;idx_con&#32;&lt;&#32;0&#32;||&#32;idx_con&#32;&gt;=&#32;<link linkend="_classconnections_1ab8405116666865cf960deb54b6beb2c9">MaxConn</link>&#32;)
+<anchor xml:id="_connections_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_connections_8cpp_source_1l00127"/>00127 
+<anchor xml:id="_connections_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx_con].status&#32;==&#32;<link linkend="_connections_8h_1a841c1992874382f999f316fa8162c520">st_obsolete</link>&#32;)&#32;
+<anchor xml:id="_connections_8cpp_source_1l00129"/>00129 &#32;&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087">Lock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00131"/>00131 
+<anchor xml:id="_connections_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;<link linkend="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a">delete_obsolete</link>(idx_con);
+<anchor xml:id="_connections_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00135"/>00135 
+<anchor xml:id="_connections_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_connections_8cpp_source_1l00137"/>00137 &#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00138"/>00138 
+<anchor xml:id="_connections_8cpp_source_1l00139"/>00139 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_connections_8cpp_source_1l00140"/>00140 }
+<anchor xml:id="_connections_8cpp_source_1l00141"/>00141 
+<anchor xml:id="_connections_8cpp_source_1l00142"/>00142 
+<anchor xml:id="_connections_8cpp_source_1l00143"/><link linkend="_classconnections_1a7818be12aec98b6c015b038b667c568f">00143</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classconnections_1a7818be12aec98b6c015b038b667c568f">connections::unregister_conn</link>(<emphasis role="keywordtype">int</emphasis>&#32;idx,&#32;<link linkend="_classSemaphore">Semaphore</link>&#32;&amp;sem)
+<anchor xml:id="_connections_8cpp_source_1l00144"/>00144 {
+<anchor xml:id="_connections_8cpp_source_1l00145"/>00145 &#32;&#32;sem.<link linkend="_classSemaphore_1a8e4aafcf610a23a0d9d1bccf887bb087">Lock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;
+<anchor xml:id="_connections_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classconnections_1aec431699f4e5f15397d398150b97222b">current_connections</link>[idx].status&#32;==&#32;<link linkend="_connections_8h_1a7cfb338d62be51e2990fb43cb27573a1">st_ready</link>&#32;)&#32;{
+<anchor xml:id="_connections_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classconnections_1abd2f1b462739513f2c23236fb28b08a8">mark_obsolete</link>(idx);
+<anchor xml:id="_connections_8cpp_source_1l00149"/>00149 &#32;&#32;}
+<anchor xml:id="_connections_8cpp_source_1l00150"/>00150 
+<anchor xml:id="_connections_8cpp_source_1l00151"/>00151 &#32;&#32;<link linkend="_classconnections_1aba8db6b2f3d43d4a030b764fb2371b6a">delete_obsolete</link>(idx);
+<anchor xml:id="_connections_8cpp_source_1l00152"/>00152 
+<anchor xml:id="_connections_8cpp_source_1l00153"/>00153 &#32;&#32;sem.<link linkend="_classSemaphore_1afa909c8f77cf34597aed10df79e82958">Unlock</link>();
+<anchor xml:id="_connections_8cpp_source_1l00154"/>00154 
+<anchor xml:id="_connections_8cpp_source_1l00155"/>00155 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_connections_8cpp_source_1l00156"/>00156 }
+</programlisting></section>
