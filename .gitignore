@@ -1,3 +1,5 @@
 build/
 POC.odt
 .vscode/
+doc/
+Doxyfile

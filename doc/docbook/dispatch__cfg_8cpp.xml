@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dispatch__cfg_8cpp" xml:lang="en-US">
-<title>src/dispatch_cfg.cpp File Reference</title>
-<indexterm><primary>src/dispatch_cfg.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;dispatch_cfg.h&quot;<?linebreak?></programlisting></section>
