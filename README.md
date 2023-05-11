@@ -16,7 +16,7 @@ Every dispatcher has the following Json setup:
 8. "TuxCliProg" : "/home/xaviperez72/Documents/POC/DIS/build/tuxcli_tcp",   // Transactional client to process incoming messages
 9. "TuxCliSetup" : "/home/xaviperez72/.dispatch/tuxconfig.json01"  // Transactional setup file
 ___
-Dispatcher object has the following objects:^
+Dispatcher object has the following objects:
 
 1. Shared Memory (IPC) to keep all connections defined by MaxConnections in Json config file. It keeps sd, sockaddr_in, status, last_op time for all sockets connections.
 2. Semaphore (IPC) to update previous Shared Memory (IPC) and avoid data races between processes and threads.
